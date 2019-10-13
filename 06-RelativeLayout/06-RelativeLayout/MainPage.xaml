@@ -10,7 +10,7 @@
 
     <RelativePanel BorderBrush="Gray" BorderThickness="1">
         <Rectangle x:Name="RedRect" Fill="Red" Height="44" 	Width="44"/>
-        <Rectangle x:Name="BlueRect" Fill="Blue" Height="44" Width="88" 	RelativePanel.RightOf="RedRect" />
+        <Rectangle x:Name="BlueRect" Fill="Blue" Height="44" Width="88" RelativePanel.RightOf="RedRect" />
         <Rectangle x:Name="GreenRect" Fill="Green" Height="44" 	RelativePanel.Below="RedRect" 	RelativePanel.AlignLeftWith="RedRect" 	RelativePanel.AlignRightWith="BlueRect"/>
         <Rectangle Fill="Yellow" RelativePanel.Below="GreenRect" 	RelativePanel.RightOf="BlueRect" 	RelativePanel.AlignRightWithPanel="True" 	RelativePanel.AlignBottomWithPanel="True"/>
         <StackPanel RelativePanel.Below="GreenRect" RelativePanel.AlignLeftWithPanel="False" RelativePanel.AlignRightWithPanel="False"  RelativePanel.AlignHorizontalCenterWith="GreenRect">

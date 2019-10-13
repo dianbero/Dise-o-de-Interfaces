@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="_08_Ej_Lista_RelativePanel.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_08_Ej_Lista_RelativePanel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel >
+        <AppBarButton Name="botonAceptar" Icon="Accept" Height="Auto"  RelativePanel.AlignLeftWithPanel="True"></AppBarButton>
+        <AppBarButton Name="botonBorrar" Icon="Delete" RelativePanel.RightOf="botonAceptar"></AppBarButton>
+        <AppBarButton Name="btnDescarga" Icon="Download"  RelativePanel.RightOf="botonBorrar"></AppBarButton>
+        <AppBarButton Name="btnBuscar" Icon="Find"  RelativePanel.RightOf="btnDescarga"></AppBarButton>
+
+        <!--<Rectangle Name="lista" RelativePanel.Below="btnBuscar" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWith="btnBuscar" RelativePanel.Above="btnFlechaIzquierda"></Rectangle>
+            -->
+        <ScrollBar Name="barra" Orientation="Vertical" RelativePanel.AlignRightWith="btnBuscar" RelativePanel.Below="btnBuscar" RelativePanel.Above="btnAñadir" Width="5" Background="Gray"></ScrollBar>
+        
+        <AppBarButton Name="btnAñadir" Icon="Add" Label="Añadir" RelativePanel.Above="btnFlechaDerecha" RelativePanel.AlignRightWith="btnBuscar"></AppBarButton>
+
+        <AppBarButton Name="btnFlechaIzquierda" Icon="Back" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWith="botonBorrar"></AppBarButton>
+        <AppBarButton Name="btnFlechaDerecha" Icon="Forward" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="btnFlechaIzquierda"></AppBarButton>
+        
+        <!--<StackPanel Name="panelFlechas" Orientation="Horizontal" RelativePanel.Below="lista" RelativePanel.AlignBottomWithPanel="True">
+            <AppBarButton Name="btnFlechaIzquierda" Icon="Back"  ></AppBarButton>
+            <AppBarButton Name="btnFlechaDerecha" Icon="Forward"  ></AppBarButton>
+        </StackPanel>
+        -->
+    </RelativePanel>
+</Page>
