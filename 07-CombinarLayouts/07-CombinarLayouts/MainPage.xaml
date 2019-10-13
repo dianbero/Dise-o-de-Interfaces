@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RoswDefinition Height="Auto"></RoswDefinition>                 
+            <RowDefinition Height="Auto"></RowDefinition>                 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -22,8 +22,20 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">Name: </TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right">Surname:</TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right">Date of Birth:</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Person information</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Name: </TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Surname: </TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Date of Birth: </TextBlock>
+
+        <TextBox Name="txtName" Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBox Name="txtSurname" Grid.Row="2" Grid.Column="1"></TextBox>
+        <TextBox Name="txtDateBirth" Grid.Row="3" Grid.Column="1"></TextBox>
+
+        <TextBlock Name="lblName" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Name="lblSurname" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Name="lblDateBirth" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Name="lblResultadoFinal" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+        
+        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Padding="5, 0, 5, 0" Click="Button_Click">Send</Button>
     </Grid>
 </Page>
