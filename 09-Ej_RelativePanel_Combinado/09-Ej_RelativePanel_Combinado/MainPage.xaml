@@ -10,40 +10,45 @@
 
     <!--Se ha trastocado la organización-->
     <RelativePanel Name="panelPrincipal" BorderBrush="Gray" BorderThickness="5">
+        
         <Border Name="borde1" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-            <TextBlock Name="txtTitulo" >Hola lalala</TextBlock>
+            <TextBlock Name="txtTitulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</TextBlock>
         </Border>
         <Border Name="borde2" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10" RelativePanel.Below="borde1"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-            <TextBlock Name="txt2Intro" ></TextBlock>
+            <TextBlock Name="txt2Intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</TextBlock>
         </Border>
-
+       
         <RelativePanel Name="Contenido" BorderBrush="Gray" BorderThickness="5" Width="Auto" Margin="20, 10, 20, 10" RelativePanel.Below="borde2" RelativePanel.Above="bordeFinal" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-            <Border Name="img1" Fill="Orange" Width="150" Height="150" Margin="20, 10, 20, 10">
-                <Rectangle Name="1"></Rectangle>
+            <!--Cuadrados colores-->
+           
+            <Border Name="img1" BorderBrush="Gray" BorderThickness="5" Width="150" Height="150" Margin="20, 10, 20, 10">
+                <Rectangle Name="rect1" Fill="Orange"></Rectangle>
             </Border>
-            <Border Name="img2" Fill="LightBlue" Width="150" Height="150" RelativePanel.RightOf="img1" Margin="20, 10, 20, 10">
-                <Rectangle Name="2"></Rectangle>
+            <Border Name="img2" BorderBrush="Gray" BorderThickness="5" Width="150" Height="150" RelativePanel.RightOf="img1" Margin="20, 10, 20, 10">
+                <Rectangle Name="rect2" Fill="LightBlue"></Rectangle>
             </Border>
-            <Border Name="img3" Fill="LightGreen" Width="150" Height="150" RelativePanel.Below="img1" Margin="20, 10, 20, 10">
-                <Rectangle Name="3"></Rectangle>
+            <Border Name="img3" BorderBrush="Gray" BorderThickness="5" Width="150" Height="150" RelativePanel.Below="img1" Margin="20, 10, 20, 10">
+                <Rectangle Name="rect3" Fill="LightGreen"></Rectangle>
             </Border>
-
-            <Border Name="txt1" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.AlignRightWithPanel="True">
-            <TextBlock Name="txt11"></TextBlock>
+            
+            <!--Textos-->
+            <Border Name="txt1" BorderBrush="Gray" BorderThickness="5" Width="Auto" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="text1" TextWrapping="Wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
             </Border>
-            <Border Name="txt2" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt1" RelativePanel.AlignRightWithPanel="True">
-                <TextBlock Name="txt22"></TextBlock>
+            <Border Name="txt2" BorderBrush="Gray" BorderThickness="5" Width="Auto" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt1" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="text2" TextWrapping="Wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
             </Border>
-            <Border Name="txt3" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt2" RelativePanel.AlignRightWithPanel="True">
-                <TextBlock Name="txt33"></TextBlock>
+            <Border Name="txt3" BorderBrush="Gray" BorderThickness="5" Width="Auto" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt2" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="text3" TextWrapping="Wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
             </Border>
-            <Border Name="txt4" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt3" RelativePanel.AlignRightWithPanel="True">
-                <TextBlock Name="txt33"></TextBlock>
+            <Border Name="txt4" BorderBrush="Gray" BorderThickness="5" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt3" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="text4" TextWrapping="Wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
             </Border>
         </RelativePanel>
-
+        
         <Border Name="bordeFinal" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <Rectangle Name="rctFinal" ></Rectangle>
         </Border>
+        
     </RelativePanel>
 </Page>
