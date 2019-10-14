@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using _07_CombinarLayouts.Models;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
@@ -28,6 +29,11 @@ namespace _07_CombinarLayouts
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Botón para mandar datos del formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             clsPersona objPersona = new clsPersona();
@@ -38,6 +44,8 @@ namespace _07_CombinarLayouts
 
             DateTime dateBirth;
             
+            //TODO falta comprobar que la fecha no es superior a la actual
+            //Para poner una fecha igual a null hay que poner después del tipo de la variable un signo de interrogación
             if (String.IsNullOrEmpty(txtDateBirth.Text))
             {
                 lblDateBirth.Text = "Debe introducir una fecha";                
@@ -45,11 +53,8 @@ namespace _07_CombinarLayouts
             {
                 objPersona.DateBirth = dateBirth;
                 lblDateBirth.Text = "";
-            }
+            }   
             
-
-            //objPersona.DateBirth = txtDateBirth;  //Hacer conversión, probar TryParse
-
             if (String.IsNullOrWhiteSpace(objPersona.Nombre))
             {
                 lblName.Text = "Debe introducir el nombre";
@@ -66,6 +71,11 @@ namespace _07_CombinarLayouts
             {
                 lblSurname.Text = "";
             }
+
+            lblResultadoFinal.Text = $"{objPersona.Nombre}, {objPersona.Apellido}, {objPersona.DateBirth.ToString("dd / MM / yyyy")}";  //Para mostrar sólo fecha no sirve .Date
+
+
+
             /*if (String.IsNullOrWhiteSpace(objPersona.DateBirth))
             {
                 lblDateBirth.Text = "Debe introducir una fecha";
@@ -74,9 +84,6 @@ namespace _07_CombinarLayouts
             {
                 lblDateBirth.Text = "";
             }*/
-
-            lblResultadoFinal.Text = $"{objPersona.Nombre}, {objPersona.Apellido}, {objPersona.DateBirth.ToString("dd / MM / yyyy")}";  //Para mostrar sólo fecha no sirve .Date
-            
         }
     }
 }

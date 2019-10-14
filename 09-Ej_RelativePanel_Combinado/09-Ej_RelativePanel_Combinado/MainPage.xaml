@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="_09_Ej_RelativePanel_Combinado.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_09_Ej_RelativePanel_Combinado"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!--Se ha trastocado la organización-->
+    <RelativePanel Name="panelPrincipal" BorderBrush="Gray" BorderThickness="5">
+        <Border Name="borde1" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <TextBlock Name="txtTitulo" >Hola lalala</TextBlock>
+        </Border>
+        <Border Name="borde2" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10" RelativePanel.Below="borde1"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <TextBlock Name="txt2Intro" ></TextBlock>
+        </Border>
+
+        <RelativePanel Name="Contenido" BorderBrush="Gray" BorderThickness="5" Width="Auto" Margin="20, 10, 20, 10" RelativePanel.Below="borde2" RelativePanel.Above="bordeFinal" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <Border Name="img1" Fill="Orange" Width="150" Height="150" Margin="20, 10, 20, 10">
+                <Rectangle Name="1"></Rectangle>
+            </Border>
+            <Border Name="img2" Fill="LightBlue" Width="150" Height="150" RelativePanel.RightOf="img1" Margin="20, 10, 20, 10">
+                <Rectangle Name="2"></Rectangle>
+            </Border>
+            <Border Name="img3" Fill="LightGreen" Width="150" Height="150" RelativePanel.Below="img1" Margin="20, 10, 20, 10">
+                <Rectangle Name="3"></Rectangle>
+            </Border>
+
+            <Border Name="txt1" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.AlignRightWithPanel="True">
+            <TextBlock Name="txt11"></TextBlock>
+            </Border>
+            <Border Name="txt2" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt1" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="txt22"></TextBlock>
+            </Border>
+            <Border Name="txt3" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt2" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="txt33"></TextBlock>
+            </Border>
+            <Border Name="txt4" Margin="20, 10, 20, 10" RelativePanel.RightOf="img2" RelativePanel.Below="txt3" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Name="txt33"></TextBlock>
+            </Border>
+        </RelativePanel>
+
+        <Border Name="bordeFinal" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <Rectangle Name="rctFinal" ></Rectangle>
+        </Border>
+    </RelativePanel>
+</Page>

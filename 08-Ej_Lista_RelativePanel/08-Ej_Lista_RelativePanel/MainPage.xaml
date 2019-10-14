@@ -16,10 +16,15 @@
 
         <!--<Rectangle Name="lista" RelativePanel.Below="btnBuscar" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWith="btnBuscar" RelativePanel.Above="btnFlechaIzquierda"></Rectangle>
             -->
-        <ScrollBar Name="barra" Orientation="Vertical" RelativePanel.AlignRightWith="btnBuscar" RelativePanel.Below="btnBuscar" RelativePanel.Above="btnAñadir" Width="5" Background="Gray"></ScrollBar>
         
+        <!--<ScrollBar Name="barra" Orientation="Vertical" RelativePanel.AlignRightWith="btnBuscar" RelativePanel.Below="btnBuscar" RelativePanel.Above="btnAñadir" Width="5" Background="Gray"></ScrollBar>
+        -->
+        <!--<ListView RelativePanel.Below="botonAceptar" RelativePanel.AlignBottomWith="btnFlechaDerecha" RelativePanel.AlignRightWith="btnBuscar" RelativePanel.AlignBottomWith="btnBuscar">
+            <x:String>Cosas</x:String>
+        </ListView>
+        -->
         <AppBarButton Name="btnAñadir" Icon="Add" Label="Añadir" RelativePanel.Above="btnFlechaDerecha" RelativePanel.AlignRightWith="btnBuscar"></AppBarButton>
-
+        
         <AppBarButton Name="btnFlechaIzquierda" Icon="Back" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWith="botonBorrar"></AppBarButton>
         <AppBarButton Name="btnFlechaDerecha" Icon="Forward" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="btnFlechaIzquierda"></AppBarButton>
         

@@ -5,10 +5,14 @@
     xmlns:local="using:_07_CombinarLayouts"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:_07_CombinarLayouts.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.DataContext> <!--Instancia un objeto de la clase indicada, en este caso clsPersona-->
+        <models:clsPersona></models:clsPersona>
+    </Page.DataContext>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -25,10 +29,10 @@
         <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Person information</TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Name: </TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Surname: </TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Date of Birth: </TextBlock>
-
-        <TextBox Name="txtName" Grid.Row="1" Grid.Column="1"></TextBox>
-        <TextBox Name="txtSurname" Grid.Row="2" Grid.Column="1"></TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Date of Birth:</TextBlock>
+        <!---->
+        <TextBox Name="txtName" Text="{Binding Nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBox Name="txtSurname" Text="{Binding Apellido}" Grid.Row="2" Grid.Column="1"></TextBox>
         <TextBox Name="txtDateBirth" Grid.Row="3" Grid.Column="1"></TextBox>
 
         <TextBlock Name="lblName" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"></TextBlock>

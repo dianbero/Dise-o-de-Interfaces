@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _07_CombinarLayouts
+namespace _07_CombinarLayouts.Models
 {
     public class clsPersona
     {
@@ -18,16 +18,16 @@ namespace _07_CombinarLayouts
         //Constructor por defecto
         public clsPersona()
         {
-            /*this.Nombre = nombre;
-            this.Apellido = apellido;
-            this.Edad = edad;*/
+            this.Nombre = "Diana";
+            this.Apellido = "Bejarano";
+            //this.Edad = 26;
         }
         //Constructor por parámetros
         public clsPersona(string name, string surname, int age)
         {
             this.Nombre = name;
             this.Apellido = surname;
-            this.Edad = age;
+            //this.Edad = age;
                         
         }
 
@@ -45,7 +45,7 @@ namespace _07_CombinarLayouts
         }
 
         public string Apellido { get; set; } //Equivale a lo anterior pero de forma más compacta, y no se declara previamente como private
-        public int Edad { get; set; }
+        //public int Edad { get; set; }
 
         
         public DateTime DateBirth
@@ -59,6 +59,7 @@ namespace _07_CombinarLayouts
                 dateBirth = value;
             }
         }
+
 
         /*public DateTime DateBirth
         {
