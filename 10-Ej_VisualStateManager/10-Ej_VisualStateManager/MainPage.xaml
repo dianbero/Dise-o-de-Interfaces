@@ -10,44 +10,61 @@
 
 
     <RelativePanel Name="panelPrincipal">
-        <StackPanel Name="panelBotonesVetical" Background="LightBlue" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+        <StackPanel Name="panelBotonesVetical" Background="LightBlue" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <AppBarButton Icon="Add" Label="Añadir"></AppBarButton>            
             <AppBarButton Icon="Go" Label="Ir"></AppBarButton>            
             <AppBarButton Icon="Target" Label="Objetivo"></AppBarButton>            
             <AppBarButton Icon="AddFriend" Label="Añadir"></AppBarButton>            
         </StackPanel>
-        <Grid Name="gridImegenes" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
 
-            <Image Source="Assets/img1.jpg" Grid.Row="0" Grid.Column="0"></Image>
-            <Image Source="Assets/img2.jpg"  Grid.Row="0" Grid.Column="1" ></Image>
-            <Image Source="Assets/img3.jpg" Grid.Row="0" Grid.Column="2" ></Image>
-            <Image Source="Assets/img1.jpg" Grid.Row="1" Grid.Column="0" ></Image>
-            <Image Source="Assets/img2.jpg" Grid.Row="1" Grid.Column="1" ></Image>
-            <Image Source="Assets/img3.jpg" Grid.Row="1" Grid.Column="2" ></Image>
-            <Image Source="Assets/img1.jpg" Grid.Row="2" Grid.Column="0" ></Image>
-            <Image Source="Assets/img2.jpg" Grid.Row="2" Grid.Column="1" ></Image>
-            <Image Source="Assets/img3.jpg" Grid.Row="2" Grid.Column="2" ></Image>
-        </Grid>
-
+        <ScrollViewer x:Name="scroll" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">
+            <Grid Name="gridImagenes" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            
+                <Image Name="img1" Source="Assets/img1.jpg" Grid.Row="0" Grid.Column="0"></Image>
+                <Image Name="img2" Source="Assets/img2.jpg" Grid.Row="0" Grid.Column="1" ></Image>
+                <Image Name="img3" Source="Assets/img3.jpg" Grid.Row="0" Grid.Column="2" ></Image>
+                <Image Name="img4" Source="Assets/img1.jpg" Grid.Row="1" Grid.Column="0" ></Image>
+                <Image Name="img5" Source="Assets/img2.jpg" Grid.Row="1" Grid.Column="1" ></Image>
+                <Image Name="img6" Source="Assets/img3.jpg" Grid.Row="1" Grid.Column="2" ></Image>
+                <Image Name="img7" Source="Assets/img1.jpg" Grid.Row="2" Grid.Column="0" ></Image>
+                <Image Name="img8" Source="Assets/img2.jpg" Grid.Row="2" Grid.Column="1" ></Image>
+                <Image Name="img9" Source="Assets/img3.jpg" Grid.Row="2" Grid.Column="2" ></Image>
+            </Grid>
+        </ScrollViewer>
+        
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="visualStateGroup1">
-                <VisualState x:Name="visualState">
+            <VisualStateGroup>
+                <VisualState x:Name="colocacionEnFila">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>                        
+                        <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
-                </VisualState>                
-            </VisualStateGroup>            
+                                        
+                    <VisualState.Setters>
+                        <Setter Target="panelBotonesVetical.Orientation" Value="Horizontal"></Setter>
+                        <Setter Target="panelBotonesVetical.(RelativePanel.AlignBottomWithPanel)" Value="false"></Setter>
+                        <Setter Target="panelBotonesVetical.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <!--Grid debajo de Botones-->
+                        <Setter Target="scroll.(RelativePanel.Below)" Value="panelBotonesVetical"></Setter>
+                        <Setter Target="scroll.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <!--Se anula el RelativePanel.RightOf="panelBotonesVetical" anterior-->
+                        <Setter Target="scroll.(RelativePanel.AlignLeftWithPanel)" Value="true"></Setter>
+                        
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        
+        
         
     </RelativePanel>
    

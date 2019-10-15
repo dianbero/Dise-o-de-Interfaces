@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="Archivo_Para_Pruebas.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Archivo_Para_Pruebas"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel Name="panelPrincipal">
+        <StackPanel Name="panelBotonesVertical" Background="LightBlue" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <AppBarButton Icon="Add" Label="Añadir"></AppBarButton>
+            <AppBarButton Icon="Go" Label="Ir"></AppBarButton>
+            <AppBarButton Icon="Target" Label="Objetivo"></AppBarButton>
+            <AppBarButton Icon="AddFriend" Label="Añadir"></AppBarButton>
+        </StackPanel>
+
+        <!--<ScrollViewer x:Name="scroll" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">-->
+        <ListView x:Name="lista" RelativePanel.RightOf="panelBotonesVertical">  
+            <StackPanel x:Name="stackPrincipal" Orientation="Vertical">
+                <StackPanel x:Name="stack1" Orientation="Vertical">
+                    <Image Name="img1" Source="Assets/img1.jpg" ></Image>
+                    <Image Name="img2" Source="Assets/img2.jpg" ></Image>
+                    <Image Name="img3" Source="Assets/img3.jpg" ></Image>
+                </StackPanel>
+                <StackPanel x:Name="stack2" Orientation="Vertical">
+                    <Image Name="img4" Source="Assets/img1.jpg" ></Image>
+                    <Image Name="img5" Source="Assets/img2.jpg" ></Image>
+                    <Image Name="img6" Source="Assets/img3.jpg" ></Image>
+                </StackPanel>
+                <StackPanel x:Name="stack3" Orientation="Vertical">
+                    <Image Name="img7" Source="Assets/img1.jpg" ></Image>
+                    <Image Name="img8" Source="Assets/img2.jpg" ></Image>
+                    <Image Name="img9" Source="Assets/img3.jpg" ></Image>
+                </StackPanel>
+            </StackPanel>
+        </ListView>
+        <!--</ScrollViewer>-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="colocacionEnFila">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="panelBotonesVertical.Orientation" Value="Horizontal"></Setter>
+                        <Setter Target="panelBotonesVertical.(RelativePanel.AlignBottomWithPanel)" Value="false"></Setter>
+                        <Setter Target="panelBotonesVertical.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <!--Grid debajo de Botones-->
+                        <Setter Target="lista.(RelativePanel.Below)" Value="panelBotonesVertical"></Setter>
+                        <Setter Target="lista.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <!--Se anula el RelativePanel.RightOf="panelBotonesVetical" anterior-->
+                        <Setter Target="lista.(RelativePanel.AlignLeftWithPanel)" Value="true"></Setter>
+                        <!--bajar stack panels-->
+                        <Setter Target="stackPrincipal.Orientation" Value="Horizontal"></Setter>
+                        <!--<Setter Target="stackPrincipal.Orientation" Value="Horizontal"></Setter>-->
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </RelativePanel>
+</Page>
