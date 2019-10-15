@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="_10_Ej_VisualStateManager.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_10_Ej_VisualStateManager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <RelativePanel Name="panelPrincipal">
+        <StackPanel Name="panelBotonesVetical" Background="LightBlue" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+            <AppBarButton Icon="Add" Label="Añadir"></AppBarButton>            
+            <AppBarButton Icon="Go" Label="Ir"></AppBarButton>            
+            <AppBarButton Icon="Target" Label="Objetivo"></AppBarButton>            
+            <AppBarButton Icon="AddFriend" Label="Añadir"></AppBarButton>            
+        </StackPanel>
+        <Grid Name="gridImegenes" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="Assets/img1.jpg" Grid.Row="0" Grid.Column="0"></Image>
+            <Image Source="Assets/img2.jpg"  Grid.Row="0" Grid.Column="1" ></Image>
+            <Image Source="Assets/img3.jpg" Grid.Row="0" Grid.Column="2" ></Image>
+            <Image Source="Assets/img1.jpg" Grid.Row="1" Grid.Column="0" ></Image>
+            <Image Source="Assets/img2.jpg" Grid.Row="1" Grid.Column="1" ></Image>
+            <Image Source="Assets/img3.jpg" Grid.Row="1" Grid.Column="2" ></Image>
+            <Image Source="Assets/img1.jpg" Grid.Row="2" Grid.Column="0" ></Image>
+            <Image Source="Assets/img2.jpg" Grid.Row="2" Grid.Column="1" ></Image>
+            <Image Source="Assets/img3.jpg" Grid.Row="2" Grid.Column="2" ></Image>
+        </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="visualStateGroup1">
+                <VisualState x:Name="visualState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>                        
+                    </VisualState.StateTriggers>
+                </VisualState>                
+            </VisualStateGroup>            
+        </VisualStateManager.VisualStateGroups>
+        
+    </RelativePanel>
+   
+</Page>
