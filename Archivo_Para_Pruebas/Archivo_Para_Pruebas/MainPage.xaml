@@ -9,6 +9,38 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel Name="panelPrincipal">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="colocacionEnFila">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="panelBotonesVertical.Orientation" Value="Horizontal"></Setter>
+                        <Setter Target="panelBotonesVertical.(RelativePanel.AlignBottomWithPanel)" Value="false"></Setter>
+                        <Setter Target="panelBotonesVertical.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <!--Grid debajo de Botones-->
+                        <Setter Target="scroll.(RelativePanel.Below)" Value="panelBotonesVertical"></Setter>
+                        <Setter Target="scroll.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <!--<Setter Target="scroll.Orientation" Value="Horizontal"></Setter>-->
+
+                        <!--<Setter Target="panelBotonesVertical.Background" Value="Blue"></Setter>-->
+
+
+                        <!--A parte-->
+                        <!--Se anula el RelativePanel.RightOf="panelBotonesVetical" anterior-->
+                        <!--<Setter Target="stackPrincipal.(RelativePanel.RightOf)" Value="panelBotonesVertical"></Setter>-->
+                        <!--<Setter Target="scroll.(RelativePanel.AlignLeftWithPanel)" Value="true"></Setter>-->
+                        <!--bajar stack panels-->
+
+                        <!--<Setter Target="stackPrincipal.Orientation" Value="Horizontal"></Setter>-->
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <StackPanel Name="panelBotonesVertical" Background="LightBlue" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <AppBarButton Icon="Add" Label="Añadir"></AppBarButton>
             <AppBarButton Icon="Go" Label="Ir"></AppBarButton>
@@ -16,9 +48,10 @@
             <AppBarButton Icon="AddFriend" Label="Añadir"></AppBarButton>
         </StackPanel>
 
-        <!--<ScrollViewer x:Name="scroll" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">-->
-        <ListView x:Name="lista" RelativePanel.RightOf="panelBotonesVertical">  
-            <StackPanel x:Name="stackPrincipal" Orientation="Vertical">
+        <ScrollViewer x:Name="scroll" RelativePanel.RightOf="panelBotonesVertical">
+        <!--<ListView x:Name="lista" RelativePanel.RightOf="panelBotonesVertical">-->  
+            
+        <StackPanel x:Name="stackPrincipal" Orientation="Vertical">
                 <StackPanel x:Name="stack1" Orientation="Vertical">
                     <Image Name="img1" Source="Assets/img1.jpg" ></Image>
                     <Image Name="img2" Source="Assets/img2.jpg" ></Image>
@@ -35,32 +68,9 @@
                     <Image Name="img9" Source="Assets/img3.jpg" ></Image>
                 </StackPanel>
             </StackPanel>
-        </ListView>
-        <!--</ScrollViewer>-->
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="colocacionEnFila">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>
-                    </VisualState.StateTriggers>
-
-                    <VisualState.Setters>
-                        <Setter Target="panelBotonesVertical.Orientation" Value="Horizontal"></Setter>
-                        <Setter Target="panelBotonesVertical.(RelativePanel.AlignBottomWithPanel)" Value="false"></Setter>
-                        <Setter Target="panelBotonesVertical.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
-                        <!--Grid debajo de Botones-->
-                        <Setter Target="lista.(RelativePanel.Below)" Value="panelBotonesVertical"></Setter>
-                        <Setter Target="lista.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
-                        <!--Se anula el RelativePanel.RightOf="panelBotonesVetical" anterior-->
-                        <Setter Target="lista.(RelativePanel.AlignLeftWithPanel)" Value="true"></Setter>
-                        <!--bajar stack panels-->
-                        <Setter Target="stackPrincipal.Orientation" Value="Horizontal"></Setter>
-                        <!--<Setter Target="stackPrincipal.Orientation" Value="Horizontal"></Setter>-->
-
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        <!--</ListView>-->
+        </ScrollViewer>
+        
 
     </RelativePanel>
 </Page>

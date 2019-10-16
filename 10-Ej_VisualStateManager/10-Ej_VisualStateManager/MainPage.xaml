@@ -17,8 +17,8 @@
             <AppBarButton Icon="AddFriend" Label="Añadir"></AppBarButton>            
         </StackPanel>
 
-        <ScrollViewer x:Name="scroll" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">
-            <Grid Name="gridImagenes" >
+        <!--<ScrollViewer x:Name="scroll" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">-->
+        <Grid Name="gridImagenes" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -29,18 +29,32 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+
+
+            <Image Name="img1" Source="Assets/img1.jpg" Grid.Row="0" Grid.Column="0"></Image>
+            <Image Name="img2" Source="Assets/img2.jpg" Grid.Row="1" Grid.Column="0" ></Image>
+            <Image Name="img3" Source="Assets/img3.jpg" Grid.Row="2" Grid.Column="0" ></Image>
+            <Image Name="img4" Source="Assets/img1.jpg" Grid.Row="3" Grid.Column="0" ></Image>
+            <Image Name="img5" Source="Assets/img2.jpg" Grid.Row="4" Grid.Column="0" ></Image>
+            <Image Name="img6" Source="Assets/img3.jpg" Grid.Row="5" Grid.Column="0" ></Image>
+            <Image Name="img7" Source="Assets/img1.jpg" Grid.Row="6" Grid.Column="0" ></Image>
+            <Image Name="img8" Source="Assets/img2.jpg" Grid.Row="7" Grid.Column="0" ></Image>
+            <Image Name="img9" Source="Assets/img3.jpg" Grid.Row="8" Grid.Column="0" ></Image>
+
+            <!--<Image Name="img1" Source="Assets/img1.jpg" Grid.Row="0" Grid.Column="0"></Image>
+            <Image Name="img2" Source="Assets/img2.jpg" Grid.Row="0" Grid.Column="1" ></Image>
+            <Image Name="img3" Source="Assets/img3.jpg" Grid.Row="0" Grid.Column="2" ></Image>
+            <Image Name="img4" Source="Assets/img1.jpg" Grid.Row="1" Grid.Column="0" ></Image>
+            <Image Name="img5" Source="Assets/img2.jpg" Grid.Row="1" Grid.Column="1" ></Image>
+            <Image Name="img6" Source="Assets/img3.jpg" Grid.Row="1" Grid.Column="2" ></Image>
+            <Image Name="img7" Source="Assets/img1.jpg" Grid.Row="2" Grid.Column="0" ></Image>
+            <Image Name="img8" Source="Assets/img2.jpg" Grid.Row="2" Grid.Column="1" ></Image>
+            <Image Name="img9" Source="Assets/img3.jpg" Grid.Row="2" Grid.Column="2" ></Image>-->
+                
+                
             
-                <Image Name="img1" Source="Assets/img1.jpg" Grid.Row="0" Grid.Column="0"></Image>
-                <Image Name="img2" Source="Assets/img2.jpg" Grid.Row="0" Grid.Column="1" ></Image>
-                <Image Name="img3" Source="Assets/img3.jpg" Grid.Row="0" Grid.Column="2" ></Image>
-                <Image Name="img4" Source="Assets/img1.jpg" Grid.Row="1" Grid.Column="0" ></Image>
-                <Image Name="img5" Source="Assets/img2.jpg" Grid.Row="1" Grid.Column="1" ></Image>
-                <Image Name="img6" Source="Assets/img3.jpg" Grid.Row="1" Grid.Column="2" ></Image>
-                <Image Name="img7" Source="Assets/img1.jpg" Grid.Row="2" Grid.Column="0" ></Image>
-                <Image Name="img8" Source="Assets/img2.jpg" Grid.Row="2" Grid.Column="1" ></Image>
-                <Image Name="img9" Source="Assets/img3.jpg" Grid.Row="2" Grid.Column="2" ></Image>
             </Grid>
-        </ScrollViewer>
+        <!--</ScrollViewer>-->
         
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -54,10 +68,31 @@
                         <Setter Target="panelBotonesVetical.(RelativePanel.AlignBottomWithPanel)" Value="false"></Setter>
                         <Setter Target="panelBotonesVetical.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
                         <!--Grid debajo de Botones-->
-                        <Setter Target="scroll.(RelativePanel.Below)" Value="panelBotonesVetical"></Setter>
-                        <Setter Target="scroll.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
+                        <Setter Target="gridImagenes.(RelativePanel.Below)" Value="panelBotonesVetical"></Setter>
+                        <Setter Target="gridImagenes.(RelativePanel.AlignRightWithPanel)" Value="true"></Setter>
                         <!--Se anula el RelativePanel.RightOf="panelBotonesVetical" anterior-->
-                        <Setter Target="scroll.(RelativePanel.AlignLeftWithPanel)" Value="true"></Setter>
+                        <Setter Target="gridImagenes.(RelativePanel.AlignLeftWithPanel)" Value="true"></Setter>
+
+
+                        <Setter Target="img1.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="img2.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="img3.(Grid.Row)" Value="2"></Setter>
+                        <Setter Target="img4.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="img5.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="img6.(Grid.Row)" Value="2"></Setter>
+                        <Setter Target="img7.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="img8.(Grid.Row)" Value="1"></Setter>
+                        <Setter Target="img9.(Grid.Row)" Value="2"></Setter>
+
+                        <Setter Target="img1.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="img2.(Grid.Column)" Value="1"></Setter>
+                        <Setter Target="img3.(Grid.Column)" Value="2"></Setter>
+                        <Setter Target="img4.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="img5.(Grid.Column)" Value="1"></Setter>
+                        <Setter Target="img6.(Grid.Column)" Value="2"></Setter>
+                        <Setter Target="img7.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="img8.(Grid.Column)" Value="1"></Setter>
+                        <Setter Target="img9.(Grid.Column)" Value="2"></Setter>
                         
                     </VisualState.Setters>
                 </VisualState>
