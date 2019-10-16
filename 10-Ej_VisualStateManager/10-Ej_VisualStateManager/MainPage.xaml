@@ -19,7 +19,7 @@
 
         <!--<ScrollViewer x:Name="scroll" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">-->
         <Grid Name="gridImagenes" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="panelBotonesVetical">
-                <Grid.RowDefinitions>
+                <Grid.RowDefinitions><!--TODO Añadir nueve filas-->
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>

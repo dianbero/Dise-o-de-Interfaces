@@ -17,7 +17,7 @@
         <Border Name="borde2" BorderBrush="Gray" BorderThickness="5" Width="Auto" Height="50" Margin="20, 10, 20, 10" RelativePanel.Below="borde1"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <TextBlock Name="txt2Intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</TextBlock>
         </Border>
-       
+       <!--TODO Añadir wrap-->
         <RelativePanel Name="Contenido" BorderBrush="Gray" BorderThickness="5" Width="Auto" Margin="20, 10, 20, 10" RelativePanel.Below="borde2" RelativePanel.Above="bordeFinal" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <!--Cuadrados colores-->
            
