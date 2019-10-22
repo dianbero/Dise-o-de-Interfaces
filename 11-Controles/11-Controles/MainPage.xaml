@@ -36,7 +36,37 @@
         </ListBox>  
         
         <CalendarView x:Name="calendarView" Grid.Row="3" Grid.Column="0"></CalendarView>
-               
+        <Pivot Grid.Row="1" Grid.Column="0">            
+            <PivotItem>
+                <PivotItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Economía"></TextBlock>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE825;"></FontIcon>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox Content="Setting 1"></CheckBox>
+                        <CheckBox Content="Setting 2"></CheckBox>
+                        <CheckBox Content="Setting 3"></CheckBox>
+                    </StackPanel>
+                </PivotItem.Header>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Física"></TextBlock>
+                </PivotItem.Header>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Matemáticas"></TextBlock>
+                </PivotItem.Header>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Filosofía"></TextBlock>
+                </PivotItem.Header>
+            </PivotItem>
+            
+        </Pivot>
         <ComboBox x:Name="comboBox" MaxHeight="100" PlaceholderText="Seleccione" Grid.Row="2" Grid.Column="1">
             <x:String>Green</x:String>
             <x:String>Blue</x:String>
@@ -68,8 +98,8 @@
     
         <!--Reproductor-->
         <!--<MediaPlayerElement x:Name="mediaPlayerElement" HorizontalAlignment="Stretch" AreTransportControlsEnabled="True" Grid.Row="0" Grid.Column="0"/>-->
-        <MediaPlayerElement x:Name="mpe" Source="C:\Users\dianb\Desktop\DAM_GitHub\Dise-o-de-Interfaces\11-Controles\11-Controles\Assets\Crazy Love.mp3"/>
+        <!--<MediaPlayerElement x:Name="mpe" Source="C:\Users\dianb\Desktop\DAM_GitHub\Dise-o-de-Interfaces\11-Controles\11-Controles\Assets\Crazy Love.mp3"/>
         <MediaPlayerElement x:Name="reproductor" Height="40" Grid.Row="0" Grid.Column="0"/>
-        <!--<Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="0" Click="BtnPlay_Click"></Button>-->
+        <Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="0" Click="BtnPlay_Click"></Button>-->
     </Grid>
 </Page>
