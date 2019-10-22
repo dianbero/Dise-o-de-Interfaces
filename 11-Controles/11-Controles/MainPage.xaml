@@ -42,13 +42,15 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Economía"></TextBlock>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE825;"></FontIcon>
-                    </StackPanel>
+                    </StackPanel>                    
+                </PivotItem.Header>
+                <PivotItem.Content>
                     <StackPanel Orientation="Vertical">
                         <CheckBox Content="Setting 1"></CheckBox>
                         <CheckBox Content="Setting 2"></CheckBox>
                         <CheckBox Content="Setting 3"></CheckBox>
                     </StackPanel>
-                </PivotItem.Header>
+                </PivotItem.Content>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
