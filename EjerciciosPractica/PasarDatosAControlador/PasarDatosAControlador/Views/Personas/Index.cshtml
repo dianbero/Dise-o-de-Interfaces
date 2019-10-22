@@ -1,0 +1,39 @@
+﻿<!--Instancio clase Persona-->
+@model PasarDatosAControlador.Models.clsPersona
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h2>Datos Persona que se pasarán a al controlador para que los devuelva en otra vista</h2>
+        <!--Creación de formulario para introducir y enviar los datos-->
+        <form method="post">
+            <p>
+                <label>Nombre:</label>
+                <input type="text" name="Nombre" value="@Model.Nombre"/>
+            </p>
+            <p>
+                <label>Apellido:</label>
+                @Html.TextBox("Apellido", Model.Apellido)
+            </p>
+            <p>
+                <label>Edad:</label>
+                @Html.TextBoxFor(elemento => elemento.Edad)
+            </p>
+
+            <!--Creación botón para enviar datos a la vista de las modificaciones-->
+            <input type="submit" name="Send" />
+            @Html.ActionLink("ir a datos modificados", "DatosPersonasModificados")
+        </form>
+    </div>
+</body>
+</html>

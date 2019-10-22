@@ -1,0 +1,25 @@
+﻿<!--Instanciación clase clsPersona-->
+@model PasarDatosAControlador.Models.clsPersona
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DatosPersonasModificados</title>
+</head>
+<body>
+    <div> 
+        <h3>Datos Modificados, obtenidos de introducir datos y pasarlos al controlador, para después enviarlos de nuevo a una vista y mostrarlos modificados</h3>
+        <p>Nombre: @Model.Nombre</p>
+        <p>Apellido: @Model.Apellido</p>
+        <p>Edad: @Model.Edad</p>
+        <!--Link de vuelta a Clase de Editar (o Index)-->
+        @Html.ActionLink("Volver a página de Editar", "Index") <!--Como están en el mismo controlador no hace falta poner el nombre del controlador-->
+    </div>
+</body>
+</html>
