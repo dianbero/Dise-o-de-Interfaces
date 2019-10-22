@@ -9,7 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="Purple">
-        <!--<Button x:Name="btnVolver" Content="MainPage" Width="200" Height="150" FontSize="30" ToolTipService.ToolTip="Volver a MainPage" HorizontalAlignment="Center"></Button>-->
         <Button x:Name="btnVolver" Content="MainPage" Width="200" Height="150" FontSize="30" ToolTipService.ToolTip="Volver a MainPage" HorizontalAlignment="Center" Click="BtnVolver_Click"></Button>
+        <DropDownButton x:Name="btnDropDown" ToolTipService.ToolTip="Opciones" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="200">
+            <DropDownButton.Flyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Text=""></MenuFlyoutItem>
+                </MenuFlyout>
+            </DropDownButton.Flyout>
+        </DropDownButton>
     </Grid>
 </Page>
