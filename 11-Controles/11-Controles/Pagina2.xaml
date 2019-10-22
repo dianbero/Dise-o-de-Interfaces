@@ -8,14 +8,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="Purple">
+    <Grid x:Name="panelPadre" Background="LightBlue">
         <Button x:Name="btnVolver" Content="MainPage" Width="200" Height="150" FontSize="30" ToolTipService.ToolTip="Volver a MainPage" HorizontalAlignment="Center" Click="BtnVolver_Click"></Button>
-        <DropDownButton x:Name="btnDropDown" ToolTipService.ToolTip="Opciones" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="200">
-            <DropDownButton.Flyout>
-                <MenuFlyout>
-                    <MenuFlyoutItem Text=""></MenuFlyoutItem>
+        <ToggleSwitch Header="Opción pantalla" Margin="200" OnContent="Noche" OffContent="Día" HorizontalAlignment="Center" VerticalAlignment="Top" Toggled="ToggleSwitch_Toggled"></ToggleSwitch>
+
+
+        <!--<DropDownButton x:Name="btnDropDown" ToolTipService.ToolTip="Opciones" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="200" Click="BtnDropDown_Click">
+            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="70" Text="&#xE815;"></TextBlock>
+            <DropDownButton.Flyout>                
+                <MenuFlyout Placement="Bottom">
+                    <MenuFlyoutItem Text="Volver" Tag="Volver" Click="BtnDropDown_Click"></MenuFlyoutItem>
+                    <MenuFlyoutItem Text="Cambiar color boton" Tag="color" Click="BtnDropDown_Click"></MenuFlyoutItem>
                 </MenuFlyout>
             </DropDownButton.Flyout>
-        </DropDownButton>
+        </DropDownButton>-->
     </Grid>
 </Page>

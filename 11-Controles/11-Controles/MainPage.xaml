@@ -98,10 +98,5 @@
         <!--PasswordBox-->
         <PasswordBox x:Name="passwordBox" Height="40" PlaceholderText="Contraseña" Grid.Row="1" Grid.Column="3"></PasswordBox>
     
-        <!--Reproductor-->
-        <!--<MediaPlayerElement x:Name="mediaPlayerElement" HorizontalAlignment="Stretch" AreTransportControlsEnabled="True" Grid.Row="0" Grid.Column="0"/>-->
-        <!--<MediaPlayerElement x:Name="mpe" Source="C:\Users\dianb\Desktop\DAM_GitHub\Dise-o-de-Interfaces\11-Controles\11-Controles\Assets\Crazy Love.mp3"/>
-        <MediaPlayerElement x:Name="reproductor" Height="40" Grid.Row="0" Grid.Column="0"/>
-        <Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="0" Click="BtnPlay_Click"></Button>-->
     </Grid>
 </Page>

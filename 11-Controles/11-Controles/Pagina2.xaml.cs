@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,7 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using Windows.UI.Xaml.Controls;
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace _11_Controles
@@ -31,5 +33,37 @@ namespace _11_Controles
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch btnToggle = sender as ToggleSwitch;
+            if (btnToggle != null)
+            {
+                if (btnToggle.IsOn)
+                {
+                    panelPadre.Background = new SolidColorBrush(Colors.DarkBlue);
+                }
+                else
+                {
+                    panelPadre.Background = new SolidColorBrush(Colors.LightBlue);
+                    //panelPadre.ClearValue(Grid.BackgroundProperty);
+                }
+            }
+        }
+
+        //private void BtnDropDown_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var opcion = ((MenuFlyoutItem)sender).Tag.ToString(); //Obtiene la opción elegida al clicar el dropDown
+
+        //    switch (opcion)
+        //    {
+        //        case "Volver":
+        //            this.Frame.Navigate(typeof(MainPage));
+        //            break;
+        //        case "color":
+        //            btnDropDown.Background = new SolidColorBrush(Colors.LightBlue);
+        //            break;
+        //    }            
+        //}
     }
 }
