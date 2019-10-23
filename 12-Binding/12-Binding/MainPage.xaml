@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="_12_Binding.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_12_Binding"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <Slider Name="barraSlider" Minimum="1" Maximum="100" Margin="0,50"></Slider>
+        <TextBlock Name="lblTexto" Margin="0,50" Text="Contenido Texto" FontSize="{Binding ElementName=barraSlider, Path=Value, Mode=OneWay}"></TextBlock>
+        <TextBox Name="numero" Text="{Binding ElementName=barraSlider, Path=Value, Mode=TwoWay}"></TextBox>
+    </StackPanel>
+    <!--Faltan detalles del ejercicio-->
+</Page>
