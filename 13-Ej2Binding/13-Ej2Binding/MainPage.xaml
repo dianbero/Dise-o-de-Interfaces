@@ -6,10 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:models="using:_13_Ej2Binding.Models">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBox Name="txt1" Margin="0,50" Width="150"></TextBox>
-        <TextBox Name="txt2"></TextBox>
-    </StackPanel>
+<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.DataContext>
+            <models:clsPersona/>
+        </StackPanel.DataContext>
+        <TextBox Name="txt1" Margin="0,40" Width="200" Text="{Binding Nombre, Mode=TwoWay}"></TextBox>
+        <TextBox Name="txt2" Text="{Binding Nombre, Mode=TwoWay}"></TextBox>
+</StackPanel>
+    
 </Page>
+    
