@@ -22,6 +22,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <gr
+        <Grid Name="panelGridDatos">
+            
+        </Grid>
     </StackPanel>
 </Page>
