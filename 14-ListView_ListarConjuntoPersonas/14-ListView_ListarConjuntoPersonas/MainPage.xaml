@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Horizontal">
-        <ListView Name="panelListView" >
+    <RelativePanel>
+        <!--<ListView Name="panelListView" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel >
@@ -21,9 +21,25 @@
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
-        <Grid Name="panelGridDatos">
-            
-        </Grid>
-    </StackPanel>
+        </ListView>-->
+        <Grid Name="panelGridDatos" Background="LightCoral" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0"></TextBlock>
+            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0"></TextBlock>
+            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0"></TextBlock>
+            <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="3" Grid.Column="0"></TextBlock>
+        </Grid>        
+    </RelativePanel>
 </Page>
