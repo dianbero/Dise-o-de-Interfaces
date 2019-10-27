@@ -45,6 +45,7 @@ namespace _13_Ej2Binding.Models
             {
                 eventHandler(this, new PropertyChangedEventArgs(nombre));
             }
+            //Forma más corta: PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
         }
         //Propiedades públicas
         public string Nombre
