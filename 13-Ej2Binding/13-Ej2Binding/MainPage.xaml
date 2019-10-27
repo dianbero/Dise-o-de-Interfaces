@@ -13,8 +13,8 @@
         <StackPanel.DataContext>
             <models:clsPersona/>
         </StackPanel.DataContext>
-        <TextBox Name="txt1" Margin="0,40" Width="200" Text="{Binding Nombre, Mode=TwoWay}"></TextBox>
-        <TextBox Name="txt2" Text="{Binding Nombre, Mode=TwoWay}"></TextBox>
+        <TextBox Name="txt1" Margin="0,40" Width="200" Text="{Binding Nombre}"></TextBox>
+        <TextBox Name="txt2" Text="{Binding ElementName=txt1, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 </StackPanel>
     
 </Page>
