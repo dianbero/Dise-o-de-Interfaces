@@ -9,18 +9,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <vm:clsMainPageVM/>
-    </Page.DataContext>
-
+    </Page.DataContext>-->
+    
     <RelativePanel>
+        <RelativePanel.DataContext>
+            <vm:clsMainPageVM/>
+        </RelativePanel.DataContext>
+        
         <ListView Name="panelListView" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel >
-                        <TextBlock Text="{Binding }"></TextBlock>
-                        <TextBlock Text="{Binding}"></TextBlock>
-                        <TextBlock Text=""></TextBlock>                       
+                        <TextBlock Text="{Binding Nombre}" Sele></TextBlock>
+                        <!--<TextBlock Text="{Binding Apellido}"></TextBlock>
+                        <TextBlock Text="{Binding Edad}"></TextBlock>-->                       
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -47,9 +51,9 @@
             <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0"></TextBlock>
             <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0"></TextBlock>
            
-            <TextBox Name="txtNombre" Text="{Binding PersonaSeleccionada.nombre, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox> <!--Se puede cambiar a Explicit-->
-            <TextBox Name="txtApellido" Grid.Row="1" Grid.Column="1"></TextBox>
-            <TextBox Name="txtEdad" Grid.Row="2" Grid.Column="1"></TextBox>
+            <TextBox Name="txtNombre" Text="{Binding PersonaSeleccionada.Nombre, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox> <!--Se puede cambiar a Explicit-->
+            <TextBox Name="txtApellido" Text="{Binding PersonaSeleccionada.Apellido}" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad" Text="{Binding PersonaSeleccionada.Edad}" Grid.Row="2" Grid.Column="1"></TextBox>
         </Grid>
     </RelativePanel>
 </Page>

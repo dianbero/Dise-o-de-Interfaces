@@ -31,7 +31,7 @@ namespace _14_Ej3_Listado_VM_UI.ViewModels
             set
             {
                 personaSeleccionada = value;
-                NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
+                //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
             }
         }
         public List<clsPersona> ListadoPersona
