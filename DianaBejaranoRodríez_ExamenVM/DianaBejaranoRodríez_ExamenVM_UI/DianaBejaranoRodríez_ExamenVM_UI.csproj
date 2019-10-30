@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Utilidades\clsFabricante.cs" />
     <Compile Include="Models\Utilidades\clsListados.cs" />
     <Compile Include="ViewModels\clsMainPage.cs" />
     <Compile Include="ViewModels\INotifyPropertychanged.cs" />
