@@ -10,6 +10,7 @@ namespace DianaBejaranoRodríez_ExamenVM_Entities
     {
         public string NombreModelo { get; set; }
         public int IdFabricante { get; set; }
+        public int IdModelo { get; set; }
 
         public clsModeloCoche(string nombreModelo, int idFabricante)
         {

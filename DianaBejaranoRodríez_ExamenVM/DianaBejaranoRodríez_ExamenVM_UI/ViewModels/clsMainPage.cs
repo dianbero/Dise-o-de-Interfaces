@@ -10,5 +10,11 @@ namespace DianaBejaranoRodríez_ExamenVM_UI.ViewModels
     {
         private List<clsFabricante> listadoFabricantes;
         private List<clsModelo> listadoModelo;
+
+        public clsMainPage()
+        {
+
+        }
+        
     }
 }
