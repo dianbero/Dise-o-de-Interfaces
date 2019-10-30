@@ -9,20 +9,17 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <!--<Page.DataContext>
+    <Page.DataContext>
         <vm:clsMainPageVM/>
-    </Page.DataContext>-->
-    
+    </Page.DataContext>
+   
     <RelativePanel>
-        <RelativePanel.DataContext>
-            <vm:clsMainPageVM/>
-        </RelativePanel.DataContext>
-        
-        <ListView Name="panelListView" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
+        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding Path=PersonaSeleccionada, Mode=TwoWay}" SelectionChanged="PanelListView_SelectionChanged">
+            <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel >
-                        <TextBlock Text="{Binding Nombre}" Sele></TextBlock>
+                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock> <!--nombre de la lista que tenemos guardada-->
                         <!--<TextBlock Text="{Binding Apellido}"></TextBlock>
                         <TextBlock Text="{Binding Edad}"></TextBlock>-->                       
                     </StackPanel>
@@ -35,7 +32,7 @@
         selection={Binding PersonaSeleccionada, Mode
         DisplayMemberPath-->
         
-        <Grid Name="panelGridDatos" Background="LightCoral" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="panelListView">
+        <Grid Name="panelGridDatos" RelativePanel.RightOf="panelListView" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -44,16 +41,129 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>               
             </Grid.ColumnDefinitions>
-            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0"></TextBlock>
-            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0"></TextBlock>
-            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0"></TextBlock>
+            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
            
-            <TextBox Name="txtNombre" Text="{Binding PersonaSeleccionada.Nombre, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox> <!--Se puede cambiar a Explicit-->
-            <TextBox Name="txtApellido" Text="{Binding PersonaSeleccionada.Apellido}" Grid.Row="1" Grid.Column="1"></TextBox>
-            <TextBox Name="txtEdad" Text="{Binding PersonaSeleccionada.Edad}" Grid.Row="2" Grid.Column="1"></TextBox>
+            <TextBox Name="txtNombre" Margin="" Text="{Binding Path=PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox> <!--Se puede cambiar a Explicit-->
+            <TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
         </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="formularioDebajo">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="grid.(RelativePanel.Below)" Value="panelListView"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignLeftWith)" Value="panelListView"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                        
+                        <Setter Target="listview.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignLeftWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="formularioDerecha">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="550"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="grid.(RelativePanel.RightOf)" Value="panelListView"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignLeftWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.Width" Value="300"></Setter>
+                        <Setter Target="listview.Margin" Value="0,20,20,20"></Setter>
+                        <Setter Target="grid.Margin" Value="0,20,20,20"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </RelativePanel>
 </Page>
+
+    <!---->
+<!--<ListView Background="White" Name="listview"                
+                  ItemsSource="{Binding lista}" SelectedItem="{Binding persona,Mode=TwoWay}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <StackPanel Name="stk" Orientation="Horizontal">
+                <TextBlock Name="txtbNombre" Foreground="Black" Text="{Binding Path=nombre}"></TextBlock>
+                <TextBlock Name="txtbApellidos" Foreground="Black" Text="{Binding Path=apellidos}" Margin="5,0,0,0"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+<Grid Name="grid" Background="Orange" HorizontalAlignment="Stretch">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    
+        <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0"></TextBlock>
+        <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0"></TextBlock>
+    
+        <TextBox Name="txtNombre" Text="{Binding Path=PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox> --><!--Se puede cambiar a Explicit--><!--
+        <TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+
+</Grid>
+
+<VisualStateManager.VisualStateGroups>
+    <VisualStateGroup x:Name="grupo">
+
+        <VisualState x:Name="estrecha">
+            <VisualState.StateTriggers>
+                <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+            </VisualState.StateTriggers>
+            <VisualState.Setters>
+                <Setter Target="grid.(RelativePanel.Below)" Value="listview"></Setter>
+                <Setter Target="grid.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                <Setter Target="grid.(RelativePanel.AlignLeftWith)" Value="listview"></Setter>
+                <Setter Target="grid.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.(RelativePanel.AlignLeftWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+            </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="amplia">
+            <VisualState.StateTriggers>
+                <AdaptiveTrigger MinWindowWidth="550"></AdaptiveTrigger>
+            </VisualState.StateTriggers>
+            <VisualState.Setters>
+                <Setter Target="grid.(RelativePanel.RightOf)" Value="listview"></Setter>
+                <Setter Target="grid.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                <Setter Target="grid.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                <Setter Target="grid.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.(RelativePanel.AlignLeftWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                <Setter Target="listview.Width" Value="300"></Setter>
+                <Setter Target="listview.Margin" Value="0,20,20,20"></Setter>
+                <Setter Target="grid.Margin" Value="0,20,20,20"></Setter>
+            </VisualState.Setters>
+        </VisualState>
+    </VisualStateGroup>
+</VisualStateManager.VisualStateGroups>
+
+</RelativePanel>-->
