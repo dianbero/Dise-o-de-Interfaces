@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DianaBejaranoRodríez_ExamenVM_Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,9 @@ namespace DianaBejaranoRodríez_ExamenVM_UI.ViewModels
     public class clsMainPage : INotifyPropertychanged
     {
         private List<clsFabricante> listadoFabricantes;
-        private List<clsModelo> listadoModelo;
+        private List<clsModeloCoche> listadoModelo;
+        private clsFabricante fabricanteSeleccionado;
+        private clsModeloCoche modeloSeleccionado;
 
         public clsMainPage()
         {

@@ -157,12 +157,6 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DianaBejaranoRodríez_ExamenVM_UI\DianaBejaranoRodríez_ExamenVM_UI.csproj">
-      <Project>{b945eeef-4cba-4c05-976d-6e2c9b5eb324}</Project>
-      <Name>DianaBejaranoRodríez_ExamenVM_UI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

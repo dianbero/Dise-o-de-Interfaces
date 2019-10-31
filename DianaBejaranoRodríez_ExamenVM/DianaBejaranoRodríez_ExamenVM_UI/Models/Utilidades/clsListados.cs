@@ -18,20 +18,20 @@ namespace DianaBejaranoRodríez_ExamenVM_UI.Models.Utilidades
             return listadoFabricantes;
         }
 
-        public static List<clsModeloCoche> listadoModelos()
+        public static List<clsModeloCoche> ListadoModelos()
         {
             List<clsModeloCoche> listadoModelos = new List<clsModeloCoche>();
-            listadoModelos.Add(new clsModeloCoche("Fiesta", 1));
-            listadoModelos.Add(new clsModeloCoche("Focus", 1));
-            listadoModelos.Add(new clsModeloCoche("Seat", 1));
+            listadoModelos.Add(new clsModeloCoche(1, "Fiesta", 1));
+            listadoModelos.Add(new clsModeloCoche(2, "Focus", 1));
+            listadoModelos.Add(new clsModeloCoche(3, "Seat", 1));
 
-            listadoModelos.Add(new clsModeloCoche("Clio", 2));
-            listadoModelos.Add(new clsModeloCoche("Megane", 2));
-            listadoModelos.Add(new clsModeloCoche("Scenic", 2));
+            listadoModelos.Add(new clsModeloCoche(4, "Clio", 2));
+            listadoModelos.Add(new clsModeloCoche(5, "Megane", 2));
+            listadoModelos.Add(new clsModeloCoche(6, "Scenic", 2));
 
-            listadoModelos.Add(new clsModeloCoche("Ibiza", 3));
-            listadoModelos.Add(new clsModeloCoche("León", 3));
-            listadoModelos.Add(new clsModeloCoche("Tarraco", 3));
+            listadoModelos.Add(new clsModeloCoche(7, "Ibiza", 3));
+            listadoModelos.Add(new clsModeloCoche(8, "León", 3));
+            listadoModelos.Add(new clsModeloCoche(9, "Tarraco", 3));
 
             return listadoModelos;
         }

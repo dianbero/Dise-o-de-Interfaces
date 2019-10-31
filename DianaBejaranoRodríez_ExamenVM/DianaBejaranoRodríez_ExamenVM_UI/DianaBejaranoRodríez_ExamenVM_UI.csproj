@@ -119,7 +119,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Utilidades\clsFabricante.cs" />
     <Compile Include="Models\Utilidades\clsListados.cs" />
     <Compile Include="ViewModels\clsMainPage.cs" />
     <Compile Include="ViewModels\INotifyPropertychanged.cs" />
@@ -159,7 +158,12 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DianaBejaranoRodríez_ExamenVM_Entities\DianaBejaranoRodríez_ExamenVM_Entities.csproj">
+      <Project>{1217e78e-38bc-4dce-b4da-8f9fc2c7d7af}</Project>
+      <Name>DianaBejaranoRodríez_ExamenVM_Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
