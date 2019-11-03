@@ -32,7 +32,7 @@ namespace _14_Ej3_Listado_VM_UI.ViewModels
         //Método para lanzar el evento
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs (propertyName));
         }
 
         //Propiedades públicas

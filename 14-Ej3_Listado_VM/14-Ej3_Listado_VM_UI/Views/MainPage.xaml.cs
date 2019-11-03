@@ -25,16 +25,6 @@ namespace _14_Ej3_Listado_VM_UI
         public MainPage()
         {
             this.InitializeComponent();
-        }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void PanelListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        }       
     }
 }

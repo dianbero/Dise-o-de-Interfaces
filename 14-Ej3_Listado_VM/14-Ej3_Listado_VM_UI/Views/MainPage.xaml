@@ -14,11 +14,11 @@
     </Page.DataContext>
    
     <RelativePanel>
-        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding Path=PersonaSeleccionada, Mode=TwoWay}" SelectionChanged="PanelListView_SelectionChanged">
+        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding Path=PersonaSeleccionada, Mode=TwoWay}">
             <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel >
+                    <StackPanel>
                         <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock> <!--nombre de la lista que tenemos guardada-->
                         <!--<TextBlock Text="{Binding Apellido}"></TextBlock>
                         <TextBlock Text="{Binding Edad}"></TextBlock>-->                       
@@ -34,7 +34,7 @@
         
         <Grid Name="panelGridDatos" RelativePanel.RightOf="panelListView" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>   
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -48,7 +48,7 @@
             <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
            
-            <TextBox Name="txtNombre" Margin="" Text="{Binding Path=PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox> <!--Se puede cambiar a Explicit-->
+            <TextBox Name="txtNombre" Margin="10" Text="{Binding Path=PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox> <!--Se puede cambiar a Explicit-->
             <TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
             <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
         </Grid>

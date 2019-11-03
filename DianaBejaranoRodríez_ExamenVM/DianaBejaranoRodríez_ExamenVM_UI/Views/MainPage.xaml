@@ -6,9 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:DianaBejaranoRodríez_ExamenVM_UI.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <Page.DataContext>
+        <vm:clsMainPage/>
+    </Page.DataContext>
+    
+    <RelativePanel>
+        <ListView Name="listaMarcas" ItemsSource="{Binding ListadoFabricantes}" SelectedItem="{Binding FabricanteSeleccionado}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Name="txtNombreMarca" Text="{Binding NombreFabricante}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Name="listaModelos" ItemsSource="{Binding ListadoModelos}" SelectedItem="{Binding ModeloSeleccionado}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Name="txtNombreModelo" Text="{Binding NombreModelo}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RelativePanel>
 </Page>

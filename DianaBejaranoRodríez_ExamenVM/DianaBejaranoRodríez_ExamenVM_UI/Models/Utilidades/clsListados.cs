@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DianaBejaranoRodríez_ExamenVM_UI.Models.Utilidades
 {
-    class clsListados
+    public class clsListados
     {
         public static List<clsFabricante> ListadoFabricantes()
         {
@@ -23,7 +23,7 @@ namespace DianaBejaranoRodríez_ExamenVM_UI.Models.Utilidades
             List<clsModeloCoche> listadoModelos = new List<clsModeloCoche>();
             listadoModelos.Add(new clsModeloCoche(1, "Fiesta", 1));
             listadoModelos.Add(new clsModeloCoche(2, "Focus", 1));
-            listadoModelos.Add(new clsModeloCoche(3, "Seat", 1));
+            listadoModelos.Add(new clsModeloCoche(3, "Orion", 1));
 
             listadoModelos.Add(new clsModeloCoche(4, "Clio", 2));
             listadoModelos.Add(new clsModeloCoche(5, "Megane", 2));

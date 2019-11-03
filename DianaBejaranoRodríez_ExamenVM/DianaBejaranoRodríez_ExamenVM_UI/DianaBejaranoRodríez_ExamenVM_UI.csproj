@@ -121,7 +121,6 @@
     </Compile>
     <Compile Include="Models\Utilidades\clsListados.cs" />
     <Compile Include="ViewModels\clsMainPage.cs" />
-    <Compile Include="ViewModels\INotifyPropertychanged.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

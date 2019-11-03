@@ -65,10 +65,6 @@ namespace _14_Ej3_Listado_Entities
         public string Apellido { get; set; } //Equivale a lo anterior pero de forma más compacta
         public int Edad { get; set; }
         
-
-        
-
-
     }
 
 }
