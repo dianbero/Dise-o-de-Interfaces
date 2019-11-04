@@ -5,13 +5,19 @@
     xmlns:local="using:BuscaMinas_UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:BuscaMinas_UI.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:MainPageVM/>
+    </Page.DataContext>
 
     <GridView >
         <GridView.ItemTemplate>
             <DataTemplate>
-                <TextBlock Name="txt"></TextBlock>
+                <!--<TextBlock Name="txtCasilla"></TextBlock>-->
+                <Image Name="imgCasilla" Source="bomba.png"></Image>
             </DataTemplate>
         </GridView.ItemTemplate>
     </GridView>
