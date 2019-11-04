@@ -11,7 +11,7 @@
     <GridView >
         <GridView.ItemTemplate>
             <DataTemplate>
-                <TextBlock ></TextBlock>
+                <TextBlock Name="txt"></TextBlock>
             </DataTemplate>
         </GridView.ItemTemplate>
     </GridView>
