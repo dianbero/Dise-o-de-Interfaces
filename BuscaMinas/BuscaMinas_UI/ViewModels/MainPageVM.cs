@@ -21,7 +21,7 @@ namespace BuscaMinas_UI.ViewModels
         public MainPageVM()
         {
             clsListadoCasillas listado = new clsListadoCasillas();
-            this.ListadoCasillas = listado.ListadoCompletoCasillas();
+           // ListadoCasillas = listado.ListadoCompletoCasillas();
         }
                 
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
