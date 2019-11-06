@@ -14,18 +14,20 @@ namespace BuscaMinas_Entities
         public bool esBomba;
         private string imagenMostrada;
         public int posicion;
+        //public bool yaPulsada;
 
         public clsCasilla()
         {
             //Estado inicial de las casillas
             this.EsBomba = false;
-            this.ImagenMostrada = "Assets\\Imagenes\\presionar.png"; //Imagen que se muestra al principio
+            this.ImagenMostrada = "ms-appx:///Assets/Imagenes/presionar.png"; //Imagen que se muestra al principio
         }
 
         public clsCasilla(bool esBomba, int posicion)
         {
             this.esBomba = esBomba;
             this.Posicion = posicion;
+            this.ImagenMostrada = "ms-appx:///Assets/Imagenes/presionar.png";
             //No instancio imagen porque se la asignamos más tarde en Propiedad ImagenMostrada
         }
 
@@ -75,11 +77,11 @@ namespace BuscaMinas_Entities
         {
             if (EsBomba)
             {
-                imagenMostrada = "/Assets/Imagenes/bomba.png"; //Imagen de bomba
+                imagenMostrada = "ms-appx:///Assets/Imagenes/bomba.png"; //Imagen de bomba
             }
             else
             {
-                imagenMostrada = "/Assets/Imagenes/salvado.png"; //Imagen salvado si no es bomba
+                imagenMostrada = "ms-appx:///Assets/Imagenes/salvado.png"; //Imagen salvado si no es bomba
             }
         }
     }

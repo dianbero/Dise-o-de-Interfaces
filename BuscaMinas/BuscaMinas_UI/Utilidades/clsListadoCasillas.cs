@@ -39,19 +39,26 @@ namespace BuscaMinas_UI.Utilidades
         /// Método para la creación de listados de Casillas
         /// </summary>
         /// <returns></returns>
-        public List<clsCasilla> ListacoCompletoCasillas()
+        public List<clsCasilla> ListadocompletoCasillas()
         {
             List<clsCasilla> listaCasillas = new List<clsCasilla>();
+            Random random = new Random();
 
-            for (int posicionB = 0; posicionB < 4; posicionB++)
-            {
-                listaCasillas.Add(new clsCasilla(true, posicionB));
-            }
-
-            for (int posicion = 4; posicion < 16; posicion++)
+            for (int posicion = 0; posicion < 16; posicion++)
             {
                 listaCasillas.Add(new clsCasilla(false, posicion));
             }
+
+            for (int i = 0; i < 4; i++)
+            {
+                //listaCasillas.Add(new clsCasilla(true, posicionB));                
+                int numRandomCasilla = random.Next(16); //Devuelve numero aleatorio no negativo inferior a 16 (0, 15)
+                //listaCasillas.FindIndex(numRandomCasilla, casilla => casilla.EsBomba = true); 
+                /*Para cada posición devuelve el indice de las casillas que tendrán bomba y lo coloca en la lista*/
+                listaCasillas[numRandomCasilla].EsBomba = true; 
+            }
+
+            
 
             return listaCasillas;
         }

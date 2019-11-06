@@ -13,11 +13,11 @@
         <vm:MainPageVM/>
     </Page.DataContext>
 
-    <GridView ItemsSource="{Binding ListadoCasillas}" SelectedItem="{Binding CasillaSeleccionada}">
+    <GridView ItemsSource="{Binding ListadoCasillas}" SelectedItem="{Binding CasillaSeleccionada, Mode=TwoWay}">
         <GridView.ItemTemplate>
             <DataTemplate>
                 <!--<TextBlock Name="txtCasilla"></TextBlock>-->
-                <Image Name="imgCasilla" Source="{Binding Path=}"></Image>
+                <Image Name="imgCasilla" Source="{Binding ImagenMostrada}"></Image>
             </DataTemplate>
         </GridView.ItemTemplate>
     </GridView>
