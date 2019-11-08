@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="_16_Commands_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_16_Commands_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_16_Commands_UI.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:clsMainPageVM/>
+    </Page.DataContext>
+
+    <RelativePanel>
+        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
+            <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock>
+                        <!--nombre de la lista que tenemos guardada-->
+                     </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <AppBarButton Name="btnEliminar" Icon="Delete" Label="Eliminar" RelativePanel.Below="panelListView" Click="{x:Bind ViewModel.BtnEliminar_Click}" ></AppBarButton>
+
+         <!--esto no lo necesito para este ejercicio-->
+        <Grid Name="panelGridDatos" RelativePanel.RightOf="panelListView" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
+
+            <TextBox Name="txtNombre" Margin="10" Text="{x:Bind ViewModel.ListadoPersona, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+
+
+            <!--<TextBox Name="txtNombre" Margin="10" Text="{Binding Path=PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox> -->
+            <!--Se puede cambiar a Explicit-->
+            <!--
+            <TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>-->
+
+        </Grid>
+        <!--esto no lo necesito para este ejercicio-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="formularioDebajo">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="grid.(RelativePanel.Below)" Value="panelListView"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignLeftWith)" Value="panelListView"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+
+                        <Setter Target="listview.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignLeftWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="formularioDerecha">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="550"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="grid.(RelativePanel.RightOf)" Value="panelListView"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                        <Setter Target="grid.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignLeftWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="listview.Width" Value="300"></Setter>
+                        <Setter Target="listview.Margin" Value="0,20,20,20"></Setter>
+                        <Setter Target="grid.Margin" Value="0,20,20,20"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </RelativePanel>
+</Page>

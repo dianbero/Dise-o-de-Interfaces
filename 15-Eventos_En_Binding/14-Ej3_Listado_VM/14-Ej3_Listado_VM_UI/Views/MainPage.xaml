@@ -19,10 +19,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock> <!--nombre de la lista que tenemos guardada-->
-                        <!--<TextBlock Text="{Binding Apellido}"></TextBlock>
-                        <TextBlock Text="{Binding Edad}"></TextBlock>-->                       
-                    </StackPanel>
+                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock> <!--nombre de la lista que tenemos guardada-->                       
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
