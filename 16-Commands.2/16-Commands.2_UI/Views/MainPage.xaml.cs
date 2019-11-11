@@ -24,7 +24,17 @@ namespace _16_Commands._2_UI
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            this.InitializeComponent(); 
         }
+
+        // Añadir listas seleccionadas botón derecho
+        public void btnLista_RigthTapped()
+        {
+            
+            //es más cómodo poner un name al listView
+            //Todos los controles son FrameWorkElement
+        }
+
+
     }
 }
