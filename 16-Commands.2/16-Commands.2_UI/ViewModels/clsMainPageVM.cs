@@ -36,7 +36,7 @@ namespace _16_Commands._2_UI.ViewModels
             //Rellenamos la lista de persona 
             this.ListadoPersona = clsListadoPersonas.ListadoCompletoPersonas();
             this.Eliminar = new DelegateCommand(BtnEliminar_Click);
-            this.Buscar = new DelegateCommand(BtnBucar_Click);
+            this.Buscar = new DelegateCommand(BtnBuscar_Click);
             this.TextoPersonaABuscar = personaSeleccionada.Nombre; 
         }
 
@@ -47,7 +47,7 @@ namespace _16_Commands._2_UI.ViewModels
             throw new NotImplementedException();
         }
 
-        private void BtnBucar_Click()
+        private void BtnBuscar_Click()
         {
             listaPersonasAMostrar = new ObservableCollection<clsPersona>();
             listaPersonasAMostrar.Add();

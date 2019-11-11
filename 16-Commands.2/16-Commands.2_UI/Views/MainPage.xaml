@@ -26,6 +26,18 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <ListView Name="panelListViewFiltrado" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
+            <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock>
+                        <!--nombre de la lista que tenemos guardada-->
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <!--Menú contextual para botón eliminar-->
         <AppBarButton Name="btnEliminar" Icon="Delete" Command="{Binding Eliminar}"  RelativePanel.Below="barraBuscar" RelativePanel.RightOf="panelListView">
             <!--Click="{Binding BtnEliminar_Click}"-->
