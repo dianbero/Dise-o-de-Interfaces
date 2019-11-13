@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace _16_Commands._2_UI.ViewModels
 {
@@ -44,7 +45,6 @@ namespace _16_Commands._2_UI.ViewModels
             //Defino el comportamiento de los botones
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
             this.Buscar = new DelegateCommand(BuscarExecute, BuscarCanExecute);
-            //this.TextoPersonaABuscar = personaSeleccionada.Nombre; 
         }
 
         #region "Comandos"
@@ -54,13 +54,28 @@ namespace _16_Commands._2_UI.ViewModels
         /// Método para eliminar elemento de la lista de personas
         /// Código asociado al execute del comando eliminar
         /// </summary>
-        private void EliminarExecute()
+        private async void EliminarExecute()
         {
-            //si la lista es un observable collection no hace falta notificar el cambio
-            ListadoPersona.Remove(this.personaSeleccionada); //Elimina persona seleccionada
-            NotifyPropertyChanged("ListadoPersona"); //Notifica el cambio a la vista para que se actualice
-        }
+            //Antes de eliminar la persona, se pregunta al usuario si de verdad lo quiere eliminar
+            //ContentDialogResult result = await mensajeEliminarAsync();
+            ContentDialog mensaje = new ContentDialog()
+            {
+                Title = "Seguro que desea eliminar la persona?",
+                PrimaryButtonText = "Aceptar",
+                SecondaryButtonText = "Cancelar",
+                DefaultButton = ContentDialogButton.Secondary //Botón default en el segundo (Cancelar)
+            };
+            ContentDialogResult result = await mensaje.ShowAsync(); //Obteiene resultado del cuadro de texto
 
+            if(result == ContentDialogResult.Primary) //Si el resultado de la acción del cuadro de texto se ejecuta con el primer botón, borra la persona
+            {
+                //si la lista es un observable collection no hace falta notificar el cambio
+                ListadoPersona.Remove(this.personaSeleccionada); //Elimina persona seleccionada
+                NotifyPropertyChanged("ListadoPersona"); //Notifica el cambio a la vista para que se elimina la persona seleccionada
+            }
+
+        }
+               
         /// <summary>
         /// Código asociado al CanExecute del comando eliminar
         /// Método que indica que se habilitarán o no lo elementos de comando eliminar
@@ -99,12 +114,12 @@ namespace _16_Commands._2_UI.ViewModels
             //}
 
             ListaPersonasAMostrar = new ObservableCollection<clsPersona>(listadoPersona.ToList().FindAll(persona =>String.Concat(personaSeleccionada.Nombre).Contains(textoPersonaABuscar)));
-            NotifyPropertyChanged("ListaPersonasAMostrar");
+            NotifyPropertyChanged("ListaPersonasAMostrar"); //Notifica al cambio a la lista de filtrado de personas
 
         }
 
         /// <summary>
-        /// Método que indica si se habilitarán los elementos asociado al comando buscar  //Porque el usuario tendrá varias opciones para realizar la acción buscar
+        /// Método que indica si se habilitarán los elementos asociados al comando buscar  //Porque el usuario tendrá varias opciones para realizar la acción buscar
         /// </summary>
         /// <returns>Bolean que indica si hay personas a buscar</returns>
         private bool BuscarCanExecute()
@@ -117,6 +132,9 @@ namespace _16_Commands._2_UI.ViewModels
             return hayPersonaABuscar;
         }
         #endregion
+
+         
+
 
         //private DelegateCommand BtnEliminar_Click()
         //{
@@ -168,11 +186,11 @@ namespace _16_Commands._2_UI.ViewModels
         //}
         public ObservableCollection<clsPersona> ListadoPersona
         {
-            get{ return listadoPersona; } //define eliminar comand
+            get{ return listadoPersona; } 
             set{ listadoPersona = value; }
         }
 
-        public DelegateCommand Eliminar //Creo que eliminar debería notificar cambio 
+        public DelegateCommand Eliminar 
         {
             get { return eliminar; } 
             set { eliminar = value; }
@@ -188,8 +206,12 @@ namespace _16_Commands._2_UI.ViewModels
             get { return textoPersonaABuscar; }
             set
             {
-                textoPersonaABuscar = value;
-                Buscar.RaiseCanExecuteChanged();  //Lanza la ejecución del Execute al haber comprobado que hay personas para buscar
+                if (this.textoPersonaABuscar != value)
+                {
+                    textoPersonaABuscar = value;
+                    Buscar.RaiseCanExecuteChanged();  //Lanza la ejecución del Execute al haber comprobado que hay personas para buscar
+                    NotifyPropertyChanged("ListaPersonasAMostrar"); 
+                }                
             } 
         }
         ObservableCollection<clsPersona> ListaPersonasAMostrar

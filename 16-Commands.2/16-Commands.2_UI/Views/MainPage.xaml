@@ -26,27 +26,42 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <ListView Name="panelListViewFiltrado" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}">
+            <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock>
+                        <!--nombre de la lista que tenemos guardada-->
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
 
         <!--Menú contextual para botón eliminar-->
         <AppBarButton Name="btnEliminar" Icon="Delete" Command="{Binding Eliminar}"  RelativePanel.Below="barraBuscar" RelativePanel.RightOf="panelListView">
             <!--Click="{Binding BtnEliminar_Click}"-->
             <!--<AppBarButton.Flyout>
-                <Flyout>
-                    <TextBlock Name="txtBotonEliminar" Text="Eliminar" Visibility="Collapsed"></TextBlock>
+                <Flyout>                   
+                    <TextBlock Name="txtBotonEliminar" Text="Eliminar"></TextBlock>                    
                 </Flyout>
-            </AppBarButton.Flyout>-->
+            </AppBarButton.Flyout-->
         </AppBarButton>
 
         <!--Menú contextual botón eliminar-->
-        <MenuFlyout>
-            <MenuFlyoutItem Text="Eliminar" Icon="Delete" Command="{Binding Eliminar}"></MenuFlyoutItem>
-        </MenuFlyout>
+        <!--<MenuFlyout>
+            <MenuFlyoutItem Text="Eliminar" Icon="Delete" Command="{Binding Eliminar, Mode=TwoWay}"></MenuFlyoutItem>
+        </MenuFlyout>-->
 
         <!--Barra de búsqueda-->
         <TextBox Name="barraBuscar" RelativePanel.RightOf="panelListView"></TextBox>
         <!--Botón de búsqueda-->
-        <AppBarButton Name="btnBuscar" Icon="Find" RelativePanel.RightOf="barraBuscar" RelativePanel.AlignBottomWith="barraBuscar"></AppBarButton>
-
+        <AppBarButton Name="btnBuscar" Icon="Find" Command="{Binding Buscar}" RelativePanel.RightOf="barraBuscar" RelativePanel.AlignBottomWith="barraBuscar"></AppBarButton>
+        <AppBarButton Name="btnRecargar" Icon="Refresh" RelativePanel.Below="btnEliminar" RelativePanel.AlignLeftWith="btnEliminar"></AppBarButton>
+        
+        <!--Menu flotante-->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="hoverButton">
                 <VisualState x:Name="txtEliminarHidden"></VisualState>
@@ -55,8 +70,7 @@
                         <Setter Target="txtBotonEliminar.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
                 </VisualState>                
-            </VisualStateGroup>
-            
+            </VisualStateGroup>            
         </VisualStateManager.VisualStateGroups>
         
         

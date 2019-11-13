@@ -1,0 +1,6 @@
+Controles flotantes:
+
+https://docs.microsoft.com/es-es/windows/uwp/design/controls-and-patterns/dialogs-and-flyouts/flyouts
+
+Cuadro de diálogo:
+https://docs.microsoft.com/es-es/windows/uwp/design/controls-and-patterns/dialogs-and-flyouts/dialogs
