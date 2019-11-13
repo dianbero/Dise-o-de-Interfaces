@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="_17_CRUD_Personas_UWP_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_17_CRUD_Personas_UWP_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+        <ListView Name="panelListView" RelativePanel.Below="panelBotones">
+            <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Margin="5,0,0,0" Text="nombre"></TextBlock>
+                        <!--nombre de la lista que tenemos guardada-->
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Name="panelGridDatos" RelativePanel.RightOf="panelListView" RelativePanel.Below="panelBotones" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>  <!--nombre-->
+                <RowDefinition Height="Auto"></RowDefinition>  <!--apellido-->
+                <RowDefinition Height="Auto"></RowDefinition>  <!--departamento-->
+                <RowDefinition Height="Auto"></RowDefinition>  <!--FechaNacimiento-->
+                <RowDefinition Height="Auto"></RowDefinition>  <!--telefono-->
+                <RowDefinition Height="Auto"></RowDefinition>  <!--foto-->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblDepartamento" Text="Departamento: " Grid.Row="3" Grid.Column="0" Margin="5"></TextBlock>
+            <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="4" Grid.Column="0" Margin="5" SelectionChanged="LblTelefono_SelectionChanged"></TextBlock>
+            <TextBlock Name="lblFoto" Text="Foto: " Grid.Row="5" Grid.Column="0" Margin="5"></TextBlock>
+
+            <TextBox Name="txtNombre"  Width="200" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBox Name="txtApellido"  Width="200" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad"  Width="200" Grid.Row="2" Grid.Column="1"></TextBox>
+            <TextBox Name="txtFechaNacimiento"  Width="200" Grid.Row="3" Grid.Column="1"></TextBox>
+            <TextBox Name="txtDepartamento"  Width="200" Grid.Row="4" Grid.Column="1"></TextBox>
+            <TextBox Name="txtTelefono"  Width="200" Grid.Row="5" Grid.Column="1"></TextBox>
+            <Image Name="cuadroFoto" Grid.Row="6" Grid.Column="1"></Image>
+        </Grid>
+        
+        <!--Botones-->
+        <StackPanel Name="panelBotones" Orientation="Horizontal" RelativePanel.AlignTopWithPanel="True">
+            <AppBarButton Name="btnNuevo" Label="Nuevo" Icon="Add" ></AppBarButton>
+            <AppBarButton Name="btnGuardar" Label="Guardar" Icon="Save" ></AppBarButton>
+            <AppBarButton Name="btnEliminar" Label="Eliminar" Icon="Delete" ></AppBarButton>
+            <AppBarButton Name="btnRefrescar" Label="refrescar" Icon="Refresh" ></AppBarButton>
+            <TextBox Name="barraBuscar" Width="250"></TextBox>
+            <AppBarButton Name="btnBuscar" Icon="Find" ></AppBarButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" RelativePanel.Below="panelGridDatos">
+            <AppBarButton Name="btnActualizar" Label="Actualizar" Icon="Upload"></AppBarButton>
+            <AppBarButton Name="btnInsertar" Label="Insertar" Icon="Add"></AppBarButton>
+        </StackPanel>
+    </RelativePanel>
+</Page>

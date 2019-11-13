@@ -1,0 +1,3 @@
+carpeta model en proyecto UI no hace falta
+
+como en la bl no necesitamos conectarnos a base daos vale versió mínima d eserie
