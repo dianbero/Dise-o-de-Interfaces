@@ -119,6 +119,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Class1.cs" />
+    <Compile Include="ViewModels\clsMainPageVM.cs" />
+    <Compile Include="ViewModels\clsVMBase.cs" />
+    <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -155,9 +159,7 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\17-CRUD-Personas-UWP-BL\17-CRUD-Personas-UWP-BL.csproj">
       <Project>{e2cd5fe1-db67-4bea-9878-9f291e107269}</Project>

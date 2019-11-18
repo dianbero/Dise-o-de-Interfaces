@@ -1,5 +1,5 @@
-﻿using _16_Commands._2_Entities;
-using _16_Commands._2_UI.Utilidades;
+﻿using _17_CRUD_Personas_UWP_BL.Lists;
+using _17_CRUD_Personas_UWP_BL.Operaciones;
 using _17_CRUD_Personas_UWP_Entities;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace _16_Commands._2_UI.ViewModels
+namespace _17_CRUD_Personas_UWP_UI.ViewModels
 {
     public class clsMainPageVM : INotifyPropertyChanged
     {
@@ -38,10 +38,11 @@ namespace _16_Commands._2_UI.ViewModels
 
         //Constructor por defecto
         public clsMainPageVM()
-        {            
+        {
             //Rellenamos la lista de persona 
-            this.ListadoPersona = clsListadoPersonas.ListadoCompletoPersonas();
-            this.ListaPersonasAMostrar = clsListadoPersonas.ListadoCompletoPersonas();
+            clsListadoPersonaBL listadoPersonas = new clsListadoPersonaBL();
+            this.ListadoPersona = listadoPersonas.ListadoPersonas();
+            this.ListaPersonasAMostrar = listadoPersonas.ListadoPersonas();
 
             //Defino el comportamiento de los botones
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
@@ -55,6 +56,7 @@ namespace _16_Commands._2_UI.ViewModels
         /// Método para eliminar elemento de la lista de personas
         /// Código asociado al execute del comando eliminar
         /// </summary>
+
         private async void EliminarExecute()
         {
             //Antes de eliminar la persona, se pregunta al usuario si de verdad lo quiere eliminar
@@ -68,15 +70,15 @@ namespace _16_Commands._2_UI.ViewModels
             };
             ContentDialogResult result = await mensaje.ShowAsync(); //Obteiene resultado del cuadro de texto
 
-            if(result == ContentDialogResult.Primary) //Si el resultado de la acción del cuadro de texto se ejecuta con el primer botón, borra la persona
+            if (result == ContentDialogResult.Primary) //Si el resultado de la acción del cuadro de texto se ejecuta con el primer botón, borra la persona
             {
-                //si la lista es un observable collection no hace falta notificar el cambio
-                ListadoPersona.Remove(this.personaSeleccionada); //Elimina persona seleccionada
+                //Elimina persona seleccionada
+                clsOperacionesBL operacionBorrar = new clsOperacionesBL(personaSeleccionada);
+                int resultadoBorrar = operacionBorrar.Borrar;
                 NotifyPropertyChanged("ListadoPersona"); //Notifica el cambio a la vista para que se elimina la persona seleccionada
             }
-
         }
-               
+
         /// <summary>
         /// Código asociado al CanExecute del comando eliminar
         /// Método que indica que se habilitarán o no lo elementos de comando eliminar
@@ -99,24 +101,10 @@ namespace _16_Commands._2_UI.ViewModels
         /// </summary>
         private void BuscarExecute()
         {
-            //Comprueba si lo que se escribe se corresponde a lo que hay en la lista de personas, entonces filtra la lista
-
-            //if (textoPersonaABuscar.ToString().Equals(clsListadoPersonas.ListadoCompletoPersonas().ToString()))
-            //{
-            //    ListadoPersona.Remove(this.personaSeleccionada);  //Elimina de la lista de personas a filtrar la
-            //}
-
-            //for (int i = 0; i < ListadoPersona.Count; i++)
-            //{
-            //    if (listadoPersona.)
-            //    {
-
-            //    }
-            //}
-
-            ListaPersonasAMostrar = new ObservableCollection<clsPersona>(listadoPersona.ToList().FindAll(persona =>String.Concat(personaSeleccionada.Nombre).Contains(textoPersonaABuscar)));
+            
+            //ListaPersonasAMostrar = new ObservableCollection<clsPersona>(listadoPersona.ToList().FindAll(persona =>String.Concat(personaSeleccionada.Nombre).Contains(textoPersonaABuscar)));
+            clsOperacionesBL mostrarListadoPersonas = new clsOperacionesBL(textoPersonaABuscar);
             NotifyPropertyChanged("ListaPersonasAMostrar"); //Notifica al cambio a la lista de filtrado de personas
-
         }
 
         /// <summary>
@@ -134,35 +122,12 @@ namespace _16_Commands._2_UI.ViewModels
         }
         #endregion
 
-         
-
-
-        //private DelegateCommand BtnEliminar_Click()
-        //{
-        //    //NotifyPropertyChanged("PersonaSeleccionada");
-        //    ListadoPersona.Remove(this.personaSeleccionada); //Elimina persona seleccionada
-        //    throw new NotImplementedException();
-        //}
-
-        //private void BtnBuscar_Click()
-        //{
-        //    listaPersonasAMostrar = new ObservableCollection<clsPersona>();
-        //}
-
-        //public void BtnEliminar_Click(object sender, RoutedEventArgs e)
-        //{            
-        //    NotifyPropertyChanged("PersonaSeleccionada");
-        //    ListadoPersona.Remove(this.personaSeleccionada); //Elimina persona seleccionada            
-        //}
-
         //Método para lanzar el evento
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs (propertyName));
         }
 
-
-        
 
         //Propiedades públicas
         public clsPersona PersonaSeleccionada

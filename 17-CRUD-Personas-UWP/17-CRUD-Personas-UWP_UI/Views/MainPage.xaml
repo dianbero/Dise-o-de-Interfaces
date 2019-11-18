@@ -6,15 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:_17_CRUD_Personas_UWP_UI.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:clsMainPageVM/>
+    </Page.DataContext>
+
     <RelativePanel>
-        <ListView Name="panelListView" RelativePanel.Below="panelBotones">
+        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada}" RelativePanel.Below="panelBotones">
             <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Margin="5,0,0,0" Text="nombre"></TextBlock>
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}"></TextBlock>
                         <!--nombre de la lista que tenemos guardada-->
                     </StackPanel>
                 </DataTemplate>

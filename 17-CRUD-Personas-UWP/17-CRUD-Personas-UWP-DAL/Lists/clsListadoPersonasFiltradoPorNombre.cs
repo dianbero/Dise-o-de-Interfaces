@@ -1,16 +1,16 @@
-﻿using System;
+﻿using _17_CRUD_Personas_UWP_DAL.Connections;
+using _17_CRUD_Personas_UWP_Entities;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using _17_CRUD_Personas_UWP_Entities;
-using _17_CRUD_Personas_UWP_DAL.Connections;
-using System.Collections.ObjectModel;
 
-namespace _10_CRUD_Personas_DAL.Lists
+namespace _17_CRUD_Personas_UWP_DAL.Lists
 {
-    public class clsListadoPersonasDAL
+    public class clsListadoPersonasFiltradoPorNombre
     {
         //Atributos
         clsMyConnection objConexion = new clsMyConnection();
@@ -21,7 +21,7 @@ namespace _10_CRUD_Personas_DAL.Lists
 
 
         //TODO: función que devuelve listado de personas
-        public ObservableCollection<clsPersona> ListadoCompletoPersonas() //Consulta para obtener el listado de personas
+        public ObservableCollection<clsPersona> ListadoPersonasFiltradoPorNombre(string nombrePersona) //Consulta para obtener el listado de personas
         {
 
             //Abro conexión
@@ -29,7 +29,8 @@ namespace _10_CRUD_Personas_DAL.Lists
             conexion = objConexion.getConnection();
 
             //Guardo sentencia en comando
-            comando.CommandText = "SELECT * FROM PD_Personas";
+            comando.Parameters.Add("@nombrePersona", System.Data.SqlDbType.VarChar).Value = nombrePersona;
+            comando.CommandText = "SELECT * FROM PD_Personas WHERE NombrePersona = @nombrePersona ";
             //Paso conexión al comando
             comando.Connection = conexion;
             //Ejecuta el comando
@@ -55,6 +56,6 @@ namespace _10_CRUD_Personas_DAL.Lists
             }
 
             return listadoPersonas;  //Devuelve la lista de personas creada para la consulta
-        }      
+        }
     }
 }
