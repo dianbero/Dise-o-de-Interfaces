@@ -16,9 +16,8 @@ namespace _17_CRUD_Personas_UWP_BL.Lists
         public ObservableCollection<clsPersona> ListadoPersonas()
         {            
             clsListadoPersonasDAL listado = new clsListadoPersonasDAL();
-            //Rellena listado con la personas de la consulta
-            return listado.ListadoCompletoPersonas(); 
-            
+            //Devuelve listado con la personas de la consulta
+            return listado.ListadoCompletoPersonas();             
         }
 
 

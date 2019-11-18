@@ -39,7 +39,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
@@ -47,13 +47,17 @@
             <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="4" Grid.Column="0" Margin="5" SelectionChanged="LblTelefono_SelectionChanged"></TextBlock>
             <TextBlock Name="lblFoto" Text="Foto: " Grid.Row="5" Grid.Column="0" Margin="5"></TextBlock>
 
-            <TextBox Name="txtNombre"  Width="200" Grid.Row="0" Grid.Column="1"></TextBox>
-            <TextBox Name="txtApellido"  Width="200" Grid.Row="1" Grid.Column="1"></TextBox>
-            <TextBox Name="txtEdad"  Width="200" Grid.Row="2" Grid.Column="1"></TextBox>
-            <TextBox Name="txtFechaNacimiento"  Width="200" Grid.Row="3" Grid.Column="1"></TextBox>
-            <TextBox Name="txtDepartamento"  Width="200" Grid.Row="4" Grid.Column="1"></TextBox>
-            <TextBox Name="txtTelefono"  Width="200" Grid.Row="5" Grid.Column="1"></TextBox>
-            <Image Name="cuadroFoto" Grid.Row="6" Grid.Column="1"></Image>
+            <TextBox Name="txtNombre" Margin="10" Width="200" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBox Name="txtApellido" Margin="10" Width="200" Grid.Row="1" Grid.Column="1"></TextBox>
+            <!--<TextBox Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></TextBox>-->
+            <DatePicker Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></DatePicker>
+            <ComboBox Name="txtFechaNacimiento" ItemsSource="{Binding }" Margin="10" Width="200" Grid.Row="3" Grid.Column="1">
+                <x:String ></x:String> <!--bindeado a lista de departamento y extrae un nombre-->
+            <!--TODO:Hacer en BL Listado departamentos-->
+            </ComboBox>
+            <TextBox Name="txtDepartamento" Margin="10"  Width="200" Grid.Row="4" Grid.Column="1"></TextBox>
+            <TextBox Name="txtTelefono" Margin="10"  Width="200" Grid.Row="5" Grid.Column="1"></TextBox>
+            <Image Name="cuadroFoto" Margin="10" Grid.Row="6" Grid.Column="1"></Image>
         </Grid>
         
         <!--Botones-->

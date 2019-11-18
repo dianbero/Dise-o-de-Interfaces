@@ -1,0 +1,17 @@
+UWP:
+Fecha de nacimiento se debe elegir con control de fecha
+
+DAL:
+manejadoras:
+crear (insert)
+
+Comprobar que la persona está bien escrita en la interfaz
+añadir fecha con DatePicker o algo así
+
+
+botón guardar que actualice e inserte.
+
+
+
+recordatorio
+updateSourceTrigger

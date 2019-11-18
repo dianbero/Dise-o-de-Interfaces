@@ -80,12 +80,12 @@ namespace _17_CRUD_Personas_UWP_DAL.Manejadoras
             comando.Parameters.Add("@foto", System.Data.SqlDbType.VarBinary).Value = persona.Foto;
                         
             int filasAfectadas = 0;
-            string nombre = null;
-            string apellido = null;
-            string idDepartamento = null; 
-            string fechaNacimiento = null; 
-            string telefono = null;
-            string foto = null;
+            string nombre;
+            string apellido;
+            string idDepartamento; 
+            string fechaNacimiento; 
+            string telefono;
+            string foto;
 
 
             if(persona.Nombre != null)
@@ -94,7 +94,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Manejadoras
             }
             else
             {
-                nombre = null;
+                nombre = "NULL";
             }
 
             if (persona.Apellido != null)
@@ -103,41 +103,59 @@ namespace _17_CRUD_Personas_UWP_DAL.Manejadoras
             }
             else
             {
-                apellido = null;
+                apellido = "NULL";
             }
-
+            
             if(persona.FechaNacimiento != null)
             {
                 fechaNacimiento = "@fechaNacimiento";
             }
             else
             {
-                fechaNacimiento = null;
+                fechaNacimiento = "NULL";
             }
+
             if (persona.Telefono != null)
             {
                 telefono = "@telefono";
             }
             else
             {
-                telefono = null;
+                telefono = "NULL";
             }
-            if (foto != null)
+            if (persona.Foto != null)
             {
                 foto = "@foto";
             }
             else
             {
-                foto = null;
+                foto = "NULL";
             }
 
-            comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, IDDepartamento = {idDepartamento}, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto}";
+            //Apellido no se comprueba si es nulo, porque será un dropdown y nunca podrá establecerse a nulo (a parte, no sé cómo comprobar que el idDepartamento no sea nulo, porque da error)
+            comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, IDDepartamento = @idDepartamento, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto}";
+            //comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto}";
 
             filasAfectadas = comando.ExecuteNonQuery();
 
             return filasAfectadas;            
         }
 
+        //Este método no lo debería necesitar
+        //public int EditDepartamentoPersonaPorId(int idDepartamentoACambiar, clsPersona objPersona)
+        //{
+        //    //update PD_Personas set idDepartamento = ... where idDepartamento = ... 
+        //    conexion = objConexion.getConnection();
+        //    comando.Connection = conexion;
 
+        //    comando.Parameters.Add("@idDepartamentoACambiar", System.Data.SqlDbType.Int).Value = idDepartamentoACambiar;
+        //    comando.Parameters.Add("@nombrePersona", System.Data.SqlDbType.VarChar).Value = objPersona.Nombre;
+
+        //    comando.CommandText = "UPDATE PD_Personas SET IDDepartamento = @idDepartamentoACambiar WHERE IDDepartamento = 1 AND NombrePersona = @nombrePersona";
+
+        //    int resultadoFilasAfectadas = comando.ExecuteNonQuery();
+
+        //    return resultadoFilasAfectadas;            
+        //}
     }
 }

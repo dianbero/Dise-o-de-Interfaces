@@ -1,0 +1,2 @@
+Cómo hacer que se modifique el idDepartamento de la persona, problema al insertar todos lo datos
+es que 

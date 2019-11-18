@@ -31,6 +31,9 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private DelegateCommand buscar; //Comando
         private string textoPersonaABuscar;
         ObservableCollection<clsPersona> listaPersonasAMostrar; //Filtrada
+        private DelegateCommand guardar; //Comando
+        private ObservableCollection<clsDepartamento> listaDepartamentos;
+        private clsDepartamento departamentoSeleccionado;
          
 
         //Instancio controlador de eventos
@@ -42,11 +45,14 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             //Rellenamos la lista de persona 
             clsListadoPersonaBL listadoPersonas = new clsListadoPersonaBL();
             this.ListadoPersona = listadoPersonas.ListadoPersonas();
-            this.ListaPersonasAMostrar = listadoPersonas.ListadoPersonas();
+
+            clsOperacionesBL listadoPersonasFiltrado = new clsOperacionesBL(textoPersonaABuscar);
+            this.ListaPersonasAMostrar = listadoPersonasFiltrado.ListadoPersonasFiltrado;
 
             //Defino el comportamiento de los botones
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
             this.Buscar = new DelegateCommand(BuscarExecute, BuscarCanExecute);
+            
         }
 
         #region "Comandos"
@@ -63,7 +69,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             //ContentDialogResult result = await mensajeEliminarAsync();
             ContentDialog mensaje = new ContentDialog()
             {
-                Title = "Seguro que desea eliminar la persona?",
+                Title = "¿Seguro que desea eliminar la persona?",
                 PrimaryButtonText = "Aceptar",
                 SecondaryButtonText = "Cancelar",
                 DefaultButton = ContentDialogButton.Secondary //Botón default en el segundo (Cancelar)
@@ -100,8 +106,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         /// Método que busca los elementos de la lista, asociado al comando buscar
         /// </summary>
         private void BuscarExecute()
-        {
-            
+        {            
             //ListaPersonasAMostrar = new ObservableCollection<clsPersona>(listadoPersona.ToList().FindAll(persona =>String.Concat(personaSeleccionada.Nombre).Contains(textoPersonaABuscar)));
             clsOperacionesBL mostrarListadoPersonas = new clsOperacionesBL(textoPersonaABuscar);
             NotifyPropertyChanged("ListaPersonasAMostrar"); //Notifica al cambio a la lista de filtrado de personas
@@ -120,6 +125,23 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             }
             return hayPersonaABuscar;
         }
+
+        private void GuardarExecute()
+        {
+            //TODO: llamar a método insertar persona
+
+        }
+        
+        /*private bool GuardarCanExecute()
+        {
+            bool hayPersonaAGuardar = false;
+            if ()
+            {
+
+            }
+            return hayPersonaAGuardar;
+        }*/
+
         #endregion
 
         //Método para lanzar el evento
@@ -139,7 +161,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
                 {
                     personaSeleccionada = value;
                     Eliminar.RaiseCanExecuteChanged(); 
-                    //NotifyPropertyChanged("PersonaSeleccionada"); //Notifica que la persona seleccionada ha cambiado
+                    NotifyPropertyChanged("PersonaSeleccionada"); //Notifica que la persona seleccionada ha cambiado
                     /*Aquí no lo necesito porque no tengo los datos de las personas, sólo la lista*/
                 }
                 //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
@@ -166,7 +188,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             get { return buscar; }
             set { buscar = value; }
         }
-
+        
         private string TextoPersonaABuscar 
         {
             get { return textoPersonaABuscar; }
@@ -180,10 +202,35 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
                 }                
             } 
         }
-        ObservableCollection<clsPersona> ListaPersonasAMostrar
+        private ObservableCollection<clsPersona> ListaPersonasAMostrar
         {
             get { return listaPersonasAMostrar; }
             set { listaPersonasAMostrar = value; }
+        }
+
+        private DelegateCommand Guardar
+        {
+            get { return guardar; }
+            set { guardar = value; }
+        }
+
+        private ObservableCollection<clsDepartamento> ListaDepartamentos
+        {
+            get { return listaDepartamentos; }
+            set { listaDepartamentos = value; }
+        }
+
+        private clsDepartamento DepartamentoSeleccionado
+        {
+            get { return departamentoSeleccionado; }
+            set
+            {
+                if(this.departamentoSeleccionado != null)
+                {
+                    departamentoSeleccionado = value;
+                    NotifyPropertyChanged("DepartamentoSeleccionado");
+                }
+            }
         }
     }
 }
