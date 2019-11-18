@@ -47,7 +47,10 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             this.ListadoPersona = listadoPersonas.ListadoPersonas();
 
             clsOperacionesBL listadoPersonasFiltrado = new clsOperacionesBL(textoPersonaABuscar);
-            this.ListaPersonasAMostrar = listadoPersonasFiltrado.ListadoPersonasFiltrado;
+            this.ListaPersonasAMostrar = listadoPersonasFiltrado.ListadoPersonasFiltrado; //Listado personas por nombre (que será el texto a buscar)
+
+            clsListadoDepartamentoBL listaDepartamentos = new clsListadoDepartamentoBL();
+            this.listaDepartamentos = listaDepartamentos.ListadoDepartamentos(); //Relleno listado departamentos
 
             //Defino el comportamiento de los botones
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
@@ -167,6 +170,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
                 //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
             }
         }
+
         //public List<clsPersona> ListadoPersona
         //{
         //    get{ return listadoPersona; }

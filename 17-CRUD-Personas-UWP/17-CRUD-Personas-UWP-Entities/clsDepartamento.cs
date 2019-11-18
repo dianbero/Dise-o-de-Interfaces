@@ -8,7 +8,7 @@ namespace _17_CRUD_Personas_UWP_Entities
 {
     public class clsDepartamento
     {
-        public int IdDepartamento { get;}
+        public int IdDepartamento { get; set; }
         public string NombreDepartamento { get; set; }
     }
 }

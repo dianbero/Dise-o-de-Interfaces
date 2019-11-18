@@ -1,4 +1,4 @@
-﻿using _10_CRUD_Personas_DAL.Lists;
+﻿using _17_CRUD_Personas_UWP_DAL.Lists;
 using _17_CRUD_Personas_UWP_Entities;
 using System;
 using System.Collections.Generic;

@@ -8,7 +8,7 @@ using _17_CRUD_Personas_UWP_Entities;
 using _17_CRUD_Personas_UWP_DAL.Connections;
 using System.Collections.ObjectModel;
 
-namespace _10_CRUD_Personas_DAL.Lists
+namespace _17_CRUD_Personas_UWP_DAL.Lists
 {
     public class clsListadoPersonasDAL
     {
