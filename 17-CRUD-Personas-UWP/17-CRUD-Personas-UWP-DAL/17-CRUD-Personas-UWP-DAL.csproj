@@ -122,6 +122,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Connections\clsMyConnection.cs" />
+    <Compile Include="Lists\clsListadoDepartamentosDAL.cs" />
     <Compile Include="Lists\clsListadoPersonasDAL.cs" />
     <Compile Include="Lists\clsListadoPersonasFiltradoPorNombre.cs" />
     <Compile Include="Manejadoras\clsOperaciones.cs" />

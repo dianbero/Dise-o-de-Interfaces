@@ -17,7 +17,7 @@ namespace _17_CRUD_Personas_UWP_BL.Operaciones
         public int Insertar { get; set; }
         //public ObservableCollection<clsPersona> Insertar { get; set; }
         public int Editar { get; set; }
-        public ObservableCollection<clsPersona> ListaPersonas { get; set; }
+        //public ObservableCollection<clsPersona> ListaPersonas { get; set; }
         public ObservableCollection<clsPersona> ListadoPersonasFiltrado { get; set; }
 
         public clsOperacionesBL(clsPersona objPersona)
@@ -28,8 +28,8 @@ namespace _17_CRUD_Personas_UWP_BL.Operaciones
             this.Insertar = operaciones.Create(objPersona);
             this.Editar = operaciones.Edit(objPersona);
 
-            clsListadoPersonasDAL listadoPersonas = new clsListadoPersonasDAL();
-            this.ListaPersonas = listadoPersonas.ListadoCompletoPersonas();
+            //clsListadoPersonasDAL listadoPersonas = new clsListadoPersonasDAL();
+            //this.ListaPersonas = listadoPersonas.ListadoCompletoPersonas();
         }
 
         public clsOperacionesBL(string textoPersonaABuscar)

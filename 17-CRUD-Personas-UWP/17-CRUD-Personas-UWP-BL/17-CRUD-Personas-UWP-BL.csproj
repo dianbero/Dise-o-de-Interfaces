@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Lists\clsListadoDepartamentoBL.cs" />
     <Compile Include="Lists\clsListadoPersonaBL.cs" />
     <Compile Include="Operaciones\clsOperacionesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
