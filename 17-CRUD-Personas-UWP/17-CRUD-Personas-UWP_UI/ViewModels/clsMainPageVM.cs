@@ -24,9 +24,10 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
          Seleccionar al hacer click con botón derecho en (codeBehind)
          Añadir menú con botón eliminar*/
 
+        #region Atributos Privados
         //Atributos privados
         private clsPersona personaSeleccionada;
-        private ObservableCollection<clsPersona> listadoPersona;
+        private ObservableCollection<clsPersona> listadoPersonaCompleto;
         private DelegateCommand eliminar; //Comando
         private DelegateCommand buscar; //Comando
         private string textoPersonaABuscar;
@@ -34,16 +35,110 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private DelegateCommand guardar; //Comando
         private ObservableCollection<clsDepartamento> listaDepartamentos;
         private clsDepartamento departamentoSeleccionado;
-                 
+        #endregion
+
+
+        #region Propiedades públicas
+        //Propiedades públicas
+        public clsPersona PersonaSeleccionada
+        {
+            get{ return personaSeleccionada; }
+            set
+            {
+                if (PersonaSeleccionada != value) //Para evitar problema StackOverFlow
+                {
+                    personaSeleccionada = value;
+                    Eliminar.RaiseCanExecuteChanged();
+                    NotifyPropertyChanged("PersonaSeleccionada"); //Notifica que la persona seleccionada ha cambiado
+
+                    /*Aquí no lo necesito porque no tengo los datos de las personas, sólo la lista*/
+                }
+                //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
+            }
+        }
+
+        //public List<clsPersona> ListadoPersona
+        //{
+        //    get{ return listadoPersona; }
+        //    set{ listadoPersona = value; }
+        //}
+
+        public ObservableCollection<clsPersona> ListadoPersonaCompleto
+        {
+            get{ return listadoPersonaCompleto; } 
+            set{ listadoPersonaCompleto = value; }
+        }
+
+        public DelegateCommand Eliminar 
+        {
+            get { return eliminar; } 
+            set { eliminar = value; }
+        }
+        public DelegateCommand Buscar
+        {
+            get { return buscar; }
+            set { buscar = value; }
+        }
+        
+        public string TextoPersonaABuscar 
+        {
+            get { return textoPersonaABuscar; }
+            set
+            {
+                if (this.textoPersonaABuscar != value)
+                {
+                    textoPersonaABuscar = value;
+                    Buscar.RaiseCanExecuteChanged();  //Lanza la ejecución del Execute al haber comprobado que hay personas para buscar
+                    NotifyPropertyChanged("ListaPersonasAMostrar"); 
+                }                
+            } 
+        }
+        public ObservableCollection<clsPersona> ListaPersonasAMostrar
+        {
+            get { return listaPersonasAMostrar; }
+            set { listaPersonasAMostrar = value; }
+        }
+
+        public DelegateCommand Guardar
+        {
+            get { return guardar; }
+            set { guardar = value; }
+        }
+
+        public ObservableCollection<clsDepartamento> ListaDepartamentos
+        {
+            get { return listaDepartamentos; }
+            set { listaDepartamentos = value; }
+        }
+
+        public clsDepartamento DepartamentoSeleccionado
+        {
+            get { return departamentoSeleccionado; }
+            set
+            {
+                if(this.departamentoSeleccionado != null)
+                {
+                    departamentoSeleccionado = value;
+                    NotifyPropertyChanged("DepartamentoSeleccionado");
+                }
+            }
+        }
+
+   
+    #endregion
+
+
+        #region Constructores
         //Constructor por defecto
         public clsMainPageVM()
         {
             //Rellenamos la lista de persona 
             clsListadoPersonaBL listadoPersonas = new clsListadoPersonaBL();
-            this.ListadoPersona = listadoPersonas.ListadoPersonas();
+            this.listadoPersonaCompleto = listadoPersonas.ListadoPersonas();
 
-            clsOperacionesBL listadoPersonasFiltrado = new clsOperacionesBL(textoPersonaABuscar);
-            this.ListaPersonasAMostrar = listadoPersonasFiltrado.ListadoPersonasFiltrado; //Listado personas por nombre (que será el texto a buscar)
+            //TODO: hacer copia de listadoCompleto a listado a mostrar, para no llamar dos veces a la base de datos
+            //Buscar cómo hacerlo
+            this.ListaPersonasAMostrar = listadoPersonas.ListadoPersonas(); //Listado personas por nombre (que será el texto a buscar)
 
             clsListadoDepartamentoBL listaDepartamentos = new clsListadoDepartamentoBL();
             this.listaDepartamentos = listaDepartamentos.ListadoDepartamentos(); //Relleno listado departamentos
@@ -51,8 +146,11 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             //Defino el comportamiento de los botones
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
             this.Buscar = new DelegateCommand(BuscarExecute, BuscarCanExecute);
+            //TODO: completar resto de comandos
             
         }
+        #endregion
+
 
         #region "Comandos"
 
@@ -107,7 +205,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private void BuscarExecute()
         {            
             //ListaPersonasAMostrar = new ObservableCollection<clsPersona>(listadoPersona.ToList().FindAll(persona =>String.Concat(personaSeleccionada.Nombre).Contains(textoPersonaABuscar)));
-            clsOperacionesBL mostrarListadoPersonas = new clsOperacionesBL(textoPersonaABuscar);
+            clsOperacionesBL mostrarListadoPersonas = new clsOperacionesBL(personaSeleccionada);
             NotifyPropertyChanged("ListaPersonasAMostrar"); //Notifica al cambio a la lista de filtrado de personas
         }
 
@@ -130,7 +228,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             //TODO: llamar a método insertar persona
 
         }
-        
+
         /*private bool GuardarCanExecute()
         {
             bool hayPersonaAGuardar = false;
@@ -143,88 +241,6 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
 
         #endregion
 
-        //Propiedades públicas
-        public clsPersona PersonaSeleccionada
-        {
-            get{ return personaSeleccionada; }
-            set
-            {
-                if (PersonaSeleccionada != value) //Para evitar problema StackOverFlow
-                {
-                    personaSeleccionada = value;
-                    Eliminar.RaiseCanExecuteChanged();
-                    NotifyPropertyChanged("PersonaSeleccionada"); //Notifica que la persona seleccionada ha cambiado
-
-                    /*Aquí no lo necesito porque no tengo los datos de las personas, sólo la lista*/
-                }
-                //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
-            }
-        }
-
-        //public List<clsPersona> ListadoPersona
-        //{
-        //    get{ return listadoPersona; }
-        //    set{ listadoPersona = value; }
-        //}
-        public ObservableCollection<clsPersona> ListadoPersona
-        {
-            get{ return listadoPersona; } 
-            set{ listadoPersona = value; }
-        }
-
-        public DelegateCommand Eliminar 
-        {
-            get { return eliminar; } 
-            set { eliminar = value; }
-        }
-        private DelegateCommand Buscar
-        {
-            get { return buscar; }
-            set { buscar = value; }
-        }
-        
-        private string TextoPersonaABuscar 
-        {
-            get { return textoPersonaABuscar; }
-            set
-            {
-                if (this.textoPersonaABuscar != value)
-                {
-                    textoPersonaABuscar = value;
-                    Buscar.RaiseCanExecuteChanged();  //Lanza la ejecución del Execute al haber comprobado que hay personas para buscar
-                    NotifyPropertyChanged("ListaPersonasAMostrar"); 
-                }                
-            } 
-        }
-        private ObservableCollection<clsPersona> ListaPersonasAMostrar
-        {
-            get { return listaPersonasAMostrar; }
-            set { listaPersonasAMostrar = value; }
-        }
-
-        private DelegateCommand Guardar
-        {
-            get { return guardar; }
-            set { guardar = value; }
-        }
-
-        private ObservableCollection<clsDepartamento> ListaDepartamentos
-        {
-            get { return listaDepartamentos; }
-            set { listaDepartamentos = value; }
-        }
-
-        private clsDepartamento DepartamentoSeleccionado
-        {
-            get { return departamentoSeleccionado; }
-            set
-            {
-                if(this.departamentoSeleccionado != null)
-                {
-                    departamentoSeleccionado = value;
-                    NotifyPropertyChanged("DepartamentoSeleccionado");
-                }
-            }
-        }
     }
+
 }

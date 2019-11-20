@@ -22,19 +22,16 @@ namespace _17_CRUD_Personas_UWP_BL.Operaciones
         public clsOperacionesBL(clsPersona objPersona)
         {
             clsOperaciones operaciones = new clsOperaciones();
-            //clsPersona objPersona = new clsPersona();
             this.Borrar = operaciones.Borrar(objPersona.Id);
             this.Insertar = operaciones.Create(objPersona);
             this.Editar = operaciones.Edit(objPersona);
 
             //clsListadoPersonasDAL listadoPersonas = new clsListadoPersonasDAL();
             //this.ListaPersonas = listadoPersonas.ListadoCompletoPersonas();
+            clsListadoPersonasFiltradoPorNombre listadoFiltrado = new clsListadoPersonasFiltradoPorNombre();
+            this.ListadoPersonasFiltrado = listadoFiltrado.ListadoPersonasFiltradoPorNombre(objPersona);
         }
 
-        public clsOperacionesBL(string textoPersonaABuscar)
-        {
-            clsListadoPersonasFiltradoPorNombre listadoFiltrado = new clsListadoPersonasFiltradoPorNombre();
-            this.ListadoPersonasFiltrado = listadoFiltrado.ListadoPersonasFiltradoPorNombre(textoPersonaABuscar);
-        }
+        
     }
 }

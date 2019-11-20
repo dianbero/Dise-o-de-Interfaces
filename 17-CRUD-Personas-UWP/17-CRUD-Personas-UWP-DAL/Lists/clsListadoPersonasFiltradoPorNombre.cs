@@ -22,7 +22,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
 
 
         //TODO: función que devuelve listado de personas
-        public ObservableCollection<clsPersona> ListadoPersonasFiltradoPorNombre(string nombrePersona) //Consulta para obtener el listado de personas
+        public ObservableCollection<clsPersona> ListadoPersonasFiltradoPorNombre(clsPersona persona) //Pasarle objeto persona, para buscar persona por el nombre
         {
 
             //Abro conexión
@@ -32,7 +32,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
                 conexion = objConexion.getConnection();
 
                 //Guardo sentencia en comando
-                comando.Parameters.Add("@nombrePersona", System.Data.SqlDbType.VarChar).Value = nombrePersona;
+                comando.Parameters.Add("@nombrePersona", System.Data.SqlDbType.VarChar).Value = persona.Nombre; 
                 comando.CommandText = "SELECT * FROM PD_Personas WHERE NombrePersona = @nombrePersona ";
                 //Paso conexión al comando
                 comando.Connection = conexion;

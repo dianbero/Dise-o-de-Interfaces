@@ -4,6 +4,11 @@ atributos privados en viewModel:
 
 validaciones pueden ir en viewModel
 
+TODO:
+en cada execute hacer try-catch()
+
+en codigobehind van cosas sólo de la vista (cambiar color de algo, etc)
+
 para fotos(va en ViewModel):
 declaro filOpenPicker
 se le añaden los tipos de archivos de imagen
@@ -16,4 +21,3 @@ La conversión de hará con converter en clase a parte
 
 
 
-en codigobehind van cosas sólo de la vista (cambiar color de algo, etc)

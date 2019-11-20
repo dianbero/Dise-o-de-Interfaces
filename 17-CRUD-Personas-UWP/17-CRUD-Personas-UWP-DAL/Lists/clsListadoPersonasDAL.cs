@@ -33,6 +33,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
             //Paso conexión al comando
             comando.Connection = conexion;
             //Ejecuta el comando
+            //TODO: poner try
             lector = comando.ExecuteReader();
 
             ObservableCollection<clsPersona> listadoPersonas = new ObservableCollection<clsPersona>();

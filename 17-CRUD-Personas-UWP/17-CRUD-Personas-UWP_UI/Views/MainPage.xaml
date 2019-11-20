@@ -14,7 +14,7 @@
     </Page.DataContext>
 
     <RelativePanel>
-        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}" RelativePanel.Below="panelBotones">
+        <ListView Name="panelListView" MinHeight="200" MinWidth="150" ItemsSource="{Binding ListaPersonasAMostrar}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}" RelativePanel.Below="panelBotones">
             <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
