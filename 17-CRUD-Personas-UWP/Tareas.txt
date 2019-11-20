@@ -1,0 +1,19 @@
+
+atributos privados en viewModel:
+
+
+validaciones pueden ir en viewModel
+
+para fotos(va en ViewModel):
+declaro filOpenPicker
+se le añaden los tipos de archivos de imagen
+
+Si se añade la foto pinchando en ella, hay que bindearla con x:Bind, porque la imagen no tiene commands
+------
+al elegir un archivo pasar de bitmaimage a array de bytes,
+al ponerlo en la vista, al darle a guardar hacer conversión de vuelta de array de bytes a bitmapimage
+La conversión de hará con converter en clase a parte
+
+
+
+en codigobehind van cosas sólo de la vista (cambiar color de algo, etc)

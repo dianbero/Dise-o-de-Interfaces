@@ -35,12 +35,20 @@ namespace _17_CRUD_Personas_UWP_DAL.Connections
         public clsMyConnection()
         {
             // this.server = "(local)";
-            this.server = "dianbero.database.windows.net";
+            //this.server = "dianbero.database.windows.net";
+            //this.dataBase = "PersonasDB";
+            //this.user = "dianbero";
+            ////this.pass = "123";
+            //this.pass = "Mi.Tesoro"; 
 
+            //this.server = "(local)";
+            this.server = "pablo90.database.windows.net";
             this.dataBase = "PersonasDB";
-            this.user = "dianbero";
+            this.user = "pablo";
             //this.pass = "123";
-            this.pass = "Mi.Tesoro";
+            this.pass = "Mitesoro123";
+
+
 
         }
         //Con parámetros por si quisiera cambiar las conexiones

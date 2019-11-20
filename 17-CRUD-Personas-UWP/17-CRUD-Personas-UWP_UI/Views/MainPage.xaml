@@ -19,7 +19,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=Nombre}"></TextBlock>
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}"></TextBlock>
                         <!--nombre de la lista que tenemos guardada-->
                     </StackPanel>
                 </DataTemplate>
@@ -47,16 +47,16 @@
             <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="4" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblFoto" Text="Foto: " Grid.Row="5" Grid.Column="0" Margin="5"></TextBlock>
 
-            <TextBox Name="txtNombre" Margin="10" Width="200" Grid.Row="0" Grid.Column="1"></TextBox>
-            <TextBox Name="txtApellido" Margin="10" Width="200" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtNombre" Margin="10" Width="300" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBox Name="txtApellido" Margin="10" Width="300" Grid.Row="1" Grid.Column="1"></TextBox>
             <!--<TextBox Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></TextBox>-->
-            <DatePicker Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></DatePicker>
-            <ComboBox Name="txtFechaNacimiento" Margin="10" Width="200" Grid.Row="3" Grid.Column="1">
+            <DatePicker Name="txtEdad" Margin="10" Width="300" Grid.Row="2" Grid.Column="1"></DatePicker>
+            <ComboBox Name="txtFechaNacimiento" Margin="10" Width="300" Grid.Row="3" Grid.Column="1">
                 <x:String ></x:String> <!--bindeado a lista de departamento y extrae un nombre-->
             <!--TODO:Hacer en BL Listado departamentos-->
             </ComboBox>
-            <TextBox Name="txtDepartamento" Margin="10"  Width="200" Grid.Row="4" Grid.Column="1"></TextBox>
-            <TextBox Name="txtTelefono" Margin="10"  Width="200" Grid.Row="5" Grid.Column="1"></TextBox>
+            <TextBox Name="txtDepartamento" Margin="10"  Width="300" Grid.Row="4" Grid.Column="1"></TextBox>
+            <TextBox Name="txtTelefono" Margin="10"  Width="300" Grid.Row="5" Grid.Column="1"></TextBox>
             <Image Name="cuadroFoto" Margin="10" Grid.Row="6" Grid.Column="1"></Image>
         </Grid>
         
