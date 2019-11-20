@@ -71,7 +71,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Manejadoras
             conexion = objConexion.getConnection();
             comando.Connection = conexion;
 
-            comando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.Id;
+            comando.Parameters.Add("@idPersona", System.Data.SqlDbType.Int).Value = persona.Id;
             comando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
             comando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.Apellido;
             comando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.IdDepartamento;
@@ -133,7 +133,9 @@ namespace _17_CRUD_Personas_UWP_DAL.Manejadoras
             }
 
             //Apellido no se comprueba si es nulo, porque será un dropdown y nunca podrá establecerse a nulo (a parte, no sé cómo comprobar que el idDepartamento no sea nulo, porque da error)
-            comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, IDDepartamento = @idDepartamento, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto}";
+            //comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, IDDepartamento = @idDepartamento, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto}";
+            comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, IDDepartamento = @idDepartamento, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto} WHERE idPersona = @idPersona";
+
             //comando.CommandText = $"UPDATE PD_Personas SET NombrePersona = {nombre}, ApellidosPersona = {apellido}, FechaNacimientoPersona = {fechaNacimiento}, TelefonoPersona = {telefono}, FotoPersona = {foto}";
 
             filasAfectadas = comando.ExecuteNonQuery();

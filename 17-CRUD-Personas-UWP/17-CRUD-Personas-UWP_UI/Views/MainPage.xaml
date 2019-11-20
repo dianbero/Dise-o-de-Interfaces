@@ -14,12 +14,12 @@
     </Page.DataContext>
 
     <RelativePanel>
-        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada}" RelativePanel.Below="panelBotones">
+        <ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}" RelativePanel.Below="panelBotones">
             <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}"></TextBlock>
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=Nombre}"></TextBlock>
                         <!--nombre de la lista que tenemos guardada-->
                     </StackPanel>
                 </DataTemplate>
@@ -44,14 +44,14 @@
             <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblDepartamento" Text="Departamento: " Grid.Row="3" Grid.Column="0" Margin="5"></TextBlock>
-            <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="4" Grid.Column="0" Margin="5" SelectionChanged="LblTelefono_SelectionChanged"></TextBlock>
+            <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="4" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblFoto" Text="Foto: " Grid.Row="5" Grid.Column="0" Margin="5"></TextBlock>
 
             <TextBox Name="txtNombre" Margin="10" Width="200" Grid.Row="0" Grid.Column="1"></TextBox>
             <TextBox Name="txtApellido" Margin="10" Width="200" Grid.Row="1" Grid.Column="1"></TextBox>
             <!--<TextBox Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></TextBox>-->
             <DatePicker Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></DatePicker>
-            <ComboBox Name="txtFechaNacimiento" ItemsSource="{Binding }" Margin="10" Width="200" Grid.Row="3" Grid.Column="1">
+            <ComboBox Name="txtFechaNacimiento" Margin="10" Width="200" Grid.Row="3" Grid.Column="1">
                 <x:String ></x:String> <!--bindeado a lista de departamento y extrae un nombre-->
             <!--TODO:Hacer en BL Listado departamentos-->
             </ComboBox>

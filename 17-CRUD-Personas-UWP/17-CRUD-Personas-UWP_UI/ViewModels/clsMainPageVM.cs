@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace _17_CRUD_Personas_UWP_UI.ViewModels
 {
-    public class clsMainPageVM : INotifyPropertyChanged
+    public class clsMainPageVM : clsVMBase 
     {
         //Necesitamos un objeto personaSeleccionada(objPersona) y una lista de personas que me la ofrece una clase de utilidades
         //Necesito atributo privado de personaSeleccionada
@@ -34,11 +34,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private DelegateCommand guardar; //Comando
         private ObservableCollection<clsDepartamento> listaDepartamentos;
         private clsDepartamento departamentoSeleccionado;
-         
-
-        //Instancio controlador de eventos
-        public event PropertyChangedEventHandler PropertyChanged;
-
+                 
         //Constructor por defecto
         public clsMainPageVM()
         {
@@ -147,13 +143,6 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
 
         #endregion
 
-        //Método para lanzar el evento
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs (propertyName));
-        }
-
-
         //Propiedades públicas
         public clsPersona PersonaSeleccionada
         {
@@ -163,8 +152,9 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
                 if (PersonaSeleccionada != value) //Para evitar problema StackOverFlow
                 {
                     personaSeleccionada = value;
-                    Eliminar.RaiseCanExecuteChanged(); 
+                    Eliminar.RaiseCanExecuteChanged();
                     NotifyPropertyChanged("PersonaSeleccionada"); //Notifica que la persona seleccionada ha cambiado
+
                     /*Aquí no lo necesito porque no tengo los datos de las personas, sólo la lista*/
                 }
                 //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
