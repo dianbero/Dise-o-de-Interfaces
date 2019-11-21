@@ -18,9 +18,9 @@
             <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}"></TextBlock>
-                        <!--nombre de la lista que tenemos guardada-->
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Apellido}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -28,43 +28,51 @@
 
         <Grid Name="panelGridDatos" RelativePanel.RightOf="panelListView" RelativePanel.Below="panelBotones" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>  <!--nombre-->
-                <RowDefinition Height="Auto"></RowDefinition>  <!--apellido-->
-                <RowDefinition Height="Auto"></RowDefinition>  <!--departamento-->
-                <RowDefinition Height="Auto"></RowDefinition>  <!--FechaNacimiento-->
-                <RowDefinition Height="Auto"></RowDefinition>  <!--telefono-->
-                <RowDefinition Height="Auto"></RowDefinition>  <!--foto-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <!--nombre-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <!--apellido-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <!--departamento-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <!--FechaNacimiento-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <!--telefono-->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <!--foto-->
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="12.35"></ColumnDefinition>
+                <ColumnDefinition Width="131.65"/>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="0" Grid.Column="0" Margin="5"></TextBlock>
-            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
-            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
-            <TextBlock Name="lblDepartamento" Text="Departamento: " Grid.Row="3" Grid.Column="0" Margin="5"></TextBlock>
-            <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="4" Grid.Column="0" Margin="5"></TextBlock>
-            <TextBlock Name="lblFoto" Text="Foto: " Grid.Row="5" Grid.Column="0" Margin="5"></TextBlock>
+            <!--<TextBlock Name="lblFoto" Text="Foto: " Grid.Row="0" Grid.Column="0" Margin="5"></TextBlock>-->
+            <TextBlock Name="lblNombre" Text="Nombre: " Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+            <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="2" Grid.Column="0" Margin="5,5,5,5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+            <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="3" Grid.Column="0" Margin="5,5,5,4.8" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+            <TextBlock Name="lblDepartamento" Text="Departamento: " Grid.Row="4" Grid.Column="0" Margin="5,5.2,5,4.8" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+            <TextBlock Name="lblTelefono" Text="Teléfono: " Grid.Row="5" Grid.Column="0" Margin="5,5.2,5,4.8" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
 
-            <TextBox Name="txtNombre" Margin="10" Width="300" Grid.Row="0" Grid.Column="1"></TextBox>
-            <TextBox Name="txtApellido" Margin="10" Width="300" Grid.Row="1" Grid.Column="1"></TextBox>
-            <!--<TextBox Name="txtEdad" Margin="10" Width="200" Grid.Row="2" Grid.Column="1"></TextBox>-->
-            <DatePicker Name="txtEdad" Margin="10" Width="300" Grid.Row="2" Grid.Column="1"></DatePicker>
-            <ComboBox Name="txtFechaNacimiento" Margin="10" Width="300" Grid.Row="3" Grid.Column="1">
-                <x:String ></x:String> <!--bindeado a lista de departamento y extrae un nombre-->
-            <!--TODO:Hacer en BL Listado departamentos-->
+
+            <PersonPicture Name="cuadroFoto"  Margin="110,10,110,10" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></PersonPicture>
+            <TextBox Name="txtNombre" SelectedText="{Binding PersonaSeleccionada.Nombre}" Margin="10,10,10,10" Width="300" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
+            <TextBox Name="txtApellido" SelectedText="{Binding PersonaSeleccionada.Apellido}" Margin="10,10,10,10" Width="300" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
+            <DatePicker Name="txtFechaNacimiento" DateChanged="{Binding PersonaSeleccionada}" Margin="0,0,0,0" Width="300" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"></DatePicker>
+            <ComboBox Name="txtListaDepartamentos" Margin="0,0,0,0" Width="300" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <x:String></x:String>
+                <!--bindeado a lista de departamento y extrae un nombre-->
+                <!--TODO:Hacer en BL Listado departamentos-->
             </ComboBox>
-            <TextBox Name="txtDepartamento" Margin="10"  Width="300" Grid.Row="4" Grid.Column="1"></TextBox>
-            <TextBox Name="txtTelefono" Margin="10"  Width="300" Grid.Row="5" Grid.Column="1"></TextBox>
-            <Image Name="cuadroFoto" Margin="10" Grid.Row="6" Grid.Column="1"></Image>
+            <TextBox Name="txtTelefono" SelectedText="{Binding PersonaSeleccionada.Telefono}" Margin="10,10.2,10,9.8"  Width="300" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
+
         </Grid>
-        
+
         <!--Botones-->
         <StackPanel Name="panelBotones" Orientation="Horizontal" RelativePanel.AlignTopWithPanel="True">
             <AppBarButton Name="btnNuevo" Label="Nuevo" Icon="Add" ></AppBarButton>
             <AppBarButton Name="btnGuardar" Label="Guardar" Icon="Save" ></AppBarButton>
-            <AppBarButton Name="btnEliminar" Label="Eliminar" Icon="Delete" ></AppBarButton>
+            <AppBarButton Name="btnEliminar" Command="{Binding Eliminar}"  Label="Eliminar" Icon="Delete"  ></AppBarButton>
             <AppBarButton Name="btnRefrescar" Label="refrescar" Icon="Refresh" ></AppBarButton>
             <TextBox Name="barraBuscar" Width="250"></TextBox>
             <AppBarButton Name="btnBuscar" Icon="Find" ></AppBarButton>

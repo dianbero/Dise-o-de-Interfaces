@@ -25,7 +25,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
          Añadir menú con botón eliminar*/
 
         #region Atributos Privados
-        //Atributos privados
+
         private clsPersona personaSeleccionada;
         private ObservableCollection<clsPersona> listadoPersonaCompleto;
         private DelegateCommand eliminar; //Comando
@@ -35,6 +35,8 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private DelegateCommand guardar; //Comando
         private ObservableCollection<clsDepartamento> listaDepartamentos;
         private clsDepartamento departamentoSeleccionado;
+        private DateTimeOffset fechaNacimientoDatePicker;
+
         #endregion
 
 
@@ -48,10 +50,8 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
                 if (PersonaSeleccionada != value) //Para evitar problema StackOverFlow
                 {
                     personaSeleccionada = value;
-                    Eliminar.RaiseCanExecuteChanged();
+                    Eliminar.RaiseCanExecuteChanged(); //Al seleccionar persona se llama a la comprobación del comando eliminar
                     NotifyPropertyChanged("PersonaSeleccionada"); //Notifica que la persona seleccionada ha cambiado
-
-                    /*Aquí no lo necesito porque no tengo los datos de las personas, sólo la lista*/
                 }
                 //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
             }
@@ -66,7 +66,10 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         public ObservableCollection<clsPersona> ListadoPersonaCompleto
         {
             get{ return listadoPersonaCompleto; } 
-            set{ listadoPersonaCompleto = value; }
+            set
+            {
+                listadoPersonaCompleto = value;
+            }
         }
 
         public DelegateCommand Eliminar 
@@ -96,7 +99,10 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         public ObservableCollection<clsPersona> ListaPersonasAMostrar
         {
             get { return listaPersonasAMostrar; }
-            set { listaPersonasAMostrar = value; }
+            set
+            {
+                listaPersonasAMostrar = value;
+            }
         }
 
         public DelegateCommand Guardar
@@ -124,11 +130,22 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             }
         }
 
-   
+        public DateTimeOffset FechaNacimientoDatePicker
+        {
+            get { return fechaNacimientoDatePicker; }
+            set
+            {
+                fechaNacimientoDatePicker = value;
+                NotifyPropertyChanged("FechaNacimientoDatePicker");
+            }
+        }
+
+
     #endregion
 
 
         #region Constructores
+
         //Constructor por defecto
         public clsMainPageVM()
         {
@@ -147,8 +164,12 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
             this.Buscar = new DelegateCommand(BuscarExecute, BuscarCanExecute);
             //TODO: completar resto de comandos
+
+            //Paso la fecha de clsPersona a la fecha DatePicker
+            this.fechaNacimientoDatePicker = (DateTimeOffset) personaSeleccionada.FechaNacimiento;
             
         }
+
         #endregion
 
 

@@ -30,8 +30,6 @@ namespace _17_CRUD_Personas_UWP_BL.Operaciones
             //this.ListaPersonas = listadoPersonas.ListadoCompletoPersonas();
             clsListadoPersonasFiltradoPorNombre listadoFiltrado = new clsListadoPersonasFiltradoPorNombre();
             this.ListadoPersonasFiltrado = listadoFiltrado.ListadoPersonasFiltradoPorNombre(objPersona);
-        }
-
-        
+        }        
     }
 }
