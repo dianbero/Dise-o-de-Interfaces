@@ -33,6 +33,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private string textoPersonaABuscar;
         ObservableCollection<clsPersona> listaPersonasAMostrar; //Filtrada
         private DelegateCommand guardar; //Comando
+        private DelegateCommand add;
         private ObservableCollection<clsDepartamento> listaDepartamentos;
         private clsDepartamento departamentoSeleccionado;
         private DateTimeOffset fechaNacimientoDatePicker;
@@ -56,13 +57,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
                 //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
             }
         }
-
-        //public List<clsPersona> ListadoPersona
-        //{
-        //    get{ return listadoPersona; }
-        //    set{ listadoPersona = value; }
-        //}
-
+        
         public ObservableCollection<clsPersona> ListadoPersonaCompleto
         {
             get{ return listadoPersonaCompleto; } 
@@ -109,6 +104,12 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         {
             get { return guardar; }
             set { guardar = value; }
+        }
+
+        public DelegateCommand Add
+        {
+            get { return add; }
+            set { add = value; }
         }
 
         public ObservableCollection<clsDepartamento> ListaDepartamentos
@@ -163,7 +164,9 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             //Defino el comportamiento de los botones
             this.Eliminar = new DelegateCommand(EliminarExecute, EliminarCanExecute); //Uso segundo constructor porque no siempre va a estar habilitado
             this.Buscar = new DelegateCommand(BuscarExecute, BuscarCanExecute);
-            //TODO: completar resto de comandos
+            this.add = new DelegateCommand(AddExecute); //Siempre estará habilitado, porque siempre se podrá añadir una persona
+            //TODO: completar resto de comandos (añadir, guardar)
+
 
             //Paso la fecha de clsPersona a la fecha DatePicker
             this.fechaNacimientoDatePicker = (DateTimeOffset) personaSeleccionada.FechaNacimiento;
@@ -244,6 +247,14 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             return hayPersonaABuscar;
         }
 
+        public DelegateCommand AddExecute()
+        {
+            clsPersona objPersonaAInsertar = new clsPersona();
+            clsOperacionesBL objInsertarPersonaBL = new clsOperacionesBL(objPersonaAInsertar);
+            int resultadoInsercion = objInsertarPersonaBL.Insertar;
+            NotifyPropertyChanged("ListadoPersonaCompleto"); //Notifica el cambio a la lista de personas completa
+        }
+
         private void GuardarExecute()
         {
             //TODO: llamar a método insertar persona
@@ -259,6 +270,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             }
             return hayPersonaAGuardar;
         }*/
+
 
         #endregion
 
