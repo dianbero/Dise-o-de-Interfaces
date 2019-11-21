@@ -197,7 +197,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             if (result == ContentDialogResult.Primary) //Si el resultado de la acción del cuadro de texto se ejecuta con el primer botón, borra la persona
             {
                 //Elimina persona seleccionada
-                clsOperacionesBL operacionBorrar = new clsOperacionesBL(personaSeleccionada);
+                clsOperacionesBL operacionBorrar = new clsOperacionesBL(personaSeleccionada); //en constructor BL se le pasa el id del objeto persona
                 int resultadoBorrar = operacionBorrar.Borrar;
                 NotifyPropertyChanged("ListadoPersona"); //Notifica el cambio a la vista para que se elimina la persona seleccionada
             }
