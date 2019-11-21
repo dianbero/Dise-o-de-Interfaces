@@ -168,6 +168,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             //TODO: completar resto de comandos (añadir, guardar)
 
 
+
             //Paso la fecha de clsPersona a la fecha DatePicker
             this.fechaNacimientoDatePicker = (DateTimeOffset) personaSeleccionada.FechaNacimiento;
             
@@ -247,7 +248,7 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             return hayPersonaABuscar;
         }
 
-        public DelegateCommand AddExecute()
+        public void AddExecute()
         {
             clsPersona objPersonaAInsertar = new clsPersona();
             clsOperacionesBL objInsertarPersonaBL = new clsOperacionesBL(objPersonaAInsertar);
