@@ -1,0 +1,4 @@
+-No bindea botón Eliminar
+-Al modificar personas y  seleccionar otras, se trastoca
+-No logro bindeo con DateTimePicker
+-Falta bindeo con ComboBox de seleción de Departamento
