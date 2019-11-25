@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="_18_Resources.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18_Resources"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <LinearGradientBrush x:Key="gradienteBoton1">
+            <GradientStop Offset="0" Color="Purple"/>
+            <GradientStop Offset="1" Color="Beige"/>
+        </LinearGradientBrush>                  
+    </Page.Resources>
+    
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Name="btn1" Content="Botón 1" Background="{StaticResource gradienteBoton1}" Width="250" Height="100" Margin="10"></Button>
+        <Button Name="btn2" Content="Botón 2" Background="{StaticResource gradienteBoton2}" Width="250" Height="100" Margin="10"></Button>
+        <Button Name="btn3" Content="Botón 3" Background="{StaticResource gradienteBoton2}" Width="250" Height="100" Margin="10"></Button>
+        <Button Content="HelloWorld" Style="{StaticResource gradienteBoton3}" />
+    </StackPanel>
+    
+    
+    
+    
+</Page>
