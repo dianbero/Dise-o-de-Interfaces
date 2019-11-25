@@ -167,10 +167,8 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
             this.add = new DelegateCommand(AddExecute); //Siempre estará habilitado, porque siempre se podrá añadir una persona
             //TODO: completar resto de comandos (añadir, guardar)
 
-
-
             //Paso la fecha de clsPersona a la fecha DatePicker
-            this.fechaNacimientoDatePicker = (DateTimeOffset) personaSeleccionada.FechaNacimiento;
+            //this.fechaNacimientoDatePicker = (DateTimeOffset) personaSeleccionada.FechaNacimiento;
             
         }
 
@@ -259,7 +257,10 @@ namespace _17_CRUD_Personas_UWP_UI.ViewModels
         private void GuardarExecute()
         {
             //TODO: llamar a método insertar persona
-
+            clsPersona objPersonaAInsertar = new clsPersona();
+            clsOperacionesBL objInsertarPersonaBL = new clsOperacionesBL(objPersonaAInsertar);
+            int resultadoInsercion = objInsertarPersonaBL.Insertar;
+            //NotifyPropertyChanged("ListadoPersonaCompleto"); //Notifica el cambio a la lista de personas completa
         }
 
         /*private bool GuardarCanExecute()

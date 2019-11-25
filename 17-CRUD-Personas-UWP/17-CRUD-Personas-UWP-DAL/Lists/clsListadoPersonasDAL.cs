@@ -16,46 +16,64 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
         clsMyConnection objConexion = new clsMyConnection();
         SqlConnection conexion;
         SqlCommand comando = new SqlCommand();
-        SqlDataReader lector;
+        SqlDataReader lector = null;
         clsPersona objPersona;
+        
 
 
         //TODO: función que devuelve listado de personas
         public ObservableCollection<clsPersona> ListadoCompletoPersonas() //Consulta para obtener el listado de personas
         {
+            ObservableCollection<clsPersona> listadoPersonas;
 
-            //Abro conexión
-            //conexion = new clsMyConnection();*/
-            conexion = objConexion.getConnection();
+            try {
+                //Abro conexión
+                //conexion = new clsMyConnection();*/
+                conexion = objConexion.getConnection();
 
-            //Guardo sentencia en comando
-            comando.CommandText = "SELECT * FROM PD_Personas";
-            //Paso conexión al comando
-            comando.Connection = conexion;
-            //Ejecuta el comando
-            //TODO: poner try
-            lector = comando.ExecuteReader();
+                //Guardo sentencia en comando
+                comando.CommandText = "SELECT * FROM PD_Personas";
+                //Paso conexión al comando
+                comando.Connection = conexion;
+                //Ejecuta el comando
+                //TODO: poner try
+                lector = comando.ExecuteReader();
 
-            ObservableCollection<clsPersona> listadoPersonas = new ObservableCollection<clsPersona>();
+                listadoPersonas = new ObservableCollection<clsPersona>();
 
-            if (lector.HasRows) //si hay lineas por leer
-            {
-                while (lector.Read())
+                if (lector.HasRows) //si hay lineas por leer
                 {
-                    objPersona = new clsPersona(); //Creo una persona para cada registro
+                    while (lector.Read())
+                    {
+                        objPersona = new clsPersona(); //Creo una persona para cada registro
 
-                    objPersona.Id = (int)lector["IdPersona"];
-                    objPersona.Nombre = (string)lector["NombrePersona"];
-                    objPersona.Apellido = (string)lector["ApellidosPersona"];
-                    objPersona.IdDepartamento = (int)lector["IDDepartamento"];
-                    objPersona.FechaNacimiento = (DateTime)lector["FechaNacimientoPersona"];
-                    objPersona.Telefono = (string)lector["TelefonoPersona"];
+                        objPersona.Id = (int)lector["IdPersona"];
+                        objPersona.Nombre = (string)lector["NombrePersona"];
+                        objPersona.Apellido = (string)lector["ApellidosPersona"];
+                        objPersona.IdDepartamento = (int)lector["IDDepartamento"];
+                        objPersona.FechaNacimiento = (DateTime)lector["FechaNacimientoPersona"];
+                        objPersona.Telefono = (string)lector["TelefonoPersona"];
 
-                    listadoPersonas.Add(objPersona);  //Añade el objeto persona del registro al listado Personas
+                        listadoPersonas.Add(objPersona);  //Añade el objeto persona del registro al listado Personas
+                    }
                 }
-            }
+                return listadoPersonas;  //Devuelve la lista de personas creada para la consulta
 
-            return listadoPersonas;  //Devuelve la lista de personas creada para la consulta
+            }
+            catch(SqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (lector != null)
+                {
+
+                    lector.Close();
+                }
+                objConexion.closeConnection(ref conexion);
+            }
+            
         }      
     }
 }

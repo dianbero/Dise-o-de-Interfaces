@@ -58,7 +58,7 @@
             <PersonPicture Name="cuadroFoto"  Margin="110,10,110,10" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></PersonPicture>
             <TextBox Name="txtNombre" SelectedText="{Binding PersonaSeleccionada.Nombre}" Margin="10,10,10,10" Width="300" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
             <TextBox Name="txtApellido" SelectedText="{Binding PersonaSeleccionada.Apellido}" Margin="10,10,10,10" Width="300" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
-            <DatePicker Name="txtFechaNacimiento" DateChanged="{Binding PersonaSeleccionada}" Margin="0,0,0,0" Width="300" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"></DatePicker>
+            <DatePicker Name="txtFechaNacimiento"  Margin="0,0,0,0" Width="300" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"></DatePicker>
             <ComboBox Name="txtListaDepartamentos" Margin="0,0,0,0" Width="300" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <x:String></x:String>
                 <!--bindeado a lista de departamento y extrae un nombre-->
