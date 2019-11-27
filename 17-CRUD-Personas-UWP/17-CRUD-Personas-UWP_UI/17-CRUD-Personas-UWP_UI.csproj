@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\clsConverterFecha.cs" />
     <Compile Include="ViewModels\Class1.cs" />
     <Compile Include="ViewModels\clsMainPageVM.cs" />
     <Compile Include="ViewModels\clsVMBase.cs" />
