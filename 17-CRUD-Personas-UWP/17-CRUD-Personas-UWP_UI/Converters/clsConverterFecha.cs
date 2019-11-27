@@ -11,19 +11,17 @@ namespace _17_CRUD_Personas_UWP_UI.Converters
         public object Convert(object value, Type targetType, object parameter)
         {
             DateTime fechaConvertida = (DateTime)value;
-            
-
-            return DateTime;
+            //String fecha = fechaConvertida.ToString("dd/MM/yyyy");
+            String fecha = fechaConvertida.ToShortDateString();
+            return fecha;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter)
         {
             
-            if(value != DateTimeOffset)
-            {
-                DateTimeOffSet fechaConvertBack = (DateTimeOffset)value;
-                
-            }
+            string fechaConvertBack = (string)value;                
+            
+            return DateTime.Parse(fechaConvertBack);
         }
     }
 }

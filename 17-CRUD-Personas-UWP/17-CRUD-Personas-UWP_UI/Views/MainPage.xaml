@@ -2,11 +2,11 @@
     x:Class="_17_CRUD_Personas_UWP_UI.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:_17_CRUD_Personas_UWP_UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:vm="using:_17_CRUD_Personas_UWP_UI.ViewModels"
+    xmlns:local="using:_17_CRUD_Personas_UWP_UI.Converters"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
@@ -58,7 +58,8 @@
             <PersonPicture Name="cuadroFoto"  Margin="110,10,110,10" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></PersonPicture>
             <TextBox Name="txtNombre" SelectedText="{Binding PersonaSeleccionada.Nombre}" Margin="10,10,10,10" Width="300" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
             <TextBox Name="txtApellido" SelectedText="{Binding PersonaSeleccionada.Apellido}" Margin="10,10,10,10" Width="300" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
-            <DatePicker Name="txtFechaNacimiento"  Margin="0,0,0,0" Width="300" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"></DatePicker>
+            <!--<DatePicker Name="txtFechaNacimiento"  Margin="0,0,0,0" Width="300" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"></DatePicker>-->
+            <TextBox Name="txtFechaNacimiento" Converter="{StaticResource}"  Margin="0,0,0,0" Width="300" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
             <ComboBox Name="txtListaDepartamentos" Margin="0,0,0,0" Width="300" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <x:String></x:String>
                 <!--bindeado a lista de departamento y extrae un nombre-->
@@ -81,6 +82,6 @@
             <AppBarButton Name="btnActualizar" Label="Actualizar" Icon="Upload"></AppBarButton>
             <AppBarButton Name="btnInsertar" Label="Insertar" Icon="Add"></AppBarButton>
         </StackPanel>
-        <TextBox Name="txtFechaNacimiento" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBox>
+        
     </RelativePanel>
 </Page>
