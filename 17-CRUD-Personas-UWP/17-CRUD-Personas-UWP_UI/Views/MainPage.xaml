@@ -77,9 +77,10 @@
             <TextBox Name="barraBuscar" Width="250"></TextBox>
             <AppBarButton Name="btnBuscar" Icon="Find" ></AppBarButton>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" RelativePanel.Below="panelGridDatos">
+        <StackPanel Orientation="Horizontal" RelativePanel.Below="panelListView" >
             <AppBarButton Name="btnActualizar" Label="Actualizar" Icon="Upload"></AppBarButton>
             <AppBarButton Name="btnInsertar" Label="Insertar" Icon="Add"></AppBarButton>
         </StackPanel>
+        <TextBox Name="txtFechaNacimiento" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBox>
     </RelativePanel>
 </Page>
