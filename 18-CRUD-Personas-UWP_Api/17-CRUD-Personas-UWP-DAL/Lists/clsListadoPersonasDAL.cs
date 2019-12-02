@@ -8,6 +8,7 @@ using _17_CRUD_Personas_UWP_Entities;
 using _17_CRUD_Personas_UWP_DAL.Connections;
 using System.Collections.ObjectModel;
 using Windows.Web.Http;
+using Newtonsoft.Json;
 
 namespace _17_CRUD_Personas_UWP_DAL.Lists
 {
@@ -23,28 +24,33 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
             HttpClient cliente = new HttpClient();
 
             //string cadena = clsMyConnection.getUriBase() + "PersonaApi/";
-            string cadena = clsMyConnection.getUriBase();
+            string cadena = $"{clsMyConnection.getUriBase()}/Persona";
 
             Uri requestUri = new Uri(cadena);
 
             //Send the GET request asynchronously and retrieve the response as a string.
-            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
             string httpResponseBody = "";
 
             try
             {
                 //Send the GET request
                 httpResponse = await cliente.GetAsync(requestUri);
-                
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
                     httpResponse.EnsureSuccessStatusCode();
                     httpResponseBody = await httpResponse.Content.ReadAsStringAsync(); //devuelve archivo Json, por lo que hay que convertirlo a Listado normal
-                    var lista  = JsonConvert.DeserializeObject<List<clsPersona>>(httpResponse); //convierto el archivo Json a una lista de personas
-                
-                
+                    var lista = JsonConvert.DeserializeObject<List<clsPersona>>(httpResponseBody); //convierto el archivo Json a una lista de personas
+                }
 
-            }catch(Exception e)
+
+
+            }
+            catch(Exception e) //Mensaje de error
             {
-                httpResponseBody = "Error: " + e.HResult.ToString("X") + " Message: " + e.Message;
+                //httpResponseBody = "Error: " + e.HResult.ToString("X") + " Message: " + e.Message;
+                httpResponseBody = $"Error: {e.HResult.ToString("X")} +  Message: {e.Message}";
             }
 
             return listadoPersonas;
