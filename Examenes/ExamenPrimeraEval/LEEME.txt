@@ -1,0 +1,5 @@
+Falta todo:
+Commands de reservar misión
+Bindings
+
+Como falta los bindings las listas no se ven.

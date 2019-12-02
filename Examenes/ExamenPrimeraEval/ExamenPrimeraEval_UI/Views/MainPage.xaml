@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="ExamenPrimeraEval_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExamenPrimeraEval_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:ExamenPrimeraEval_UI.ViewModels" 
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!--<Page.DataContext>
+        <vm:clsMainPageVM/>
+    </Page.DataContext>-->
+    
+    <RelativePanel>
+        <ListView Name="listaSuperHeores" ItemsSource="{Binding ListadoSuperHeroes}" SelectedItem="{Binding SuperHeroeSeleccionado}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding NombreSuperHeroe}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Name="listaMisiones" RelativePanel.RightOf="listaSuperHeores">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Name="descripcionMision" RelativePanel.RightOf="listaMisiones"></TextBlock>
+
+        <TextBlock Name="lblObservaciones" Text="Observaciones:" RelativePanel.Below="listaSuperHeores"></TextBlock>
+        <TextBox Name="txtObservaciones" RelativePanel.Below="lblObservaciones"></TextBox>
+
+        <Button Name="btnReservarMision" Content="Reservar Misión" RelativePanel.Below="txtObservaciones"></Button>
+
+
+
+    </RelativePanel>
+</Page>
