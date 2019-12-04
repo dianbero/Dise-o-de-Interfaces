@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        
+        <vm:clsMainPageVM></vm:clsMainPageVM>
     </Page.DataContext>
 
     <RelativePanel>

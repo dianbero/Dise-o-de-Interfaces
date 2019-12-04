@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _19_ChatClientUWP.Models
 {
-    public class clsMensaje
+    public class clsMensaje 
     {
         public string name { get; set; }
         public string message { get; set; }
