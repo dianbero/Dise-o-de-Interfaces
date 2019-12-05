@@ -14,15 +14,15 @@
     </Page.DataContext>
 
     <RelativePanel>
-        <TextBox x:Name="name" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"></TextBox>
-        <ListView x:Name="lv" ItemsSource="{Binding Messages}" RelativePanel.Above="rp" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="name">
+        <TextBox x:Name="name" Text="{Binding MensajeChat.name}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"></TextBox>
+        <ListView x:Name="lv" ItemsSource="{Binding ListaMensajes}" RelativePanel.Above="rp" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="name">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ChatMessage">
+                <DataTemplate >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>
-                        <Run Text="{x:Bind Username}"></Run>
+                        <Run Text="{Binding name}"></Run>
                         <Run Text=": "></Run>
-                        <Run Text="{x:Bind Message}"></Run>
+                        <Run Text="{Binding message}"></Run>
                         </TextBlock>
 
                     </StackPanel>
@@ -31,8 +31,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <RelativePanel x:Name="rp" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <TextBox x:Name="text" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="send" ></TextBox>
-            <Button x:Name="send" RelativePanel.AlignRightWithPanel="True" Content="Send" Click="send_Click"></Button>
+            <TextBox x:Name="text" Text="{Binding MensajeChat.message}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="send" ></TextBox>
+            <Button x:Name="send" RelativePanel.AlignRightWithPanel="True" Content="Send" Click="send_Click"></Button> <!--Falta command-->
         </RelativePanel>
     </RelativePanel>
 </Page>

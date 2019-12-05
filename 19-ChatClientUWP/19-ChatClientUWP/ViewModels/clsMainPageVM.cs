@@ -12,13 +12,15 @@ namespace _19_ChatClientUWP.ViewModels
 {
     class clsMainPageVM 
     {
-        //falta commands
-
+        public clsMainPageVM()
+        {
+            SignalR();
+        }
 
         public ObservableCollection<clsMensaje> ListaMensajes { get; set; } = new ObservableCollection<clsMensaje>();
-
         private HubConnection conn;
         private IHubProxy proxy;
+        private clsMensaje mensajeChat; //Mensaje que envío yo al servidor
 
 
         private void SignalR()
@@ -33,6 +35,7 @@ namespace _19_ChatClientUWP.ViewModels
                        
         }
 
+
         public void Broadcast(string nombre, string mensaje)
         {
             proxy.Invoke("Send", nombre, mensaje);
@@ -41,7 +44,7 @@ namespace _19_ChatClientUWP.ViewModels
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                clsMensaje objMensaje = new clsMensaje();
+                clsMensaje objMensaje = new clsMensaje(); //mensaje que te envían otros usuarios
                 objMensaje.name = nombre;
                 objMensaje.message = mensaje;
                 //listView
@@ -60,6 +63,11 @@ namespace _19_ChatClientUWP.ViewModels
         {
             get { return proxy; }
             set { proxy = value; }
+        }
+        public clsMensaje MensajeChat
+        {
+            get { return mensajeChat; }
+            set { mensajeChat = value; }
         }
         #endregion
 

@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\19-ChatServer20191205020104 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Index.html" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -103,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatHub.cs" />
-    <Compile Include="clsMensaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
