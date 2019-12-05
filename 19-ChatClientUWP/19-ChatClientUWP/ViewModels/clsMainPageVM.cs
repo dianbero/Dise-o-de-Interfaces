@@ -71,6 +71,13 @@ namespace _19_ChatClientUWP.ViewModels
         }
         #endregion
 
+        #region Commands
+        public DelegateCommand execute()
+        {
+
+        }
+        #endregion
+
 
     }
 }
