@@ -13,7 +13,7 @@ namespace _19_ChatServer
         public void Configuration(IAppBuilder app)
         {
             // Para obtener más información sobre cómo configurar la aplicación, visite https://go.microsoft.com/fwlink/?LinkID=316888
-            app.MapSignalR();
+            app.MapSignalR(); //La app mapea mis asignaciones de signalR
         }
     }
 }

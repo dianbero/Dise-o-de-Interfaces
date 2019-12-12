@@ -27,7 +27,7 @@ namespace _19_ChatServer
         public void Send(string name, string message)
         {
             // Call the broadcastMessage method to update clients.
-            Clients.All.broadcastMessage(name, message); //Esto es código del cliente
+            Clients.All.broadcastMessage(name, message); //Esto es código del cliente que recibe name y message
         }
     }
 }
