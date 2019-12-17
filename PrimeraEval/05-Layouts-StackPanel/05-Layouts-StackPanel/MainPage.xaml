@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="_05_Layouts_StackPanel.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_05_Layouts_StackPanel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Border BorderThickness="10" BorderBrush="DarkViolet" CornerRadius="30">
+        <VariableSizedWrapGrid HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+            <Button Name="botonHelloWorld" Height="50" HorizontalAlignment="Center" Margin="0,30,0,10" Click="BotonHelloWorld_Click">Hello World with Padding</Button>
+            <Button Name="boton2" Height="50" HorizontalAlignment="Center" >Button2</Button>
+            <Button Name="boton3" Height="50" HorizontalAlignment="Center" Margin="10">Boton3</Button>
+            <Button Name="botonHelloAgain" HorizontalAlignment="Center">Another Hello</Button>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                
+                <TextBlock HorizontalAlignment="Center" Margin="20">Nombre:</TextBlock>
+                <TextBox Name="txtNombre" HorizontalAlignment="Center" Margin="10"></TextBox>
+            </StackPanel>
+            <AppBarButton HorizontalAlignment="Center">Aceptar</AppBarButton>
+        </VariableSizedWrapGrid>
+        
+        
+    </Border>
+    <!--Añadir botón de guardar (AppBarButton)-->
+</Page>

@@ -49,12 +49,11 @@ namespace _19_ChatClientUWP.ViewModels
 
         private void SignalR()
         {
-            //TODO terminar
-            //conn = new HubConnection("http://localhost:53376/"); //instancia conexión
+            //conn = new HubConnection("http://localhost:53376/"); 
 
-            conn = new HubConnection("https://19-chatserver20191205020104.azurewebsites.net/");
+            conn = new HubConnection("https://19-chatserver20191205020104.azurewebsites.net/"); //instancia conexión
             proxy = conn.CreateHubProxy("ChatHub"); //ChatHub en proyecto ChatServer
-            conn.Start(); //empieza conexión
+            conn.Start(); //Inicia la conexión
 
             //Lo que va a hacer cuando reciba el mensaje
             proxy.On<string, string>("broadcastMessage", OnMessage);
@@ -86,8 +85,7 @@ namespace _19_ChatClientUWP.ViewModels
 
        
 
-        #region Commands
-        
+        #region Commands      
 
         private void Enviar()
         {

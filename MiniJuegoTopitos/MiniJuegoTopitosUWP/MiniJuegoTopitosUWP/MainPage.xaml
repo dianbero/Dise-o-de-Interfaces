@@ -8,7 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <RelativePanel>
+        <StackPanel Name="panelPlayer1" Orientation="Vertical" RelativePanel.LeftOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <TextBox Name="namePlayer1" Text="Player 1" Margin="0,0,0,50" FontSize="30" ></TextBox>
+            <TextBlock Name="ptsPlayer1" Text="Points Player 1" FontSize="30" TextWrapping="Wrap" MaxHeight="45" MaxWidth="100"></TextBlock>
+        </StackPanel>
 
-    </Grid>
+        <StackPanel Name="panelPlayer2" Orientation="Vertical" RelativePanel.RightOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <TextBox Name="namePlayer2" Text="Player 2" Margin="0,0,0,50" FontSize="30"></TextBox>
+            <TextBlock Name="ptsPlayer2" Text="Points Player 2" FontSize="30" TextWrapping="Wrap"  MaxHeight="45" MaxWidth="100"></TextBlock>
+        </StackPanel>
+
+        <GridView Name="table" Margin="500" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"> 
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <!--<Image Name="imgTopo"></Image>-->
+                    <TextBlock Text="HOLA QUE PASA TRON"></TextBlock>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="4"></ItemsWrapGrid>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+    </RelativePanel>
 </Page>
