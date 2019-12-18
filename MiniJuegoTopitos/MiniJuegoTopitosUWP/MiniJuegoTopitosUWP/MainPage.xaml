@@ -6,7 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:MiniJuegoTopitosUWP.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:clsMainPageVM></vm:clsMainPageVM>
+    </Page.DataContext>
 
     <RelativePanel>
         <StackPanel Name="panelPlayer1" Orientation="Vertical" RelativePanel.LeftOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
@@ -18,12 +23,14 @@
             <TextBox Name="namePlayer2" Text="Player 2" Margin="0,0,0,50" FontSize="30"></TextBox>
             <TextBlock Name="ptsPlayer2" Text="Points Player 2" FontSize="30" TextWrapping="Wrap"  MaxHeight="45" MaxWidth="100"></TextBlock>
         </StackPanel>
+        <!--<Image Name="imgTopo" Height="500" Source="/Assets/Imagen_Topo/Topo2.jpg" />-->
 
-        <GridView Name="table" Margin="500" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"> 
+        <GridView Name="table" Grid.Column="4" Margin="500" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <!--<Image Name="imgTopo"></Image>-->
-                    <TextBlock Text="HOLA QUE PASA TRON"></TextBlock>
+                    <Image Name="imgTopo" 
+                           ></Image>
+                    <!--<TextBlock Text="HOLA QUE PASA TRON"></TextBlock>-->
                 </DataTemplate>
             </GridView.ItemTemplate>
             <GridView.ItemsPanel>
