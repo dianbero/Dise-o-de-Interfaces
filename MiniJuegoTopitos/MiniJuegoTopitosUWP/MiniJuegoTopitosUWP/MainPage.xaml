@@ -15,7 +15,7 @@
 
     <RelativePanel>
         <StackPanel Name="panelPlayer1" Orientation="Vertical" RelativePanel.LeftOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-            <TextBox Name="namePlayer1" Text="Player 1" Margin="0,0,0,50" FontSize="30" ></TextBox>
+            <TextBox Name="namePlayer1" Text="Player 1" Margin="0,0,0,50" FontSize="30"></TextBox>
             <TextBlock Name="ptsPlayer1" Text="Points Player 1" FontSize="30" TextWrapping="Wrap" MaxHeight="45" MaxWidth="100"></TextBlock>
         </StackPanel>
 
@@ -23,25 +23,23 @@
             <TextBox Name="namePlayer2" Text="Player 2" Margin="0,0,0,50" FontSize="30"></TextBox>
             <TextBlock Name="ptsPlayer2" Text="Points Player 2" FontSize="30" TextWrapping="Wrap"  MaxHeight="45" MaxWidth="100"></TextBlock>
         </StackPanel>
-        <!--<Image Name="imgTopo" Height="500" Source="/Assets/Imagen_Topo/Topo2.jpg" />-->
 
-        <GridView Name="table" ItemsSource="{Binding ListaTopos}"  SelectedItem="{Binding TopoGolpeado}"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
-            <ColumnDefinition>
-                <ColumnDefinition Width="Auto"/>
-            </ColumnDefinition>
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                        </Grid.ColumnDefinitions>
-                    
-                    <!--Elemento-->
-                    <Image Name="fotoTopo" Source="{Binding FotoTopito, Mode=TwoWay}"></Image>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
+            <GridView  Name="table" ItemsSource="{Binding ListaTopos}"  SelectedIndex="{Binding TopoGolpeado.Posicion}"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                <GridView.ItemTemplate>
+                    <DataTemplate>                    
+                        <!--Elemento-->
+                        <Image Name="fotoTopo" Source="{Binding FotoTopito}"></Image>               
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="4"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
             
-        </GridView>
-        
+            </GridView>
+
+
     </RelativePanel>
 </Page>

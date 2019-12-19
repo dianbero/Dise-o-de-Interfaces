@@ -1,4 +1,5 @@
 ﻿using MiniJuegoTopitosUWP.Models.Entities;
+using MiniJuegoTopitosUWP.Models.Utiles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -63,6 +64,10 @@ namespace MiniJuegoTopitosUWP.ViewModels
         {
             //comandoMostrarTopo = 
             //uriFoto = new Uri("ms-appx:///Assets/Imagen_Topo/Topo2.jpg");
+
+            //TODO rellenar la lista
+            clsUtil obtenerFoto = new clsUtil();
+            //this.UriFoto = obtenerFoto.
         }
 
         #endregion

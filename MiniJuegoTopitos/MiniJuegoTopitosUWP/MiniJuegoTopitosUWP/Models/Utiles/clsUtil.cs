@@ -10,6 +10,10 @@ namespace MiniJuegoTopitosUWP.Models.Utiles
 {
     public class clsUtil
     {
+        /// <summary>
+        /// Crea lista inicial con topos 
+        /// </summary>
+        /// <returns>Lista de inicio</returns>
         public ObservableCollection<clsTopito> listaCasillasTopo()
         {
             ObservableCollection<clsTopito> listaTopos = new ObservableCollection<clsTopito>();
@@ -21,6 +25,10 @@ namespace MiniJuegoTopitosUWP.Models.Utiles
             return listaTopos;
         }
 
+        /// <summary>
+        /// Asigna al topo que se mostrará en pantalla una posición
+        /// </summary>
+        /// <returns>Lista con un topo en una posicion aleatoria</returns>
         public ObservableCollection<clsTopito> asignarPosiciontopo()
         {
             int random = clsPartida.asignarPosicionTopo();

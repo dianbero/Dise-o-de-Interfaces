@@ -11,7 +11,6 @@ namespace MiniJuegoTopitosUWP.Models
     {
         /*Funciones:
          - Calcular puntos de jugadores
-         - Generar posición aleatoria (no sé si es demasiado sencilla para hacer un solo método o me estoy saltando algo)
          -Calcular tiempo en que aparace topo
          -*/
         private static Timer timer;
