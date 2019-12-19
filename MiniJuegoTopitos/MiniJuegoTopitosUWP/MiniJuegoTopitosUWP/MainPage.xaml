@@ -25,19 +25,23 @@
         </StackPanel>
         <!--<Image Name="imgTopo" Height="500" Source="/Assets/Imagen_Topo/Topo2.jpg" />-->
 
-        <GridView Name="table" Grid.Column="4" Margin="500" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+        <GridView Name="table" ItemsSource="{Binding ListaTopos}"  SelectedItem="{Binding TopoGolpeado}"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+            <ColumnDefinition>
+                <ColumnDefinition Width="Auto"/>
+            </ColumnDefinition>
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Image Name="imgTopo" 
-                           ></Image>
-                    <!--<TextBlock Text="HOLA QUE PASA TRON"></TextBlock>-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                        </Grid.ColumnDefinitions>
+                    
+                    <!--Elemento-->
+                    <Image Name="fotoTopo" Source="{Binding FotoTopito, Mode=TwoWay}"></Image>
+                    </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="4"></ItemsWrapGrid>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
+            
         </GridView>
+        
     </RelativePanel>
 </Page>

@@ -125,6 +125,7 @@
     <Compile Include="Models\clsPartida.cs" />
     <Compile Include="Models\Entities\clsJugador.cs" />
     <Compile Include="Models\Entities\clsTopito.cs" />
+    <Compile Include="Models\Utiles\clsUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\clsMainPageVM.cs" />
     <Compile Include="ViewModels\clsVMBase.cs" />

@@ -8,8 +8,10 @@ namespace MiniJuegoTopitosUWP.Models.Entities
 {
     public class clsTopito
     {
-        private int posicion;
+        private int posicionCasilla;
         private bool isGolpeado;
+        private Uri fotoTopito;
+        private bool isVisible;
 
         public clsTopito()
         {
@@ -17,22 +19,42 @@ namespace MiniJuegoTopitosUWP.Models.Entities
             this.IsGolpeado = false;
         }
 
-        public clsTopito(int posicion, bool isGolpeado)
+        public clsTopito(int posicion, bool isGolpeado, bool isVisible)
         {
             this.Posicion = posicion;
             this.IsGolpeado = isGolpeado;
+            this.IsVisible = isVisible;
+        }
+        //Constructor con foto
+        public clsTopito(int posicion, bool isGolpeado, Uri fotoTopito, bool isVisible)
+        {
+            this.Posicion = posicion;
+            this.IsGolpeado = isGolpeado;
+            this.FotoTopito = fotoTopito;
+            this.IsVisible = isVisible;
         }
         //Propiedades públicas
         public int Posicion
         {
-            get { return posicion; }
-            set { posicion = value; }
+            get { return posicionCasilla; }
+            set { posicionCasilla = value; }
         }
 
         public bool IsGolpeado
         {
             get { return isGolpeado; }
             set { isGolpeado = value; }
+        }
+
+        public Uri FotoTopito
+        {
+            get { return fotoTopito; }
+            set { fotoTopito = value; }
+        }
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set { isVisible = value; }
         }
     }
 }
