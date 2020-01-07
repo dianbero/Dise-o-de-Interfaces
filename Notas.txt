@@ -1,0 +1,2 @@
+rutas foto:
+listado.Add(new Uri("ms-appx:///Assets/foto.jpg"));

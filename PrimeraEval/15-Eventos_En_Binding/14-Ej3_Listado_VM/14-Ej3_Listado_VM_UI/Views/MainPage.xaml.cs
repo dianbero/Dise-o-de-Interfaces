@@ -29,6 +29,19 @@ namespace _14_Ej3_Listado_VM_UI
             this.InitializeComponent();
             //Declaro objeto ViewModel
             this.ViewModel = new clsMainPageVM(); //para usarlo en xaml
-        }        
+
+            //No funciona, no hace nada:
+            TextBox tbNombre = FindName("txtNombre") as TextBox;
+            TextBox tbApellido = FindName("txtApellido") as TextBox;
+            TextBox tbEdad = FindName("txtEdad") as TextBox;
+
+            if (ViewModel.ListadoPersona.Count == 0)
+            {
+                tbNombre.Text = "";
+                tbApellido.Text = "";
+                tbEdad.Text = "";
+            }
+        }
+
     }
 }

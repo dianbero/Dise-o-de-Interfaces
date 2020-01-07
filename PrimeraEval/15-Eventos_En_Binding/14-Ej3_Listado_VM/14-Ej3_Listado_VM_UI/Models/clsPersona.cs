@@ -5,15 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _14_Ej3_Listado_VM_Entitites
+namespace _14_Ej3_Listado_VM_UI.Models
 {
     public class clsPersona //: INotifyPropertyChanged
     {
         //Atributos privados
         private string nombre;
-      
-
-        //Constructor por defecto
         public clsPersona()
         {
             this.Nombre = "Diana";
@@ -28,6 +25,7 @@ namespace _14_Ej3_Listado_VM_Entitites
             this.Edad = edad;
                         
         }
+
         //Propiedades públicas
         public string Nombre
         {

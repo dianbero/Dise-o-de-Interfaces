@@ -15,7 +15,7 @@ namespace MiniJuegoTopitosUWP.Models
          -*/
         private static Timer timer;
 
-        public int sumarPuntos(int puntos, bool isGanadorTurno)
+        public static int sumarPuntos(int puntos, bool isGanadorTurno)
         {            
             if (isGanadorTurno)
             {
@@ -39,7 +39,7 @@ namespace MiniJuegoTopitosUWP.Models
         public static int asignarPosicionTopo()
         {
             Random random = new Random();
-            int posicion = random.Next(17); //Randoms de 0 - 16
+            int posicion = random.Next(16); //Randoms de 0 - 16
             return posicion;
         }
     }

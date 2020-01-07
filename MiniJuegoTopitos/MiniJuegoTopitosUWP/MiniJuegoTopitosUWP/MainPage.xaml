@@ -14,32 +14,27 @@
     </Page.DataContext>
 
     <RelativePanel>
-        <StackPanel Name="panelPlayer1" Orientation="Vertical" RelativePanel.LeftOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-            <TextBox Name="namePlayer1" Text="Player 1" Margin="0,0,0,50" FontSize="30"></TextBox>
+        <StackPanel Name="panelPlayer1" MinWidth="50" Orientation="Vertical" RelativePanel.LeftOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" >
+            <TextBlock Name="namePlayer1" Text="Player 1" Margin="0,0,0,50" FontSize="30" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Name="ptsPlayer1" Text="Points Player 1" FontSize="30" TextWrapping="Wrap" MaxHeight="45" MaxWidth="100"></TextBlock>
         </StackPanel>
 
-        <StackPanel Name="panelPlayer2" Orientation="Vertical" RelativePanel.RightOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <TextBox Name="namePlayer2" Text="Player 2" Margin="0,0,0,50" FontSize="30"></TextBox>
+        <StackPanel Name="panelPlayer2" MinWidth="50" Orientation="Vertical" RelativePanel.RightOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <TextBlock Name="namePlayer2" Text="Player 2" Margin="0,0,0,50" FontSize="30" HorizontalAlignment="Center"></TextBlock>
             <TextBlock Name="ptsPlayer2" Text="Points Player 2" FontSize="30" TextWrapping="Wrap"  MaxHeight="45" MaxWidth="100"></TextBlock>
         </StackPanel>
 
-            <GridView  Name="table" ItemsSource="{Binding ListaTopos}"  SelectedIndex="{Binding TopoGolpeado.Posicion}"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+            <GridView Name="table"  BorderThickness="5" Width="630" BorderBrush="Aqua" ItemsSource="{Binding ListaTopos}" SelectedItem="{Binding TopoGolpeado}"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
                 <GridView.ItemTemplate>
-                    <DataTemplate>                    
+                    <DataTemplate>
                         <!--Elemento-->
-                        <Image Name="fotoTopo" Source="{Binding FotoTopito}"></Image>               
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="4"/>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Name="fotoTopo"  Source="{Binding FotoTopito}" Width="150"></Image>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
             
             </GridView>
-
 
     </RelativePanel>
 </Page>

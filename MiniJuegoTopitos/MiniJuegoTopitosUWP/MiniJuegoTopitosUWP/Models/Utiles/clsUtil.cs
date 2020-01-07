@@ -13,30 +13,40 @@ namespace MiniJuegoTopitosUWP.Models.Utiles
         /// <summary>
         /// Crea lista inicial con topos 
         /// </summary>
-        /// <returns>Lista de inicio</returns>
-        public ObservableCollection<clsTopito> listaCasillasTopo()
+        /// <returns>ObservableCollection<clsTopito> listaToposInicial: Lista de inicio</returns>
+        public ObservableCollection<clsTopito> listaCasillasTopoInicial()
         {
-            ObservableCollection<clsTopito> listaTopos = new ObservableCollection<clsTopito>();
-            for(int posicionTopo=0; posicionTopo<16; posicionTopo++)
+            ObservableCollection<clsTopito> listaToposInicial = new ObservableCollection<clsTopito>();
+            for (int posicionTopo = 0; posicionTopo < 16; posicionTopo++)
             {
-                listaTopos.Add(new clsTopito(posicionTopo, false, false)); 
+                //listaToposInicial.Add(new clsTopito(posicionTopo, false, true));
+                //listaToposInicial.Add(new clsTopito(posicionTopo, false, new Uri("ms-appx:///Assets/Imagen_Topo/Topo2.jpg"), true));
+                listaToposInicial.Add(new clsTopito());
             }
-
-            return listaTopos;
+            return listaToposInicial;
         }
 
+        //Para una prueba
+        //public ObservableCollection<clsTopito> listaCasillasTopoInicial()
+        //{
+        //    ObservableCollection<clsTopito> listaToposInicial = new ObservableCollection<clsTopito>();
+        //    listaToposInicial.Add(new clsTopito(1, false, new Uri("ms-appx:///Assets/Imagen_Topo/Topo2.jpg"), true));
+        //    listaToposInicial.Add(new clsTopito(2, false, new Uri("ms-appx:///Assets/Imagen_Topo/PokeTopo.jpg"), true));
+        //    listaToposInicial.Add(new clsTopito(3, false, new Uri("ms-appx:///Assets/Imagen_Topo/PokeTopo.jpg"), true));
+        //    return listaToposInicial;
+        //}
+
         /// <summary>
-        /// Asigna al topo que se mostrará en pantalla una posición
+        /// Asigna al topo que se mostrará en pantalla una posición aleatoria
         /// </summary>
-        /// <returns>Lista con un topo en una posicion aleatoria</returns>
-        public ObservableCollection<clsTopito> asignarPosiciontopo()
+        /// <returns>ObservableCollection<clsTopito> listaTopos: Lista con un topo en una posicion aleatoria</returns>
+        public ObservableCollection<clsTopito> listaConPosicionTopoAsignada()
         {
-            int random = clsPartida.asignarPosicionTopo();
+            int random = clsPartida.asignarPosicionTopo(); //Asigna posición aleatoria
 
-            ObservableCollection<clsTopito> listaTopos = new ObservableCollection<clsTopito>();
-            listaTopos[random].IsVisible = true;
+            ObservableCollection<clsTopito> listaTopos = listaCasillasTopoInicial();
+            listaTopos[random].IsGolpeado = true;
             return listaTopos;
-
         }
     }
 }

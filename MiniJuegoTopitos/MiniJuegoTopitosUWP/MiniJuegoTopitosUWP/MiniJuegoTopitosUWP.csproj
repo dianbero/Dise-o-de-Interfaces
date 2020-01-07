@@ -138,6 +138,7 @@
     <None Include="MiniJuegoTopitosUWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Imagen_Topo\PokeTopo.png" />
     <Content Include="Assets\Imagen_Topo\Topo1.jpg" />
     <Content Include="Assets\Imagen_Topo\Topo2.jpg" />
     <Content Include="Assets\Imagen_Topo\Topo4.jpg" />
@@ -161,6 +162,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client">
+      <Version>2.4.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
     </PackageReference>

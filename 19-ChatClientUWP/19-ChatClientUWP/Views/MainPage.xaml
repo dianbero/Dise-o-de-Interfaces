@@ -32,7 +32,7 @@
         </ListView>
         <RelativePanel x:Name="rp" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <TextBox x:Name="text" Text="{Binding MensajeChat.message, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="send" ></TextBox>
-            <Button x:Name="send" Command="{Binding ComandoEnviar}" RelativePanel.AlignRightWithPanel="True" Content="Send" ></Button> <!--Falta command-->
+            <Button x:Name="send" Command="{Binding ComandoEnviar}" RelativePanel.AlignRightWithPanel="True" Content="Send" ></Button> 
         </RelativePanel>
     </RelativePanel>
 </Page>

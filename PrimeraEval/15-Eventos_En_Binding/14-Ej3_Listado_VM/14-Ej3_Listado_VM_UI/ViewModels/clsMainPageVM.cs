@@ -1,4 +1,5 @@
-﻿using _14_Ej3_Listado_Entities;
+﻿//using _14_Ej3_Listado_Entities;
+using _14_Ej3_Listado_VM_UI.Models;
 using _14_Ej3_Listado_VM_UI.Models.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -34,10 +35,7 @@ namespace _14_Ej3_Listado_VM_UI.ViewModels
 
         public void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            //this.PersonaSeleccionada.Nombre = "";
-            //this.PersonaSeleccionada.Apellido = "";
-            //this.PersonaSeleccionada.Edad = 0;
-            NotifyPropertyChanged("PersonaSeleccionada");
+            //NotifyPropertyChanged("PersonaSeleccionada");
             ListadoPersona.Remove(this.personaSeleccionada);
             
         }
@@ -57,7 +55,7 @@ namespace _14_Ej3_Listado_VM_UI.ViewModels
                 if (PersonaSeleccionada != value) //Para evitar problema StackOverFlow
                 {
                     personaSeleccionada = value;
-                    NotifyPropertyChanged("PersonaSeleccionada");
+                    NotifyPropertyChanged("PersonaSeleccionada");                    
                 }
                 //NotifyPropertyChanged("PersonaSeleccionada"); //Es lo que va cambiando //Se manda el nombre de la propiedad pública //TODO: falta implementar el método
             }
@@ -70,7 +68,9 @@ namespace _14_Ej3_Listado_VM_UI.ViewModels
         public ObservableCollection<clsPersona> ListadoPersona
         {
             get{ return listadoPersona; }
-            set{ listadoPersona = value; }
+            set{
+                listadoPersona = value;
+            }
         }
 
     }

@@ -8,17 +8,21 @@ namespace MiniJuegoTopitosUWP.Models.Entities
 {
     public class clsTopito
     {
-        private int posicionCasilla;
+        private int posicion;
         private bool isGolpeado;
-        private Uri fotoTopito;
+        //Atributos que no tengo claro 
+        private Uri fotoTopito; //La foto será siempre la misma, por lo que no tiene por qué ser propia de clsTopito
         private bool isVisible;
 
         public clsTopito()
         {
             this.Posicion = 0;
             this.IsGolpeado = false;
+            this.FotoTopito = new Uri("ms-appx:///Assets/Imagen_Topo/Topo2.jpg");
+            this.IsVisible = false;
         }
 
+        //Constructor sin foto
         public clsTopito(int posicion, bool isGolpeado, bool isVisible)
         {
             this.Posicion = posicion;
@@ -33,11 +37,12 @@ namespace MiniJuegoTopitosUWP.Models.Entities
             this.FotoTopito = fotoTopito;
             this.IsVisible = isVisible;
         }
-        //Propiedades públicas
+
+        #region Propiedades Públicas
         public int Posicion
         {
-            get { return posicionCasilla; }
-            set { posicionCasilla = value; }
+            get { return posicion; }
+            set { posicion = value; }
         }
 
         public bool IsGolpeado
@@ -49,6 +54,7 @@ namespace MiniJuegoTopitosUWP.Models.Entities
         public Uri FotoTopito
         {
             get { return fotoTopito; }
+
             set { fotoTopito = value; }
         }
         public bool IsVisible
@@ -56,5 +62,6 @@ namespace MiniJuegoTopitosUWP.Models.Entities
             get { return isVisible; }
             set { isVisible = value; }
         }
+        #endregion
     }
 }

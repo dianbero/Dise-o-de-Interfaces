@@ -82,9 +82,6 @@ namespace _19_ChatClientUWP.ViewModels
             });
         }
 
-
-       
-
         #region Commands      
 
         private void Enviar()

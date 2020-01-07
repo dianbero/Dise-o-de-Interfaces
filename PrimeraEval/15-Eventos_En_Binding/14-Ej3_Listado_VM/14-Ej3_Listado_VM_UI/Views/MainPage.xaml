@@ -14,12 +14,14 @@
     </Page.DataContext>-->
    
     <RelativePanel>
-        <ListView Name="panelListView" ItemsSource="{x:Bind ViewModel.ListadoPersona}" SelectedItem="{Binding Path=ViewModel.PersonaSeleccionada, Mode=TwoWay}">
+        <!--<ListView Name="panelListView" ItemsSource="{Binding ListadoPersona}" SelectedItem="{Binding Path=ViewModel.PersonaSeleccionada, Mode=TwoWay}">-->
+        <ListView Name="panelListView" Width="100" ItemsSource="{x:Bind ViewModel.ListadoPersona}" SelectedItem="{x:Bind ViewModel.PersonaSeleccionada, Mode=TwoWay}">
             <!--RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock> <!--nombre de la lista que tenemos guardada-->                       
+                        <TextBlock Text="{Binding Nombre, Mode=TwoWay}" Margin="5,0,0,0"></TextBlock> <!--nombre de la lista que tenemos guardada-->
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -43,9 +45,12 @@
             <TextBlock Name="lblApellido" Text="Apellidos: " Grid.Row="1" Grid.Column="0" Margin="5"></TextBlock>
             <TextBlock Name="lblFechaNacimiento" Text="Fecha de Nacimiento: " Grid.Row="2" Grid.Column="0" Margin="5"></TextBlock>
 
-            <TextBox Name="txtNombre" Margin="10" Text="{x:Bind ViewModel.ListadoPersona, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox>
-            <TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
-            <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+            <!--<TextBox Name="txtNombre" Margin="10" Text="{x:Bind ViewModel.ListadoPersona, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox>-->
+            <TextBox Name="txtNombre" Margin="10" Text="{x:Bind ViewModel.PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBox Name="txtApellido" Text="{x:Bind Path=ViewModel.PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad" Text="{x:Bind ViewModel.PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+            <!--<TextBox Name="txtApellido" Text="{Binding Path=PersonaSeleccionada.Apellido, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Name="txtEdad" Text="{Binding Path=PersonaSeleccionada.Edad, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>-->
 
 
             <!--<TextBox Name="txtNombre" Margin="10" Text="{Binding Path=PersonaSeleccionada.Nombre, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox> --><!--Se puede cambiar a Explicit--><!--
