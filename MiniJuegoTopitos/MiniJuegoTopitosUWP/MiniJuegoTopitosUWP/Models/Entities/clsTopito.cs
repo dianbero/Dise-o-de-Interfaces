@@ -11,7 +11,7 @@ namespace MiniJuegoTopitosUWP.Models.Entities
         private int posicion;
         private bool isGolpeado;
         //Atributos que no tengo claro 
-        private Uri fotoTopito; //La foto será siempre la misma, por lo que no tiene por qué ser propia de clsTopito
+        private Uri fotoTopito; 
         private bool isVisible;
 
         public clsTopito()
