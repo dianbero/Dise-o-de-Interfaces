@@ -18,8 +18,8 @@ namespace MiniJuegoTopitosUWP.Models
         /// <summary>
         /// Método que suma un punto al gugador ganador del turno
         /// </summary>
-        /// <param name="puntos"></param>
-        /// <param name="isGanadorTurno"></param>
+        /// <param name="puntos">Puntos actuales del jugador</param>
+        /// <param name="isGanadorTurno">boolean que indica si ha ganado el turno para contar el punto</param>
         /// <returns></returns>
         public static int sumarPuntos(int puntos, bool isGanadorTurno)
         {            
@@ -39,7 +39,7 @@ namespace MiniJuegoTopitosUWP.Models
         //public static void asignarPosicionTopo(Object source, ElapsedEventArgs e)
         //{
         //    Random random = new Random();
-        //    int posicion = random.Next(17); //Randoms de 0 - 16
+        //    int posicion = random.Next(16); //Randoms de 0 - 16
         //}
 
         /// <summary>

@@ -16,12 +16,12 @@
     <RelativePanel>
         <StackPanel Name="panelPlayer1" MinWidth="50" Orientation="Vertical" RelativePanel.LeftOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" >
             <TextBlock Name="namePlayer1" Text="Player 1" Margin="0,0,0,50" FontSize="30" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Name="ptsPlayer1" Text="Points Player 1" FontSize="30" TextWrapping="Wrap" MaxHeight="45" MaxWidth="100"></TextBlock>
+            <TextBlock Name="ptsPlayer1" Text="{Binding Jugador.PuntosJugador}" FontSize="30" TextWrapping="Wrap" MaxHeight="45" MaxWidth="200" HorizontalAlignment="Center"></TextBlock>
         </StackPanel>
 
         <StackPanel Name="panelPlayer2" MinWidth="50" Orientation="Vertical" RelativePanel.RightOf="table" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <TextBlock Name="namePlayer2" Text="Player 2" Margin="0,0,0,50" FontSize="30" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Name="ptsPlayer2" Text="Points Player 2" FontSize="30" TextWrapping="Wrap"  MaxHeight="45" MaxWidth="100"></TextBlock>
+            <TextBlock Name="ptsPlayer2" Text="{Binding Jugador.PuntosJugador}" FontSize="30" TextWrapping="Wrap"  MaxHeight="45" MaxWidth="200" HorizontalAlignment="Center"></TextBlock>
         </StackPanel>
 
             <GridView Name="table"  BorderThickness="5" Width="630" BorderBrush="Aqua" ItemsSource="{Binding ListaTopos}" SelectedItem="{Binding TopoGolpeado}"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">

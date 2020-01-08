@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
+using MiniJuegoTopitosUWP.Models;
 using MiniJuegoTopitosUWP.Models.Entities;
 using MiniJuegoTopitosUWP.Models.Utiles;
 using System;
@@ -17,8 +18,10 @@ namespace MiniJuegoTopitosUWP.ViewModels
         private HubConnection conn; //Conexión del hub
         private IHubProxy proxy; //Hub
 
+        //---//
         private Uri uriFoto;
         private DelegateCommand comandoMostrarTopo;
+        private clsJugador jugador;
 
         private ObservableCollection<clsTopito> listaTopos;
         private clsTopito topoGolpeado;
@@ -46,6 +49,7 @@ namespace MiniJuegoTopitosUWP.ViewModels
             }
         }
 
+        
         public clsTopito TopoGolpeado
         {
             get
@@ -58,9 +62,25 @@ namespace MiniJuegoTopitosUWP.ViewModels
                 {
                     topoGolpeado = value;
                     topoGolpeado.IsGolpeado = true;
+                    Jugador.EsGanadorTurno = true;
+
+                    Jugador.PuntosJugador = clsPartida.sumarPuntos(Jugador.PuntosJugador, Jugador.EsGanadorTurno);
+                    NotifyPropertyChanged("Jugador");
                     //topoGolpeado.FotoTopito = AsignarFotoCasilla();
-                    //NotifyPropertyChanged("TopoGolpeado");
+                    NotifyPropertyChanged("TopoGolpeado");
                 }
+            }
+        }
+
+        public clsJugador Jugador
+        {
+            get
+            {
+                return jugador;
+            }
+            set
+            {
+                jugador = value;
             }
         }
 
@@ -73,8 +93,8 @@ namespace MiniJuegoTopitosUWP.ViewModels
             //SignalR();
             //Relleno la lista de las casillas 
             clsUtil listaCasillasConTopo = new clsUtil();
-            this.ListaTopos = listaCasillasConTopo.listaConPosicionTopoAsignada();
-            //this.ListaTopos = listaCasillasConTopo.listaCasillasTopoInicial();
+            //this.ListaTopos = listaCasillasConTopo.listaConPosicionTopoAsignada();
+            this.ListaTopos = listaCasillasConTopo.listaCasillasTopoInicial();
         }
 
         #endregion

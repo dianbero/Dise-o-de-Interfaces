@@ -45,7 +45,7 @@ namespace MiniJuegoTopitosUWP.Models.Utiles
             int random = clsPartida.asignarPosicionTopo(); //Asigna posición aleatoria
 
             ObservableCollection<clsTopito> listaTopos = listaCasillasTopoInicial();
-            listaTopos[random].IsGolpeado = true;
+            listaTopos[random].IsGolpeado = false;
             return listaTopos;
         }
     }
