@@ -113,6 +113,7 @@ namespace MiniJuegoTopitosUWP.ViewModels
             //proxy.On<string, string>("broadcastMessage", OnMessage);
 
         }
+
         #region Métodos
         public Uri AsignarFotoCasilla()
         {
@@ -127,6 +128,8 @@ namespace MiniJuegoTopitosUWP.ViewModels
             }
             return foto;
         }
+
+
         #endregion
 
         #region Commands
@@ -138,7 +141,6 @@ namespace MiniJuegoTopitosUWP.ViewModels
             proxy.Invoke("Result", Jugador.PuntosJugador, TopoGolpeado.IsGolpeado);
         }
         #endregion
-
 
     }
 }
