@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+using MiniJuegoTopitosUWP.Models.Entities;
 
 namespace MiniJuegoTopitosServer
 {
@@ -13,5 +14,11 @@ namespace MiniJuegoTopitosServer
         {
             Clients.All.hello();
         }
+
+
+        public void Result(int puntosJugador, bool topitoIsGolpeado)
+        {
+            Clients.All.broadcastMessage(puntosJugador, topitoIsGolpeado);
+        } 
     }
 }

@@ -63,21 +63,5 @@ namespace MiniJuegoTopitosUWP.Models.Entities
             set { isVisible = value; }
         }
         #endregion
-
-        #region Métodos
-        public Uri CambiarFotoTopo()
-        {
-            if (isGolpeado)
-            {
-                fotoTopito = new Uri("ms-appx:///Assets/Imagen_Topo/Topo2.jpg");
-            }
-            else
-            {
-                fotoTopito = new Uri("ms-appx:///Assets/Imagen_Topo/PokeTopo.png");
-            }
-
-            return fotoTopito;
-        }
-        #endregion
     }
 }

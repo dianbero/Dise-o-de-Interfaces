@@ -20,11 +20,13 @@ namespace MiniJuegoTopitosUWP.ViewModels
 
         //---//
         private Uri uriFoto;
-        private DelegateCommand comandoMostrarTopo;
+        //private DelegateCommand comandoMostrarTopo;
         private clsJugador jugador;
 
         private ObservableCollection<clsTopito> listaTopos;
         private clsTopito topoGolpeado;
+        //Commands 
+        private DelegateCommand comandoResult;
         #endregion
 
         #region Propiedades Públicas
@@ -62,9 +64,10 @@ namespace MiniJuegoTopitosUWP.ViewModels
                 {
                     topoGolpeado = value;
                     topoGolpeado.IsGolpeado = true;
-                    Jugador.EsGanadorTurno = true;
+                    jugador.EsGanadorTurno = true;
+                    topoGolpeado.FotoTopito = AsignarFotoCasilla();
 
-                    Jugador.PuntosJugador = clsPartida.sumarPuntos(Jugador.PuntosJugador, Jugador.EsGanadorTurno);
+                    jugador.PuntosJugador = clsPartida.sumarPuntos(jugador.PuntosJugador, jugador.EsGanadorTurno);
                     NotifyPropertyChanged("Jugador");
                     //topoGolpeado.FotoTopito = AsignarFotoCasilla();
                     NotifyPropertyChanged("TopoGolpeado");
@@ -95,6 +98,7 @@ namespace MiniJuegoTopitosUWP.ViewModels
             clsUtil listaCasillasConTopo = new clsUtil();
             //this.ListaTopos = listaCasillasConTopo.listaConPosicionTopoAsignada();
             this.ListaTopos = listaCasillasConTopo.listaCasillasTopoInicial();
+            comandoResult = new DelegateCommand(Result);
         }
 
         #endregion
@@ -126,7 +130,13 @@ namespace MiniJuegoTopitosUWP.ViewModels
         #endregion
 
         #region Commands
-        
+        /// <summary>
+        /// Llama al método Result en el servidor para enviar los puntos del jugador y el estado del topo (golpeado o no) a los demás jugadores
+        /// </summary>
+        private void Result()
+        {
+            proxy.Invoke("Result", Jugador.PuntosJugador, TopoGolpeado.IsGolpeado);
+        }
         #endregion
 
 
