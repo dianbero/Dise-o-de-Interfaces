@@ -70,7 +70,8 @@ namespace MiniJuegoTopitosUWP.ViewModels
                     jugador.PuntosJugador = clsPartida.sumarPuntos(jugador.PuntosJugador, jugador.EsGanadorTurno);
                     NotifyPropertyChanged("Jugador");
                     //topoGolpeado.FotoTopito = AsignarFotoCasilla();
-                    NotifyPropertyChanged("TopoGolpeado");
+                    //NotifyPropertyChanged("TopoGolpeado");
+                    NotifyPropertyChanged("ListaTopos");
                 }
             }
         }
