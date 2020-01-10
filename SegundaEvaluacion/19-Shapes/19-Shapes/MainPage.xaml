@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="_19_Shapes.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_19_Shapes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel HorizontalAlignment="Center">
+        <!--<Polyline Name="triangle" Margin="300" RelativePanel.AlignHorizontalCenterWithPanel="True" Stroke="Blue" StrokeThickness="5" Points="10,50 100,-100 200,50 10,50 "/>
+        <Polyline Name="arrow" RelativePanel.Below="triangle" RelativePanel.AlignLeftWith="triangle" Stroke="Blue" StrokeThickness="5" Points="10,50 10,-60 200,-60 280,-2 200,50 10,50"/>
+        <Polyline Name="star" RelativePanel.Below="triangle" RelativePanel.RightOf="triangle" Stroke="Blue" StrokeThickness="5" Points="0,0 80,0 120,-80 160,0 250,0 190,70 230,150 120,120 0,150 50,70 0,0"/>-->
+        <Polyline Name="triangle" Margin="100" Fill="LightBlue" Stroke="Blue" StrokeThickness="5" Points="10,50 100,-100 200,50 10,50 "/>
+        <Polyline Name="arrow" Margin="100" Fill="LightBlue" Stroke="Blue" StrokeThickness="5" Points="10,50 10,-60 200,-60 280,-2 200,50 10,50"/>
+        <!--<Polyline Name="star" Margin="100" Fill="LightBlue" Stroke="Blue" StrokeThickness="5" Points="0,0     80,0     120,-80    160,0    250,0    190,65   220,150   120,115   0,160   50,65   0,0"/>-->
+        <Polyline Name="star" Margin="100" Fill="LightBlue" Stroke="Blue" StrokeThickness="5" Points="0,0     80,0     120,-80    160,0    250,0    190,65   220,150   120,115   0,160   50,65   0,0"/>
+
+
+    </StackPanel>
+</Page>
