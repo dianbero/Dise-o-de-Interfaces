@@ -15,7 +15,10 @@ namespace _20_FindDiffrences.ViewModels
         #region Atributos Privados
         private clsCirculo circuloSeleccionado;
         private ObservableCollection<clsCirculo> listaCirculos;
-        
+        /*Help:
+         https://stackoverflow.com/questions/7177432/how-to-display-items-in-canvas-through-binding
+         */
+
         #endregion
         #region Propiedades Públicas
         public clsCirculo CirculoSeleccionado
