@@ -20,9 +20,7 @@
         <Viewbox Name="boxDiferente" RelativePanel.RightOf="boxOriginal" MaxWidth="500" MaxHeight="500" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0">
             <Image Source="ms-appx:///Assets/Imagenes/imagenDiferente.png"/>
         </Viewbox>
-        <Canvas>
-            
-        </Canvas>
+        <!--Así es como se verían las diferencias-->
          <!--<Canvas Name="Original">
             <Ellipse Width="60" Height="60" Canvas.Left="60" Canvas.Top="190"  Stroke="Black"  StrokeThickness="5"></Ellipse>
             <Ellipse Width="60" Height="60" Canvas.Left="95" Canvas.Top="70"  Stroke="Black"  StrokeThickness="5"></Ellipse>

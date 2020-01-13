@@ -62,12 +62,7 @@ namespace _20_FindDiffrences.Entities
             }
             return circulo;
         }
-
-        public void posicionEnImagen()
-        {
-            Canvas.SetLeft(Circulo, EjeX);
-            Canvas.SetTop(Circulo, EjeY);
-        }
+        
         #endregion
     }
 }
