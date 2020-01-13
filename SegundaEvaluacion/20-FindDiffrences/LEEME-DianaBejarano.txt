@@ -1,0 +1,3 @@
+Fala implementación en Viemodel para bindeo y obviamente el bindeo en el xaml.
+Aún así no tengo claro el planteamiento ni cómo preparar los elementos en el xaml 
+para realizar el bindeo.
