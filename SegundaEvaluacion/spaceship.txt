@@ -1,0 +1,1 @@
+double anitionm, mirar si ellipse tiene propiedad TranslateTransfer
