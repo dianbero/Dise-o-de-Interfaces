@@ -8,7 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.Resources>
+        <Storyboard x:Name="dropStar">
+            <DoubleAnimation Storyboard.TargetName="star" Storyboard.TargetProperty="Width,Height" From="1.0" To="10." Duration="0:1:0"/>
+        </Storyboard>
+    </Page.Resources>
+    
+    <Canvas Background="Black">
+        <Ellipse x:Name="star" Width="100" Height="100" PointerPressed="Star_Moving" Canvas.Top="1" Stroke="Blue" StrokeThickness="0" Fill="Blue"></Ellipse>
 
-    </Grid>
+
+        <!--<StackPanel>
+            <StackPanel.Resources>
+                <Storyboard x:Name="myStoryboard">
+                    <FadeOutThemeAnimation TargetName="myRectangle" />
+                </Storyboard>
+            </StackPanel.Resources>
+            <Rectangle PointerPressed="Rectangle_Tapped" x:Name="myRectangle"  
+              Fill="Blue" Width="200" Height="300"/>
+        </StackPanel>-->
+    </Canvas>
+    
 </Page>

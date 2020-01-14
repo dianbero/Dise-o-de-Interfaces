@@ -9,5 +9,8 @@ namespace _21_SpaceShipGame.ViewModels
     public class MainPageVM
     {
         //buscar DispatcherTimer Class para controlar el intervalo de tiempo de teclas para controlar nave sin parón inicial
+        /*Help with animations:
+         https://docs.microsoft.com/es-es/windows/uwp/design/motion/storyboarded-animations
+         */
     }
 }

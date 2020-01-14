@@ -25,6 +25,27 @@ namespace _21_SpaceShipGame
         public MainPage()
         {
             this.InitializeComponent();
+            dropStar.Begin();
         }
+
+        //private void Star_Moving(object sender, PointerRoutedEventArgs e)
+        //{
+        //    dropStar.Begin();
+        //}
+
+        //public void probandoEllipse(object sender, EventArgs e)
+        //{
+
+        //}
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
+
+        // When the user taps the rectangle, the animation begins.
+        //private void Rectangle_Tapped(object sender, PointerRoutedEventArgs e)
+        //{
+        //    myStoryboard.Begin();
+        //}
     }
 }
