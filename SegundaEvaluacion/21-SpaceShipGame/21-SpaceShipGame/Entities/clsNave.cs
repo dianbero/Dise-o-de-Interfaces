@@ -10,13 +10,14 @@ namespace _21_SpaceShipGame.Entities
     {
         private int EjeX { get; set; }
         private int EjeY { get; set; }
+        private int Velocidad { get; set; }
         private  Uri Imagen { get; }
 
-        public clsNave(int ejeX, int ejeY, Uri imagen)
+        public clsNave(int ejeX, int ejeY, int velocidad)
         {
             EjeX = ejeX;
             EjeY = ejeX;
-            Imagen = imagen;
+            Velocidad = velocidad;
         }
     }
 }

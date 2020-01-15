@@ -28,17 +28,25 @@ namespace _21_SpaceShipGame
             this.InitializeComponent();
             dropStar.Begin();
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += moverNave;
-            timer.Interval = new TimeSpan(0,0,2);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1); //comprueba cada milisegundo si se pulsa tecla
+            timer.Tick += moverNave; //cada milisegundo realiza esta función
+            bool moviendoX = false;
+            bool moviendoY = false;
         }
 
+        /// <summary>
+        /// Con cada tick se llama al método moverNaveLoad
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void moverNave(object sender, object e)
         {
-            
+            moverNaveLoad();
         }
-        public void moverNaveLoad(object sender, RoutedEventArgs e)
+        public void moverNaveLoad()
         {
-            moverNave();
+            double posicionFutura;
+            if()
         }
 
         
