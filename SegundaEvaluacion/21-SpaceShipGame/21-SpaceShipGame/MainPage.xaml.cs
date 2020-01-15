@@ -25,9 +25,13 @@ namespace _21_SpaceShipGame
         public MainPage()
         {
             this.InitializeComponent();
-            dropStar.Begin();
+            
         }
 
+        public void MoveEllipse (object sender, RoutedEvent e)
+        {
+            dropStar.Begin();
+        }
         //private void Star_Moving(object sender, PointerRoutedEventArgs e)
         //{
         //    dropStar.Begin();

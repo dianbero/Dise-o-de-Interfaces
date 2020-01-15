@@ -42,6 +42,16 @@ namespace _20_FindDiffrences.Entities
             //IsVisible = false;
             Circulo = asignarPropiedadesEllipse(Diametro, IsSeleccionado);
         }
+         public clsCirculo(double x, double y, int diametro)
+        {
+            EjeX = x;
+            EjeY = y;
+            Diametro = diametro;
+            IsSeleccionado = false;
+            //IsVisible = false;
+            Circulo = asignarPropiedadesEllipse(Diametro, IsSeleccionado);
+        }
+
         #endregion
 
         #region Métodos

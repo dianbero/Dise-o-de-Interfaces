@@ -10,14 +10,13 @@
 
     <Page.Resources>
         <Storyboard x:Name="dropStar">
-            <DoubleAnimation Storyboard.TargetName="star" Storyboard.TargetProperty="Width,Height" From="1.0" To="10." Duration="0:1:0"/>
+            <DoubleAnimation Storyboard.TargetName="star" Storyboard.TargetProperty="Canvas.Top" From="1.0" To="10.0" Duration="0:1:0"/>
         </Storyboard>
     </Page.Resources>
     
     <Canvas Background="Black">
-        <Ellipse x:Name="star" Width="100" Height="100" PointerPressed="Star_Moving" Canvas.Top="1" Stroke="Blue" StrokeThickness="0" Fill="Blue"></Ellipse>
-
-
+        <Ellipse x:Name="star" Width="100" Height="100" Loaded="MoveEllipse" Canvas.Top="1" Stroke="Blue" StrokeThickness="0" Fill="Blue"></Ellipse>
+        <!--<Image Source="ms-appx:///Assets/Imagenes/nave2.jpg" ></Image>-->
         <!--<StackPanel>
             <StackPanel.Resources>
                 <Storyboard x:Name="myStoryboard">
