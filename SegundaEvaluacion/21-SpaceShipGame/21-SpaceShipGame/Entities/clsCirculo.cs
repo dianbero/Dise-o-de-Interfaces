@@ -13,11 +13,12 @@ namespace _20_FindDiffrences.Entities
     public class clsCirculo
     {
         #region Propiedades Públicas
-        public bool IsSeleccionado { get; set; }
+        //public bool IsSeleccionado { get; set; }
         //public bool IsVisible { get; set; }
-        public double EjeX { get; set; }
-        public double EjeY { get; set; }
+        public int EjeX { get; set; }
+        public int EjeY { get; set; }
         public int Diametro { get; set; }
+        public double Opacidad { get; set; }
         public Ellipse Circulo { get; set; }
         #endregion
 
@@ -28,48 +29,44 @@ namespace _20_FindDiffrences.Entities
         {
             EjeX = 0;
             EjeY = 0;
-            Diametro = 60;            
-            IsSeleccionado = false;
+            Diametro = 60;
+            Opacidad = 1;
+            //IsSeleccionado = false;
             //IsVisible = false;
-            Circulo = asignarPropiedadesEllipse(Diametro, IsSeleccionado);            
+            Circulo = asignarPropiedadesEllipse(Diametro, Opacidad);            
         }
-        public clsCirculo(double x, double y)
+        public clsCirculo(int x, int y, double opacidad)
         {
             EjeX = x;
             EjeY = y;
             Diametro = 60;
-            IsSeleccionado = false;
+            Opacidad = opacidad;
+            //IsSeleccionado = false;
             //IsVisible = false;
-            Circulo = asignarPropiedadesEllipse(Diametro, IsSeleccionado);
+            Circulo = asignarPropiedadesEllipse(Diametro, Opacidad);
         }
-         public clsCirculo(double x, double y, int diametro)
+         public clsCirculo(int x, int y, int diametro, double opacidad)
         {
             EjeX = x;
             EjeY = y;
             Diametro = diametro;
-            IsSeleccionado = false;
+            Opacidad = opacidad;
+            //IsSeleccionado = false;
             //IsVisible = false;
-            Circulo = asignarPropiedadesEllipse(Diametro, IsSeleccionado);
+            //Circulo = asignarPropiedadesEllipse(Diametro);
         }
 
         #endregion
 
         #region Métodos
-        public Ellipse asignarPropiedadesEllipse(int diametro, bool seleccionado)
+        public Ellipse asignarPropiedadesEllipse(int diametro, double opacidad)
         {
             Ellipse circulo = new Ellipse();
             circulo.Width = diametro;
             circulo.Height = diametro;
-            circulo.Stroke = new SolidColorBrush(Colors.Black);
+            circulo.Stroke = new SolidColorBrush(Colors.Purple);
             circulo.StrokeThickness = 5;
-            if (seleccionado)
-            {
-                circulo.Opacity = 1;
-            }
-            else
-            {
-                circulo.Opacity = 0;
-            }
+            circulo.Opacity = opacidad;
             return circulo;
         }
         

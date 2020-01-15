@@ -22,34 +22,25 @@ namespace _21_SpaceShipGame
     /// </summary>
     public sealed partial class MainPage : Page
     {
+                
         public MainPage()
         {
             this.InitializeComponent();
+            dropStar.Begin();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += moverNave;
+            timer.Interval = new TimeSpan(0,0,2);
+        }
+
+        public void moverNave(object sender, object e)
+        {
             
         }
-
-        public void MoveEllipse (object sender, RoutedEvent e)
+        public void moverNaveLoad(object sender, RoutedEventArgs e)
         {
-            dropStar.Begin();
+            moverNave();
         }
-        //private void Star_Moving(object sender, PointerRoutedEventArgs e)
-        //{
-        //    dropStar.Begin();
-        //}
 
-        //public void probandoEllipse(object sender, EventArgs e)
-        //{
-
-        //}
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
-        // When the user taps the rectangle, the animation begins.
-        //private void Rectangle_Tapped(object sender, PointerRoutedEventArgs e)
-        //{
-        //    myStoryboard.Begin();
-        //}
+        
     }
 }

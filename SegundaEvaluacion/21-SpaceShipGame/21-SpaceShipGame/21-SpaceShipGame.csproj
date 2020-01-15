@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="Assets\Imagenes\nave2.jpg" />
     <Content Include="Assets\Imagenes\nave1.jpg" />
+    <Content Include="Assets\Imagenes\nave3.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -10,12 +10,61 @@
 
     <Page.Resources>
         <Storyboard x:Name="dropStar">
-            <DoubleAnimation Storyboard.TargetName="star" Storyboard.TargetProperty="Canvas.Top" From="1.0" To="10.0" Duration="0:1:0"/>
+            <DoubleAnimation Storyboard.TargetName="pathStars1" Storyboard.TargetProperty="(Canvas.Top)" From="1" To="700" Duration="0:0:10" RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="pathStars2" Storyboard.TargetProperty="(Canvas.Top)" From="20" To="700" Duration="0:0:2" RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="pathStars3" Storyboard.TargetProperty="(Canvas.Top)" From="50" To="700" Duration="0:0:5" RepeatBehavior="Forever"/>
         </Storyboard>
     </Page.Resources>
-    
-    <Canvas Background="Black">
-        <Ellipse x:Name="star" Width="100" Height="100" Loaded="MoveEllipse" Canvas.Top="1" Stroke="Blue" StrokeThickness="0" Fill="Blue"></Ellipse>
+    <Canvas Background="Black" Loaded="moverNave">
+        <!--<Ellipse x:Name="star" Width="100" Height="100" Loaded="MoveEllipse" Canvas.Top="1" Stroke="Blue" StrokeThickness="0" Fill="Blue"></Ellipse>-->
+        <Path Name="pathStars1" Fill="Purple" Margin="5" Canvas.Top="7">
+            <Path.Data>
+                <GeometryGroup x:Name="fondo">
+                    <EllipseGeometry Center="100, 3700" RadiusX="10" RadiusY="10"></EllipseGeometry> <!--Cambiar propieadades en clsCirculo-->
+                    <EllipseGeometry Center="200, 30" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="300, 40" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="400, 30" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="800, 30" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="480, 50" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="900, 30" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="1000, 100" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="1400, 30" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                    <EllipseGeometry Center="1800, 30" RadiusX="10" RadiusY="10"></EllipseGeometry>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+        <Path Name="pathStars2" Fill="Purple" Margin="5" Canvas.Top="7">
+            <Path.Data>                
+                <GeometryGroup x:Name="primerPlano">
+                    <EllipseGeometry Center="300, 30" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="350, 30" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="300, 340" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="400, 250" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="800, 30" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="100, -20" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="400, 30" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="1300, 30" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                    <EllipseGeometry Center="1000, 30" RadiusX="25" RadiusY="25"></EllipseGeometry>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+        <Path Name="pathStars3" Fill="Purple" Margin="5" Canvas.Top="7">
+            <Path.Data>
+                <GeometryGroup x:Name="medioPlano">
+                    <EllipseGeometry Center="250, 150" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="350, 30" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="300, 30" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="400, 30" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="800, -100" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="100, 30" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="400, 200" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="1300, 100" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                    <EllipseGeometry Center="1000, 30" RadiusX="15" RadiusY="15"></EllipseGeometry>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+        <Image Name="imagen" Canvas.Top="250" Canvas.Left="400" Source="ms-appx:///Assets/Imagenes/nave2.jpg"></Image>
+        
         <!--<Image Source="ms-appx:///Assets/Imagenes/nave2.jpg" ></Image>-->
         <!--<StackPanel>
             <StackPanel.Resources>
@@ -27,5 +76,4 @@
               Fill="Blue" Width="200" Height="300"/>
         </StackPanel>-->
     </Canvas>
-    
 </Page>
