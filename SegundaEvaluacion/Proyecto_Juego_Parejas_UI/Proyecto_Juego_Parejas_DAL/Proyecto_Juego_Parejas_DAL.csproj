@@ -129,6 +129,12 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Proyecto_Juego_Parejas_Entities\Proyecto_Juego_Parejas_Entities.csproj">
+      <Project>{226acf04-5cf5-44ac-8fb0-b3effdfe6951}</Project>
+      <Name>Proyecto_Juego_Parejas_Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
