@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Juego_Parejas_UI.ViewModels
 {
-    public class RankingVM : clsVMBase
+    public class clsRankingVM : clsVMBase
     {
+
     }
 }

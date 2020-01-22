@@ -15,17 +15,19 @@ namespace Proyecto_Juego_Parejas_Entities
         private Uri imgNoVolteada;
         private Uri imgMostrar;
 
-        public clsCarta()
+        public clsCarta(int idCarta, Uri imgVolteada)
         {
-            imgMostrar = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+            //imgMostrar = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+            this.idCarta = idCarta;
+            this.imgVolteada = imgVolteada;
         }
 
-        public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada, Uri imgNoVolteada)
+        public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada)
         {
             this.idCarta = idCarta;
             this.isVolteada = isVolteada;
             this.imgVolteada = imgVolteada;
-            this.imgNoVolteada = imgNoVolteada;
+            this.imgNoVolteada = new Uri("ms - appx:///Assets/Images/xmen.jpg");
         }
 
         //Propieades públicas

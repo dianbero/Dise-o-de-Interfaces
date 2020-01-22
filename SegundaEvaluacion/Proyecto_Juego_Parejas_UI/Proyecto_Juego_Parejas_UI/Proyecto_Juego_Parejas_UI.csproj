@@ -119,8 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\JugadorVM.cs" />
-    <Compile Include="ViewModels\RankingVM.cs" />
+    <Compile Include="Utiles\clsListadoCompletoCartas.cs" />
+    <Compile Include="ViewModels\clsJuegoVM.cs" />
+    <Compile Include="ViewModels\clsRankingVM.cs" />
     <Compile Include="ViewModels\ViewModelTools\clsVMBase.cs" />
     <Compile Include="ViewModels\ViewModelTools\DelegateCommand.cs" />
     <Compile Include="Views\Juego.xaml.cs">
@@ -141,6 +142,12 @@
     <None Include="Proyecto_Juego_Parejas_UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\antman.jpg" />
+    <Content Include="Assets\Images\blackPanter.jpg" />
+    <Content Include="Assets\Images\captainAmerica.jpg" />
+    <Content Include="Assets\Images\deadpool.jpg" />
+    <Content Include="Assets\Images\ironMan.jpg" />
+    <Content Include="Assets\Images\spiderman.jpg" />
     <Content Include="Assets\Images\xmen.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

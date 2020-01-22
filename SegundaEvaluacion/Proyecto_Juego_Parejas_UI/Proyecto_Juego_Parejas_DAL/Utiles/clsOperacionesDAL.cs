@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Juego_Parejas_DAL.Utiles
 {
-    public class clsOperaciones
+    public class clsOperacionesDAL
     {
 
     }
