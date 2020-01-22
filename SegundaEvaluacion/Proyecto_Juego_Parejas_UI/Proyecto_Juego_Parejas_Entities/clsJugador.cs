@@ -46,7 +46,5 @@ namespace Proyecto_Juego_Parejas_Entities
             set { puntuacion = value; }
         }
 
-
-        
     }
 }

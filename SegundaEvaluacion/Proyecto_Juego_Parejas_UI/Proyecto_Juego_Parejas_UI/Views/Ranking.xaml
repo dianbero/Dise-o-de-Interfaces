@@ -18,11 +18,13 @@
         <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,50,0,0">
             <TextBlock Name="txtRanking" Text="Ranking" Margin="0,0,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical" Margin="0,0,70,0">
-                    <TextBlock Text="Nombre:" FontSize="35" FontWeight="Bold"></TextBlock>
+                <StackPanel Orientation="Vertical" Margin="0,0,250,0">
+                    <TextBlock Text="Nombre:" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>
+                    <TextBlock Name="txtNombre" Text="hacer binding" FontSize="35" FontWeight="Bold"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Tiempo:"  FontSize="35" FontWeight="Bold"></TextBlock>                    
+                    <TextBlock Text="Tiempo:" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>                    
+                    <TextBlock Name="txtTiempo" Text="hacer bindging"  FontSize="35" FontWeight="Bold"></TextBlock>                    
                 </StackPanel>
             </StackPanel>
         </StackPanel>

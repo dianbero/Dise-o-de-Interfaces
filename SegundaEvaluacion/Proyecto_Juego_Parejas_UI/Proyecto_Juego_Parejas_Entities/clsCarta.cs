@@ -9,6 +9,7 @@ namespace Proyecto_Juego_Parejas_Entities
     public class clsCarta
     {
         //Atributos privados
+        private int idCarta;
         private bool isVolteada;
         private Uri imgVolteada;
         private Uri imgNoVolteada;
@@ -19,14 +20,20 @@ namespace Proyecto_Juego_Parejas_Entities
             imgMostrar = new Uri("ms - appx:///Assets/Images/xmen.jpg");
         }
 
-        public clsCarta(bool isVolteada, Uri imgVolteada, Uri imgNoVolteada)
+        public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada, Uri imgNoVolteada)
         {
+            this.idCarta = idCarta;
             this.isVolteada = isVolteada;
             this.imgVolteada = imgVolteada;
             this.imgNoVolteada = imgNoVolteada;
         }
 
         //Propieades públicas
+        public int IdCarta
+        {
+            get { return idCarta; }
+            set { idCarta = value; }
+        }
         public bool IsVolteada
         {
             get { return isVolteada; }

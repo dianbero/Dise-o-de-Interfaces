@@ -121,6 +121,8 @@
     </Compile>
     <Compile Include="ViewModels\JugadorVM.cs" />
     <Compile Include="ViewModels\RankingVM.cs" />
+    <Compile Include="ViewModels\ViewModelTools\clsVMBase.cs" />
+    <Compile Include="ViewModels\ViewModelTools\DelegateCommand.cs" />
     <Compile Include="Views\Juego.xaml.cs">
       <DependentUpon>Juego.xaml</DependentUpon>
     </Compile>
