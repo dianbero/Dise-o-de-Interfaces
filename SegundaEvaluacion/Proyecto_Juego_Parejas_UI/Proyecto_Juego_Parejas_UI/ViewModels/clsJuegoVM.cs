@@ -1,4 +1,5 @@
-﻿using Proyecto_Juego_Parejas_Entities;
+﻿using Proyecto_Juego_Parejas_DAL.Utiles;
+using Proyecto_Juego_Parejas_Entities;
 using Proyecto_Juego_Parejas_UI.ViewModels.ViewModelTools;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,36 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
 {
     public class clsJuegoVM : clsVMBase
     {
-        #region Propiedades Públicas
+        #region Atributos Privados
         private clsCarta cartaSelaccionada;
         private ObservableCollection<clsCarta> listadoCompletoCartas;
         #endregion
         #region Constructores
         public clsJuegoVM()
-        {            
-            listadoCompletoCartas = 
+        {
+            clsListadoCompletoCartas listadoCartas = new clsListadoCompletoCartas();
+            //listadoCompletoCartas = listadoCartas.ListadoCompletoCartasEnCasilla();
+            listadoCompletoCartas = listadoCartas.listadoCartas();
+        }
+        #endregion
+        
+        #region Propieades Públicas
+        public clsCarta CartaSeleccionada
+        {
+            get
+            {
+                return cartaSelaccionada;
+            }
+            set
+            {
+                cartaSelaccionada = value;
+                NotifyPropertyChanged("CartaSeleccionada");
+            }
+        }
+        public ObservableCollection<clsCarta> ListadoCompletoCartas
+        {
+            get { return listadoCompletoCartas; }
+            set { listadoCompletoCartas = value; }
         }
         #endregion
     }

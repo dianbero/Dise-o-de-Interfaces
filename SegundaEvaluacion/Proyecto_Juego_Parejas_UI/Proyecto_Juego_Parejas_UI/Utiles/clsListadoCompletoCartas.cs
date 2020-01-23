@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Juego_Parejas_DAL.Utiles
 {
-    public class clsListoCompletoCartas
+    public class clsListadoCompletoCartas
     {
-        Uri imgNoVolteada = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+        //Uri imgNoVolteada = new Uri("ms-appx:///Assets/Images/xmen.jpg");
         
         private ObservableCollection<clsCarta> ListadoCompletoCartas()
         {
             ObservableCollection<clsCarta> listadoCartas = new ObservableCollection<clsCarta>();
-            listadoCartas.Add(new clsCarta(0, false, new Uri("ms - appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(1, false, new Uri("ms - appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(2, false, new Uri("ms - appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(3, false, new Uri("ms - appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(4, false, new Uri("ms - appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(5, false, new Uri("ms - appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(0, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
+            listadoCartas.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
 
             return listadoCartas;
         }
 
         public ObservableCollection<clsCarta> ListadoCompletoCartasEnCasilla()
         {
-            //lista con cartas
+            //lista con cartas            
             ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
             //listado de cartas para asignar en casillas
             ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
@@ -72,6 +72,19 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             //}
 
             return listadoCasillas;
+        }
+
+        public ObservableCollection<clsCarta> listadoCartas()
+        {
+            ObservableCollection<clsCarta> listado = new ObservableCollection<clsCarta>();
+            ObservableCollection<clsCarta> lis = ListadoCompletoCartas(); 
+
+            listado.Add(new clsCarta(1, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listado.Add(new clsCarta(2, new Uri("ms-appx:///Assets/Images/xmen.jpg")));
+            listado.Add(new clsCarta(3, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listado.Add(new clsCarta(4, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+
+            return listado;
         }
     }
 }

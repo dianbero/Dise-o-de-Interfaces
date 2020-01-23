@@ -6,8 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-     Background="MediumSlateBlue">
+    Background="MediumSlateBlue"
+    xmlns:vm="using:Proyecto_Juego_Parejas_UI.ViewModels">
     <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
+    <Page.DataContext>
+        <vm:clsJuegoVM></vm:clsJuegoVM>
+    </Page.DataContext>
 
     <RelativePanel>
         <!--<Button Name="btnVolver" Height="100" Width="100" ></Button>-->
@@ -18,9 +22,9 @@
         </AppBarButton>
         <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True">
             <TextBlock Name="txtTiempo" Text="Tiempo: " Margin="0,30,0,50" FontSize="40" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>
-            <Grid Name="gridCartas" Height="200" Width="200" BorderThickness="5" BorderBrush="DarkBlue">
-
-            </Grid>
+            <GridView Name="gridCartas" ItemsSource="{Binding ListadoCompletoCartas, Mode=TwoWay}" SelectedItem="{Binding CartaSeleccionada, Mode=TwoWay}" BorderThickness="5" BorderBrush="DarkBlue">
+                <Image Name="carta" ></Image>
+            </GridView>
         </StackPanel>
     </RelativePanel>
 </Page>

@@ -15,11 +15,11 @@ namespace Proyecto_Juego_Parejas_Entities
         private Uri imgNoVolteada;
         private Uri imgMostrar;
 
-        public clsCarta(int idCarta, Uri imgVolteada)
+        public clsCarta(int idCarta, Uri imgNoVolteada)
         {
-            //imgMostrar = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+            //imgMostrar = new Uri("ms-appx:///Assets/Images/xmen.jpg");
             this.idCarta = idCarta;
-            this.imgVolteada = imgVolteada;
+            this.imgNoVolteada = imgNoVolteada;
         }
 
         public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada)
@@ -27,7 +27,7 @@ namespace Proyecto_Juego_Parejas_Entities
             this.idCarta = idCarta;
             this.isVolteada = isVolteada;
             this.imgVolteada = imgVolteada;
-            this.imgNoVolteada = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+            this.imgMostrar = new Uri("ms-appx:///Assets/Images/xmen.jpg");
         }
 
         //Propieades públicas
@@ -49,8 +49,13 @@ namespace Proyecto_Juego_Parejas_Entities
         }
         public Uri ImgNoVolteada
         {
-            get { return ImgNoVolteada; }
-            set { ImgNoVolteada = value; }
+            get { return imgNoVolteada; }
+            set { imgNoVolteada = value; }
+        }
+        public Uri ImgMostrar
+        {
+            get { return imgMostrar; }
+            set { imgMostrar = value; }
         }
     }
 }
