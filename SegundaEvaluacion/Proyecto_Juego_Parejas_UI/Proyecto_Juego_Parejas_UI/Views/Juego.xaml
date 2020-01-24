@@ -23,7 +23,7 @@
         <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True">
             <TextBlock Name="txtTiempo" Text="Tiempo: " Margin="0,30,0,50" FontSize="40" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>
             <GridView Name="gridCartas" ItemsSource="{Binding ListadoCompletoCartas, Mode=TwoWay}" SelectedItem="{Binding CartaSeleccionada, Mode=TwoWay}" BorderThickness="5" BorderBrush="DarkBlue">
-                <Image Name="carta" ></Image>
+                <Image Name="carta" Source="{Binding ImgMostrar}"></Image>
             </GridView>
         </StackPanel>
     </RelativePanel>

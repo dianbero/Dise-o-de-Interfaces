@@ -32,38 +32,47 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             //listado de cartas para asignar en casillas
             ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
             Random random = new Random();
-            int rdnNumber = random.Next(13); //genera numero entre de 0 a 12 (excluye 13)
+            int rdnNumber= random.Next(13); //genera numero entre de 0 a 12 (excluye 13)
 
 
             //TODO comprobar que esta implementación para asignar las cartas funciona
             //Asignar primeras 6 cartas a casilla
-            for (int i = 0; i < 6; i++)
-            {
-                //listadoCasillas.Add(listadoCartas[rdnNumber]);
-                for(int j=0; i<listadoCasillas.Count(); i++)
-                {
-                    //Si ninguna de las cartas anteriores es igual a la del numero random asignado entonces la añade al array
-                    if(listadoCartas[rdnNumber] != listadoCartas[i])
-                    {
-                        listadoCasillas.Add(listadoCartas[rdnNumber]); 
-                    }
-                }
-            }
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    //listadoCasillas.Add(listadoCartas[rdnNumber]);
+            //    for(int j=0; i<listadoCasillas.Count(); i++)
+            //    {
+            //        //Si ninguna de las cartas anteriores es igual a la del numero random asignado entonces la añade al array
+            //        if(listadoCartas[rdnNumber] != listadoCartas[i])
+            //        {
+            //            listadoCasillas.Add(listadoCartas[rdnNumber]); 
+            //        }
+            //    }
+            //}
 
 
             //Asignar parejas a casilla
             for (int i = 0; i < 6; i++)
             {
-                //listadoCasillas.Add(listadoCartas[rdnNumber]);
-                for (int j = 5; i < listadoCasillas.Count(); i++)
+                if (listadoCartas[rdnNumber] != listadoCartas[i])
                 {
-                    //Si ninguna de las cartas anteriores es igual a la del numero random asignado entonces la añade al array
-                    if (listadoCartas[rdnNumber] != listadoCartas[i])
-                    {
-                        listadoCasillas.Add(listadoCartas[rdnNumber]);
-                    }
+                    listadoCasillas.Add(listadoCartas[rdnNumber]);
+                }
+                else
+                {
+                    rdnNumber = random.Next(13);
                 }
             }
+            //Asignación parejas
+            for (int i = 5; i < listadoCasillas.Count(); i++)
+            {
+                //Si ninguna de las cartas anteriores es igual a la del numero random asignado entonces la añade al array
+                if (listadoCartas[rdnNumber] != listadoCartas[i])
+                {
+                    listadoCasillas.Add(listadoCartas[rdnNumber]);
+                }
+            }
+            
 
             ////Asignar parejas a casilla
             //for (int i = 0; i < 6; i++)
