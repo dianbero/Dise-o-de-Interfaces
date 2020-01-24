@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Juego_Parejas_UI.ViewModels.ViewModelTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Juego_Parejas_Entities
 {
-    public class clsCarta
+    public class clsCarta : clsVMBase
     {
         //Atributos privados
         private int idCarta;
@@ -15,19 +16,25 @@ namespace Proyecto_Juego_Parejas_Entities
         private Uri imgNoVolteada;
         private Uri imgMostrar;
 
-        public clsCarta(int idCarta, Uri imgNoVolteada)
+        public clsCarta()
         {
-            //imgMostrar = new Uri("ms-appx:///Assets/Images/xmen.jpg");
-            this.idCarta = idCarta;
-            this.imgNoVolteada = imgNoVolteada;
+
         }
+
+        //public clsCarta(int idCarta, Uri imgNoVolteada)
+        //{            
+        //    this.idCarta = idCarta;
+        //    this.imgNoVolteada = imgNoVolteada;
+        //    this.imgMostrar = new Uri("ms-appx:///Assets/Images/xmen.jpg");
+        //}
 
         public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada)
         {
             this.idCarta = idCarta;
             this.isVolteada = isVolteada;
             this.imgVolteada = imgVolteada;
-            this.imgMostrar = new Uri("ms-appx:///Assets/Images/xmen.jpg");
+            this.imgNoVolteada = new Uri("ms-appx:///Assets/Images/xmen.jpg");
+            this.imgMostrar = imgNoVolteada;
         }
 
         //Propieades públicas
@@ -39,7 +46,19 @@ namespace Proyecto_Juego_Parejas_Entities
         public bool IsVolteada
         {
             get { return isVolteada; }
-            set { isVolteada = value; }
+            set {
+                isVolteada = value;
+
+                if (isVolteada)
+                {
+                    imgMostrar = imgVolteada;
+                }
+                else
+                {
+                    imgMostrar = imgNoVolteada;
+                }
+                NotifyPropertyChanged("ImgMostrar");
+            }
         }
 
         public Uri ImgVolteada
@@ -54,8 +73,10 @@ namespace Proyecto_Juego_Parejas_Entities
         }
         public Uri ImgMostrar
         {
-            get { return imgMostrar; }
-            set { imgMostrar = value; }
+            get {
+                return imgMostrar;
+            }
+            
         }
     }
 }

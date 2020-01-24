@@ -71,27 +71,35 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
                 {
                     listadoCasillas.Add(listadoCartas[rdnNumber]);
                 }
+                //TODO implementar qué hace cuando coincide con todas las cartas ya asignadas anteriormente
             }
             
-
-            ////Asignar parejas a casilla
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    listadoCasillas.Add(listadoCartas[rdnNumber]);
-            //}
 
             return listadoCasillas;
         }
 
+        //Lista falsa para probar funcionamiento del bindeo
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ObservableCollection<clsCarta> listadoCartas()
         {
             ObservableCollection<clsCarta> listado = new ObservableCollection<clsCarta>();
             ObservableCollection<clsCarta> lis = ListadoCompletoCartas(); 
 
-            listado.Add(new clsCarta(1, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listado.Add(new clsCarta(2, new Uri("ms-appx:///Assets/Images/xmen.jpg")));
-            listado.Add(new clsCarta(3, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listado.Add(new clsCarta(4, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listado.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
+            listado.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
+            listado.Add(new clsCarta(3, true, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
+            listado.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
+            listado.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
+            listado.Add(new clsCarta(6, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listado.Add(new clsCarta(7, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
+            listado.Add(new clsCarta(8, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
+            listado.Add(new clsCarta(9, false, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
+            listado.Add(new clsCarta(10, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
+            listado.Add(new clsCarta(11, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
+            listado.Add(new clsCarta(12, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
 
             return listado;
         }

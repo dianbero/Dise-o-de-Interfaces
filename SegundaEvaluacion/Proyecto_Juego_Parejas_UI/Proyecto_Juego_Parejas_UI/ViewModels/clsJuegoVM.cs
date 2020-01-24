@@ -13,7 +13,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
     public class clsJuegoVM : clsVMBase
     {
         #region Atributos Privados
-        private clsCarta cartaSelaccionada;
+        private clsCarta cartaSeleccionada;
         private ObservableCollection<clsCarta> listadoCompletoCartas;
         #endregion
         #region Constructores
@@ -30,11 +30,11 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         {
             get
             {
-                return cartaSelaccionada;
+                return cartaSeleccionada;
             }
             set
             {
-                cartaSelaccionada = value;
+                cartaSeleccionada = value;
                 NotifyPropertyChanged("CartaSeleccionada");
             }
         }

@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\clsCarta.cs" />
     <Compile Include="Utiles\clsListadoCompletoCartas.cs" />
     <Compile Include="ViewModels\clsJuegoVM.cs" />
     <Compile Include="ViewModels\clsRankingVM.cs" />
