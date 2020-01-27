@@ -35,11 +35,19 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
             set
             {
-                if(cartaSeleccionada!= value)
+                if (cartaSeleccionada != value)
                 {
                     cartaSeleccionada = value;
+                    if (cartaSeleccionada.IsVolteada)
+                    {
+                        cartaSeleccionada.IsVolteada = false;
+                    }
+                    else
+                    {
+                        cartaSeleccionada.IsVolteada = true;
+                    }
                     NotifyPropertyChanged("CartaSeleccionada");
-                }              
+                }
             }
         }
         public ObservableCollection<clsCarta> ListadoCompletoCartas

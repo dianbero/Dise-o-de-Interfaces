@@ -35,10 +35,10 @@ namespace Proyecto_Juego_Parejas_Entities
         public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada)
         {
             this.idCarta = idCarta;
-            this.isVolteada = isVolteada;
-            this.imgVolteada = imgVolteada;
             this.imgNoVolteada = new Uri("ms-appx:///Assets/Images/xmen.jpg");
-            this.imgMostrar = imgNoVolteada;
+            this.imgVolteada = imgVolteada;
+            this.IsVolteada = isVolteada;
+            //this.imgMostrar = imgNoVolteada;
         }
 
         //Propieades públicas
