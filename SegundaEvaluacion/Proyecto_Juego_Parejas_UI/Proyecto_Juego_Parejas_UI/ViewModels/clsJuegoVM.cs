@@ -16,6 +16,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private clsCarta cartaSeleccionada;
         private ObservableCollection<clsCarta> listadoCompletoCartas;
         #endregion
+
         #region Constructores
         public clsJuegoVM()
         {
@@ -34,8 +35,11 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
             set
             {
-                cartaSeleccionada = value;
-                NotifyPropertyChanged("CartaSeleccionada");
+                if(cartaSeleccionada!= value)
+                {
+                    cartaSeleccionada = value;
+                    NotifyPropertyChanged("CartaSeleccionada");
+                }              
             }
         }
         public ObservableCollection<clsCarta> ListadoCompletoCartas

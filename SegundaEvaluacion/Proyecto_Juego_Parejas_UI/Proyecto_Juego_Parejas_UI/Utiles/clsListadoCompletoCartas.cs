@@ -86,7 +86,7 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
         public ObservableCollection<clsCarta> listadoCartas()
         {
             ObservableCollection<clsCarta> listado = new ObservableCollection<clsCarta>();
-            ObservableCollection<clsCarta> lis = ListadoCompletoCartas(); 
+            //ObservableCollection<clsCarta> lis = ListadoCompletoCartas(); 
 
             listado.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
             listado.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
@@ -95,7 +95,7 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             listado.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
             listado.Add(new clsCarta(6, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
             listado.Add(new clsCarta(7, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
-            listado.Add(new clsCarta(8, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
+            listado.Add(new clsCarta(8, true, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
             listado.Add(new clsCarta(9, false, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
             listado.Add(new clsCarta(10, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
             listado.Add(new clsCarta(11, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));

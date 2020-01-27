@@ -18,7 +18,11 @@ namespace Proyecto_Juego_Parejas_Entities
 
         public clsCarta()
         {
-
+            this.idCarta = 0;
+            this.isVolteada = false;
+            this.imgVolteada = new Uri("ms - appx:///Assets/Images/spiderman.jpg");
+            this.imgNoVolteada = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+            this.imgMostrar = imgNoVolteada;
         }
 
         //public clsCarta(int idCarta, Uri imgNoVolteada)
@@ -57,6 +61,7 @@ namespace Proyecto_Juego_Parejas_Entities
                 {
                     imgMostrar = imgNoVolteada;
                 }
+
                 NotifyPropertyChanged("ImgMostrar");
             }
         }
@@ -74,7 +79,7 @@ namespace Proyecto_Juego_Parejas_Entities
         public Uri ImgMostrar
         {
             get {
-                return imgMostrar;
+                return imgMostrar;                
             }
             
         }
