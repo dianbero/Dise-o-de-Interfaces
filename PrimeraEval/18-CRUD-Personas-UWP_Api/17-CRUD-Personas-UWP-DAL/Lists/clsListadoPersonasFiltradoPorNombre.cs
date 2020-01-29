@@ -32,7 +32,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
                 conexion = objConexion.getConnection();
 
                 //Guardo sentencia en comando
-                comando.Parameters.Add("@nombrePersona", System.Data.SqlDbType.VarChar).Value = persona.Nombre; 
+                comando.Parameters.Add("@nombrePersona", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
                 comando.CommandText = "SELECT * FROM PD_Personas WHERE NombrePersona = @nombrePersona ";
                 //Paso conexión al comando
                 comando.Connection = conexion;
@@ -57,10 +57,10 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
                         listadoPersonas.Add(objPersona);  //Añade el objeto persona del registro al listado Personas
                     }
                 }
-                lector.Close(); 
-                
+                lector.Close();
+
             }
-            catch(SqlException e)
+            catch (SqlException e)
             {
                 throw e;
             }

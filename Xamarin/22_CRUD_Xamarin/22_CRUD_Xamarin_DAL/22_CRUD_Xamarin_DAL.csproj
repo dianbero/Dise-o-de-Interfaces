@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>_22_CRUD_Xamarin_DAL</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\22_CRUD_Xamarin_Entitites\22_CRUD_Xamarin_Entitites.csproj" />
+  </ItemGroup>
+
+</Project>

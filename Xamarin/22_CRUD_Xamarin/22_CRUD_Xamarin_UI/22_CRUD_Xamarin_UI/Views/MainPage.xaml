@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:_22_CRUD_Xamarin_UI"
+             Title="La vida es muy CRUDa"
+             x:Class="_22_CRUD_Xamarin_UI.MainPage"
+             xmlns:vm="clr-namespace:_22_CRUD_Xamarin_UI.ViewModels">
+
+    <!--<StackLayout>
+         --><!--Place new controls here--><!-- 
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+    </StackLayout>-->
+
+    <ListView
+        ItemsSource="{Binding ListadoPersonaCompleto}"
+        SelectedItem="{Binding PersonaSeleccionada}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding Nombre}"></Label>
+                        <Label Text="{Binding Apellido}"></Label>
+                        <Label Text="{Binding Telefono}"></Label>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>        
+    </ListView>
+    
+
+</ContentPage>
