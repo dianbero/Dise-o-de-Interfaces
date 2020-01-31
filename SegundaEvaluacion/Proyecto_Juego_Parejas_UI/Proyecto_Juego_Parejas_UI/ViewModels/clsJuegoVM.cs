@@ -1,5 +1,6 @@
 ﻿using Proyecto_Juego_Parejas_DAL.Utiles;
 using Proyecto_Juego_Parejas_Entities;
+using Proyecto_Juego_Parejas_UI.Utiles;
 using Proyecto_Juego_Parejas_UI.ViewModels.ViewModelTools;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         #region Atributos Privados
         private clsCarta cartaSeleccionada;
         private ObservableCollection<clsCarta> listadoCompletoCartas;
+        private clsTimer tiempoPuntuacion;
         #endregion
 
-        #region Constructores
-        public clsJuegoVM()
-        {
-            clsListadoCompletoCartas listadoCartas = new clsListadoCompletoCartas();
-            //listadoCompletoCartas = listadoCartas.ListadoCompletoCartasEnCasilla();
-            listadoCompletoCartas = listadoCartas.listadoCartas();
-        }
-        #endregion
-        
         #region Propieades Públicas
         public clsCarta CartaSeleccionada
         {
@@ -55,6 +48,26 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             get { return listadoCompletoCartas; }
             set { listadoCompletoCartas = value; }
         }
+
+        public clsTimer TiempoPuntuacion
+        {
+            get
+            {
+                return tiempoPuntuacion;
+            }
+        }
         #endregion
+
+        #region Constructores
+        public clsJuegoVM()
+        {
+            clsListadoCompletoCartas listadoCartas = new clsListadoCompletoCartas();
+            //listadoCompletoCartas = listadoCartas.ListadoCompletoCartasEnCasilla();
+            listadoCompletoCartas = listadoCartas.listadoCartas();
+            tiempoPuntuacion = new clsTimer();
+        }
+        #endregion
+        
+        
     }
 }

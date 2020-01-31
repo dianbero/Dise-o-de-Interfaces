@@ -35,20 +35,10 @@ namespace Proyecto_Juego_Parejas_DAL.Connections
         public clsMyConnection()
         {
             //this.server = "(local)";
-            this.server = "dianbero.database.windows.net";
-            this.dataBase = "PersonasDB";
-            this.user = "dianbero";
-            //this.pass = "123";
-            this.pass = "Mi.Tesoro";
-
-            ////this.server = "(local)";
-            //this.server = "pablo90.database.windows.net";
-            //this.dataBase = "PersonasDB";
-            //this.user = "pablo";
-            ////this.pass = "123";
-            //this.pass = "Mitesoro123";
-
-
+            this.server = "192.168.56.1";
+            this.dataBase = "JuegoParejas";
+            this.user = "apuestas";
+            this.pass = "apuestas";
 
         }
         //Con parámetros por si quisiera cambiar las conexiones

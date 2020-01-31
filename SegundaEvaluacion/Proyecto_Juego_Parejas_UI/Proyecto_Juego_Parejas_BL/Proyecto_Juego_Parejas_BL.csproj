@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Hanlders\clsOperacionesJugadorBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Proyecto_Juego_Parejas_BL.rd.xml" />
   </ItemGroup>

@@ -37,6 +37,8 @@ namespace Proyecto_Juego_Parejas_Entities
             this.idCarta = idCarta;
             this.imgNoVolteada = new Uri("ms-appx:///Assets/Images/xmen.jpg");
             this.imgVolteada = imgVolteada;
+
+            //Accede al set de la propiedad y comprueba su valor para asignar valor a imgMostrar
             this.IsVolteada = isVolteada;
             //this.imgMostrar = imgNoVolteada;
         }
