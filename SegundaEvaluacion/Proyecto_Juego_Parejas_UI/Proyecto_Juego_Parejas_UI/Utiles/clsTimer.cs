@@ -16,7 +16,7 @@ namespace Proyecto_Juego_Parejas_UI.Utiles
         #region Constructor
         public clsTimer()
         {
-            this.tiempoPuntuacion = DateTime.Now;,`+
+            this.tiempoPuntuacion = DateTime.Now;
             SetTimer();            
         }
         #endregion
