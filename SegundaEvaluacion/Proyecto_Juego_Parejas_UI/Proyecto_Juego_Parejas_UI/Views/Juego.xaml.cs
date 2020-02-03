@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Juego_Parejas_UI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +26,37 @@ namespace Proyecto_Juego_Parejas_UI.Views
         public Juego()
         {
             this.InitializeComponent();
+            
         }
 
         private void BtnVolver_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            ComprobarSalirPartida();
         }
+
+        /// <summary>
+        /// Método que muestra mensaje preguntando si desea abandonar la partida 
+        /// y volver al menú principal o seguir jungando
+        /// </summary>
+        private async void ComprobarSalirPartida()
+        {
+            ContentDialog comprobarSalirPartida = new ContentDialog
+            {
+                Title = "Seguro que desea salir?",
+                Content = "Si sale se perderán los datos de la partida",
+                PrimaryButtonText = "Abandonar Partida",
+                CloseButtonText = "Seguir Jugando"
+            };
+
+            ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
+
+            if(resultado == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(MainPage));
+            }
+
+        }
+
+
     }
 }
