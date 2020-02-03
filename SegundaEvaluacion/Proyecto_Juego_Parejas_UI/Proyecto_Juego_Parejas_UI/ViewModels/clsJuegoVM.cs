@@ -60,16 +60,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             {
                 cartaSeleccionada = value;
                 ComprobarJugada();
-                //if (cartaSeleccionada.IsVolteada)
-                //{                    
-                //    cartaSeleccionada.IsVolteada = false;
-
-                //}
-                //else
-                //{
-                //    cartaSeleccionada.IsVolteada = true;
-                //}
-                //NotifyPropertyChanged("CartaSeleccionada");
             }
         }
 
@@ -79,7 +69,15 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         /// </summary>
         private void ComprobarJugada()
         {
-            throw new NotImplementedException();
+            if (!cartaSeleccionada.IsVolteada)
+            {
+                carta1 = cartaSeleccionada;
+                carta1.IsVolteada = true;
+            }
+            else
+            {
+
+            }
         }
 
         public ObservableCollection<clsCarta> ListadoCompletoCartas
