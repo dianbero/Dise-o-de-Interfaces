@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Proyecto_Juego_Parejas_UI.ViewModels
 {
@@ -24,9 +25,10 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private DispatcherTimer tiempoPuntuacion;
         //private DispatcherTimer tiempoVolteoCarta;
         private bool tableroHabilitado;
-        private string tiempoAMostrar = "Hola tiempo";
+        private string tiempoAMostrar = "Good Luck!!!";
         private DateTime tiempoAMostrarFecha = new DateTime(1,1,1,0,0,0);
         private int cartasAcertadas = 0;
+        private bool partidaIsAcabada = false;
 
         #endregion
 
@@ -64,7 +66,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             set { listadoCompletoCartas = value; }
         }
 
-        private DispatcherTimer TiempoPuntuacion
+        public DispatcherTimer TiempoPuntuacion
         {
             get
             {
@@ -94,6 +96,12 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
         }
 
+        public bool PartidaIsAcabada
+        {
+            get { return partidaIsAcabada; }
+            set { partidaIsAcabada = value; }
+        }
+
         #endregion
 
         #region Constructores
@@ -107,9 +115,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
 
             //Cosas del DispatcherTimer
             tiempoPuntuacion = new DispatcherTimer();
-            tiempoPuntuacion.Tick += MostrarElementosTiempo;
+            tiempoPuntuacion.Tick += MostrarTiempo;
             tiempoPuntuacion.Interval = new TimeSpan(0, 0, 1);
-            //TODO: decidir cuándo empieza el timer, en principio, justo al mostrar la pantalla del juego
+            //TODO: decidir cuándo empieza el timer, en principio, justo al mostrar la pantalla del juego            
             tiempoPuntuacion.Start();
             
         }
@@ -173,25 +181,62 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 if(cartasAcertadas == 6)
                 {
                     //Mostrar mensaje de fin de partida
-                    //Asignar tiempoPuntuacion al jugador
-                    //objJugador.Putuacion = tiempoAMostrar;
+                    //Para timer mientras muestra mensaje
+                    //Asignar tiempoPuntuacion al jugador para guardarlo luego en la BD
+                    objJugador.Putuacion = tiempoAMostrarFecha;                    
                 }
             }
         }
 
         /// <summary>
-        /// Método que se ejecuta cada segundo e indica el tiempo que pasa durante la partida
+        /// Método que se ejecuta cada segundo e indica el tiempo que pasa durante la partida.
+        /// (Evento lanzado por DispatcherTimer)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void MostrarElementosTiempo(object sender, object e)
+        public void MostrarTiempo(object sender, object e)
         {
-            //Añade un segundo en casa reptición
-            tiempoAMostrarFecha = tiempoAMostrarFecha.AddSeconds(1);
+            //Añade un segundo en cada reptición
+            //TODO si la partida no está acabada añade segundos   
+            
+            tiempoAMostrarFecha = tiempoAMostrarFecha.AddSeconds(1);            
+
             //Conversión de DateTime a formato mm:ss en string
             tiempoAMostrar = tiempoAMostrarFecha.ToString("mm:ss");
             NotifyPropertyChanged("TiempoAMostrar");            
         }
+
+        //Prueba con Contentdialog:
+
+        /// <summary>
+        /// Método que muestra mensaje preguntando si desea abandonar la partida 
+        /// y volver al menú principal o seguir jungando
+        /// </summary>
+        public ContentDialog ComprobarSalirPartida()
+        {
+            ContentDialog comprobarSalirPartida = new ContentDialog
+            {
+                Title = "Seguro que desea salir?",
+                Content = "Si sale se perderán los datos de la partida",
+                PrimaryButtonText = "Abandonar Partida",
+                CloseButtonText = "Seguir Jugando",
+            };
+
+            //Creo que no funciona porque creo que este método espera a que se pulse un botón en el ContentDialog llamado en codeBehind
+            //Como se muestra pero no pulso nada no reacciona
+            //Pero al hacer debug el atributo cambia a true  y el método de mostrarTiempo sigue funcionando y sumando segundos
+            partidaIsAcabada = true;
+
+            return comprobarSalirPartida;
+
+            //ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
+
+            //if (resultado == ContentDialogResult.Primary)
+            //{
+            //    this.Frame.Navigate(typeof(MainPage));
+            //}
+        }
+
         #endregion
 
 
