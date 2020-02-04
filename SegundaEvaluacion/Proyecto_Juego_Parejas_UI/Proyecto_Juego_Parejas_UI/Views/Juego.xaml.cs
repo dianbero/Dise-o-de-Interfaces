@@ -50,14 +50,17 @@ namespace Proyecto_Juego_Parejas_UI.Views
         //    }
         //}
 
-
+        
 
         /// <summary>
         /// Método que muestra mensaje preguntando si desea abandonar la partida 
         /// y volver al menú principal o seguir jungando
         /// </summary>
+        /// 
+        //TODO poner en ViewModel y lanzarlo con el executeCommand
         private async void ComprobarSalirPartida()
         {
+            //Parar tiempo DispatcherTimer ...TiempoPuntuacion.Stop()
             ContentDialog comprobarSalirPartida = new ContentDialog
             {
                 Title = "Seguro que desea salir?",
@@ -71,6 +74,14 @@ namespace Proyecto_Juego_Parejas_UI.Views
             if (resultado == ContentDialogResult.Primary)
             {
                 this.Frame.Navigate(typeof(MainPage));
+                //Para hacerlo en Viewmodel:
+                //Crear objeto Frame con Window.Current.Content as ... o algo así (buscar)
+                //Con eso puedo usar el navigate y en teoría hacerlo de la misma forma que arriba
+                //Porque son métodos de Frame
+            }
+            else
+            {
+                //Reanudar tiempo (DispatcherTimer)  ...TimenpoPuntuacion.Start()
             }
         }
 

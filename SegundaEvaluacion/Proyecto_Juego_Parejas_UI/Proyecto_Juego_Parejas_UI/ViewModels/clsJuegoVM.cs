@@ -212,8 +212,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         /// Método que muestra mensaje preguntando si desea abandonar la partida 
         /// y volver al menú principal o seguir jungando
         /// </summary>
-        public ContentDialog ComprobarSalirPartida()
-        {
+        public ContentDialog ComprobarSalirPartida() 
+        {           
             ContentDialog comprobarSalirPartida = new ContentDialog
             {
                 Title = "Seguro que desea salir?",
