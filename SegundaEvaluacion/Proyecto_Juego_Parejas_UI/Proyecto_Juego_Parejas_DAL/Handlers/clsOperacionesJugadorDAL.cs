@@ -30,7 +30,7 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
                 command.Connection = connection;
 
                 command.Parameters.Add("@nombreJugador", System.Data.SqlDbType.VarChar).Value = nuevoJugador.NombreJugador;
-                command.Parameters.Add("@puntuacionJugador", System.Data.SqlDbType.DateTime).Value = nuevoJugador.Putuacion;
+                command.Parameters.Add("@puntuacionJugador", System.Data.SqlDbType.DateTime).Value = nuevoJugador.Puntuacion;
 
                 command.CommandText = "INSERT INTO TopScores (nombreJugador, puntuacion) VALUES (@nombreJugador, @puntuacionJugador)";
 
@@ -65,7 +65,7 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
             SqlCommand command = new SqlCommand();
             SqlDataReader reader = null;
 
-            clsJugador objJugador = new clsJugador();
+            clsJugador objJugador;
             ObservableCollection<clsJugador> listaJugadores = new ObservableCollection<clsJugador>();
 
             try
@@ -80,9 +80,10 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
                 {
                     while (reader.Read())
                     {
+                        objJugador = new clsJugador();
                         objJugador.IdJugador = (int)reader["idJugador"];
                         objJugador.NombreJugador = (string)reader["nombreJugador"];
-                        objJugador.Putuacion = (DateTime)reader["puntuacion"];
+                        objJugador.Puntuacion = (DateTime)reader["puntuacion"];
 
                         listaJugadores.Add(objJugador);
                     }

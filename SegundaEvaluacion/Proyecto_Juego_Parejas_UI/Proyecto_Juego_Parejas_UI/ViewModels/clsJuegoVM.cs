@@ -197,7 +197,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Mostrar mensaje de fin de partida con ContentDialog y pedir introducir nickName
 
                     //Asigno puntuación de jugador al terminar partida
-                    objJugador.Putuacion = tiempoAMostrarFecha;
+                    objJugador.Puntuacion = tiempoAMostrarFecha;
                     MostrarMensajeFinPartida();
                    
                 }
@@ -253,7 +253,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
             else
             {
-                //Reanudar tiempo (DispatcherTimer)  ...TiempoPuntuacion.Start()
+                //Reanuda tiempo 
                 tiempoPuntuacion.Start();
             }
         }

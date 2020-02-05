@@ -40,7 +40,7 @@ namespace Proyecto_Juego_Parejas_Entities
             set { nombreJugador = value; }
         }
 
-        public DateTime Putuacion
+        public DateTime Puntuacion
         {
             get { return puntuacion; }
             set { puntuacion = value; }

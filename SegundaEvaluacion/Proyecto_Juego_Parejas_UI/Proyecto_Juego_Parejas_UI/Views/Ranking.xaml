@@ -6,8 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-     Background="MediumSlateBlue">
+    Background="MediumSlateBlue"
+    xmlns:mv="using:Proyecto_Juego_Parejas_UI.ViewModels">
     <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
+
+    <Page.DataContext>
+        <mv:clsRankingVM/>
+    </Page.DataContext>
 
     <RelativePanel>
         <AppBarButton Name="btnVolver" Icon="Back" Click="BtnVolver_Click" >
@@ -15,18 +20,39 @@
                 <CompositeTransform ScaleX="3" ScaleY="3"/>
             </AppBarButton.RenderTransform>-->
         </AppBarButton>
-        <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,50,0,0">
+        <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="0,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" ></TextBlock>
+
+        <!--<StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,50,0,0">
             <TextBlock Name="txtRanking" Text="Ranking" Margin="0,0,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical" Margin="0,0,250,0">
                     <TextBlock Text="Nombre:" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>
-                    <TextBlock Name="txtNombre" Text="hacer binding" FontSize="35" FontWeight="Bold"></TextBlock>
+                    <TextBlock Text="hacer binding" FontSize="35" FontWeight="Bold"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Tiempo:" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>                    
                     <TextBlock Name="txtTiempo" Text="hacer bindging"  FontSize="35" FontWeight="Bold"></TextBlock>                    
                 </StackPanel>
             </StackPanel>
+        </StackPanel>-->
+        <StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,250,0">
+            <TextBlock Text="Nombre:" Margin="0,0,200,30" FontSize="35" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="Tiempo:" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>
+            <TextBox></TextBox>
         </StackPanel>
+        <!--implementar converter-->
+        <ListView Name="ranking" ItemsSource="{Binding RankingJugadores}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="txtNombre" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Text="{Binding Puntuacion}" FontSize="35" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+
     </RelativePanel>
 </Page>
