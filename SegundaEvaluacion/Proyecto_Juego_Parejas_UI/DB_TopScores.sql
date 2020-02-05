@@ -11,10 +11,10 @@ Go
 
 ----CONSULTAS PRUEBA---------
 
-INSERT INTO TopScores (nombreJugador, puntuacion) VALUES ('Diana', GETDATE())
+--INSERT INTO TopScores (nombreJugador, puntuacion) VALUES ('Diana', GETDATE())
 
 
-INSERT INTO TopScores (nombreJugador, puntuacion) VALUES ('Diana', '30-01-2020 18:40:48.640')
+--INSERT INTO TopScores (nombreJugador, puntuacion) VALUES ('Diana', '30-01-2020 18:40:48.640')
 
-select * from TopScores
+--select * from TopScores
 

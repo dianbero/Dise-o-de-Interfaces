@@ -27,7 +27,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         //private DispatcherTimer tiempoVolteoCarta;
         private bool tableroHabilitado;
         private string tiempoAMostrar = "Good Luck!!!";
-        private DateTime tiempoAMostrarFecha = new DateTime(1,1,1,0,0,0);
+        private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0,0,0);
         private int cartasAcertadas = 0;
         private bool partidaIsAcabada = false;
         private DelegateCommand commandAbandonarPartida;
