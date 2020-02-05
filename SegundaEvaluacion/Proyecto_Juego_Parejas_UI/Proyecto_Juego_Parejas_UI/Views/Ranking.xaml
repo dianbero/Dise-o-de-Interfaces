@@ -38,7 +38,6 @@
         <StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,250,0">
             <TextBlock Text="Nombre:" Margin="0,0,200,30" FontSize="35" FontWeight="Bold"></TextBlock>
             <TextBlock Text="Tiempo:" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>
-            <TextBox></TextBox>
         </StackPanel>
         <!--implementar converter-->
         <ListView Name="ranking" ItemsSource="{Binding RankingJugadores}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
