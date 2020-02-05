@@ -15,7 +15,7 @@
 
     <RelativePanel>
         <!--<Button Name="btnVolver" Height="100" Width="100" ></Button>-->
-        <AppBarButton Name="btnVolver" Icon="Back" HorizontalAlignment="Center" Click="BtnVolver_Click">
+        <AppBarButton Name="btnVolver" Icon="Back" HorizontalAlignment="Center" Command="{Binding CommandAbandonarPartida}">
             <!--<AppBarButton.RenderTransform>
                 <CompositeTransform ScaleX="3" ScaleY="3"/>
             </AppBarButton.RenderTransform>-->

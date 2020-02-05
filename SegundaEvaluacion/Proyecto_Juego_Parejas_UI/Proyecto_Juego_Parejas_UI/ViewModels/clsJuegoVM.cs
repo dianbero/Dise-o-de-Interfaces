@@ -1,4 +1,5 @@
-﻿using Proyecto_Juego_Parejas_DAL.Utiles;
+﻿using Proyecto_Juego_Parejas_BL.Hanlders;
+using Proyecto_Juego_Parejas_DAL.Utiles;
 using Proyecto_Juego_Parejas_Entities;
 using Proyecto_Juego_Parejas_UI.Utiles;
 using Proyecto_Juego_Parejas_UI.ViewModels.ViewModelTools;
@@ -29,6 +30,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private DateTime tiempoAMostrarFecha = new DateTime(1,1,1,0,0,0);
         private int cartasAcertadas = 0;
         private bool partidaIsAcabada = false;
+        private DelegateCommand commandAbandonarPartida;
 
         #endregion
 
@@ -96,10 +98,16 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
         }
 
-        public bool PartidaIsAcabada
+        public DelegateCommand CommandAbandonarPartida
         {
-            get { return partidaIsAcabada; }
-            set { partidaIsAcabada = value; }
+            get
+            {                
+                return commandAbandonarPartida;
+            }
+            set
+            {
+                commandAbandonarPartida = value;
+            }
         }
 
         #endregion
@@ -112,6 +120,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             listadoCompletoCartas = listadoCartas.listadoCartas();
             //El tablero inicialmente está habilitado
             tableroHabilitado = true;
+            //Instancia el jugador de la partida
+            objJugador = new clsJugador();
+            commandAbandonarPartida = new DelegateCommand(ComprobarSalirPartida);
 
             //Cosas del DispatcherTimer
             tiempoPuntuacion = new DispatcherTimer();
@@ -171,6 +182,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Asigno las cartas a null para poder volver a asignarle el valor a las nuevas cartas clicadas
                     carta1 = null;
                     carta2 = null;
+                    //Intento que se deseleccione la carta para poder volver a clicar seguidamente
+                    cartaSeleccionada = null;
+                    NotifyPropertyChanged("CartaSeleccionada");
                     /*TODO: añadir contador para que cuando llegue a 6 se termine la partida y se le asigne al jugador ganador
                      su tiempo como puntuación*/
                     //No notifico el cambio de IsVolteada de las cartas, porque ya lo notifican las propias cartas en su set
@@ -183,7 +197,12 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Mostrar mensaje de fin de partida
                     //Para timer mientras muestra mensaje
                     //Asignar tiempoPuntuacion al jugador para guardarlo luego en la BD
-                    objJugador.Putuacion = tiempoAMostrarFecha;                    
+                    
+                    objJugador.Putuacion = tiempoAMostrarFecha;
+                    //Hacer contenctDialog que pida nick Jugador y lo inserte en BD
+                    clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+                    operacionBL.InsertNuevoJugador(objJugador);
+
                 }
             }
         }
@@ -206,36 +225,79 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             NotifyPropertyChanged("TiempoAMostrar");            
         }
 
-        //Prueba con Contentdialog:
-
         /// <summary>
         /// Método que muestra mensaje preguntando si desea abandonar la partida 
         /// y volver al menú principal o seguir jungando
         /// </summary>
-        public ContentDialog ComprobarSalirPartida() 
-        {           
+        /// 
+        //TODO poner en ViewModel y lanzarlo con el executeCommand
+        private async void ComprobarSalirPartida()
+        {
+            //Parar tiempo DispatcherTimer ...TiempoPuntuacion.Stop()
+            tiempoPuntuacion.Stop();
+
             ContentDialog comprobarSalirPartida = new ContentDialog
             {
                 Title = "Seguro que desea salir?",
                 Content = "Si sale se perderán los datos de la partida",
                 PrimaryButtonText = "Abandonar Partida",
-                CloseButtonText = "Seguir Jugando",
+                CloseButtonText = "Seguir Jugando"
             };
 
-            //Creo que no funciona porque creo que este método espera a que se pulse un botón en el ContentDialog llamado en codeBehind
-            //Como se muestra pero no pulso nada no reacciona
-            //Pero al hacer debug el atributo cambia a true  y el método de mostrarTiempo sigue funcionando y sumando segundos
-            partidaIsAcabada = true;
+            ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
 
-            return comprobarSalirPartida;
-
-            //ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
-
-            //if (resultado == ContentDialogResult.Primary)
-            //{
-            //    this.Frame.Navigate(typeof(MainPage));
-            //}
+            //Si pulsa abandonar partida, vuelve al inicio
+            if (resultado == ContentDialogResult.Primary)
+            {
+                //this.Frame.Navigate(typeof(MainPage));
+                
+                Frame frame =(Frame) Window.Current.Content;
+               
+                frame.Navigate(typeof(MainPage));
+                //Para hacerlo en Viewmodel:
+                //Crear objeto Frame con Window.Current.Content as ... o algo así (buscar)
+                //Con eso puedo usar el navigate y en teoría hacerlo de la misma forma que arriba
+                //Porque son métodos de Frame
+            }
+            else
+            {
+                //Reanudar tiempo (DispatcherTimer)  ...TimenpoPuntuacion.Start()
+                tiempoPuntuacion.Start();
+            }
         }
+
+        //Prueba con Contentdialog:
+
+        ///// <summary>
+        ///// Método que muestra mensaje preguntando si desea abandonar la partida 
+        ///// y volver al menú principal o seguir jungando
+        ///// </summary>
+        //public ContentDialog ComprobarSalirPartida() 
+        //{           
+        //    ContentDialog comprobarSalirPartida = new ContentDialog
+        //    {
+        //        Title = "Seguro que desea salir?",
+        //        Content = "Si sale se perderán los datos de la partida",
+        //        PrimaryButtonText = "Abandonar Partida",
+        //        CloseButtonText = "Seguir Jugando",
+        //    };
+
+        //    //Creo que no funciona porque creo que este método espera a que se pulse un botón en el ContentDialog llamado en codeBehind
+        //    //Como se muestra pero no pulso nada no reacciona
+        //    //Pero al hacer debug el atributo cambia a true  y el método de mostrarTiempo sigue funcionando y sumando segundos
+        //    partidaIsAcabada = true;
+
+        //    return comprobarSalirPartida;
+
+        //    //ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
+
+        //    //if (resultado == ContentDialogResult.Primary)
+        //    //{
+        //    //    this.Frame.Navigate(typeof(MainPage));
+        //    //}
+        //}
+
+
 
         #endregion
 
