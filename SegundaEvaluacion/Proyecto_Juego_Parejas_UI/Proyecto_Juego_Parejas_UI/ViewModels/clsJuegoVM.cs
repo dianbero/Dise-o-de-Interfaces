@@ -27,7 +27,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         //private DispatcherTimer tiempoVolteoCarta;
         private bool tableroHabilitado;
         private string tiempoAMostrar = "Good Luck!!!";
-        private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0,0,0);
+        private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0,0,0); //Fecha a partir de la cual no lanza excepción
         private int cartasAcertadas = 0;
         private bool partidaIsAcabada = false;
         private DelegateCommand commandAbandonarPartida;
@@ -194,15 +194,12 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 NotifyPropertyChanged("TableroHabilitado");
                 if(cartasAcertadas == 6)
                 {
-                    //Mostrar mensaje de fin de partida
-                    //Para timer mientras muestra mensaje
-                    //Asignar tiempoPuntuacion al jugador para guardarlo luego en la BD
-                    
-                    objJugador.Putuacion = tiempoAMostrarFecha;
-                    //Hacer contenctDialog que pida nick Jugador y lo inserte en BD
-                    clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
-                    operacionBL.InsertNuevoJugador(objJugador);
+                    //Mostrar mensaje de fin de partida con ContentDialog y pedir introducir nickName
 
+                    //Asigno puntuación de jugador al terminar partida
+                    objJugador.Putuacion = tiempoAMostrarFecha;
+                    MostrarMensajeFinPartida();
+                   
                 }
             }
         }
@@ -248,56 +245,57 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
 
             //Si pulsa abandonar partida, vuelve al inicio
             if (resultado == ContentDialogResult.Primary)
-            {
-                //this.Frame.Navigate(typeof(MainPage));
-                
+            {   
+                //Instancia un elemento Page 
                 Frame frame =(Frame) Window.Current.Content;
                
                 frame.Navigate(typeof(MainPage));
-                //Para hacerlo en Viewmodel:
-                //Crear objeto Frame con Window.Current.Content as ... o algo así (buscar)
-                //Con eso puedo usar el navigate y en teoría hacerlo de la misma forma que arriba
-                //Porque son métodos de Frame
             }
             else
             {
-                //Reanudar tiempo (DispatcherTimer)  ...TimenpoPuntuacion.Start()
+                //Reanudar tiempo (DispatcherTimer)  ...TiempoPuntuacion.Start()
                 tiempoPuntuacion.Start();
             }
         }
 
-        //Prueba con Contentdialog:
+        //ContentDialog Fin de Partida
+        public async void MostrarMensajeFinPartida()
+        {
+            /*Help for InputDialog:
+             *https://comentsys.wordpress.com/2018/05/04/uwp-input-dialog/
+             */
+            //Se para el tiempo
+            tiempoPuntuacion.Stop();
+            TextBox input = new TextBox();
+            input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
+            input.PlaceholderText = "Nick";
 
-        ///// <summary>
-        ///// Método que muestra mensaje preguntando si desea abandonar la partida 
-        ///// y volver al menú principal o seguir jungando
-        ///// </summary>
-        //public ContentDialog ComprobarSalirPartida() 
-        //{           
-        //    ContentDialog comprobarSalirPartida = new ContentDialog
-        //    {
-        //        Title = "Seguro que desea salir?",
-        //        Content = "Si sale se perderán los datos de la partida",
-        //        PrimaryButtonText = "Abandonar Partida",
-        //        CloseButtonText = "Seguir Jugando",
-        //    };
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "¡¡¡Fin de la partida!!!",
+                PrimaryButtonText = "Guardar",                
+                Content = input
+            };
 
-        //    //Creo que no funciona porque creo que este método espera a que se pulse un botón en el ContentDialog llamado en codeBehind
-        //    //Como se muestra pero no pulso nada no reacciona
-        //    //Pero al hacer debug el atributo cambia a true  y el método de mostrarTiempo sigue funcionando y sumando segundos
-        //    partidaIsAcabada = true;
+            ContentDialogResult result = await dialog.ShowAsync();
 
-        //    return comprobarSalirPartida;
+            if(result == ContentDialogResult.Primary)
+            {
+                input = (TextBox)dialog.Content;
+                await new Windows.UI.Popups.MessageDialog($"Enhorabuena {input.Text}!!!").ShowAsync();
+                //Parar tiempo
+                //Volver a inicio / o ir a ranking
+                Frame frame = (Frame)Window.Current.Content;
+                //TODO cambiar a paginaRanking
+                frame.Navigate(typeof(MainPage)); 
+            }
 
-        //    //ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
+            //Guardo nombre jugador 
+            objJugador.NombreJugador = input.Text;
+            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+            operacionBL.InsertNuevoJugador(objJugador);
 
-        //    //if (resultado == ContentDialogResult.Primary)
-        //    //{
-        //    //    this.Frame.Navigate(typeof(MainPage));
-        //    //}
-        //}
-
-
+        }
 
         #endregion
 
