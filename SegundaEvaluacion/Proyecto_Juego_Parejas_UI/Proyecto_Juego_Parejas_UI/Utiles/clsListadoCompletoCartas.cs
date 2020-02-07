@@ -22,15 +22,23 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
             listadoCartas.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
 
+            //Temporal:
+            listadoCartas.Add(new clsCarta(0, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
+            listadoCartas.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+
             return listadoCartas;
         }
 
         public ObservableCollection<clsCarta> ListadoCompletoCartasEnCasilla()
         {
             //lista con cartas            
-            ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
-            //listado de cartas para asignar en casillas
-            ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
+            //ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
+            ////listado de cartas para asignar en casillas
+            //ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
             Random rdm = new Random();
             int random; //genera numero entre de 0 a 6 (excluye 6)
 
@@ -50,21 +58,62 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             //    }
             //}
 
-            
-            for(int i = 0; i < 12; i++)            {
-                random = rdm.Next(6);
-                for(int j=0; j<i; j++)
-                {
-                    if (random != listadoCasillas[j].IdCarta)
-                    {
-                        listadoCasillas.Add(listadoCartas[random]);
-                    }
-                    else
-                    {
-                        i = 0;
-                    }
-                }                
-            }            
+            ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
+            ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
+
+
+            //int repeticionCarta = 0;
+
+            //for (int i = 0; i < listadoCartas.Count(); i++)
+            //{
+            //    random = rdm.Next(6);
+
+            //    listadoCasillas.Add(listadoCartas[random]);
+
+
+            //    listadoCartas.RemoveAt(random);
+            //}
+            while (listadoCartas.Count > 0)
+            {
+                random = rdm.Next(0, 6);
+                listadoCasillas.Add(listadoCartas[random]);
+                listadoCartas.RemoveAt(random);
+            }
+
+
+
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    random = rdm.Next(6);
+            //    listadoCasillas.Add(listadoCartas[random]);
+            //    bool ok = false;
+            //    //No sirve porque quita el elemento y por tanto el tamaño del listado es menor
+            //    //listadoCartas.Move(random, 0);+
+            //    for (int j = 0; j < listadoCasillas.Count(); j++)
+            //    {
+            //        if (listadoCasillas[i] != listadoCasillas[j])
+            //        {
+            //             ok = true;                        
+            //        }
+            //    }
+
+            //}
+
+
+            //for(int i = 0; i < 12; i++)            {
+            //    random = rdm.Next(6);
+            //    for(int j=0; j<i; j++)
+            //    {
+            //        if (random != listadoCasillas[j].IdCarta)
+            //        {
+            //            listadoCasillas.Add(listadoCartas[random]);
+            //        }
+            //        else
+            //        {
+            //            i = 0;
+            //        }
+            //    }                
+            //}            
 
             return listadoCasillas;
         }
