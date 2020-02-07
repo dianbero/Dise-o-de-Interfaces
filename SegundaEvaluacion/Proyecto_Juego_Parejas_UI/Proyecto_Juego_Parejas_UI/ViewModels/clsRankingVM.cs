@@ -31,7 +31,14 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         public clsRankingVM()
         {
             //Relleno lista jugadores
-            rankingJugadores = new clsOperacionesJugadorBL().GetListaJugadores();
+            try
+            {
+                rankingJugadores = new clsOperacionesJugadorBL().GetListaJugadores();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
         #endregion
 

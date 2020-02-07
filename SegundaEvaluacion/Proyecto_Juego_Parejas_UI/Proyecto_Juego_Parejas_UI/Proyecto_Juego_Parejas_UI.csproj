@@ -124,6 +124,7 @@
     <Compile Include="Utiles\clsTimer.cs" />
     <Compile Include="ViewModels\clsJuegoVM.cs" />
     <Compile Include="ViewModels\clsRankingVM.cs" />
+    <Compile Include="ViewModels\ViewModelTools\clsConverterFecha.cs" />
     <Compile Include="ViewModels\ViewModelTools\clsVMBase.cs" />
     <Compile Include="ViewModels\ViewModelTools\DelegateCommand.cs" />
     <Compile Include="Views\Juego.xaml.cs">

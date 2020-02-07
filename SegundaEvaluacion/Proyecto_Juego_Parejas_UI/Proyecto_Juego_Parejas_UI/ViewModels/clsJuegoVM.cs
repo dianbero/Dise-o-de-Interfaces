@@ -29,7 +29,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private string tiempoAMostrar = "Good Luck!!!";
         private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0,0,0); //Fecha a partir de la cual no lanza excepción
         private int cartasAcertadas = 0;
-        private bool partidaIsAcabada = false;
         private DelegateCommand commandAbandonarPartida;
 
         #endregion
@@ -116,8 +115,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         public clsJuegoVM()
         {
             clsListadoCompletoCartas listadoCartas = new clsListadoCompletoCartas();
-            //listadoCompletoCartas = listadoCartas.ListadoCompletoCartasEnCasilla();
-            listadoCompletoCartas = listadoCartas.listadoCartas();
+            listadoCompletoCartas = listadoCartas.ListadoCompletoCartasEnCasilla();
+            //listadoCompletoCartas = listadoCartas.listadoCartas();
             //El tablero inicialmente está habilitado
             tableroHabilitado = true;
             //Instancia el jugador de la partida

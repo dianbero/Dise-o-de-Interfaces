@@ -21,8 +21,7 @@
             </AppBarButton.RenderTransform>-->
         </AppBarButton>
         <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <TextBlock Name="txtTiempo" Text="{Binding TiempoAMostrar}" Margin="0,30,0,10" FontSize="40" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Name="txtHMS" Text="Hola"  Margin="0,0,0,40" HorizontalAlignment="Center" FontSize="30" FontWeight="Black"></TextBlock>
+            <TextBlock Name="txtTiempo" Text="{Binding TiempoAMostrar}" Margin="0,30,0,10" FontSize="40" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>            
             <GridView  Name="gridCartas" IsEnabled="{Binding TableroHabilitado}" Width="626" Height="470" ItemsSource="{Binding ListadoCompletoCartas}" SelectedItem="{Binding CartaSeleccionada, Mode=TwoWay}" BorderThickness="5" BorderBrush="DarkBlue">
                 <GridView.ItemTemplate>
                     <DataTemplate>

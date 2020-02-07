@@ -31,8 +31,8 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
             //listado de cartas para asignar en casillas
             ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
-            Random random = new Random();
-            int rdnNumber= random.Next(13); //genera numero entre de 0 a 12 (excluye 13)
+            Random rdm = new Random();
+            int random; //genera numero entre de 0 a 6 (excluye 6)
 
 
             //TODO comprobar que esta implementación para asignar las cartas funciona
@@ -50,30 +50,21 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
             //    }
             //}
 
-
-            //Asignar parejas a casilla
-            for (int i = 0; i < 6; i++)
-            {
-                if (listadoCartas[rdnNumber] != listadoCartas[i])
-                {
-                    listadoCasillas.Add(listadoCartas[rdnNumber]);
-                }
-                else
-                {
-                    rdnNumber = random.Next(13);
-                }
-            }
-            //Asignación parejas
-            for (int i = 5; i < listadoCasillas.Count(); i++)
-            {
-                //Si ninguna de las cartas anteriores es igual a la del numero random asignado entonces la añade al array
-                if (listadoCartas[rdnNumber] != listadoCartas[i])
-                {
-                    listadoCasillas.Add(listadoCartas[rdnNumber]);
-                }
-                //TODO implementar qué hace cuando coincide con todas las cartas ya asignadas anteriormente
-            }
             
+            for(int i = 0; i < 12; i++)            {
+                random = rdm.Next(6);
+                for(int j=0; j<i; j++)
+                {
+                    if (random != listadoCasillas[j].IdCarta)
+                    {
+                        listadoCasillas.Add(listadoCartas[random]);
+                    }
+                    else
+                    {
+                        i = 0;
+                    }
+                }                
+            }            
 
             return listadoCasillas;
         }
