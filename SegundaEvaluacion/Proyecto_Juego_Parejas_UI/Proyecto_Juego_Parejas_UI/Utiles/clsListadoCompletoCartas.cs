@@ -16,18 +16,18 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
         {
             ObservableCollection<clsCarta> listadoCartas = new ObservableCollection<clsCarta>();
             listadoCartas.Add(new clsCarta(0, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
-            listadoCartas.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
+            listadoCartas.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
+            listadoCartas.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
+            listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
             listadoCartas.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
 
-            //Temporal:
+            //Temporal para prueba:
             listadoCartas.Add(new clsCarta(0, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
-            listadoCartas.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-            listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
+            listadoCartas.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
+            listadoCartas.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
+            listadoCartas.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
+            listadoCartas.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
             listadoCartas.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
 
             return listadoCartas;
@@ -36,113 +36,24 @@ namespace Proyecto_Juego_Parejas_DAL.Utiles
         public ObservableCollection<clsCarta> ListadoCompletoCartasEnCasilla()
         {
             //lista con cartas            
-            //ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
-            ////listado de cartas para asignar en casillas
-            //ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
+            ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
+            //listado de cartas para asignar en casillas
+            ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
             Random rdm = new Random();
             int random; //genera numero entre de 0 a 6 (excluye 6)
 
 
-            //TODO comprobar que esta implementación para asignar las cartas funciona
-            //Asignar primeras 6 cartas a casilla
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    //listadoCasillas.Add(listadoCartas[rdnNumber]);
-            //    for(int j=0; i<listadoCasillas.Count(); i++)
-            //    {
-            //        //Si ninguna de las cartas anteriores es igual a la del numero random asignado entonces la añade al array
-            //        if(listadoCartas[rdnNumber] != listadoCartas[i])
-            //        {
-            //            listadoCasillas.Add(listadoCartas[rdnNumber]); 
-            //        }
-            //    }
-            //}
 
-            ObservableCollection<clsCarta> listadoCartas = ListadoCompletoCartas();
-            ObservableCollection<clsCarta> listadoCasillas = new ObservableCollection<clsCarta>();
-
-
-            //int repeticionCarta = 0;
-
-            //for (int i = 0; i < listadoCartas.Count(); i++)
-            //{
-            //    random = rdm.Next(6);
-
-            //    listadoCasillas.Add(listadoCartas[random]);
-
-
-            //    listadoCartas.RemoveAt(random);
-            //}
             while (listadoCartas.Count > 0)
             {
-                random = rdm.Next(0, 6);
+                random = rdm.Next(0, listadoCartas.Count);
                 listadoCasillas.Add(listadoCartas[random]);
+                //Quitar elementos para evitar repetición
                 listadoCartas.RemoveAt(random);
+               
             }
-
-
-
-            //for (int i = 0; i < 12; i++)
-            //{
-            //    random = rdm.Next(6);
-            //    listadoCasillas.Add(listadoCartas[random]);
-            //    bool ok = false;
-            //    //No sirve porque quita el elemento y por tanto el tamaño del listado es menor
-            //    //listadoCartas.Move(random, 0);+
-            //    for (int j = 0; j < listadoCasillas.Count(); j++)
-            //    {
-            //        if (listadoCasillas[i] != listadoCasillas[j])
-            //        {
-            //             ok = true;                        
-            //        }
-            //    }
-
-            //}
-
-
-            //for(int i = 0; i < 12; i++)            {
-            //    random = rdm.Next(6);
-            //    for(int j=0; j<i; j++)
-            //    {
-            //        if (random != listadoCasillas[j].IdCarta)
-            //        {
-            //            listadoCasillas.Add(listadoCartas[random]);
-            //        }
-            //        else
-            //        {
-            //            i = 0;
-            //        }
-            //    }                
-            //}            
-
+                                 
             return listadoCasillas;
-        }
-
-        //Lista falsa para probar funcionamiento del bindeo
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public ObservableCollection<clsCarta> listadoCartas()
-        {
-            ObservableCollection<clsCarta> listado = new ObservableCollection<clsCarta>();
-            //ObservableCollection<clsCarta> lis = ListadoCompletoCartas(); 
-
-            listado.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
-            listado.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
-            listado.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
-            listado.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
-            listado.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
-            listado.Add(new clsCarta(6, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-
-            listado.Add(new clsCarta(1, false, new Uri("ms-appx:///Assets/Images/antman.jpg")));
-            listado.Add(new clsCarta(2, false, new Uri("ms-appx:///Assets/Images/blackPanter.jpg")));
-            listado.Add(new clsCarta(3, false, new Uri("ms-appx:///Assets/Images/captainAmerica.jpg")));
-            listado.Add(new clsCarta(4, false, new Uri("ms-appx:///Assets/Images/deadpool.jpg")));
-            listado.Add(new clsCarta(5, false, new Uri("ms-appx:///Assets/Images/ironman.jpg")));
-            listado.Add(new clsCarta(6, false, new Uri("ms-appx:///Assets/Images/spiderman.jpg")));
-
-            return listado;
         }
     }
 }

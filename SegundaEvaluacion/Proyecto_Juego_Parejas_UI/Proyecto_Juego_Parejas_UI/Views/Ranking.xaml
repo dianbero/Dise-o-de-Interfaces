@@ -60,7 +60,7 @@
                         <TextBlock Text="Tiempo:" Grid.Column="1" Grid.Row="0" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>-->
 
                         <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,20,0" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1" Text="{Binding Puntuacion, Converter={Binding ConverterFecha}}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1" Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha }}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </Grid>
                     </DataTemplate>
             </GridView.ItemTemplate>
