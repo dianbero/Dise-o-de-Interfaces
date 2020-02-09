@@ -22,7 +22,7 @@
         </AppBarButton>
         <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True">
             <TextBlock Name="txtTiempo" Text="{Binding TiempoAMostrar}" Margin="0,30,0,10" FontSize="40" FontWeight="Black" Foreground="DarkBlue" HorizontalAlignment="Center"></TextBlock>            
-            <GridView  Name="gridCartas" IsEnabled="{Binding TableroHabilitado}" Width="626" Height="470" ItemsSource="{Binding ListadoCompletoCartas}" SelectedItem="{Binding CartaSeleccionada, Mode=TwoWay}" BorderThickness="5" BorderBrush="DarkBlue">
+            <GridView  Name="gridCartas" IsEnabled="{Binding TableroHabilitado}" Width="630" Height="470" ItemsSource="{Binding ListadoCompletoCartas}" SelectedItem="{Binding CartaSeleccionada, Mode=TwoWay}" BorderThickness="5" BorderBrush="DarkBlue">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Image Name="carta" Width="150" Height="150" Source="{Binding ImgMostrar}"></Image>
