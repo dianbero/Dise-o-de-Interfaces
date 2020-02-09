@@ -29,7 +29,7 @@
         <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="140,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" ></TextBlock>
 
         <!--<StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWith="txtRanking" Margin="0,0,250,0">-->
-            <TextBlock Name="txtNombre" Text="Nombre:" Margin="0,0,400,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtRanking" ></TextBlock>
+            <TextBlock Name="txtNombre" Text="Nombre:" Margin="0,0,250,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtRanking" ></TextBlock>
         <TextBlock Name="txtTiempo" Text="Tiempo:" Margin="0,0,100,30" Width="150" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
         <!--</StackPanel>-->
         
@@ -40,7 +40,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="txtNombre" Padding="0,0,200,10" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtTiempo" Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha}}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Padding="200,0,0,10" Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha}}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </StackPanel>
                     </DataTemplate>
             </ListView.ItemTemplate>            
