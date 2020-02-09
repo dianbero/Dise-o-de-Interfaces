@@ -27,7 +27,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Lists
 
             //Abro conexión
             objConexion = new clsMyConnection();
-            conexion = objConexion.getConnection();
+            //conexion = objConexion.getConnection();
 
             //Guardo sentencia en comando
             comando.CommandText = "SELECT * FROM PD_Departamentos";

@@ -114,9 +114,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         #region Constructores
         public clsJuegoVM()
         {
+            //Relleno la lista de cartas
             clsListadoCompletoCartas listadoCartas = new clsListadoCompletoCartas();
             listadoCompletoCartas = listadoCartas.ListadoCompletoCartasEnCasilla();
-            //listadoCompletoCartas = listadoCartas.listadoCartas();
             //El tablero inicialmente está habilitado
             tableroHabilitado = true;
             //Instancia el jugador de la partida
@@ -127,7 +127,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             tiempoPuntuacion = new DispatcherTimer();
             tiempoPuntuacion.Tick += MostrarTiempo;
             tiempoPuntuacion.Interval = new TimeSpan(0, 0, 1);
-            //TODO: decidir cuándo empieza el timer, en principio, justo al mostrar la pantalla del juego            
+            //Empieza a contar el tiempo al comentzar la partida         
             tiempoPuntuacion.Start();
             
         }
@@ -183,9 +183,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     carta2 = null;
                     //Intento que se deseleccione la carta para poder volver a clicar seguidamente
                     cartaSeleccionada = null;
-                    NotifyPropertyChanged("CartaSeleccionada");
-                    /*TODO: añadir contador para que cuando llegue a 6 se termine la partida y se le asigne al jugador ganador
-                     su tiempo como puntuación*/
+                    NotifyPropertyChanged("CartaSeleccionada");                    
                     //No notifico el cambio de IsVolteada de las cartas, porque ya lo notifican las propias cartas en su set
                 }
                 //Vuelvo a habilitar el tablero una vez comprobadas la cartas
@@ -193,9 +191,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 NotifyPropertyChanged("TableroHabilitado");
                 if(cartasAcertadas == 6)
                 {
-                    //Mostrar mensaje de fin de partida con ContentDialog y pedir introducir nickName
-
-                    //Asigno puntuación de jugador al terminar partida
+                    //Asigno puntuación de jugador justo al terminar partida
                     objJugador.Puntuacion = tiempoAMostrarFecha;
                     MostrarMensajeFinPartida();
                    
@@ -211,9 +207,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         /// <param name="e"></param>
         public void MostrarTiempo(object sender, object e)
         {
-            //Añade un segundo en cada reptición
-            //TODO si la partida no está acabada añade segundos   
-            
+            //Añade un segundo en cada reptición            
             tiempoAMostrarFecha = tiempoAMostrarFecha.AddSeconds(1);            
 
             //Conversión de DateTime a formato mm:ss en string
@@ -225,11 +219,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         /// Método que muestra mensaje preguntando si desea abandonar la partida 
         /// y volver al menú principal o seguir jungando
         /// </summary>
-        /// 
-        //TODO poner en ViewModel y lanzarlo con el executeCommand
         private async void ComprobarSalirPartida()
         {
-            //Parar tiempo DispatcherTimer ...TiempoPuntuacion.Stop()
+            //Para tiempo 
             tiempoPuntuacion.Stop();
 
             ContentDialog comprobarSalirPartida = new ContentDialog
@@ -258,21 +250,28 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         }
 
         //ContentDialog Fin de Partida
+        /// <summary>
+        /// Método que muestra un ContenDialog al final de la partida para que el usuario introduzca su nick y se guarde
+        /// en la BD de forma que aparezca en el ranking
+        /// </summary>
         public async void MostrarMensajeFinPartida()
         {
             /*Help for InputDialog:
              *https://comentsys.wordpress.com/2018/05/04/uwp-input-dialog/
              */
+
             //Se para el tiempo
             tiempoPuntuacion.Stop();
+            //Creo TextBox para introducir nombre de usuario
             TextBox input = new TextBox();
             input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
-            input.PlaceholderText = "Nick";
+            input.PlaceholderText = "Introduce tu nick";
 
             ContentDialog dialog = new ContentDialog()
             {
                 Title = "¡¡¡Fin de la partida!!!",
-                PrimaryButtonText = "Guardar",                
+                PrimaryButtonText = "Guardar",     
+                //Asigno como contenido el TextBox para introducir nick de usuario
                 Content = input
             };
 
@@ -280,18 +279,19 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
 
             if(result == ContentDialogResult.Primary)
             {
-                input = (TextBox)dialog.Content;
-                await new Windows.UI.Popups.MessageDialog($"Enhorabuena {input.Text}!!!").ShowAsync();
-                //Parar tiempo
+                //input = (TextBox)dialog.Content;
+                //await new Windows.UI.Popups.MessageDialog($"Enhorabuena {input.Text}!!!").ShowAsync();
+                
                 //Volver a inicio / o ir a ranking
                 Frame frame = (Frame)Window.Current.Content;
-                //TODO cambiar a paginaRanking
+                //Volver a Página inicio
                 frame.Navigate(typeof(MainPage)); 
             }
 
-            //Guardo nombre jugador 
+            //Asigno a objJugador el nick del jugador actual
             objJugador.NombreJugador = input.Text;
-            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+            //Guardo nick y puntuación jugador en BD
+            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();            
             operacionBL.InsertNuevoJugador(objJugador);
 
         }
