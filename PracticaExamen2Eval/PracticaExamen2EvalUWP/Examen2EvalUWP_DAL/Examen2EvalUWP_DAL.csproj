@@ -122,6 +122,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Connections\clsMyConnection.cs" />
+    <Compile Include="Handlers\clsHandlersPersonas_DAL.cs" />
     <Compile Include="Lists\clsListaPersonas_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Examen2EvalUWP_DAL.rd.xml" />
@@ -140,9 +141,7 @@
       <Name>Examen2EvalUWP_Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
