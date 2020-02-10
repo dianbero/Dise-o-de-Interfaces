@@ -121,7 +121,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Lists\Class1.cs" />
     <Compile Include="Lists\clsListaPersonas_BL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Examen2EvalUWP_BL.rd.xml" />

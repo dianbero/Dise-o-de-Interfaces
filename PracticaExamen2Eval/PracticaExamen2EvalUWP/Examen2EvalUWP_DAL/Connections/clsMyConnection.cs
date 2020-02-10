@@ -18,8 +18,7 @@ namespace _17_CRUD_Personas_UWP_DAL.Connections
         public static string getUriBase()
         {
             string uriBase;
-            uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/";
-            //uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/personasapi"; 
+            uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/"; 
             return uriBase;
         }
 
