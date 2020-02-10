@@ -1,4 +1,4 @@
-﻿using _17_CRUD_Personas_UWP_DAL.Connections;
+﻿using Examen2EvalUWP_DAL.Connections;
 using Examen2EvalUWP_Entities;
 using Newtonsoft.Json;
 using System;
@@ -11,15 +11,21 @@ using System.Threading.Tasks;
 
 namespace Examen2EvalUWP_DAL.Lists
 {
-    public class clsListaPersonas_DAL
+    public class clsListadoPrediccionesDAL
     {
-        public async Task<ObservableCollection<clsPersona>> ListadoCompletoPersonasDAL()
+
+        /// <summary>
+        ///  Método que obtiene la prediccion en tres días de una ciudad según su id
+        /// </summary>
+        /// <param name="idCiudad">int con el id de la ciudad deseada</param>
+        /// <returns>ObservableCollection<clsCiudad> prediccion, con lista de predicciones de tres días</returns>
+        public async Task<ObservableCollection<clsPrediccion>> ObtenerPrediccionCiudad(int idCiudad)
         {
-            ObservableCollection<clsPersona> listaPersonas = new ObservableCollection<clsPersona>();
+            ObservableCollection<clsPrediccion> prediccion = new ObservableCollection<clsPrediccion>();
             //Cliente
             HttpClient cliente = new HttpClient();
             //Cadena uri
-            string cadenaUri = $"{clsMyConnection.getUriBase()}personasapi";
+            string cadenaUri = $"{clsMyConnection.getUriBasePrediccion()}prediccion";
 
             Uri requestUri = new Uri(cadenaUri);
 
@@ -39,8 +45,8 @@ namespace Examen2EvalUWP_DAL.Lists
                     //Devuelve archivo Json, por lo que hay que convertirlo a Listado normal
                     httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
 
-                    //Convierto el archivo Json a una lista de personas
-                    listaPersonas = JsonConvert.DeserializeObject<ObservableCollection<clsPersona>>(httpResponseBody);
+                    //Convierto el archivo Json a una lista de predicciones
+                    prediccion = JsonConvert.DeserializeObject<ObservableCollection<clsPrediccion>>(httpResponseBody);
                 }
             }
             catch (Exception e)
@@ -48,7 +54,7 @@ namespace Examen2EvalUWP_DAL.Lists
                 httpResponseBody = $"Error: {e.HResult.ToString("X")} Message: {e.Message}";
             }
 
-            return listaPersonas;
+            return prediccion;
         }
     }
 }

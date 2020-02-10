@@ -1,0 +1,8 @@
+
+Falla la capa DAL al llamar a la API, por lo que en el ViewModel los métodos 
+que tendrían que obtener los datos están comentados, tengo unos falsos en su lugar.
+Por tanto el ejercicio a tomar por saco.
+
+No sé cómo plantear el ejercicio ni sé cómo implementarlo.
+
+Por supuesto faltan la animaciones y no sé qué más.

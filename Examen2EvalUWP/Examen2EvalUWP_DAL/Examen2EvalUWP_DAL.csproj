@@ -11,7 +11,7 @@
     <AssemblyName>Examen2EvalUWP_DAL</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -121,11 +121,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Connections\Class1.cs" />
     <Compile Include="Connections\clsMyConnection.cs" />
     <Compile Include="Handlers\Class1.cs" />
     <Compile Include="Handlers\clsHandlersPersonas_DAL.cs" />
+    <Compile Include="Lists\clsListadoCiudadesDAL.cs" />
     <Compile Include="Lists\Class1.cs" />
-    <Compile Include="Lists\clsListaPersonas_DAL.cs" />
+    <Compile Include="Lists\clsListadoPrediccionesDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Examen2EvalUWP_DAL.rd.xml" />
   </ItemGroup>

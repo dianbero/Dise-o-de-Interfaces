@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Examen2EvalUWP_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Examen2EvalUWP_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:vm="using:Examen2EvalUWP_UI.ViewModels">
+
+    <Page.DataContext>
+        <vm:MainPageVM/>
+    </Page.DataContext>
+
+    <RelativePanel>
+        <TextBlock Name="titleCiudad" Text="Ciudades" Margin="0,40,0,10" FontSize="40"></TextBlock>
+
+        <ListView Name="listaCiudades" ItemsSource="{Binding ListadoCiudades}"  RelativePanel.Below="titleCiudad" Height="300" Width="200" BorderBrush="Black" BorderThickness="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Name="ciudad" Text="{Binding NombreCiudad}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Name="ciudad" Text="Sevilla" Margin="200,40,0,0" FontSize="35" RelativePanel.RightOf="listaCiudades"></TextBlock>
+
+        <ListView Name="listaDias" ItemsSource="{Binding ListadoPredicciones}" RelativePanel.RightOf="listaCiudades" Margin="200,40,0,0" RelativePanel.AlignLeftWith="ciudad" RelativePanel.Below="ciudad" Height="300" Width="200" BorderBrush="Black" BorderThickness="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="dia" ></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Name="listaPronosticos" RelativePanel.Below="listaDias" Margin="200,10,0,0" RelativePanel.AlignLeftWith="listaDias" Height="300" Width="200" BorderBrush="Black" BorderThickness="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="pronostico"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Name="tempMax" Text="T. Máxima" Margin="200,10,0,0" FontSize="25"  RelativePanel.Below="listaPronosticos" RelativePanel.AlignLeftWith="listaPronosticos"></TextBlock>
+        <TextBlock Name="tempMin" Text="T. Mínima" Margin="80,10,0,0" FontSize="25" RelativePanel.RightOf="tempMax" RelativePanel.Below="listaPronosticos" ></TextBlock>
+        
+        
+        <TextBlock Name="datosTMax" Text="T.Máximabinde" Margin="200,10,0,0" FontSize="25"   RelativePanel.Below="tempMax" RelativePanel.AlignLeftWith="listaPronosticos"></TextBlock>
+        <TextBlock Name="datosTMin" Text="T. MínimaBindear" Margin="80,10,0,0" FontSize="25" RelativePanel.RightOf="tempMax" RelativePanel.Below="tempMin" ></TextBlock>
+
+        <TextBlock Name="humedad" Text="Humedad%" FontSize="30" Margin="200, 20,0,0" RelativePanel.Below="datosTMax" RelativePanel.AlignHorizontalCenterWith="datosTMax"></TextBlock>
+
+    </RelativePanel>
+</Page>

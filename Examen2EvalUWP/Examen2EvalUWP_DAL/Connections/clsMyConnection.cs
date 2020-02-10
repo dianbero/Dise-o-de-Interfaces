@@ -5,20 +5,30 @@ using System.Web;
 using System.Data.SqlClient;
 
 
-
-
-namespace _17_CRUD_Personas_UWP_DAL.Connections
+namespace Examen2EvalUWP_DAL.Connections
 {
     public class clsMyConnection
     {
         /// <summary>
-        /// Método que obtiene la cadena Uri de la Api Base.
+        /// Método que obtiene la cadena Uri de la Api Base de ciudades.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>uri de ciudades</returns>
         public static string getUriBase()
         {
             string uriBase;
-            uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/"; 
+            //uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/"; 
+            uriBase = "https://webapiaemet.azurewebsites.net/api/"; 
+            return uriBase;
+        }
+
+        /// <summary>
+        /// Método que obtiene la cadena Uri de la Api Base de predicciones.
+        /// </summary>
+        /// <returns>uri de predicciones</returns>
+        public static string getUriBasePrediccion()
+        {
+            string uriBase;
+            uriBase = "https://webapiaemet.azurewebsites.net/api/";
             return uriBase;
         }
 
