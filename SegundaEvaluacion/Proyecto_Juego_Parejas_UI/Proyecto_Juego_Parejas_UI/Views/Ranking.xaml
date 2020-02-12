@@ -29,12 +29,12 @@
         <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="140,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" ></TextBlock>
 
         <!--<StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWith="txtRanking" Margin="0,0,250,0">-->
-            <TextBlock Name="txtNombre" Text="Nombre:" Margin="0,0,250,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtRanking" ></TextBlock>
+        <TextBlock Name="txtNombre" Text="Nombre:" Margin="50,0,400,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignRightWith="txtRanking" RelativePanel.Below="txtRanking" ></TextBlock>
         <TextBlock Name="txtTiempo" Text="Tiempo:" Margin="0,0,100,30" Width="150" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
         <!--</StackPanel>-->
         
         
-        <!--implementar converter-->
+        <!--implementar converter--><!--
         <ListView Name="ranking" MaxHeight="800" Height="450" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -44,28 +44,23 @@
                     </StackPanel>
                     </DataTemplate>
             </ListView.ItemTemplate>            
-        </ListView>
+        </ListView>-->
 
-        <!--<GridView ItemsSource="{Binding RankingJugadores}"  RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <GridView ItemsSource="{Binding RankingJugadores}"  RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="400"/>
-                            <ColumnDefinition Width="400"/>
-                            --><!--<ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>--><!--
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        --><!--<TextBlock Text="Nombre:" Grid.Column="0" Grid.Row="0" Margin="0,0,200,30" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Text="Tiempo:" Grid.Column="1" Grid.Row="0" Margin="0,0,0,30" FontSize="35" FontWeight="Bold"></TextBlock>--><!--
-
-                        <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,20,0" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1" Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha }}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        
+                        <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,10,0" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1"  Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha }}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </Grid>
                     </DataTemplate>
             </GridView.ItemTemplate>            
-        </GridView>-->
-
+        </GridView>
 
     </RelativePanel>
 </Page>

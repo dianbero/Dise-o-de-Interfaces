@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace Proyecto_Juego_Parejas_UI.ViewModels
 {
@@ -173,7 +175,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 else
                 {
                     //Atraso volteo para mirar las cartas erróneas                 
-                    Task atrasarVolteo = Task.Delay(400);
+                    Task atrasarVolteo = Task.Delay(500);
                     await atrasarVolteo.AsAsyncAction();
                     //Tras el tiempo vuelvo a ocultar las cartas
                     carta1.IsVolteada = false;
@@ -193,8 +195,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 {
                     //Asigno puntuación de jugador justo al terminar partida
                     objJugador.Puntuacion = tiempoAMostrarFecha;
-                    MostrarMensajeFinPartida();
-                   
+                    MostrarMensajeFinPartida();                   
                 }
             }
         }
@@ -238,7 +239,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             if (resultado == ContentDialogResult.Primary)
             {   
                 //Instancia un elemento Page 
-                Frame frame =(Frame) Window.Current.Content;
+                Frame frame = (Frame) Window.Current.Content;
                
                 frame.Navigate(typeof(MainPage));
             }
@@ -294,7 +295,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();            
             operacionBL.InsertNuevoJugador(objJugador);
 
-        }
+        }        
 
         #endregion
 

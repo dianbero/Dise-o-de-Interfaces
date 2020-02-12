@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,6 +28,18 @@ namespace Proyecto_Juego_Parejas_UI.Views
         public Juego()
         {
             this.InitializeComponent();
+            //rotarCarta.Begin();
+        }
+
+        /// <summary>
+        /// Al pulsar una carta realiza un animación de rotación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Image_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Storyboard story = (sender as Image).Resources["rotarCarta"] as Storyboard;
+            story.Begin();
         }
     }
 }

@@ -20,8 +20,8 @@ namespace Proyecto_Juego_Parejas_Entities
         {
             this.idCarta = 0;
             this.isVolteada = false;
-            this.imgVolteada = new Uri("ms - appx:///Assets/Images/spiderman.jpg");
-            this.imgNoVolteada = new Uri("ms - appx:///Assets/Images/xmen.jpg");
+            this.imgVolteada = new Uri("ms-appx:///Assets/Images/spiderman.jpg");
+            this.imgNoVolteada = new Uri("ms-appx:///Assets/Images/xmen.jpg");
             this.imgMostrar = imgNoVolteada;
         }
 
