@@ -2,6 +2,7 @@
 using Proyecto_Juego_Parejas_DAL.Utiles;
 using Proyecto_Juego_Parejas_Entities;
 using Proyecto_Juego_Parejas_UI.Utiles;
+using Proyecto_Juego_Parejas_UI.ViewModels.JuegoVMTools;
 using Proyecto_Juego_Parejas_UI.ViewModels.ViewModelTools;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0,0,0); //Fecha a partir de la cual no lanza excepción
         private int cartasAcertadas = 0;
         private DelegateCommand commandAbandonarPartida;
-
         #endregion
 
         #region Propiedades Públicas       
@@ -86,7 +86,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             set
             {
                 tiempoAMostrar = value;
-                //NotifyPropertyChanged("TiempoAMostrar");
             }
         }
 
@@ -177,6 +176,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Atraso volteo para mirar las cartas erróneas                 
                     Task atrasarVolteo = Task.Delay(500);
                     await atrasarVolteo.AsAsyncAction();
+
+                    clsSegundaAnimacionCarta animacion = new clsSegundaAnimacionCarta();
+                    //animacion.RotarCartaAgain(cartaSeleccionada);
                     //Tras el tiempo vuelvo a ocultar las cartas
                     carta1.IsVolteada = false;
                     carta2.IsVolteada = false;
@@ -296,6 +298,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             operacionBL.InsertNuevoJugador(objJugador);
 
         }        
+
+
 
         #endregion
 

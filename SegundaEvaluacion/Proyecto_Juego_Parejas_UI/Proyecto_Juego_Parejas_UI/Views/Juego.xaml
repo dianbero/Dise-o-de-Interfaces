@@ -12,9 +12,7 @@
     <Page.DataContext>
         <vm:clsJuegoVM></vm:clsJuegoVM>
     </Page.DataContext>
-    <!--Para rotacion de imagen-->
-    <!--https://stackoverflow.com/questions/44532687/uwp-begin-storyboard-on-an-object-created-from-a-gridview-itemtemplate-datatempl-->
-
+    
     <RelativePanel>
         <!--<Button Name="btnVolver" Height="100" Width="100" ></Button>-->
         <AppBarButton Name="btnVolver" Icon="Back" HorizontalAlignment="Center" Command="{Binding CommandAbandonarPartida}">
@@ -28,6 +26,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Image Name="carta" Width="150" Height="150" Source="{Binding ImgMostrar}" Tapped="Image_Tapped" >
+                            <!--Animación de rotación de carta-->
                             <Image.Resources>
                                 <Storyboard x:Name="rotarCarta">
                                     <DoubleAnimation From="0" To="180"
@@ -35,6 +34,12 @@
                                                      Storyboard.TargetName="carta"
                                                      Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)"></DoubleAnimation>
                                 </Storyboard>
+                                <!--<Storyboard x:Name="rotarBackCarta">
+                                    <DoubleAnimation From="180" To="0"
+                                                     Duration="0:0:0.2"
+                                                     Storyboard.TargetName="carta"
+                                                     Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)"></DoubleAnimation>
+                                </Storyboard>-->
                             </Image.Resources>
                         </Image>                                
                     </DataTemplate>

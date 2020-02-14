@@ -27,8 +27,7 @@ namespace Proyecto_Juego_Parejas_UI.Views
        
         public Juego()
         {
-            this.InitializeComponent();
-            //rotarCarta.Begin();
+            this.InitializeComponent();            
         }
 
         /// <summary>
@@ -40,6 +39,8 @@ namespace Proyecto_Juego_Parejas_UI.Views
         {
             Storyboard story = (sender as Image).Resources["rotarCarta"] as Storyboard;
             story.Begin();
+            //Añadir animación de voltear de vuelta las dos cartas seleccionadas tras seleccionar la segunda carta
         }
+
     }
 }
