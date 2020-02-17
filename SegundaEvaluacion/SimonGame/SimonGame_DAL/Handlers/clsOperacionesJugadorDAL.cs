@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Juego_Parejas_DAL.Handlers
+namespace SimonGame_DAL.Handlers
 {
     public class clsOperacionesJugadorDAL
     {
@@ -55,7 +55,7 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
 
 
         /// <summary>
-        /// Método que obtiene la lista completa de jugadores ordenada de menor a mayor tiempo
+        /// Método que obtiene la lista completa de jugadores aciertos ordenados de mayor a menor 
         /// </summary>
         /// <returns>ObservableCollection<clsJugador> listaJugadores</returns>
         public ObservableCollection<clsJugador> GetListaJugadores()
@@ -73,7 +73,7 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
                 connection = objConnection.getConnection();
                 command.Connection = connection;
 
-                command.CommandText = "SELECT * FROM TopScoresSimon ORDER BY aciertos";
+                command.CommandText = "SELECT * FROM TopScoresSimon ORDER BY aciertos DESC";
                 reader = command.ExecuteReader();
 
                 if (reader.HasRows)

@@ -26,5 +26,10 @@ namespace SimonGame_UI.Views
         {
             this.InitializeComponent();
         }
+
+        public void BtnVolver_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }
 }

@@ -13,7 +13,8 @@ Go
 
 --INSERT INTO TopScoresSimon (nombreJugador, aciertos) VALUES ('Diana', 1)
 
---INSERT INTO TopScoresSimon (nombreJugador, aciertos) VALUES ('Diana', 2)
+--INSERT INTO TopScoresSimon (nombreJugador, aciertos) VALUES ('Diana', 0)
 
---select * from TopScoresSimon
+--select * from TopScoresSimon ORDER BY aciertos DESC
 
+SELECT * FROM TopScoresSimon ORDER BY aciertos DESC

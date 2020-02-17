@@ -7,44 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:vm="using:SimonGame_UI.ViewModels"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Black">
+    <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
 
     <Page.DataContext>
         <vm:clsRankingVM/>
     </Page.DataContext>
 
-    <Page.Resources>
-        <local:clsConverterFecha x:Key="ConverterFecha"/>
-    </Page.Resources>
-
     <RelativePanel>
-        <AppBarButton Name="btnVolver" Icon="Back" Click="BtnVolver_Click" >
+        <AppBarButton Name="btnVolver" Icon="Back" Click="BtnVolver_Click">
             <!--<AppBarButton.RenderTransform>
                 <CompositeTransform ScaleX="3" ScaleY="3"/>
             </AppBarButton.RenderTransform>-->
         </AppBarButton>
-        <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="140,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" ></TextBlock>
+            <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="140,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue"></TextBlock>
 
         <!--<StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWith="txtRanking" Margin="0,0,250,0">-->
-        <TextBlock Name="txtNombre" Text="Nombre:" Margin="50,0,400,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignRightWith="txtRanking" RelativePanel.Below="txtRanking" ></TextBlock>
-        <TextBlock Name="txtTiempo" Text="Tiempo:" Margin="0,0,100,30" Width="150" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
+        <TextBlock Name="txtNombre" Text="Nombre:" Margin="50,0,300,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignRightWith="txtRanking" RelativePanel.Below="txtRanking" ></TextBlock>
+        <TextBlock Name="txtTiempo" Text="Puntuación:" Margin="0,0,50,30" Width="200" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
         <!--</StackPanel>-->
 
-
-        <!--implementar converter-->
-        <!--
+        
         <ListView Name="ranking" MaxHeight="800" Height="450" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="txtNombre" Padding="0,0,200,10" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtTiempo" Padding="200,0,0,10" Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha}}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtPuntuacion" Padding="200,0,0,10" Text="{Binding Aciertos}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </StackPanel>
                     </DataTemplate>
             </ListView.ItemTemplate>            
-        </ListView>-->
+        </ListView>
 
-        <GridView ItemsSource="{Binding RankingJugadores}"  RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <!--<GridView ItemsSource="{Binding RankingJugadores}"  RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -53,12 +48,12 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,10,0" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1"  Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha }}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,10,0" Text="{Binding NombreJugador}" Foreground="Silver" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1"  Text="{Binding Aciertos}" FontSize="35" Foreground="Silver" FontWeight="Bold"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
-        </GridView>
+        </GridView>-->
 
     </RelativePanel>
 </Page>
