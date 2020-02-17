@@ -121,6 +121,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Handlers\Class1.cs" />
+    <Compile Include="Handlers\clsOperacionesJugadorBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\SimonGame_BL.rd.xml" />
   </ItemGroup>
@@ -139,6 +141,7 @@
       <Name>SimonGame_Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

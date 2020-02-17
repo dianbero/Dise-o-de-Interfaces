@@ -121,6 +121,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Connections\clsMyConnection.cs" />
+    <Compile Include="Handlers\clsOperacionesJugadorDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\SimonGame_DAL.rd.xml" />
   </ItemGroup>
