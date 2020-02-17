@@ -55,7 +55,7 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
 
 
         /// <summary>
-        /// Método que obtiene la lista completa de jugadores 
+        /// Método que obtiene la lista completa de jugadores ordenada de menor a mayor tiempo
         /// </summary>
         /// <returns>ObservableCollection<clsJugador> listaJugadores</returns>
         public ObservableCollection<clsJugador> GetListaJugadores()
@@ -73,7 +73,7 @@ namespace Proyecto_Juego_Parejas_DAL.Handlers
                 connection = objConnection.getConnection();
                 command.Connection = connection;
 
-                command.CommandText = "SELECT * FROM TopScores";
+                command.CommandText = "SELECT * FROM TopScores ORDER BY puntuacion";
                 reader = command.ExecuteReader();
 
                 if (reader.HasRows)

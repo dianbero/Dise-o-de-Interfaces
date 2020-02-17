@@ -152,9 +152,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             {
                 carta1 = cartaSeleccionada;
             }
-            //Si es la segunda carta
-            //Se le asinga valor de cartaSeleccionada
-            //Se comprueba si carta1 y carta2 son iguales
+            //Si es la segunda carta:
+            //- Se le asinga valor de cartaSeleccionada
+            //- Se comprueba si carta1 y carta2 son iguales
             else 
             {
                 carta2 = cartaSeleccionada;
@@ -293,10 +293,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
 
             //Asigno a objJugador el nick del jugador actual
             objJugador.NombreJugador = input.Text;
-            //Guardo nick y puntuación jugador en BD
+            //Guardo nick y puntuación del jugador en BD
             clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();            
             operacionBL.InsertNuevoJugador(objJugador);
-
         }        
 
 
