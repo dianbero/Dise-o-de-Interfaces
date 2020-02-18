@@ -120,10 +120,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\clsBoton.cs" />
+    <Compile Include="Tools\clsListadoBotones.cs" />
     <Compile Include="ViewModels\Class1.cs" />
     <Compile Include="ViewModels\clsRankingVM.cs" />
     <Compile Include="ViewModels\ViewmodelTools\clsVMBase.cs" />
     <Compile Include="ViewModels\ViewmodelTools\DelegateCommand.cs" />
+    <Compile Include="Views\Juego.xaml.cs">
+      <DependentUpon>Juego.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -139,6 +143,7 @@
     <None Include="SimonGame_UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Sonidos\AllyBrooke-NoGood.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -153,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Juego.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -167,10 +176,7 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Sonidos\" />
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SimonGame_BL\SimonGame_BL.csproj">
       <Project>{3c7b43d8-ab79-42ec-9568-b2a09bd36c42}</Project>

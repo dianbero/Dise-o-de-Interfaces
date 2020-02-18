@@ -28,9 +28,16 @@ namespace SimonGame_UI
             this.InitializeComponent();
         }
 
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Juego));
+        }
+
         private void BtnRanking_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Ranking));
         }
+
+        
     }
 }
