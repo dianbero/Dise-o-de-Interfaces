@@ -7,6 +7,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 
 namespace SimonGame_UI.ViewModels
@@ -48,7 +51,7 @@ namespace SimonGame_UI.ViewModels
             //Cada dos segundos(ver tiempo correcto) suena un sonido de la secuencia
             //Si falla se debe reiniciar
             hacerSonidos = new DispatcherTimer();
-            //hacerSonidos.Tick += new EventHandler(HacerSonidosIluminarBoton);
+            hacerSonidos.Tick += HacerSonidosIluminarBoton;
             hacerSonidos.Interval = new TimeSpan(0, 0, 2);
 
             hacerSonidos.Start();                        
@@ -58,9 +61,52 @@ namespace SimonGame_UI.ViewModels
         #region Métodos
 
         //Prueba con DispatcherTimer para iluminar botoner y hacer sonidos aleatorios
-        public void HacerSonidosIluminarBoton(object sender, EventArgs e)
+        public void HacerSonidosIluminarBoton(object sender, object e)
         {
+            /*
+             Hacer sonar sonido y cambiar opacidad de botón mientras suena
+             */
+            int repeticiones = 0;
+
+            clsListadoBotones operacionesListado = new clsListadoBotones();
+            ObservableCollection<clsBoton> listaRandom = new ObservableCollection<clsBoton>();
+
+            listaRandom = operacionesListado.GenerarSonidosAleatorios(listaRandom);
+
+            int idListaRandom = listaRandom[repeticiones].Id;
+            //Compruebo que los id son iguales
+            if (idListaRandom == listadoBotones[idListaRandom].Id)
+            {
+                //Reproduce el sonido del botón correspondiente
+                ReproducirSonido(listadoBotones[idListaRandom].Sonido);
+            }
+
+            operacionesListado.GenerarSonidosAleatorios(listaRandom);
             
+            repeticiones++;
+        }
+
+        public void ReproducirSonido(string uriSonido)
+        {
+            MediaPlayer sound = new MediaPlayer();
+            //MediaTimelineController playerController;
+            //bool playing;
+
+            Uri uri = new Uri(uriSonido);
+            sound.AutoPlay = false;
+            sound.Source = MediaSource.CreateFromUri(uri);
+
+            //if (playing)
+            //{
+                //sound.Source = null;
+            //    sound.Pause();
+            //    playing = false;
+            //}
+            //else
+            //{
+                sound.Play();
+            //    playing = true;
+            //}
         }
 
 
