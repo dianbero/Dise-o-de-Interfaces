@@ -29,30 +29,14 @@ namespace SimonGame_UI.Tools
         public ObservableCollection<clsBoton> GenerarSonidosAleatorios()
         {
             ObservableCollection<clsBoton> listaSonidosAleatorio = new ObservableCollection<clsBoton>();
+            ObservableCollection<clsBoton> listadoConSonidosAux = ListadoBotones();
+
+            Random random = new Random();
+            int num = random.Next(listadoConSonidosAux.Count);
+            listaSonidosAleatorio.Add(listadoConSonidosAux[num]);
 
             return listaSonidosAleatorio;
         }
-
-        /// <summary>
-        /// Método que genera un lista con los elementos ordenados aleatoriamente
-        /// </summary>
-        /// <returns>ObservableCollection<clsBoton> listaBotonesDefinitiva, lista con elementos aleatorios</returns>
-        public ObservableCollection<clsBoton> GenerarRandom()
-        {
-            int num;
-            ObservableCollection<clsBoton> listaBotonesAux = ListadoBotones();
-            ObservableCollection<clsBoton> listaBotonesDefinitiva = new ObservableCollection<clsBoton>();
-            Random radom = new Random();
-            
-            //TODO cambiar, no quiero que los muestre de form aleatoria sino que vayan sonando de forma aleatoria
-            while (listaBotonesDefinitiva.Count < 5)
-            {
-                num = radom.Next(listaBotonesAux.Count);
-                listaBotonesDefinitiva.Add(listaBotonesAux[num]);
-                listaBotonesAux.RemoveAt(num);
-            }
-
-            return listaBotonesDefinitiva;
-        }
+        
     }
 }

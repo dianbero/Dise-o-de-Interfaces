@@ -37,7 +37,7 @@ namespace Proyecto_Juego_Parejas_DAL.Connections
             //this.server = "(local)";
             this.server = "192.168.56.1";
             //this.server = "107-03";
-            this.dataBase = "TopScoresSimon";
+            this.dataBase = "JuegoParejas";
             this.user = "apuestas";
             this.pass = "apuestas";
 

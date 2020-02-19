@@ -26,6 +26,7 @@
                     <Rectangle Name="boton" 
                            Width="250" 
                            Height="250"
+                           Opacity="1"
                            Fill="{Binding Color}"
                            RadiusX="40"
                            RadiusY="40"

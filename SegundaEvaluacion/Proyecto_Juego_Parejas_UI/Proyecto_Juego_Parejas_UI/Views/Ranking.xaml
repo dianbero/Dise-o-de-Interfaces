@@ -34,8 +34,8 @@
         <!--</StackPanel>-->
         
         
-        <!--implementar converter--><!--
-        <ListView Name="ranking" MaxHeight="800" Height="450" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <!--implementar converter-->
+        <!--<ListView Name="ranking" MaxHeight="800" Height="450" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -46,7 +46,11 @@
             </ListView.ItemTemplate>            
         </ListView>-->
 
-        <GridView ItemsSource="{Binding RankingJugadores}"  RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <GridView ItemsSource="{Binding RankingJugadores}"  
+                  RelativePanel.Below="txtNombre" 
+                  RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                  RelativePanel.AlignVerticalCenterWithPanel="True"
+                  MaxWidth="760">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
