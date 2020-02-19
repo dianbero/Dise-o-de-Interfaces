@@ -6,21 +6,37 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:vm="using:SimonGame_UI.ViewModels">
 
+    <Page.DataContext>
+        <vm:clsJuegoVM/>
+    </Page.DataContext>
+    
     <RelativePanel>
         <AppBarButton Name="btnVolver" Icon="Back" Click="BtnVolver_Click"></AppBarButton>
 
-        <Rectangle Name="boton" 
-                   Width="300" 
-                   Height="300"
-                   Fill="Red"
-                   RadiusX="40"
-                   RadiusY="40"
-                   RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   ></Rectangle>
+        <GridView Name="botones" 
+                  ItemsSource="{Binding ListadoBotones}" 
+                  MaxWidth="760"
+                  RelativePanel.AlignHorizontalCenterWithPanel="True"
+                  RelativePanel.AlignVerticalCenterWithPanel="True">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Name="boton" 
+                           Width="250" 
+                           Height="250"
+                           Fill="{Binding Color}"
+                           RadiusX="40"
+                           RadiusY="40"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"></Rectangle>
+                </DataTemplate>
+            </GridView.ItemTemplate>            
+        </GridView>
+        
+        
 
-        <Button Name="pruebaSonido"
+        <!--<Button Name="pruebaSonido"
                 Click="PruebaSonido_Click"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True"
@@ -29,7 +45,8 @@
         <Button Name="play"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.Below="pruebaSonido"
-                Content="Don´t Touch!" Click="Play_Click"></Button>
+                Content="Don´t Touch!" Click="Play_Click"></Button>-->
+        
         <!--<MediaPlayerElement Grid.Row="3" Grid.Column="2" x:Name="mediaCleo" Source="ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3" AutoPlay="True" AreTransportControlsEnabled="True"/>-->
     </RelativePanel>
 </Page>

@@ -12,7 +12,7 @@ namespace SimonGame_UI.Models
         private int id;
         private string color;
         private string sonido;
-        private int ordenBoton; //No sé si hace falta, puede ser el id y yasta
+        //private int ordenBoton; //No sé si hace falta, puede ser el id y yasta
         #endregion
 
         #region Propiedades Públicas
@@ -52,17 +52,17 @@ namespace SimonGame_UI.Models
             }
         }
 
-        public int OrdenBoton
-        {
-            get
-            {
-                return ordenBoton;
-            }
-            set
-            {
-                ordenBoton = value;
-            }
-        }
+        //public int OrdenBoton
+        //{
+        //    get
+        //    {
+        //        return ordenBoton;
+        //    }
+        //    set
+        //    {
+        //        ordenBoton = value;
+        //    }
+        //}
         #endregion
 
         #region Constructor
@@ -72,15 +72,15 @@ namespace SimonGame_UI.Models
             this.id = 0;
             this.color = "Red";
             this.sonido = "";
-            this.ordenBoton = 0;
+            //this.ordenBoton = 0;
         }
 
-        public clsBoton(int id, string color, string sonido, int ordenBoton)
+        public clsBoton(int id, string color, string sonido)
         {
             this.id = id;
             this.color = color;
             this.sonido = sonido;
-            this.ordenBoton = ordenBoton;
+            //this.ordenBoton = ordenBoton;
         }
         #endregion
     }

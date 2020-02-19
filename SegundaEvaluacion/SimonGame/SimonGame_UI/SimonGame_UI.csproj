@@ -122,6 +122,7 @@
     <Compile Include="Models\clsBoton.cs" />
     <Compile Include="Tools\clsListadoBotones.cs" />
     <Compile Include="ViewModels\Class1.cs" />
+    <Compile Include="ViewModels\clsJuegoVM.cs" />
     <Compile Include="ViewModels\clsRankingVM.cs" />
     <Compile Include="ViewModels\ViewmodelTools\clsVMBase.cs" />
     <Compile Include="ViewModels\ViewmodelTools\DelegateCommand.cs" />
@@ -143,7 +144,12 @@
     <None Include="SimonGame_UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Sonidos\coin02.ogg" />
+    <Content Include="Assets\Sonidos\jump02.ogg" />
     <Content Include="Assets\Sonidos\AllyBrooke-NoGood.mp3" />
+    <Content Include="Assets\Sonidos\Meow.ogg" />
+    <Content Include="Assets\Sonidos\mutant_frog-1.ogg" />
+    <Content Include="Assets\strange.ogg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

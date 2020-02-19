@@ -50,7 +50,8 @@ namespace SimonGame_UI.Views
 
         private void PruebaSonido_Click(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3");
+            //Uri uri = new Uri("ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3");
+            Uri uri = new Uri("ms-appx:///Assets/Sonidos/coin02.ogg");
             sound.AutoPlay = false;
             sound.Source = MediaSource.CreateFromUri(uri);
 
