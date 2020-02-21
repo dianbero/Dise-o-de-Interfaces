@@ -52,7 +52,7 @@ namespace SimonGame_UI.ViewModels
             //Si falla se debe reiniciar
             hacerSonidos = new DispatcherTimer();
             hacerSonidos.Tick += HacerSonidosIluminarBoton;
-            hacerSonidos.Interval = new TimeSpan(0, 0, 2);
+            hacerSonidos.Interval = new TimeSpan(0, 0, 1);
 
             hacerSonidos.Start();                        
         }

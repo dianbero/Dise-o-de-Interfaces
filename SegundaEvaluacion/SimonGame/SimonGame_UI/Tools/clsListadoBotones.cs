@@ -17,10 +17,10 @@ namespace SimonGame_UI.Tools
         public ObservableCollection<clsBoton> ListadoBotones()
         {
             ObservableCollection<clsBoton> listadoBotones = new ObservableCollection<clsBoton>();
-            listadoBotones.Add(new clsBoton(1, "Red", "ms-appx:///Assets/Sonidos/Meow.ogg"));
-            listadoBotones.Add(new clsBoton(2, "Blue", "ms-appx:///Assets/Sonidos/jump02.ogg"));
-            listadoBotones.Add(new clsBoton(3, "Green", "ms-appx:///Assets/Sonidos/mutant_frog-1.ogg"));
-            listadoBotones.Add(new clsBoton(4, "Yellow", "ms-appx:///Assets/Sonidos/coin02.ogg"));
+            listadoBotones.Add(new clsBoton(0, "Red", "ms-appx:///Assets/Sonidos/Meow.ogg"));
+            listadoBotones.Add(new clsBoton(1, "Blue", "ms-appx:///Assets/Sonidos/jump02.ogg"));
+            listadoBotones.Add(new clsBoton(2, "Green", "ms-appx:///Assets/Sonidos/mutant_frog-1.ogg"));
+            listadoBotones.Add(new clsBoton(3, "Yellow", "ms-appx:///Assets/Sonidos/coin02.ogg"));
 
             return listadoBotones;
         }

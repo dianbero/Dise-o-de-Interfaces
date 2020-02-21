@@ -35,7 +35,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private DelegateCommand commandAbandonarPartida;
 
         //Intentos fallidos
-        private bool puedeVoltear;
+        public bool puedeVoltear;
         #endregion
 
         #region Propiedades Públicas       
@@ -195,7 +195,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Atraso volteo para mirar las cartas erróneas                 
                     Task atrasarVolteo = Task.Delay(500);
                     await atrasarVolteo.AsAsyncAction();
-                    //puedeVoltear = true;
+                    puedeVoltear = true;
 
                     clsSegundaAnimacionCarta animacion = new clsSegundaAnimacionCarta();
                     //animacion.RotarCartaAgain(cartaSeleccionada);
