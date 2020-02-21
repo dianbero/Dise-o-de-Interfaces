@@ -30,9 +30,12 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         //private DispatcherTimer tiempoVolteoCarta;
         private bool tableroHabilitado;
         private string tiempoAMostrar = "Good Luck!!!";
-        private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0,0,0); //Fecha a partir de la cual no lanza excepción
+        private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0, 0, 0); //Fecha a partir de la cual no lanza excepción
         private int cartasAcertadas = 0;
         private DelegateCommand commandAbandonarPartida;
+
+        //Intentos fallidos
+        private bool puedeVoltear;
         #endregion
 
         #region Propiedades Públicas       
@@ -110,6 +113,18 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
         }
 
+        //public bool PuedeVoltear
+        //{
+        //    get
+        //    {
+        //        return puedeVoltear;
+        //    }
+        //    set
+        //    {
+        //        puedeVoltear = value;
+        //    }
+        //}
+
         #endregion
 
         #region Constructores
@@ -151,6 +166,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             if (carta1 == null)
             {
                 carta1 = cartaSeleccionada;
+
+                //puedeVoltear = true;
             }
             //Si es la segunda carta:
             //- Se le asinga valor de cartaSeleccionada
@@ -162,7 +179,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 //Bloqueo el tablero mientras se comprueban las cartas
                 tableroHabilitado = false;
                 NotifyPropertyChanged("TableroHabilitado");
-                //Compruebo las cartas
+                //Compruebo las cartas:
+                //Si son iguales
                 if (carta1.IdCarta == carta2.IdCarta)
                 {
                     //Anulo las cartas por lo que el jugador puede seguir clicando otras cartas y verlas
@@ -171,11 +189,13 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Al ser iguales, acierta y suma un punto
                     cartasAcertadas++;
                 }
+                //Si no son iguales
                 else
                 {
                     //Atraso volteo para mirar las cartas erróneas                 
                     Task atrasarVolteo = Task.Delay(500);
                     await atrasarVolteo.AsAsyncAction();
+                    //puedeVoltear = true;
 
                     clsSegundaAnimacionCarta animacion = new clsSegundaAnimacionCarta();
                     //animacion.RotarCartaAgain(cartaSeleccionada);
@@ -296,9 +316,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             //Guardo nick y puntuación del jugador en BD
             clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();            
             operacionBL.InsertNuevoJugador(objJugador);
-        }        
-
-
+        }
 
         #endregion
 

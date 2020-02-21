@@ -24,7 +24,10 @@ namespace Proyecto_Juego_Parejas_UI.Views
     /// </summary>
     public sealed partial class Juego : Page
     {
-       
+
+        clsJuegoVM juego;
+
+
         public Juego()
         {
             this.InitializeComponent();            
@@ -38,9 +41,14 @@ namespace Proyecto_Juego_Parejas_UI.Views
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Storyboard story = (sender as Image).Resources["rotarCarta"] as Storyboard;
+            //juego = new clsJuegoVM();
             story.Begin();
+            
+            //TODO: hacer que las cartas pulsadas no se vuelvan a voltear
             //Añadir animación de voltear de vuelta las dos cartas seleccionadas tras seleccionar la segunda carta
         }
+
+        
 
     }
 }
