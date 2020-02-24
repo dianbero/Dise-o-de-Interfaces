@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PruebaCRUDXamarin_UI"
+             x:Class="PruebaCRUDXamarin_UI.MainPage"
+             xmlns:vm="clr-namespace:PruebaCRUDXamarin_UI.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:MainPageVM/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+    <ListView
+        ItemsSource="{Binding ListadoPersonas}"
+        SelectedItem="{Binding PersonaSeleccionada}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding Nombre}"></Label>
+                        <Label Text="{Binding Apellidos}"></Label>
+                        <Label Text="{Binding Telefono}"></Label>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+    <Button x:Name="btnDetalles" Text="Detalles"></Button>
+    <Button x:Name="btnBorrar" Text="Borrar"></Button>
+    <Button x:Name="btnActualizar" Text="Actualizar"></Button>
+    </StackLayout>
+    
+</ContentPage>
