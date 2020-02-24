@@ -41,13 +41,22 @@ namespace Proyecto_Juego_Parejas_UI.Views
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Storyboard story = (sender as Image).Resources["rotarCarta"] as Storyboard;
-            juego =(clsJuegoVM) this.DataContext;
-            if (!juego.CartaSeleccionada.IsVolteada)
+            juego = (clsJuegoVM) this.DataContext;
+            /*
+            1-Falla con juego.CartaSeleccionada.IsVolteada porque es null, por lo que cuando se clican las cartas ya volteadas (cuando hay dos),
+            como no tienen valor salta una excepción y si sólo hay una, IsVolteada es true por lo que gira igualmente
+
+            2-Con juego.CartaSeleccionada!=null no gira al haber dos cartas (evito excepción anterior) y si se clica otra después de clicar la última, si no esta última seguiría girando  
+            hasta clicar otra, y también al mostrar sólo carta1, sigue girando
+            */
+            //Solución final para que no haga animación de giro una vez volteada la carta seleccionada:
+            if (juego.PuedeVoltear)
             {
                 story.Begin();
+                //Una vez volteada no puede volver a girar
+                juego.PuedeVoltear = false;
             }
             
-            //TODO: hacer que las cartas pulsadas no se vuelvan a voltear
             //Añadir animación de voltear de vuelta las dos cartas seleccionadas tras seleccionar la segunda carta
         }
 

@@ -14,7 +14,7 @@ namespace Examen2EvalUWP_UI.ViewModels
         #region Atributos Privados
         private ObservableCollection<clsCiudad> listadoCiudades;
         private ObservableCollection<clsPrediccion> listadoPredicciones;
-        private clsPersona ciudadSeleccionada;
+        private clsCiudad ciudadSeleccionada;
         #endregion
 
         #region Propiedades Públicas
@@ -34,7 +34,7 @@ namespace Examen2EvalUWP_UI.ViewModels
             }
         }
 
-        public clsPersona CiudadSeleccionada
+        public clsCiudad CiudadSeleccionada
         {
             get
             {

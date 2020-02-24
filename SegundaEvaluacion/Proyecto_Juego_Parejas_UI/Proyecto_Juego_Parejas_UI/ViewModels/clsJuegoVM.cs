@@ -54,12 +54,13 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     /*Para que una carta ya volteada no vuelva a ocultarse al clicarla
                      * (estará volteada porque se ha encontrado su pareja)*/
                     if (cartaSeleccionada.IsVolteada)
-                    {
+                    {                        
                         //Si está volteada le quito la selección (no le asigno ningún valor)
                         cartaSeleccionada = null;
                     }
                     else
                     {
+                        puedeVoltear = true;
                         ComprobarJugada();
                     }
                 }            
@@ -113,17 +114,25 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
         }
 
-        //public bool PuedeVoltear
-        //{
-        //    get
-        //    {
-        //        return puedeVoltear;
-        //    }
-        //    set
-        //    {
-        //        puedeVoltear = value;
-        //    }
-        //}
+        public clsCarta Carta1
+        {
+            get
+            {
+                return carta1;
+            }
+        }
+
+        public bool PuedeVoltear
+        {
+            get
+            {
+                return puedeVoltear;
+            }
+            set
+            {
+                puedeVoltear = value;
+            }
+        }
 
         #endregion
 
@@ -166,8 +175,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             if (carta1 == null)
             {
                 carta1 = cartaSeleccionada;
-
-                //puedeVoltear = true;
             }
             //Si es la segunda carta:
             //- Se le asinga valor de cartaSeleccionada
@@ -195,7 +202,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     //Atraso volteo para mirar las cartas erróneas                 
                     Task atrasarVolteo = Task.Delay(500);
                     await atrasarVolteo.AsAsyncAction();
-                    puedeVoltear = true;
 
                     clsSegundaAnimacionCarta animacion = new clsSegundaAnimacionCarta();
                     //animacion.RotarCartaAgain(cartaSeleccionada);

@@ -16,6 +16,8 @@ namespace SimonGame_UI.ViewModels
 {
     public class clsJuegoVM : clsVMBase
     {
+        //TODO añadir Command para navegación de página, en el método del command hacer la navegación al pulsar el botón de volver al menú y parar la música al volver
+
         #region Atributos Privados
         private ObservableCollection<clsBoton> listadoBotones;
         private clsBoton botonSeleccionado;
