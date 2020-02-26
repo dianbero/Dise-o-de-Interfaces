@@ -45,9 +45,9 @@ namespace PruebaCRUDXamarin_DAL.Handlers
 
 
                 // Post the JSON and wait for a response.
-                HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(
-                    uri,
-                    content);
+                //HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(
+                //    uri,
+                //    content);
 
                 // Make sure the post succeeded, and write out the response.
                 httpResponseMessage.EnsureSuccessStatusCode();

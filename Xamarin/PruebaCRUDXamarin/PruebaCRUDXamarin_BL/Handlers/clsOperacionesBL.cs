@@ -8,6 +8,6 @@ namespace PruebaCRUDXamarin_BL.Handlers
 {
     public class clsOperacionesBL
     {
-        public 
+        //public 
     }
 }
