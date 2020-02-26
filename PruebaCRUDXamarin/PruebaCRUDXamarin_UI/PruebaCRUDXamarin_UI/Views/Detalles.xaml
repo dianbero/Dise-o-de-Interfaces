@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PruebaCRUDXamarin_UI.Views.Detalles">
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="nombre"
+                   Text="Nombre" 
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="apellido"
+                   Text="Apellido"/>
+            <Label x:Name="fechaNacimiento"
+                   Text="Fecha Nacimiento"/>
+            <Label x:Name="telefono"
+                   Text="Telefono"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

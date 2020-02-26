@@ -11,7 +11,7 @@ namespace PruebaCRUDXamarin_Entities
         //Atributos privados
         private int id;
         private string nombre;
-        //private string apellido; 
+        private string apellidos;
         private int idDepartamento;
         private DateTime fechaNacimiento;
         private string telefono;
@@ -22,7 +22,7 @@ namespace PruebaCRUDXamarin_Entities
         {
             this.Id = 1;
             this.Nombre = "Diana";
-            this.Apellido = "Bejarano";
+            this.Apellidos = "Bejarano";
             //this.Edad = 26;
             this.IdDepartamento = 1;
             this.FechaNacimiento = new DateTime(1993, 8, 16);
@@ -31,11 +31,11 @@ namespace PruebaCRUDXamarin_Entities
         }
 
         //Constructor por parámetros
-        public clsPersona(int id, string nombre, string apellido, int idDepartamento, DateTime fechaNacimiento, string telefono, byte[] foto)
+        public clsPersona(int id, string nombre, string apellidos, int idDepartamento, DateTime fechaNacimiento, string telefono, byte[] foto)
         {
             this.Id = id;
             this.Nombre = nombre;
-            this.Apellido = apellido;
+            this.Apellidos = apellidos;
             this.IdDepartamento = idDepartamento;
             this.FechaNacimiento = fechaNacimiento;
             this.Telefono = telefono;
@@ -56,7 +56,7 @@ namespace PruebaCRUDXamarin_Entities
             set { nombre = value; }
         }
 
-        public string Apellido { get; set; }   
+        public string Apellidos { get; set; }   
         
         public int IdDepartamento
         {

@@ -9,6 +9,7 @@
         <vm:MainPageVM/>
     </ContentPage.BindingContext>
 
+    <StackLayout>
     <ListView
         ItemsSource="{Binding ListadoPersonas}"
         SelectedItem="{Binding PersonaSeleccionada}">
@@ -17,12 +18,18 @@
                 <ViewCell>
                     <StackLayout Orientation="Vertical">
                         <Label Text="{Binding Nombre}"></Label>
-                        <Label Text="{Binding Apellido}"></Label>
+                        <Label Text="{Binding Apellidos}"></Label>
                         <Label Text="{Binding Telefono}"></Label>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-
+    
+    <Button x:Name="btnCrear" Text="Crear"></Button>
+    <Button x:Name="btnDetalles" Text="Detalles"></Button>
+    <Button x:Name="btnBorrar" Text="Borrar"></Button>
+    <Button x:Name="btnActualizar" Text="Actualizar"></Button>
+    </StackLayout>
+    
 </ContentPage>

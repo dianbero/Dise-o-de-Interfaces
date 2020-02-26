@@ -16,7 +16,7 @@ namespace PruebaCRUDXamarin_DAL.Connections
         public string getUriBase()
         {
             string uriBase;
-            uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/personasapi/ ";
+            uriBase = "https://crudpersonasui-victor.azurewebsites.net/api/";
             return uriBase;
         }
 

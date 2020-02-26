@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Connections\Class1.cs" />
     <Compile Include="Connections\clsMyConnection.cs" />
+    <Compile Include="Handlers\clsOperacionesDAL.cs" />
     <Compile Include="Lists\clsListadoPersonasDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,9 +57,7 @@
       <Name>PruebaCRUDXamarin_Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
