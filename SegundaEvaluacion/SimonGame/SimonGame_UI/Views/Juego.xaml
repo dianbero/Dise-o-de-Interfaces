@@ -14,7 +14,7 @@
     </Page.DataContext>
     
     <RelativePanel>
-        <AppBarButton Name="btnVolver" Icon="Back" Click="BtnVolver_Click"></AppBarButton>
+        <AppBarButton Name="btnVolver" Icon="Back" Command="{Binding ComandoAbandonarPartida}"></AppBarButton>
 
         <GridView Name="botones" 
                   ItemsSource="{Binding ListadoBotones}" 
@@ -33,12 +33,9 @@
                            RelativePanel.AlignHorizontalCenterWithPanel="True"></Rectangle>
                 </DataTemplate>
             </GridView.ItemTemplate>            
-        </GridView>
-        
-        
+        </GridView>      
 
         <Button Name="pruebaSonido"
-                Click="PruebaSonido_Click"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.Above="botones"
                 Content="Play!"></Button>
@@ -46,7 +43,7 @@
         <Button Name="play"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.Above="pruebaSonido"
-                Content="Don´t Touch!" Click="Play_Click"></Button>
+                Content="Don´t Touch!" ></Button>
         
         <!--<MediaPlayerElement Grid.Row="3" Grid.Column="2" x:Name="mediaCleo" Source="ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3" AutoPlay="True" AreTransportControlsEnabled="True"/>-->
     </RelativePanel>

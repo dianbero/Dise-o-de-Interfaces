@@ -25,48 +25,48 @@ namespace SimonGame_UI.Views
     /// </summary>
     public sealed partial class Juego : Page
     {
-        MediaPlayer sound;
-        MediaTimelineController playerController;
-        bool playing;
+        //MediaPlayer sound;
+        //MediaTimelineController playerController;
+        //bool playing;
 
         public Juego()
         {
             this.InitializeComponent();
-            sound = new MediaPlayer();
-            sound.Source = null;
+            //sound = new MediaPlayer();
+            //sound.Source = null;
             
-            playing = false;
+            //playing = false;
         }
 
-        public void BtnVolver_Click(object sender, RoutedEventArgs e)
-        {
-            if (playing)
-            {
-                sound.Source = null;
-                playing = false;
-            }
-            this.Frame.Navigate(typeof(MainPage));            
-        }
+        //public void BtnVolver_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (playing)
+        //    {
+        //        sound.Source = null;
+        //        playing = false;
+        //    }
+        //    this.Frame.Navigate(typeof(MainPage));            
+        //}
 
-        private void PruebaSonido_Click(object sender, RoutedEventArgs e)
-        {
-            //Uri uri = new Uri("ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3");
-            Uri uri = new Uri("ms-appx:///Assets/Sonidos/coin02.ogg");
-            sound.AutoPlay = false;
-            sound.Source = MediaSource.CreateFromUri(uri);
+        //private void PruebaSonido_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //Uri uri = new Uri("ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3");
+        //    Uri uri = new Uri("ms-appx:///Assets/Sonidos/coin02.ogg");
+        //    sound.AutoPlay = false;
+        //    sound.Source = MediaSource.CreateFromUri(uri);
 
-            if (playing)
-            {
-                //sound.Source = null;
-                sound.Pause(); 
-                playing = false;
-            }
-            else
-            { 
-                sound.Play();
-                playing = true;
-            }
-        }
+        //    if (playing)
+        //    {
+        //        //sound.Source = null;
+        //        sound.Pause(); 
+        //        playing = false;
+        //    }
+        //    else
+        //    { 
+        //        sound.Play();
+        //        playing = true;
+        //    }
+        //}
 
 
 
@@ -100,13 +100,13 @@ namespace SimonGame_UI.Views
         //    }
         //}
 
-        private void Play_Click(object sender, RoutedEventArgs e)
-        {
-            //if (!playing)
-            //{
-            //    playerController.Start();
-            //}
-        }
+        //private void Play_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //if (!playing)
+        //    //{
+        //    //    playerController.Start();
+        //    //}
+        //}
 
 
     }

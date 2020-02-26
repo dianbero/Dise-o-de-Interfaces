@@ -152,7 +152,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             tiempoPuntuacion = new DispatcherTimer();
             tiempoPuntuacion.Tick += MostrarTiempo;
             tiempoPuntuacion.Interval = new TimeSpan(0, 0, 1);
-            //Empieza a contar el tiempo al comentzar la partida         
+            //Empieza a contar el tiempo al comenzar la partida         
             tiempoPuntuacion.Start();
             
         }

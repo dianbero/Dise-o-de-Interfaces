@@ -60,14 +60,15 @@ namespace SimonGame_UI.ViewModels
         public clsJuegoVM()
         {
             listadoBotones = new clsListadoBotones().ListadoBotones();
+            comandoAbandonarPartida = new DelegateCommand(AbandonarPartidaExecute);
+
             //Cada segundo suena un sonido de la secuencia
             //Si juegador falla (dar tres oportunidades) se acaba la partida
             hacerSonidos = new DispatcherTimer();
             hacerSonidos.Tick += HacerSonidosIluminarBoton;
             hacerSonidos.Interval = new TimeSpan(0, 0, 1);
             hacerSonidos.Start();
-
-            comandoAbandonarPartida = new DelegateCommand(AbandonarPartidaExecute);          
+         
 
         }
         #endregion
@@ -99,14 +100,13 @@ namespace SimonGame_UI.ViewModels
             if (resultado == ContentDialogResult.Primary)
             {
                 //Instancia un elemento Page 
-                Frame frame = (Frame)Window.Current.Content;
+                Frame frame = (Frame) Window.Current.Content;
 
                 frame.Navigate(typeof(MainPage));
             }
             else
             {
                 //Reanuda sonido 
-                //tiempoPuntuacion.Start();
                 hacerSonidos.Start();
             }
         }
