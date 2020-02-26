@@ -1,7 +1,6 @@
 ﻿using Proyecto_Juego_Parejas_BL.Hanlders;
 using Proyecto_Juego_Parejas_DAL.Utiles;
 using Proyecto_Juego_Parejas_Entities;
-using Proyecto_Juego_Parejas_UI.Utiles;
 using Proyecto_Juego_Parejas_UI.ViewModels.JuegoVMTools;
 using Proyecto_Juego_Parejas_UI.ViewModels.ViewModelTools;
 using System;
@@ -35,7 +34,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private DelegateCommand commandAbandonarPartida;
 
         //Intentos fallidos
-        public bool puedeVoltear;
+        //Al final no hace falta
+        //public bool puedeVoltear;
         #endregion
 
         #region Propiedades Públicas       
@@ -60,7 +60,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     }
                     else
                     {
-                        puedeVoltear = true;
+                        //puedeVoltear = true;
                         ComprobarJugada();
                     }
                 }            
@@ -122,17 +122,17 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             }
         }
 
-        public bool PuedeVoltear
-        {
-            get
-            {
-                return puedeVoltear;
-            }
-            set
-            {
-                puedeVoltear = value;
-            }
-        }
+        //public bool PuedeVoltear
+        //{
+        //    get
+        //    {
+        //        return puedeVoltear;
+        //    }
+        //    set
+        //    {
+        //        puedeVoltear = value;
+        //    }
+        //}
 
         #endregion
 
@@ -167,9 +167,10 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         /// - Tarda un tiempo en habilitar el tablero si las cartas son erróneas, para que el jugador pueba ver las cartas
         /// </summary>
         private async void ComprobarJugada()
-        {            
+        {
             //Hago que cartaSeleccionada esté volteada
-            cartaSeleccionada.IsVolteada = true;
+            //Está comentado porque se le asigna valor en codigoBehind para control de animación de giro
+            //cartaSeleccionada.IsVolteada = true; 
             //Si es la primera carta
             //Siempre se muestra inicialmente la carta (isVolteada = true) (sea correcta o no)      
             if (carta1 == null)
@@ -311,9 +312,9 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 //input = (TextBox)dialog.Content;
                 //await new Windows.UI.Popups.MessageDialog($"Enhorabuena {input.Text}!!!").ShowAsync();
                 
-                //Volver a inicio / o ir a ranking
+                //Volver a inicio 
                 Frame frame = (Frame)Window.Current.Content;
-                //Volver a Página inicio
+
                 frame.Navigate(typeof(MainPage)); 
             }
 

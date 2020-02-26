@@ -25,13 +25,6 @@ namespace Proyecto_Juego_Parejas_Entities
             this.imgMostrar = imgNoVolteada;
         }
 
-        //public clsCarta(int idCarta, Uri imgNoVolteada)
-        //{            
-        //    this.idCarta = idCarta;
-        //    this.imgNoVolteada = imgNoVolteada;
-        //    this.imgMostrar = new Uri("ms-appx:///Assets/Images/xmen.jpg");
-        //}
-
         public clsCarta(int idCarta, bool isVolteada, Uri imgVolteada)
         {
             this.idCarta = idCarta;

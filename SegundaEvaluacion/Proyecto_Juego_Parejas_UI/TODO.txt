@@ -1,0 +1,2 @@
+Cambiar constructor de clsCarta para que no reciba el buleano isVolteada
+y se lo asigno directamente a false en el constructor

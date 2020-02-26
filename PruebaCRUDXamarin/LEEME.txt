@@ -1,0 +1,5 @@
+Sólo sale la lista
+
+No sé cómo hacer la navegación entre páginas
+Falta en la capa DAL la implementación de los verbos PUT y DELETE.
+Y sin saber eso, no sabido hacer el resto.

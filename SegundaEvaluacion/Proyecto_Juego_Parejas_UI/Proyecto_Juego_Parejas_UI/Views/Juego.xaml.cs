@@ -50,12 +50,22 @@ namespace Proyecto_Juego_Parejas_UI.Views
             hasta clicar otra, y también al mostrar sólo carta1, sigue girando
             */
             //Solución final para que no haga animación de giro una vez volteada la carta seleccionada:
-            if (juego.PuedeVoltear)
-            {
-                story.Begin();
-                //Una vez volteada no puede volver a girar
-                juego.PuedeVoltear = false;
+
+            //Comprueba que la cartaSeleccionada tiene valor asignado
+            if (juego.CartaSeleccionada!=null) {
+                //Comprueba que no está volteada y en ese caso puede realizar animación de giro
+                if (!juego.CartaSeleccionada.IsVolteada)
+                {
+                    story.Begin();
+                    juego.CartaSeleccionada.IsVolteada = true;
+                }
             }
+            //if (juego.PuedeVoltear)
+            //{
+            //    story.Begin();
+            //    //Una vez volteada no puede volver a girar
+            //    juego.PuedeVoltear = false;
+            //}
             
             //Añadir animación de voltear de vuelta las dos cartas seleccionadas tras seleccionar la segunda carta
         }

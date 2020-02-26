@@ -11,6 +11,7 @@ using Windows.Media;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace SimonGame_UI.ViewModels
 {
@@ -21,7 +22,9 @@ namespace SimonGame_UI.ViewModels
         #region Atributos Privados
         private ObservableCollection<clsBoton> listadoBotones;
         private clsBoton botonSeleccionado;
-        DispatcherTimer hacerSonidos;
+        private DispatcherTimer hacerSonidos;
+        private DelegateCommand comandoAbandonarPartida;
+        private bool isSonando = false;
         #endregion
 
         #region Propiedades Públicas
@@ -44,23 +47,69 @@ namespace SimonGame_UI.ViewModels
                 botonSeleccionado = value;
             }
         }
+        public DelegateCommand ComandoAbandonarPartida
+        {
+            get
+            {
+                return comandoAbandonarPartida;
+            }
+        }
         #endregion
 
         #region constructor
         public clsJuegoVM()
         {
             listadoBotones = new clsListadoBotones().ListadoBotones();
-            //Cada dos segundos(ver tiempo correcto) suena un sonido de la secuencia
-            //Si falla se debe reiniciar
+            //Cada segundo suena un sonido de la secuencia
+            //Si juegador falla (dar tres oportunidades) se acaba la partida
             hacerSonidos = new DispatcherTimer();
             hacerSonidos.Tick += HacerSonidosIluminarBoton;
             hacerSonidos.Interval = new TimeSpan(0, 0, 1);
+            hacerSonidos.Start();
 
-            hacerSonidos.Start();                        
+            comandoAbandonarPartida = new DelegateCommand(AbandonarPartidaExecute);          
+
         }
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Método que permite abandonar la partida sin terminarla y vuelve a pantalla inicio
+        /// Sale mensaje preguntando si abandona partida y los sonidos se paran
+        /// Si acepta vuelve a inicio
+        /// Si cancela se reinician los sonidos y reanuda la partida
+        /// </summary>
+        public async void AbandonarPartidaExecute()
+        {
+            //Para sonidos 
+            //tiempoPuntuacion.Stop();
+            hacerSonidos.Stop();
+
+            ContentDialog comprobarSalirPartida = new ContentDialog
+            {
+                Title = "Seguro que desea salir?",
+                Content = "Si sale se perderán los datos de la partida",
+                PrimaryButtonText = "Abandonar Partida",
+                CloseButtonText = "Seguir Jugando"
+            };
+
+            ContentDialogResult resultado = await comprobarSalirPartida.ShowAsync();
+
+            //Si pulsa abandonar partida, vuelve al inicio
+            if (resultado == ContentDialogResult.Primary)
+            {
+                //Instancia un elemento Page 
+                Frame frame = (Frame)Window.Current.Content;
+
+                frame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                //Reanuda sonido 
+                //tiempoPuntuacion.Start();
+                hacerSonidos.Start();
+            }
+        }
 
         //Prueba con DispatcherTimer para iluminar botoner y hacer sonidos aleatorios
         public void HacerSonidosIluminarBoton(object sender, object e)
@@ -81,6 +130,7 @@ namespace SimonGame_UI.ViewModels
             {
                 //Reproduce el sonido del botón correspondiente
                 ReproducirSonido(listadoBotones[idListaRandom].Sonido);
+                //TODO implementar lógica para que se ilumine el botón al sonar sonido
             }
 
             operacionesListado.GenerarSonidosAleatorios(listaRandom);
@@ -110,7 +160,7 @@ namespace SimonGame_UI.ViewModels
             //    playing = true;
             //}
         }
-
+        
 
         //public void HacerSonidosIluminarBoton(object sender, EventArgs e)
         //{

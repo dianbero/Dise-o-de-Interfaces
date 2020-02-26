@@ -72,7 +72,7 @@ namespace PruebaCRUDXamarin_UI.ViewModels
 
         #region Add Persona
         /// <summary>
-        /// Método que inserta una nueva persona
+        /// Método que permite navegación pantalla de navegación
         /// </summary>
         public async void CrearPersonaExecute()
         {
