@@ -26,7 +26,7 @@
                     <Rectangle Name="boton" 
                            Width="250" 
                            Height="250"
-                           Opacity="1"
+                           Opacity="{Binding Opacidad}"
                            Fill="{Binding Color}"
                            RadiusX="40"
                            RadiusY="40"
@@ -35,7 +35,7 @@
             </GridView.ItemTemplate>            
         </GridView>      
 
-        <Button Name="pruebaSonido"
+        <!--<Button Name="pruebaSonido"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.Above="botones"
                 Content="Play!"></Button>
@@ -43,7 +43,7 @@
         <Button Name="play"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.Above="pruebaSonido"
-                Content="Don´t Touch!" ></Button>
+                Content="Don´t Touch!" ></Button>-->
         
         <!--<MediaPlayerElement Grid.Row="3" Grid.Column="2" x:Name="mediaCleo" Source="ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3" AutoPlay="True" AreTransportControlsEnabled="True"/>-->
     </RelativePanel>

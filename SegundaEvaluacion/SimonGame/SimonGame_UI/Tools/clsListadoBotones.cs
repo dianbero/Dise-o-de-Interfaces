@@ -26,7 +26,12 @@ namespace SimonGame_UI.Tools
         }
 
         //TODO método que genere la lista que irá mostrando los sonidos (botones) aleatorios
-        public ObservableCollection<clsBoton> GenerarSonidosAleatorios(ObservableCollection<clsBoton> listaSonidosAleatorio)
+        /// <summary>
+        /// Método que genera sonidos aleatorios y los va añadiendo a una lista
+        /// </summary>
+        /// <param name="listaSonidosAleatorio">Nueva lista donde se irán guardando los sonidos aleatorios generados</param>
+        /// <returns>ObservableCollection<clsBoton> listaSonidosAleatorio, lista con los sonidos aleatorios guardados</returns>
+        public void GenerarSonidosAleatorios(ObservableCollection<clsBoton> listaSonidosAleatorio)
         {
             //ObservableCollection<clsBoton> listaSonidosAleatorio = new ObservableCollection<clsBoton>();
             ObservableCollection<clsBoton> listadoConSonidosAux = ListadoBotones();
@@ -35,7 +40,8 @@ namespace SimonGame_UI.Tools
             int num = random.Next(listadoConSonidosAux.Count);
             listaSonidosAleatorio.Add(listadoConSonidosAux[num]);
 
-            return listaSonidosAleatorio;
+
+            //return listaSonidosAleatorio;
         }
         
     }

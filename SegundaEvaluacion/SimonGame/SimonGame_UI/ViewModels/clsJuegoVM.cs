@@ -12,6 +12,7 @@ using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Shapes;
 
 namespace SimonGame_UI.ViewModels
 {
@@ -24,7 +25,15 @@ namespace SimonGame_UI.ViewModels
         private clsBoton botonSeleccionado;
         private DispatcherTimer hacerSonidos;
         private DelegateCommand comandoAbandonarPartida;
-        private bool isSonando = false;
+
+        /*Al generarse la lista desde cero, las veces que se repita el método de generar nuevo sonido (lanzado por DispatcherTimer)
+         correspondrá al número de la posición del sonido en la lista, es decir: repeticiones = índice lista */
+        int repeticiones = 0;
+        ObservableCollection<clsBoton> listaRandom;
+        //clsListadoBotones operacionesListado;
+
+       
+        //Lista en la que se acumulan los botones generados aleatoriamente
         #endregion
 
         #region Propiedades Públicas
@@ -45,6 +54,8 @@ namespace SimonGame_UI.ViewModels
             set
             {
                 botonSeleccionado = value;
+                NotifyPropertyChanged("BotonSeleccionado");
+
             }
         }
         public DelegateCommand ComandoAbandonarPartida
@@ -61,9 +72,10 @@ namespace SimonGame_UI.ViewModels
         {
             listadoBotones = new clsListadoBotones().ListadoBotones();
             comandoAbandonarPartida = new DelegateCommand(AbandonarPartidaExecute);
+            listaRandom = new ObservableCollection<clsBoton>();
 
             //Cada segundo suena un sonido de la secuencia
-            //Si juegador falla (dar tres oportunidades) se acaba la partida
+            //Si jugador falla (dar tres oportunidades) se acaba la partida
             hacerSonidos = new DispatcherTimer();
             hacerSonidos.Tick += HacerSonidosIluminarBoton;
             hacerSonidos.Interval = new TimeSpan(0, 0, 1);
@@ -77,13 +89,12 @@ namespace SimonGame_UI.ViewModels
         /// <summary>
         /// Método que permite abandonar la partida sin terminarla y vuelve a pantalla inicio
         /// Sale mensaje preguntando si abandona partida y los sonidos se paran
-        /// Si acepta vuelve a inicio
-        /// Si cancela se reinician los sonidos y reanuda la partida
+        /// Si acepta, vuelve a inicio
+        /// Si cancela, se reinician los sonidos y reanuda la partida
         /// </summary>
         public async void AbandonarPartidaExecute()
         {
             //Para sonidos 
-            //tiempoPuntuacion.Stop();
             hacerSonidos.Stop();
 
             ContentDialog comprobarSalirPartida = new ContentDialog
@@ -112,29 +123,48 @@ namespace SimonGame_UI.ViewModels
         }
 
         //Prueba con DispatcherTimer para iluminar botoner y hacer sonidos aleatorios
-        public void HacerSonidosIluminarBoton(object sender, object e)
+        public async void HacerSonidosIluminarBoton(object sender, object e)
         {
             /*
              Hacer sonar sonido y cambiar opacidad de botón mientras suena
              */
-            int repeticiones = 0;
 
             clsListadoBotones operacionesListado = new clsListadoBotones();
-            ObservableCollection<clsBoton> listaRandom = new ObservableCollection<clsBoton>();
-
-            listaRandom = operacionesListado.GenerarSonidosAleatorios(listaRandom);
+            
+            //Añado un nuevo sonido aleatorio a la lista
+            /*listaRandom =*/ operacionesListado.GenerarSonidosAleatorios(listaRandom);
 
             int idListaRandom = listaRandom[repeticiones].Id;
-            //Compruebo que los id son iguales
-            if (idListaRandom == listadoBotones[idListaRandom].Id)
-            {
-                //Reproduce el sonido del botón correspondiente
-                ReproducirSonido(listadoBotones[idListaRandom].Sonido);
-                //TODO implementar lógica para que se ilumine el botón al sonar sonido
-            }
 
-            operacionesListado.GenerarSonidosAleatorios(listaRandom);
+            if(botonSeleccionado!= listadoBotones[idListaRandom]) //Esta comprobación creo que es innecesaria
+            {
+                botonSeleccionado = listadoBotones[idListaRandom];
+
+
+                ReproducirSonido(listadoBotones[idListaRandom].Sonido);
+                //Cambio opacidad del botón que suena para que se identifique el botón que hay que pulsar
+                botonSeleccionado.Opacidad = "0.3";   
+                //Retraso el cambio de opacidad para que se note el cambio
+                Task atrasarCambioOpacidad = Task.Delay(700);
+                await atrasarCambioOpacidad.AsAsyncAction();
+                botonSeleccionado.Opacidad = "1";
+            }
             
+
+            
+            //botonSeleccionado.Opacidad = "1";
+
+            //operacionesListado.GenerarSonidosAleatorios(listaRandom);
+
+            ////Compruebo que los id son iguales para comprobar que el botón pulsado es el que corresponde al orden de secuencia
+            //if (idListaRandom == listadoBotones[idListaRandom].Id)
+            //{
+            //    //Reproduce el sonido del botón correspondiente
+            //    ReproducirSonido(listadoBotones[idListaRandom].Sonido);
+            //    //TODO implementar lógica para que se ilumine el botón al sonar sonido
+            //}
+
+
             repeticiones++;
         }
 
@@ -150,13 +180,14 @@ namespace SimonGame_UI.ViewModels
 
             //if (playing)
             //{
-                //sound.Source = null;
+            //sound.Source = null;
             //    sound.Pause();
             //    playing = false;
             //}
             //else
             //{
-                sound.Play();
+            sound.Play();
+
             //    playing = true;
             //}
         }

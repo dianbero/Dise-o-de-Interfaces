@@ -51,8 +51,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 if (tableroHabilitado)
                 {
                     cartaSeleccionada = value;
-                    /*Para que una carta ya volteada no vuelva a ocultarse al clicarla
-                     * (estará volteada porque se ha encontrado su pareja)*/
+                    /*Para que una carta ya volteada no vuelva a ocultarse al clicarla*/
                     if (cartaSeleccionada.IsVolteada)
                     {                        
                         //Si está volteada le quito la selección (no le asigno ningún valor)
