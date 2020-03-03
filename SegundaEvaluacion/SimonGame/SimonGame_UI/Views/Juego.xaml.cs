@@ -107,7 +107,5 @@ namespace SimonGame_UI.Views
         //    //    playerController.Start();
         //    //}
         //}
-
-
     }
 }
