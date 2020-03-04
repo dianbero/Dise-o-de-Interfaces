@@ -211,18 +211,7 @@ namespace SimonGame_UI.ViewModels
             //sound.AutoPlay = false;
             sound.Source = MediaSource.CreateFromUri(uri);
 
-            //if (playing)
-            //{
-            //sound.Source = null;
-            //    sound.Pause();
-            //    playing = false;
-            //}
-            //else
-            //{
             sound.Play();
-
-            //    playing = true;
-            //}
         }
 
         /// <summary>
@@ -245,12 +234,14 @@ namespace SimonGame_UI.ViewModels
                     totalBotonesAcertados++;
                 
                 //Una vez que ha comprobado que ha acertado suma total de aciertos un punto
-                if (totalBotonesAcertados == listaRandom.Count)
+                    if (totalBotonesAcertados == listaRandom.Count)
                     {
                         //Añade un nuevo sonido aleatorio 
                         operacionesListado.GenerarSonidosAleatorios(listaRandom);
                         //Reinicia la secuencia para que vuelva a sonar desde el principio
                         repeticiones = 0;
+                        //Al terminar secuencia reinicia el total de aciertos
+                        totalBotonesAcertados = 0;
                         //Reinicia el temporizador de DispatcherTimer
                         hacerSonidos.Start();
                     }

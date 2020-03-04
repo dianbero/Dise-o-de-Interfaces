@@ -33,5 +33,10 @@ namespace SimonGame_UI.Views
         {
             this.InitializeComponent();
         }
+
+        private void Boton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+           // botones.SelectedIndex = -1;
+        }
     }
 }

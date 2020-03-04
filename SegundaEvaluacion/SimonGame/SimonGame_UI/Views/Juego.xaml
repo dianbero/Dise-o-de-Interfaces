@@ -17,15 +17,16 @@
         <AppBarButton Name="btnVolver" Icon="Back" Command="{Binding ComandoAbandonarPartida}"></AppBarButton>
 
         <GridView Name="botones" 
-                  ItemsSource="{Binding ListadoBotones}" 
+                  ItemsSource="{Binding ListadoBotones, Mode=TwoWay}" 
                   MaxWidth="760"
                   RelativePanel.AlignHorizontalCenterWithPanel="True"
                   RelativePanel.AlignVerticalCenterWithPanel="True"
                   IsEnabled="{Binding TableroHabilitado}"
-                  SelectedItem="{Binding BotonSeleccionado, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                  SelectedItem="{Binding BotonSeleccionado, Mode=TwoWay}">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Rectangle Name="boton" 
+                               Tapped="Boton_Tapped"
                            Width="250" 
                            Height="250"
                            Opacity="{Binding Opacidad}"
