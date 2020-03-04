@@ -34,7 +34,8 @@ namespace SimonGame_UI.ViewModels
         /*Al generarse la lista desde cero, las veces que se repita el método de generar nuevo sonido (lanzado por DispatcherTimer)
          correspondrá al número de la posición del sonido en la lista, es decir: repeticiones = índice lista */
         int repeticiones;
-        ObservableCollection<clsBoton> listaRandom;  //Lista en la que se acumulan los botones generados aleatoriamente
+        private ObservableCollection<clsBoton> listaRandom;  //Lista en la que se acumulan los botones generados aleatoriamente
+        int indiceQuitarSeleccionBoton;
         #endregion
 
         #region Propiedades Públicas
@@ -75,6 +76,14 @@ namespace SimonGame_UI.ViewModels
             get
             {
                 return tableroHabilitado;
+            }
+        }
+
+        public int IndiceQuitarSeleccionBoton
+        {
+            get
+            {
+                return indiceQuitarSeleccionBoton;
             }
         }
         #endregion
@@ -159,7 +168,9 @@ namespace SimonGame_UI.ViewModels
             //Deshabilita Tablero
             tableroHabilitado = false;
             NotifyPropertyChanged("TableroHabilitado");
-                        
+            
+            /*Si las veces que se repite el evento son menores o iguales al tamaño de la lista
+             sigue reproduciendo los sonidos de la secuencia*/
             if (repeticiones < listaRandom.Count)
             {
                 int idListaRandom = listaRandom[repeticiones].Id;
@@ -185,6 +196,7 @@ namespace SimonGame_UI.ViewModels
 
                 repeticiones++;
             }
+            //Si llega al final, deja de reproducir sonidos (para que el jugador pueda pulsar)
             else
             {
                 hacerSonidos.Stop();
@@ -256,8 +268,13 @@ namespace SimonGame_UI.ViewModels
                     MostrarMensajeFinPartida();
                 }
 
+                //indiceQuitarSeleccionBoton = -1;
+                //NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
+
                 botonSeleccionado = null;
                 NotifyPropertyChanged("BotonSeleccionado");
+
+
             //}
             //Si termina la secuencia (acierta todos los botones de la secuencia actual)
             //else

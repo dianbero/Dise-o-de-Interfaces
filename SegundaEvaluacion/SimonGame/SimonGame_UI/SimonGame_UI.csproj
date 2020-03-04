@@ -121,7 +121,6 @@
     </Compile>
     <Compile Include="Models\clsBoton.cs" />
     <Compile Include="Tools\clsListadoBotones.cs" />
-    <Compile Include="ViewModels\Class1.cs" />
     <Compile Include="ViewModels\clsJuegoVM.cs" />
     <Compile Include="ViewModels\clsRankingVM.cs" />
     <Compile Include="ViewModels\ViewmodelTools\clsVMBase.cs" />
