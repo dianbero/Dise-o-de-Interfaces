@@ -14,7 +14,6 @@ namespace SimonGame_UI.Models
         private string color;
         private string sonido;
         private string opacidad; //se le cambiará mientras suena sonido
-        //private int ordenBoton; //No sé si hace falta, puede ser el id y yasta
         #endregion
 
         #region Propiedades Públicas
