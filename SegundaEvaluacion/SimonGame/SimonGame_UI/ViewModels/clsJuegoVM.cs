@@ -58,8 +58,7 @@ namespace SimonGame_UI.ViewModels
                 {
                     botonSeleccionado = value;
                     ComprobarJugada();
-                    //NotifyPropertyChanged("BotonSeleccionado"); //Notifica el cambio de botón seleccionado, para que se vayan iluminando los respectivos botones
-                    
+                    //NotifyPropertyChanged("BotonSeleccionado"); //Notifica el cambio de botón seleccionado, para que se vayan iluminando los respectivos botones                   
                 }
             }
         }
@@ -237,13 +236,25 @@ namespace SimonGame_UI.ViewModels
         public void ComprobarJugada()
         {
             //Si sigue habiendo botones en la lista de botones a reproducir
-            if(totalBotonesAcertados <= listaRandom.Count)
-            {
+            //if(totalBotonesAcertados <= listaRandom.Count)
+            //{
                 //Si acierta (id del botonSeleccionado es igual al id del botón correspondiente en la secuencia)
                 if(botonSeleccionado.Id == listaRandom[totalBotonesAcertados].Id)
                 {
                     //TODO mostrar mensaje indicando que acierta, o mostrar puntos (o ambos)
-                    totalBotonesAcertados++;    //Suma los aciertos
+                    totalBotonesAcertados++;
+                
+                //Una vez que ha comprobado que ha acertado suma total de aciertos un punto
+                if (totalBotonesAcertados == listaRandom.Count)
+                    {
+                        //Añade un nuevo sonido aleatorio 
+                        operacionesListado.GenerarSonidosAleatorios(listaRandom);
+                        //Reinicia la secuencia para que vuelva a sonar desde el principio
+                        repeticiones = 0;
+                        //Reinicia el temporizador de DispatcherTimer
+                        hacerSonidos.Start();
+                    }
+                    //Suma los aciertos
                 }
                 //Si falla, se acaba la partida y se guardan los datos
                 else
@@ -253,15 +264,18 @@ namespace SimonGame_UI.ViewModels
                     //ContentDialog pide nick y guarda en BBDD
                     MostrarMensajeFinPartida();
                 }
-            }
+
+                botonSeleccionado = null;
+                NotifyPropertyChanged("BotonSeleccionado");
+            //}
             //Si termina la secuencia (acierta todos los botones de la secuencia actual)
-            else
-            {
-                //Añade un nuevo sonido aleatorio 
-                operacionesListado.GenerarSonidosAleatorios(listaRandom);
-                //Reinicia la secuencia para que vuelva a sonar desde el principio
-                repeticiones = 0;
-            }
+            //else
+            //{
+            //    //Añade un nuevo sonido aleatorio 
+            //    operacionesListado.GenerarSonidosAleatorios(listaRandom);
+            //    //Reinicia la secuencia para que vuelva a sonar desde el principio
+            //    repeticiones = 0;
+            //}
         }
 
         //ContentDialog Fin de Partida

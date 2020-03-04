@@ -22,7 +22,7 @@
                   RelativePanel.AlignHorizontalCenterWithPanel="True"
                   RelativePanel.AlignVerticalCenterWithPanel="True"
                   IsEnabled="{Binding TableroHabilitado}"
-                  SelectedItem="{Binding BotonSeleccionado}">
+                  SelectedItem="{Binding BotonSeleccionado, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Rectangle Name="boton" 

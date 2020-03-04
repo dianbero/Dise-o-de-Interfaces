@@ -30,9 +30,9 @@ namespace SimonGame_DAL.Handlers
                 command.Connection = connection;
 
                 command.Parameters.Add("@nombreJugador", System.Data.SqlDbType.VarChar).Value = nuevoJugador.NombreJugador;
-                command.Parameters.Add("@puntuacionJugador", System.Data.SqlDbType.DateTime).Value = nuevoJugador.Aciertos;
+                command.Parameters.Add("@puntuacionJugador", System.Data.SqlDbType.Int).Value = nuevoJugador.Aciertos;
 
-                command.CommandText = "INSERT INTO TopScores (nombreJugador, puntuacion) VALUES (@nombreJugador, @puntuacionJugador)";
+                command.CommandText = "INSERT INTO TopScoresSimon (nombreJugador, aciertos) VALUES (@nombreJugador, @puntuacionJugador)";
 
                 filasAfectadas = command.ExecuteNonQuery();
 
