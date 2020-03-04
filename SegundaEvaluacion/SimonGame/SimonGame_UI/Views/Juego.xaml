@@ -20,7 +20,9 @@
                   ItemsSource="{Binding ListadoBotones}" 
                   MaxWidth="760"
                   RelativePanel.AlignHorizontalCenterWithPanel="True"
-                  RelativePanel.AlignVerticalCenterWithPanel="True">
+                  RelativePanel.AlignVerticalCenterWithPanel="True"
+                  IsEnabled="{Binding TableroHabilitado}"
+                  SelectedItem="{Binding BotonSeleccionado}">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Rectangle Name="boton" 

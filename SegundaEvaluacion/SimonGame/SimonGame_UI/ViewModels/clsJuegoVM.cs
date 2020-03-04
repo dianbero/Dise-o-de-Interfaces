@@ -1,4 +1,6 @@
-﻿using SimonGame_UI.Models;
+﻿using SimonGame_BL.Hanlders;
+using SimonGame_Entities;
+using SimonGame_UI.Models;
 using SimonGame_UI.Tools;
 using SimonGame_UI.ViewModels.ViewmodelTools;
 using System;
@@ -18,22 +20,21 @@ namespace SimonGame_UI.ViewModels
 {
     public class clsJuegoVM : clsVMBase
     {
-        //TODO añadir Command para navegación de página, en el método del command hacer la navegación al pulsar el botón de volver al menú y parar la música al volver
-
         #region Atributos Privados
         private ObservableCollection<clsBoton> listadoBotones;
         private clsBoton botonSeleccionado;
         private DispatcherTimer hacerSonidos;
         private DelegateCommand comandoAbandonarPartida;
+        private clsListadoBotones operacionesListado = new clsListadoBotones();
+        private clsJugador objJugador;
 
+        private bool tableroHabilitado = false; //Para deshabilitar tablero mientras suenan sonidos, inicialmente estará deshabilitado porque empiezan los sonidos
+        private int totalBotonesAcertados = 0; //Para comparar con botón correspondiente (será su ídice de lista) y contar si alcanza el final de la lista para así reiniciar la secuencia
+        
         /*Al generarse la lista desde cero, las veces que se repita el método de generar nuevo sonido (lanzado por DispatcherTimer)
          correspondrá al número de la posición del sonido en la lista, es decir: repeticiones = índice lista */
-        int repeticiones = 0;
-        ObservableCollection<clsBoton> listaRandom;
-        //clsListadoBotones operacionesListado;
-
-       
-        //Lista en la que se acumulan los botones generados aleatoriamente
+        int repeticiones;
+        ObservableCollection<clsBoton> listaRandom;  //Lista en la que se acumulan los botones generados aleatoriamente
         #endregion
 
         #region Propiedades Públicas
@@ -53,9 +54,13 @@ namespace SimonGame_UI.ViewModels
             }
             set
             {
-                botonSeleccionado = value;
-                NotifyPropertyChanged("BotonSeleccionado");
-
+                if (tableroHabilitado)
+                {
+                    botonSeleccionado = value;
+                    ComprobarJugada();
+                    //NotifyPropertyChanged("BotonSeleccionado"); //Notifica el cambio de botón seleccionado, para que se vayan iluminando los respectivos botones
+                    
+                }
             }
         }
         public DelegateCommand ComandoAbandonarPartida
@@ -63,6 +68,14 @@ namespace SimonGame_UI.ViewModels
             get
             {
                 return comandoAbandonarPartida;
+            }
+        }
+
+        public bool TableroHabilitado
+        {
+            get
+            {
+                return tableroHabilitado;
             }
         }
         #endregion
@@ -73,14 +86,28 @@ namespace SimonGame_UI.ViewModels
             listadoBotones = new clsListadoBotones().ListadoBotones();
             comandoAbandonarPartida = new DelegateCommand(AbandonarPartidaExecute);
             listaRandom = new ObservableCollection<clsBoton>();
+            objJugador = new clsJugador();
+
+
+            //Genera un primer sonido
+            operacionesListado.GenerarSonidosAleatorios(listaRandom);
+            //Al generar un primer sonido, contamos como que se ha generado una repetición (para que corresponda con el índice de la lista)
+            repeticiones = 0;
 
             //Cada segundo suena un sonido de la secuencia
-            //Si jugador falla (dar tres oportunidades) se acaba la partida
+            //Si jugador falla se acaba la partida
             hacerSonidos = new DispatcherTimer();
             hacerSonidos.Tick += HacerSonidosIluminarBoton;
             hacerSonidos.Interval = new TimeSpan(0, 0, 1);
             hacerSonidos.Start();
-         
+
+
+            //Habilita tablero tras reproducir sonidos
+            //if (!hacerSonidos.IsEnabled) //Si el temporizador no está en ejecución, habilita el tablero
+            //{
+            //    tableroHabilitado = true;
+            //    NotifyPropertyChanged("TableroHabilitado");
+            //}         
 
         }
         #endregion
@@ -122,52 +149,59 @@ namespace SimonGame_UI.ViewModels
             }
         }
 
-        //Prueba con DispatcherTimer para iluminar botoner y hacer sonidos aleatorios
+        /// <summary>
+        /// Método que hace sonar los elementos de la secuencia y resalta el elemento correspondiente para identificarlo
+        /// Realiza sonido y cambia la opacidad del botón mientras suena
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void HacerSonidosIluminarBoton(object sender, object e)
         {
-            /*
-             Hacer sonar sonido y cambiar opacidad de botón mientras suena
-             */
-
-            clsListadoBotones operacionesListado = new clsListadoBotones();
-            
-            //Añado un nuevo sonido aleatorio a la lista
-            /*listaRandom =*/ operacionesListado.GenerarSonidosAleatorios(listaRandom);
-
-            int idListaRandom = listaRandom[repeticiones].Id;
-
-            if(botonSeleccionado!= listadoBotones[idListaRandom]) //Esta comprobación creo que es innecesaria
+            //Deshabilita Tablero
+            tableroHabilitado = false;
+            NotifyPropertyChanged("TableroHabilitado");
+                        
+            if (repeticiones < listaRandom.Count)
             {
-                botonSeleccionado = listadoBotones[idListaRandom];
+                int idListaRandom = listaRandom[repeticiones].Id;
 
+                //if (botonSeleccionado != listadoBotones[idListaRandom]) //Esta comprobación creo que es innecesaria
+                //{
+                //    //Asigno al boton seleccionado el valor del boton que corresponde en la secuencia
+                //    botonSeleccionado = listadoBotones[idListaRandom];
+                //    //NotifyPropertyChanged("BotonSeleccionado");
 
-                ReproducirSonido(listadoBotones[idListaRandom].Sonido);
-                //Cambio opacidad del botón que suena para que se identifique el botón que hay que pulsar
-                botonSeleccionado.Opacidad = "0.3";   
-                //Retraso el cambio de opacidad para que se note el cambio
-                Task atrasarCambioOpacidad = Task.Delay(700);
-                await atrasarCambioOpacidad.AsAsyncAction();
-                botonSeleccionado.Opacidad = "1";
+                    ReproducirSonido(listadoBotones[idListaRandom].Sonido);
+                    //ReproducirSonido(botonSeleccionado.Sonido); //Hace lo mismo que lo anterior
+
+                    //Cambio opacidad del botón que suena para que se identifique el botón que hay que pulsar
+                    //botonSeleccionado.Opacidad = "0.3";
+                    listadoBotones[idListaRandom].Opacidad = "0.3";
+                    //Retraso el cambio de opacidad para que se note el cambio
+                    Task atrasarCambioOpacidad = Task.Delay(700);
+                    await atrasarCambioOpacidad.AsAsyncAction();
+                    //botonSeleccionado.Opacidad = "1";
+                    listadoBotones[idListaRandom].Opacidad = "1";
+                //}
+
+                repeticiones++;
             }
-            
+            else
+            {
+                hacerSonidos.Stop();
+            }
 
-            
-            //botonSeleccionado.Opacidad = "1";
+            //Habilito tablero para poder clicar los botones
+            tableroHabilitado = true;
+            NotifyPropertyChanged("TableroHabilitado");
+            //botonSeleccionado = null;
 
-            //operacionesListado.GenerarSonidosAleatorios(listaRandom);
-
-            ////Compruebo que los id son iguales para comprobar que el botón pulsado es el que corresponde al orden de secuencia
-            //if (idListaRandom == listadoBotones[idListaRandom].Id)
-            //{
-            //    //Reproduce el sonido del botón correspondiente
-            //    ReproducirSonido(listadoBotones[idListaRandom].Sonido);
-            //    //TODO implementar lógica para que se ilumine el botón al sonar sonido
-            //}
-
-
-            repeticiones++;
         }
 
+        /// <summary>
+        /// Método que reproduce un sonido según la uri pasada por parámetro
+        /// </summary>
+        /// <param name="uriSonido">Uri del sonido a reproducir</param>
         public void ReproducirSonido(string uriSonido)
         {
             MediaPlayer sound = new MediaPlayer();
@@ -175,7 +209,7 @@ namespace SimonGame_UI.ViewModels
             //bool playing;
 
             Uri uri = new Uri(uriSonido);
-            sound.AutoPlay = false;
+            //sound.AutoPlay = false;
             sound.Source = MediaSource.CreateFromUri(uri);
 
             //if (playing)
@@ -191,17 +225,87 @@ namespace SimonGame_UI.ViewModels
             //    playing = true;
             //}
         }
-        
 
-        //public void HacerSonidosIluminarBoton(object sender, EventArgs e)
-        //{
-        //    /*
-        //     Muestra un primer sonido
-        //     Si el jugador ha acertado, muestra otro sonido aleatorio (comprueba si id del boton pulsado = id del boton del orden correspondiente)
-        //     Si no acierta, el juego se para (DispatcherTimer Stop())
-        //     y guarda la puntuación en BD (Esto seguramente vaya fuera del método, y después)
-        //     */
-        //}
+        /// <summary>
+        /// Método que:
+        /// - Comprueba si botonSeleccionado es igual al elemento que corresponde en la secuencia: 
+        ///           botonSeleccionado.Id == listadoBotones[botonesAcertados].Id
+        ///     - Si acierta (son iguales): suma un punto al total de aciertos (totalBotonesAcertados) y sigue pulsando hasta final de secuencia
+        ///                                 Si llega al final (acierta toda la secuencia actual): se añade un nuevo sonido aleatorio y se reinicia la secuencia             
+        ///     - Si No Acierta (no son iguales): el juego se para, aparece un contentDialog para introducir nick y lo guarda en la BBDD
+        /// </summary>
+        public void ComprobarJugada()
+        {
+            //Si sigue habiendo botones en la lista de botones a reproducir
+            if(totalBotonesAcertados <= listaRandom.Count)
+            {
+                //Si acierta (id del botonSeleccionado es igual al id del botón correspondiente en la secuencia)
+                if(botonSeleccionado.Id == listaRandom[totalBotonesAcertados].Id)
+                {
+                    //TODO mostrar mensaje indicando que acierta, o mostrar puntos (o ambos)
+                    totalBotonesAcertados++;    //Suma los aciertos
+                }
+                //Si falla, se acaba la partida y se guardan los datos
+                else
+                {
+                    //Puntuación del jugador obtenida
+                    objJugador.Aciertos = totalBotonesAcertados;
+                    //ContentDialog pide nick y guarda en BBDD
+                    MostrarMensajeFinPartida();
+                }
+            }
+            //Si termina la secuencia (acierta todos los botones de la secuencia actual)
+            else
+            {
+                //Añade un nuevo sonido aleatorio 
+                operacionesListado.GenerarSonidosAleatorios(listaRandom);
+                //Reinicia la secuencia para que vuelva a sonar desde el principio
+                repeticiones = 0;
+            }
+        }
+
+        //ContentDialog Fin de Partida
+        /// <summary>
+        /// Método que muestra un ContenDialog al final de la partida para que el usuario introduzca su nick y se guarde
+        /// en la BD de forma que aparezca en el ranking
+        /// </summary>
+        public async void MostrarMensajeFinPartida()
+        {
+            /*Help for InputDialog:
+             *https://comentsys.wordpress.com/2018/05/04/uwp-input-dialog/
+             */
+
+            //Se para el sonido
+            hacerSonidos.Stop();
+            //Creo TextBox para introducir nombre de usuario
+            TextBox input = new TextBox();
+            input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
+            input.PlaceholderText = "Introduce tu nick";
+
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "¡¡¡Fin de la partida!!!",
+                PrimaryButtonText = "Guardar",
+                //Asigno como contenido el TextBox para introducir nick de usuario
+                Content = input
+            };
+
+            ContentDialogResult result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                //Volver a inicio 
+                Frame frame = (Frame)Window.Current.Content;
+
+                frame.Navigate(typeof(MainPage));
+            }
+
+            //Asigno a objJugador el nick del jugador actual
+            objJugador.NombreJugador = input.Text;
+            //Guardo nick y puntuación del jugador en BD
+            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+            operacionBL.InsertNuevoJugador(objJugador);
+        }
         #endregion
 
     }
