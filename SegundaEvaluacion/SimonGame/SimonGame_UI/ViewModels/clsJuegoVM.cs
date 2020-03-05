@@ -35,7 +35,7 @@ namespace SimonGame_UI.ViewModels
          correspondrá al número de la posición del sonido en la lista, es decir: repeticiones = índice lista */
         int repeticiones;
         private ObservableCollection<clsBoton> listaRandom;  //Lista en la que se acumulan los botones generados aleatoriamente
-        int indiceQuitarSeleccionBoton;
+        private int indiceQuitarSeleccionBoton;
         #endregion
 
         #region Propiedades Públicas
@@ -169,7 +169,7 @@ namespace SimonGame_UI.ViewModels
             tableroHabilitado = false;
             NotifyPropertyChanged("TableroHabilitado");
             
-            /*Si las veces que se repite el evento son menores o iguales al tamaño de la lista
+            /*Si las veces que se repite el evento son menores al tamaño de la lista
              sigue reproduciendo los sonidos de la secuencia*/
             if (repeticiones < listaRandom.Count)
             {
@@ -235,55 +235,41 @@ namespace SimonGame_UI.ViewModels
         ///     - Si No Acierta (no son iguales): el juego se para, aparece un contentDialog para introducir nick y lo guarda en la BBDD
         /// </summary>
         public void ComprobarJugada()
-        {
-            //Si sigue habiendo botones en la lista de botones a reproducir
-            //if(totalBotonesAcertados <= listaRandom.Count)
-            //{
-                //Si acierta (id del botonSeleccionado es igual al id del botón correspondiente en la secuencia)
-                if(botonSeleccionado.Id == listaRandom[totalBotonesAcertados].Id)
-                {
-                    //TODO mostrar mensaje indicando que acierta, o mostrar puntos (o ambos)
-                    totalBotonesAcertados++;
+        {            
+            //Si acierta (id del botonSeleccionado es igual al id del botón correspondiente en la secuencia)
+            if(botonSeleccionado.Id == listaRandom[totalBotonesAcertados].Id)
+            {
+                //TODO mostrar mensaje indicando que acierta, o mostrar puntos (o ambos)
+                totalBotonesAcertados++;
                 
-                //Una vez que ha comprobado que ha acertado suma total de aciertos un punto
-                    if (totalBotonesAcertados == listaRandom.Count)
-                    {
-                        //Añade un nuevo sonido aleatorio 
-                        operacionesListado.GenerarSonidosAleatorios(listaRandom);
-                        //Reinicia la secuencia para que vuelva a sonar desde el principio
-                        repeticiones = 0;
-                        //Al terminar secuencia reinicia el total de aciertos
-                        totalBotonesAcertados = 0;
-                        //Reinicia el temporizador de DispatcherTimer
-                        hacerSonidos.Start();
-                    }
-                    //Suma los aciertos
-                }
-                //Si falla, se acaba la partida y se guardan los datos
-                else
+                //Una vez que ha comprobado que ha acertado
+                if (totalBotonesAcertados == listaRandom.Count)
                 {
-                    //Puntuación del jugador obtenida
-                    objJugador.Aciertos = totalBotonesAcertados;
-                    //ContentDialog pide nick y guarda en BBDD
-                    MostrarMensajeFinPartida();
+                    //Añade un nuevo sonido aleatorio 
+                    operacionesListado.GenerarSonidosAleatorios(listaRandom);
+                    //Reinicia la secuencia para que vuelva a sonar desde el principio
+                    repeticiones = 0;
+                    //Al terminar secuencia reinicia el total de aciertos
+                    totalBotonesAcertados = 0;
+                    //Reinicia el temporizador de DispatcherTimer
+                    hacerSonidos.Start();
                 }
+            }
+            //Si falla, se acaba la partida y se guardan los datos
+            else
+            {
+                //Puntuación del jugador obtenida
+                objJugador.Aciertos = totalBotonesAcertados;
+                //ContentDialog pide nick y guarda en BBDD
+                MostrarMensajeFinPartida();
+            }
 
-                //indiceQuitarSeleccionBoton = -1;
-                //NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
+            indiceQuitarSeleccionBoton = -1;
+            NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
 
-                botonSeleccionado = null;
-                NotifyPropertyChanged("BotonSeleccionado");
+            //botonSeleccionado = null;
+            //NotifyPropertyChanged("BotonSeleccionado");
 
-
-            //}
-            //Si termina la secuencia (acierta todos los botones de la secuencia actual)
-            //else
-            //{
-            //    //Añade un nuevo sonido aleatorio 
-            //    operacionesListado.GenerarSonidosAleatorios(listaRandom);
-            //    //Reinicia la secuencia para que vuelva a sonar desde el principio
-            //    repeticiones = 0;
-            //}
         }
 
         //ContentDialog Fin de Partida
