@@ -20,7 +20,7 @@ using System.Data.SqlClient;
 //
 
 
-namespace SimonGame_DAL.Connections
+namespace NuevoSimonGame_DAL.Connections
 {
     public class clsMyConnection
     {

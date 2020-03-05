@@ -22,7 +22,7 @@
                   RelativePanel.AlignHorizontalCenterWithPanel="True"
                   RelativePanel.AlignVerticalCenterWithPanel="True"
                   IsEnabled="{Binding TableroHabilitado}"
-                  SelectedIndex="{Binding IndiceQuitarSeleccionBoton}"
+                  SelectedIndex="{Binding IndiceQuitarSeleccionBoton, Mode=TwoWay}"
                   SelectedItem="{Binding BotonSeleccionado, Mode=TwoWay}">
             <GridView.ItemTemplate>
                 <DataTemplate>

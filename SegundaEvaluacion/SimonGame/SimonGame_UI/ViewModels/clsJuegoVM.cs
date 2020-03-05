@@ -264,6 +264,7 @@ namespace SimonGame_UI.ViewModels
                 MostrarMensajeFinPartida();
             }
 
+            //Aquí viene la oveja negra del proyecto
             indiceQuitarSeleccionBoton = -1;
             NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
 
