@@ -280,7 +280,7 @@ namespace SimonGame_UI.ViewModels
             TextBox input = new TextBox();
             input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
 
-            //Si se repite el contentDialog porque se pasaron los 20 caracteres
+            //Si se repite el contentDialog porque se pasaron los 20 caracteres, cambia el mensaje de placeholder
             if (repeticionDialog < 1)
             {
                 input.PlaceholderText = "Introduce tu nick";
@@ -327,7 +327,7 @@ namespace SimonGame_UI.ViewModels
                 else
                 {
                     repeticionDialog++;
-                    //Repite mensaje al pasar 20 caracteres
+                    //Repite mensaje al pasar de 20 caracteres
                     MostrarMensajeFinPartida();
                 }
             }

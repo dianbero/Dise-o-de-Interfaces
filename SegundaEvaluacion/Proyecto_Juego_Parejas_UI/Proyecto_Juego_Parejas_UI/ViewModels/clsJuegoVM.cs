@@ -293,7 +293,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             TextBox input = new TextBox();
             input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
 
-            //Si se repite el contentDialog porque se pasaron los 20 caracteres
+            //Si se repite el contentDialog porque se pasaron los 20 caracteres, cambia el mensaje de placeholder
             if (repeticionDialog < 1)
             {
 
@@ -341,7 +341,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                 else
                 {
                     repeticionDialog++;
-                    //Repite mensaje al pasar 20 caracteres
+                    //Repite mensaje al pasar de 20 caracteres
                     MostrarMensajeFinPartida();
                 }
             }

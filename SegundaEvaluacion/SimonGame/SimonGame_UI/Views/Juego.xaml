@@ -27,7 +27,6 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Rectangle Name="boton" 
-                               Tapped="Boton_Tapped"
                            Width="250" 
                            Height="250"
                            Opacity="{Binding Opacidad}"
@@ -38,17 +37,5 @@
                 </DataTemplate>
             </GridView.ItemTemplate>            
         </GridView>      
-
-        <!--<Button Name="pruebaSonido"
-                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.Above="botones"
-                Content="Play!"></Button>
-        
-        <Button Name="play"
-                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.Above="pruebaSonido"
-                Content="Don´t Touch!" ></Button>-->
-        
-        <!--<MediaPlayerElement Grid.Row="3" Grid.Column="2" x:Name="mediaCleo" Source="ms-appx:///Assets/Sonidos/AllyBrooke-NoGood.mp3" AutoPlay="True" AreTransportControlsEnabled="True"/>-->
     </RelativePanel>
 </Page>

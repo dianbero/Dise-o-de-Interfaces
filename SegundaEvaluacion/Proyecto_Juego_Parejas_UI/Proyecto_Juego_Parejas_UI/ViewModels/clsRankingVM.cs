@@ -42,8 +42,5 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         }
         #endregion
 
-        #region Métodos
-
-        #endregion
     }
 }

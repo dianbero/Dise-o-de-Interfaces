@@ -19,28 +19,33 @@
             <!--<AppBarButton.RenderTransform>
                 <CompositeTransform ScaleX="3" ScaleY="3"/>
             </AppBarButton.RenderTransform>-->
-        </AppBarButton>
-        <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="0,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue"></TextBlock>
+        </AppBarButton>        
+
+        <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="140,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" ></TextBlock>
 
         <!--<StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWith="txtRanking" Margin="0,0,250,0">-->
-        <TextBlock Name="txtNombre" Text="Nombre:" Margin="440,0,320,30" Width="200" FontSize="35" FontWeight="Bold"  RelativePanel.Below="txtRanking" ></TextBlock>
-        <TextBlock Name="txtTiempo" Text="Puntuación:"  Margin="-80,0,0,30" Width="200" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
+        <TextBlock Name="txtNombre" Text="Nombre:" Foreground="BlueViolet" Margin="50,0,400,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignRightWith="txtRanking" RelativePanel.Below="txtRanking" ></TextBlock>
+        <TextBlock Name="txtTiempo" Text="Tiempo:" Foreground="BlueViolet" Margin="0,0,100,30" Width="150" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
         <!--</StackPanel>-->
 
 
+        <!--implementar converter-->
         <!--<ListView Name="ranking" MaxHeight="800" Height="450" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="txtNombre" Padding="0,0,200,10" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtPuntuacion" Padding="200,0,0,10" Text="{Binding Aciertos}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Padding="200,0,0,10" Text="{Binding Puntuacion, Converter={StaticResource ConverterFecha}}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </StackPanel>
                     </DataTemplate>
             </ListView.ItemTemplate>            
         </ListView>-->
 
-        <!--Así consigo que las columnas se alineen-->
-        <GridView ItemsSource="{Binding RankingJugadores}" MaxWidth="750"   RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <GridView ItemsSource="{Binding RankingJugadores}"  
+                  RelativePanel.Below="txtNombre" 
+                  RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                  RelativePanel.AlignVerticalCenterWithPanel="True"
+                  MaxWidth="760">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -49,12 +54,13 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,10,0" Text="{Binding NombreJugador}" Foreground="Silver" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1"  Text="{Binding Aciertos}" FontSize="35" Foreground="Silver" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtNombre" Grid.Column="0" Grid.Row="1" Margin="20,0,10,0" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtTiempo" Grid.Column="1" Grid.Row="1"  Text="{Binding Aciertos}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
+
 
     </RelativePanel>
 </Page>
