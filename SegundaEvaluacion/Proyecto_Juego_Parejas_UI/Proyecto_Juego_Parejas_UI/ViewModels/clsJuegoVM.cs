@@ -19,8 +19,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
     public class clsJuegoVM : clsVMBase
     {
         #region Atributos Privados
-        private clsCarta cartaSeleccionada;// sustituir en carta1 y carta2
-        /*Al seleccionar carta2 se comprueba si son iguales*/
+        private clsCarta cartaSeleccionada;
         private clsCarta carta1;
         private clsCarta carta2;
         private clsJugador objJugador;
@@ -32,7 +31,7 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
         private DateTime tiempoAMostrarFecha = new DateTime(1754, 1, 1, 0, 0, 0); //Fecha a partir de la cual no lanza excepción
         private int cartasAcertadas = 0;
         private DelegateCommand commandAbandonarPartida;
-
+        private int repeticionDialog = 0; //Para controlar que se escriben más de 20 caracteres (máximo en BBDD)
         //Intentos fallidos
         //Al final no hace falta
         //public bool puedeVoltear;
@@ -59,7 +58,6 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     }
                     else
                     {
-                        //puedeVoltear = true;
                         ComprobarJugada();
                     }
                 }            
@@ -203,8 +201,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     Task atrasarVolteo = Task.Delay(500);
                     await atrasarVolteo.AsAsyncAction();
 
-                    clsSegundaAnimacionCarta animacion = new clsSegundaAnimacionCarta();
-                    //animacion.RotarCartaAgain(cartaSeleccionada);
+                    //clsSegundaAnimacionCarta animacion = new clsSegundaAnimacionCarta();
+                    ////animacion.RotarCartaAgain(cartaSeleccionada);
                     //Tras el tiempo vuelvo a ocultar las cartas
                     carta1.IsVolteada = false;
                     carta2.IsVolteada = false;
@@ -294,34 +292,59 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
             //Creo TextBox para introducir nombre de usuario
             TextBox input = new TextBox();
             input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
-            input.PlaceholderText = "Introduce tu nick";
+
+            //Si se repite el contentDialog porque se pasaron los 20 caracteres
+            if (repeticionDialog < 1)
+            {
+
+                input.PlaceholderText = "Introduce tu nick";
+            }
+            else
+            {
+                input.PlaceholderText = "Nick debe ser menor a 20 caracteres";
+            }
 
             ContentDialog dialog = new ContentDialog()
             {
                 Title = "¡¡¡Fin de la partida!!!",
-                PrimaryButtonText = "Guardar",     
+                PrimaryButtonText = "Guardar",
                 //Asigno como contenido el TextBox para introducir nick de usuario
                 Content = input
             };
 
             ContentDialogResult result = await dialog.ShowAsync();
 
-            if(result == ContentDialogResult.Primary)
+            if (result == ContentDialogResult.Primary)
             {
-                //input = (TextBox)dialog.Content;
-                //await new Windows.UI.Popups.MessageDialog($"Enhorabuena {input.Text}!!!").ShowAsync();
-                
-                //Volver a inicio 
-                Frame frame = (Frame)Window.Current.Content;
+                //Si supera 20 caracteres (máximo en BD)
+                if (input.Text.Length <= 20)
+                {
+                    //Volver a inicio 
+                    Frame frame = (Frame)Window.Current.Content;
 
-                frame.Navigate(typeof(MainPage)); 
+                    frame.Navigate(typeof(MainPage));
+
+                    //Asigno a objJugador el nick del jugador actual
+                    objJugador.NombreJugador = input.Text;
+                    //Guardo nick y puntuación del jugador en BD
+                    try
+                    {
+                        clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+                        operacionBL.InsertNuevoJugador(objJugador);
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
+
+                }
+                else
+                {
+                    repeticionDialog++;
+                    //Repite mensaje al pasar 20 caracteres
+                    MostrarMensajeFinPartida();
+                }
             }
-
-            //Asigno a objJugador el nick del jugador actual
-            objJugador.NombreJugador = input.Text;
-            //Guardo nick y puntuación del jugador en BD
-            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();            
-            operacionBL.InsertNuevoJugador(objJugador);
         }
 
         #endregion

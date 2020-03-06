@@ -1,12 +1,12 @@
 ﻿<Page
-    x:Class="SimonGame_UI.Views.Ranking"
+    x:Class="NuevoSimonGame_UI.Views.Ranking"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SimonGame_UI.Views"
+    xmlns:local="using:NuevoSimonGame_UI.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:vm="using:SimonGame_UI.ViewModels"
+    xmlns:vm="using:NuevoSimonGame_UI.ViewModels"
     Background="Black">
     <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
 
@@ -23,20 +23,22 @@
         <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="0,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue"></TextBlock>
 
         <!--<StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWith="txtRanking" Margin="0,0,250,0">-->
+        
         <TextBlock Name="txtNombre" Text="Nombre:" Margin="440,0,320,30" Width="200" FontSize="35" FontWeight="Bold"  RelativePanel.Below="txtRanking" ></TextBlock>
         <TextBlock Name="txtTiempo" Text="Puntuación:"  Margin="-80,0,0,30" Width="200" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
         <!--</StackPanel>-->
 
 
-        <!--<ListView Name="ranking" MaxHeight="800" Height="450" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <!--<ListView Name="ranking" MaxHeight="800" Height="450" Width="700" ItemsSource="{Binding RankingJugadores}" RelativePanel.Below="txtNombre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
+                        --><!--<TextBlock Name="txtNombre" Padding="0,0,200,10" Text="Hey" FontSize="35" FontWeight="Bold"></TextBlock>--><!--
                         <TextBlock Name="txtNombre" Padding="0,0,200,10" Text="{Binding NombreJugador}" FontSize="35" FontWeight="Bold"></TextBlock>
-                        <TextBlock Name="txtPuntuacion" Padding="200,0,0,10" Text="{Binding Aciertos}" FontSize="35" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="txtPuntuacion" HorizontalAlignment="Right" Padding="200,0,0,10" Text="{Binding Aciertos}" FontSize="35" FontWeight="Bold"></TextBlock>
                     </StackPanel>
-                    </DataTemplate>
-            </ListView.ItemTemplate>            
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>-->
 
         <!--Así consigo que las columnas se alineen-->

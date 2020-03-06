@@ -36,6 +36,7 @@ namespace SimonGame_UI.ViewModels
         int repeticiones;
         private ObservableCollection<clsBoton> listaRandom;  //Lista en la que se acumulan los botones generados aleatoriamente
         private int indiceQuitarSeleccionBoton;
+        private int repeticionDialog = 0; //Para controlar que se escriben más de 20 caracteres (máximo en BBDD)
         #endregion
 
         #region Propiedades Públicas
@@ -59,7 +60,7 @@ namespace SimonGame_UI.ViewModels
                 {
                     botonSeleccionado = value;
                     ComprobarJugada();
-                    //NotifyPropertyChanged("BotonSeleccionado"); //Notifica el cambio de botón seleccionado, para que se vayan iluminando los respectivos botones                   
+                    //NotifyPropertyChanged("BotonSeleccionado");                   
                 }
             }
         }
@@ -174,13 +175,7 @@ namespace SimonGame_UI.ViewModels
             if (repeticiones < listaRandom.Count)
             {
                 int idListaRandom = listaRandom[repeticiones].Id;
-
-                //if (botonSeleccionado != listadoBotones[idListaRandom]) //Esta comprobación creo que es innecesaria
-                //{
-                //    //Asigno al boton seleccionado el valor del boton que corresponde en la secuencia
-                //    botonSeleccionado = listadoBotones[idListaRandom];
-                //    //NotifyPropertyChanged("BotonSeleccionado");
-
+                               
                     ReproducirSonido(listadoBotones[idListaRandom].Sonido);
                     //ReproducirSonido(botonSeleccionado.Sonido); //Hace lo mismo que lo anterior
 
@@ -192,7 +187,6 @@ namespace SimonGame_UI.ViewModels
                     await atrasarCambioOpacidad.AsAsyncAction();
                     //botonSeleccionado.Opacidad = "1";
                     listadoBotones[idListaRandom].Opacidad = "1";
-                //}
 
                 repeticiones++;
             }
@@ -280,16 +274,21 @@ namespace SimonGame_UI.ViewModels
         /// </summary>
         public async void MostrarMensajeFinPartida()
         {
-            /*Help for InputDialog:
-             *https://comentsys.wordpress.com/2018/05/04/uwp-input-dialog/
-             */
-
             //Se para el sonido
             hacerSonidos.Stop();
             //Creo TextBox para introducir nombre de usuario
             TextBox input = new TextBox();
             input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
-            input.PlaceholderText = "Introduce tu nick";
+
+            //Si se repite el contentDialog porque se pasaron los 20 caracteres
+            if (repeticionDialog < 1)
+            {
+                input.PlaceholderText = "Introduce tu nick";
+            }
+            else
+            {
+                input.PlaceholderText = "Nick debe ser menor a 20 caracteres";
+            }
 
             ContentDialog dialog = new ContentDialog()
             {
@@ -303,17 +302,35 @@ namespace SimonGame_UI.ViewModels
 
             if (result == ContentDialogResult.Primary)
             {
-                //Volver a inicio 
-                Frame frame = (Frame)Window.Current.Content;
+                //Si supera 20 caracteres (máximo en BD)
+                if (input.Text.Length <= 20)
+                {
+                    //Volver a inicio 
+                    Frame frame = (Frame)Window.Current.Content;
 
-                frame.Navigate(typeof(MainPage));
+                    frame.Navigate(typeof(MainPage));
+
+                    //Asigno a objJugador el nick del jugador actual
+                    objJugador.NombreJugador = input.Text;
+                    //Guardo nick y puntuación del jugador en BD
+                    try
+                    {
+                        clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+                        operacionBL.InsertNuevoJugador(objJugador);
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
+
+                }
+                else
+                {
+                    repeticionDialog++;
+                    //Repite mensaje al pasar 20 caracteres
+                    MostrarMensajeFinPartida();
+                }
             }
-
-            //Asigno a objJugador el nick del jugador actual
-            objJugador.NombreJugador = input.Text;
-            //Guardo nick y puntuación del jugador en BD
-            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
-            operacionBL.InsertNuevoJugador(objJugador);
         }
         #endregion
 

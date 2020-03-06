@@ -60,14 +60,6 @@ namespace Proyecto_Juego_Parejas_UI.Views
                     juego.CartaSeleccionada.IsVolteada = true;
                 }
             }
-            //if (juego.PuedeVoltear)
-            //{
-            //    story.Begin();
-            //    //Una vez volteada no puede volver a girar
-            //    juego.PuedeVoltear = false;
-            //}
-            
-            //Añadir animación de voltear de vuelta las dos cartas seleccionadas tras seleccionar la segunda carta
         }
 
         

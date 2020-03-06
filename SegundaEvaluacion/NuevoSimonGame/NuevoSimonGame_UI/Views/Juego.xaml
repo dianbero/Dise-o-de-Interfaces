@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="NuevoSimonGame_UI.Views.Juego"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NuevoSimonGame_UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:vm="using:NuevoSimonGame_UI.ViewModels">
+
+    <Page.DataContext>
+        <vm:clsJuegoVM/>
+    </Page.DataContext>
+
+    <RelativePanel>
+        <AppBarButton Name="btnVolver" Icon="Back" Command="{Binding ComandoAbandonarPartida}"></AppBarButton>
+
+        <GridView Name="botones" 
+                  ItemsSource="{Binding ListadoBotones, Mode=TwoWay}" 
+                  MaxWidth="760"
+                  RelativePanel.AlignHorizontalCenterWithPanel="True"
+                  RelativePanel.AlignVerticalCenterWithPanel="True"
+                  IsEnabled="{Binding TableroHabilitado}"
+                  SelectedItem="{Binding BotonSeleccionado, Mode=TwoWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Name="boton" 
+                           Width="250" 
+                           Height="250"
+                           Opacity="{Binding Opacidad}"
+                           Fill="{Binding Color}"
+                           RadiusX="40"
+                           RadiusY="40"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"></Rectangle>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>        
+    </RelativePanel>
+</Page>

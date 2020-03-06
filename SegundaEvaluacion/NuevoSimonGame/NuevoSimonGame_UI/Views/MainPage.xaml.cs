@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NuevoSimonGame_UI.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,16 @@ namespace NuevoSimonGame_UI
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Juego));
+        }
+
+        private void BtnRanking_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Ranking));
         }
     }
 }

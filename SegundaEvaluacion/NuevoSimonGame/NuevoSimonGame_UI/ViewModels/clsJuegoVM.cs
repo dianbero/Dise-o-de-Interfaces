@@ -265,14 +265,15 @@ namespace NuevoSimonGame_UI.ViewModels
             }
 
             //Aquí viene la oveja negra del proyecto
-            indiceQuitarSeleccionBoton = -1;
-            NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
+            //indiceQuitarSeleccionBoton = -1;
+            //NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
 
-            //botonSeleccionado = null;
-            //NotifyPropertyChanged("BotonSeleccionado");
+            botonSeleccionado = null;
+            NotifyPropertyChanged("BotonSeleccionado");
 
         }
 
+        int repeticionDialog = 0;
         //ContentDialog Fin de Partida
         /// <summary>
         /// Método que muestra un ContenDialog al final de la partida para que el usuario introduzca su nick y se guarde
@@ -289,7 +290,17 @@ namespace NuevoSimonGame_UI.ViewModels
             //Creo TextBox para introducir nombre de usuario
             TextBox input = new TextBox();
             input.Height = (double)App.Current.Resources["TextControlThemeMinHeight"];
-            input.PlaceholderText = "Introduce tu nick";
+
+            //Si se repite el contentDialog porque se pasaron los 20 caracteres
+            if (repeticionDialog < 1)
+            {
+
+                input.PlaceholderText = "Introduce tu nick";
+            }
+            else 
+            {
+                input.PlaceholderText = "Nick debe ser menor a 20 caracteres"; 
+            }
 
             ContentDialog dialog = new ContentDialog()
             {
@@ -297,25 +308,80 @@ namespace NuevoSimonGame_UI.ViewModels
                 PrimaryButtonText = "Guardar",
                 //Asigno como contenido el TextBox para introducir nick de usuario
                 Content = input
-            };
+            };           
 
             ContentDialogResult result = await dialog.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
             {
-                //Volver a inicio 
-                Frame frame = (Frame)Window.Current.Content;
+                if (input.Text.Length <= 20)
+                {
 
-                frame.Navigate(typeof(MainPage));
+                    //Volver a inicio 
+                    Frame frame = (Frame)Window.Current.Content;
+
+                    frame.Navigate(typeof(MainPage));
+
+                    //Asigno a objJugador el nick del jugador actual
+                    objJugador.NombreJugador = input.Text;
+                    //Guardo nick y puntuación del jugador en BD
+                    try
+                    {
+                        clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+                        operacionBL.InsertNuevoJugador(objJugador);
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }                    
+                    
+                    //repeticionDialog = 0;
+                }
+                else
+                {
+                    //MostrarMensajeErrorInput();
+
+                    repeticionDialog++;
+                    MostrarMensajeFinPartida();
+                }
             }
-
-            //Asigno a objJugador el nick del jugador actual
-            objJugador.NombreJugador = input.Text;
-            //Guardo nick y puntuación del jugador en BD
-            clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
-            operacionBL.InsertNuevoJugador(objJugador);
         }
+               
         #endregion
-
     }
 }
+
+//            if (result == contentdialogresult.primary && input.text.length<=20)
+//            {
+//                //volver a inicio 
+//                frame frame = (frame)window.current.content;
+
+//frame.navigate(typeof(mainpage));
+//            }
+//            else
+//            {
+//                input.placeholdertext = "el nick no debe superar 20 caracteres";
+//            }
+
+            //if (input.Text.Length <= 20)
+            //{
+            //    objJugador.NombreJugador = input.Text;
+            //}
+            //else
+            //{
+            //    input.PlaceholderText = "El nick no debe superar 20 caracteres";
+            //}
+
+            //Asigno a objJugador el nick del jugador actual
+            //objJugador.NombreJugador = input.Text;
+
+            //Guardo nick y puntuación del jugador en BD
+//            try
+//            {
+//                clsOperacionesJugadorBL operacionBL = new clsOperacionesJugadorBL();
+//operacionBL.InsertNuevoJugador(objJugador);
+//            }
+//            catch(Exception e)
+//            {
+//                throw e;
+//            }        
