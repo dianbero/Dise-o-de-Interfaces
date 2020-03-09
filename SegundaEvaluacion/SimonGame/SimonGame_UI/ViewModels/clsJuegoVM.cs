@@ -228,7 +228,7 @@ namespace SimonGame_UI.ViewModels
                 //TODO mostrar mensaje indicando que acierta, o mostrar puntos (o ambos)
                 totalBotonesAcertados++;
                 
-                //Una vez que ha comprobado que ha acertado
+                //Una vez que ha comprobado que ha acertado, llega al final de la secuencia
                 if (totalBotonesAcertados == listaRandom.Count)
                 {
                     //Añade un nuevo sonido aleatorio 
@@ -251,11 +251,11 @@ namespace SimonGame_UI.ViewModels
             }
 
             //Aquí viene la oveja negra del proyecto
-            indiceQuitarSeleccionBoton = -1;
-            NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
+            //indiceQuitarSeleccionBoton = -1;
+            //NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
 
-            //botonSeleccionado = null;
-            //NotifyPropertyChanged("BotonSeleccionado");
+            botonSeleccionado = null;
+            NotifyPropertyChanged("BotonSeleccionado");
 
         }
 
