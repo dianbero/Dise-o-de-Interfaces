@@ -36,7 +36,7 @@ namespace SimonGame_UI.ViewModels
         int repeticiones;
         private ObservableCollection<clsBoton> listaRandom;  //Lista en la que se acumulan los botones generados aleatoriamente
         private int indiceQuitarSeleccionBoton;
-        private int repeticionDialog = 0; //Para controlar que se escriben más de 20 caracteres (máximo en BBDD)
+        private int repeticionDialog = 0; //Para controlar que no se escriben más de 20 caracteres (máximo en BBDD)
         #endregion
 
         #region Propiedades Públicas
@@ -109,14 +109,6 @@ namespace SimonGame_UI.ViewModels
             hacerSonidos.Tick += HacerSonidosIluminarBoton;
             hacerSonidos.Interval = new TimeSpan(0, 0, 1);
             hacerSonidos.Start();
-
-
-            //Habilita tablero tras reproducir sonidos
-            //if (!hacerSonidos.IsEnabled) //Si el temporizador no está en ejecución, habilita el tablero
-            //{
-            //    tableroHabilitado = true;
-            //    NotifyPropertyChanged("TableroHabilitado");
-            //}         
 
         }
         #endregion

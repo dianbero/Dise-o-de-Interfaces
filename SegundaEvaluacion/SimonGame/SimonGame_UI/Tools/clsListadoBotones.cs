@@ -30,7 +30,6 @@ namespace SimonGame_UI.Tools
         /// Método que genera sonidos aleatorios y los va añadiendo a una lista
         /// </summary>
         /// <param name="listaSonidosAleatorio">Nueva lista donde se irán guardando los sonidos aleatorios generados</param>
-        /// <returns>ObservableCollection<clsBoton> listaSonidosAleatorio, lista con los sonidos aleatorios guardados</returns>
         public void GenerarSonidosAleatorios(ObservableCollection<clsBoton> listaSonidosAleatorio)
         {
             //ObservableCollection<clsBoton> listaSonidosAleatorio = new ObservableCollection<clsBoton>();

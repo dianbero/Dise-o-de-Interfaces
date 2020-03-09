@@ -65,18 +65,6 @@ namespace SimonGame_UI.Models
                 NotifyPropertyChanged("Opacidad");
             }
         }
-
-        //public int OrdenBoton
-        //{
-        //    get
-        //    {
-        //        return ordenBoton;
-        //    }
-        //    set
-        //    {
-        //        ordenBoton = value;
-        //    }
-        //}
         #endregion
 
         #region Constructor
@@ -87,7 +75,6 @@ namespace SimonGame_UI.Models
             this.color = "Red";
             this.sonido = "";
             this.opacidad = "1";
-            //this.ordenBoton = 0;
         }
 
         public clsBoton(int id, string color, string sonido)
@@ -96,7 +83,6 @@ namespace SimonGame_UI.Models
             this.color = color;
             this.sonido = sonido;
             this.opacidad = "1";
-            //this.ordenBoton = ordenBoton;
         }
         #endregion
     }
