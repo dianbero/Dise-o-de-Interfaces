@@ -193,6 +193,8 @@ namespace Proyecto_Juego_Parejas_UI.ViewModels
                     carta2 = null;
                     //Al ser iguales, acierta y suma un punto
                     cartasAcertadas++;
+                    //cartaSeleccionada = null;
+                    //NotifyPropertyChanged("CartaSeleccionada");
                 }
                 //Si no son iguales
                 else

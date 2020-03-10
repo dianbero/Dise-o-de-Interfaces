@@ -60,7 +60,9 @@ namespace SimonGame_UI.ViewModels
                 {
                     botonSeleccionado = value;
                     ComprobarJugada();
-                    //NotifyPropertyChanged("BotonSeleccionado");                   
+                    //NotifyPropertyChanged("BotonSeleccionado");  
+                    //indiceQuitarSeleccionBoton = 0;
+                    //NotifyPropertyChanged("IndiceQuitarSeleccionBoton");
                 }
             }
         }
@@ -303,7 +305,15 @@ namespace SimonGame_UI.ViewModels
                     frame.Navigate(typeof(MainPage));
 
                     //Asigno a objJugador el nick del jugador actual
-                    objJugador.NombreJugador = input.Text;
+                    //Si no escribe nada se le asigna como anónimo
+                    if (input.Text.Equals(""))
+                    {
+                        objJugador.NombreJugador = "Anonimo";
+                    }
+                    else
+                    {
+                        objJugador.NombreJugador = input.Text;
+                    }
                     //Guardo nick y puntuación del jugador en BD
                     try
                     {
@@ -314,7 +324,6 @@ namespace SimonGame_UI.ViewModels
                     {
                         throw e;
                     }
-
                 }
                 else
                 {

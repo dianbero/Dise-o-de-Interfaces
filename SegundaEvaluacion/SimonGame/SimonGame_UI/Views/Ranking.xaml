@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:vm="using:SimonGame_UI.ViewModels"
-    Background="Black">
+    Background="MediumSlateBlue">
     <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
 
     <Page.DataContext>
@@ -24,8 +24,8 @@
         <TextBlock Name="txtRanking" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Ranking" Margin="140,20,0,50" FontSize="60" FontWeight="Black" Foreground="DarkBlue" ></TextBlock>
 
         <!--<StackPanel Orientation="Horizontal" RelativePanel.Below="txtRanking" RelativePanel.AlignHorizontalCenterWith="txtRanking" Margin="0,0,250,0">-->
-        <TextBlock Name="txtNombre" Text="Nombre:" Foreground="BlueViolet" Margin="50,0,400,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignRightWith="txtRanking" RelativePanel.Below="txtRanking" ></TextBlock>
-        <TextBlock Name="txtTiempo" Text="Tiempo:" Foreground="BlueViolet" Margin="0,0,100,30" Width="150" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
+        <TextBlock Name="txtNombre" Text="Nombre:" Foreground="DarkBlue" Margin="50,0,400,30" Width="150" FontSize="35" FontWeight="Bold" RelativePanel.AlignRightWith="txtRanking" RelativePanel.Below="txtRanking" ></TextBlock>
+        <TextBlock Name="txtTiempo" Text="Tiempo:" Foreground="DarkBlue" Margin="0,0,100,30" Width="150" FontSize="35" RelativePanel.RightOf="txtNombre" FontWeight="Bold" RelativePanel.AlignBottomWith="txtNombre"></TextBlock>
         <!--</StackPanel>-->
 
 

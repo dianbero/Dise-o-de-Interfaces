@@ -29,6 +29,7 @@
                     <Rectangle Name="boton" 
                            Width="250" 
                            Height="250"
+                           Tapped="Boton_Tapped"
                            Opacity="{Binding Opacidad}"
                            Fill="{Binding Color}"
                            RadiusX="40"
