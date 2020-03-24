@@ -1,0 +1,7 @@
+-No he conseguido hacer la animacaiones, he probado varias cosas y nada.
+-El título de la ciudad en grande no sé por qué no se ve, cuando hacía modificaciones en el
+xaml, se trastocaba y sí se veía el título con la ciudad correspondiente, por tanto, 
+en teoría el bindeo sí lo hacía, pero cuando probaba todo de nuevo, no salía. 
+Probando con un texto cualquiera sí se veía, pero al añadirle el bindeo no. 
+- El filtrado de la lista de ciudades funciona raro. Y hay que escribir la palabras exactas,
+intenté hacerle un toLower o toUpper y no salía como debía.

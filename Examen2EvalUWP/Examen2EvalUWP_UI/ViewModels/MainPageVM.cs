@@ -43,7 +43,7 @@ namespace Examen2EvalUWP_UI.ViewModels
             set
             {
                 ciudadSeleccionada = value;
-                this.listadoPredicciones = listaPrediccionesPrueba(ciudadSeleccionada.Id);
+                this.listadoPredicciones = listaPrediccionesPrueba(ciudadSeleccionada.IdCiudad);
                 NotifyPropertyChanged("CiudadSeleccionada");
                 NotifyPropertyChanged("ListadoPredicciones");
             }

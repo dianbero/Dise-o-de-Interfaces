@@ -1,0 +1,144 @@
+﻿<Page
+    x:Class="ExamPrediccionTiempo_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExamPrediccionTiempo_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="DarkBlue"
+    xmlns:vm="using:ExamPrediccionTiempo_UI.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors">
+
+    <Page.DataContext>
+        <vm:MainPageVM/>
+    </Page.DataContext>
+
+    <!--<Page.Resources>
+        <Storyboard x:Name="agrandarImagen">
+            <DoubleAnimation Storyboard.TargetName="imgPronostico"
+                             Storyboard.TargetProperty="ScaleX"
+                             From="0"
+                             To="150"
+                             Duration="0:0:3"/>
+            <DoubleAnimation Storyboard.TargetName="imgPronostico"
+                             Storyboard.TargetProperty="ScaleX"
+                             From="0"
+                             To="150"
+                             Duration="0:0:3"/>
+        </Storyboard>
+    </Page.Resources>-->
+    
+
+    <RelativePanel>
+        <TextBlock Name="titleCiudad" Text="Ciudades" Margin="0,40,0,10" FontSize="40"></TextBlock>
+
+        <TextBox Name="searchBox" 
+                 PlaceholderText="Búsqueda"
+                 Width="200"
+                 RelativePanel.Below="titleCiudad"
+                 Text="{Binding TextoCiudadABuscar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <ListView Name="listaCiudades" 
+                  ItemsSource="{Binding ListadoCiudades}" 
+                  SelectedItem="{Binding CiudadSeleccionada, Mode=TwoWay}" 
+                  SelectionChanged="ListaCiudades_SelectionChanged"
+                  RelativePanel.Below="searchBox" 
+                  Height="300" 
+                  Width="200" 
+                  BorderBrush="Black" 
+                  BorderThickness="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Name="ciudad" Text="{Binding NombreCiudad}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--Esto no se ve, no sé por qué, pilla el bindeo, pero no se ve-->
+        <TextBlock Name="ciudad" 
+                   Text="{Binding CiudadSeleccionada.NombreCiudad}" 
+                   Margin="300,50,0,0" 
+                   FontSize="25" 
+                   RelativePanel.AlignTopWith="titleCiudad"/>
+
+        <GridView Name="listaPredicciones" 
+                  ItemsSource="{Binding ListadoPredicciones, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  RelativePanel.RightOf="listaCiudades"
+                  RelativePanel.AlignTopWith="listaCiudades">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <!--<Image Name="imgPronostico"
+                               Source="{Binding ImagenPronostico}" 
+                               MaxWidth="150"/>-->
+                        
+                        <!--Esto tampoco funciona-->
+                        <Image Name="imgPronostico"
+                               Source="{Binding ImagenPronostico}" 
+                               MaxWidth="150">
+                            <Image.Resources>
+                                <Storyboard x:Name="agrandarImagen">
+                                    <DoubleAnimation Storyboard.TargetName="imgPronostico"
+                                                     Storyboard.TargetProperty="Width"
+                                                     From="0"
+                                                     To="150"
+                                                     Duration="0:0:2"/>
+                                </Storyboard>
+                            </Image.Resources>
+                        </Image>
+                        <TextBlock Text="Pronostico"/>
+                        <TextBlock Name="pronostico"
+                            Text="{Binding Pronostico}"/>
+                        <TextBlock Text="Fecha:"/>
+                        <TextBlock Name="fecha"
+                                   Text="{Binding Fecha}"/>
+                        <TextBlock Text="Temperatura Máxima:"/>
+                        <TextBlock Name="max"
+                                   Text="{Binding TemperaturaMaxima}"/>
+                        <TextBlock Text="Temperatura Mínima:"/>
+                        <TextBlock Name="min"
+                                   Text="{Binding TemperaturaMinima}"/>
+                        <TextBlock Text="Humedad:"/>
+                        <TextBlock Name="humedad"
+                                   Text="{Binding Humedad}"/>
+                        
+                        <!--No funciona-->
+                        <ProgressBar Name="barraHumedad"
+                                     Height="20">
+                            <ProgressBar.Resources>
+                                <Storyboard x:Name="animacionHumedad">
+                                    <DoubleAnimation EnableDependentAnimation="True"
+                                                     From="0"
+                                                     To="{Binding Humedad}"
+                                                     Duration="0:0:2"/>
+                                </Storyboard>
+                            </ProgressBar.Resources>
+                        </ProgressBar>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <!--Prueba para animacion-->
+        <!--<Image Name="imgPronostico2"
+               Source="ms-appx:///Assets/Images/Lluvia.png"
+               MaxWidth="150"
+               Tapped="ImgPronostico2_Tapped">
+            <Image.Resources>
+                <Storyboard x:Name="agrandarImagen2">
+                    <DoubleAnimation 
+                            Storyboard.TargetName="imgPronostico"
+                            Storyboard.TargetProperty="Width"
+                            From="0"
+                            To="150"
+                            Duration="0:0:3"/>
+                </Storyboard>
+            </Image.Resources>
+        </Image>-->
+
+    </RelativePanel>
+</Page>
