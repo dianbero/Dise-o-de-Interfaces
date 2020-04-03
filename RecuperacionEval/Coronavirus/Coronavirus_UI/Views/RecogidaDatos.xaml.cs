@@ -27,8 +27,6 @@ namespace Coronavirus_UI.Views
         public RecogidaDatos()
         {
             this.InitializeComponent();
-            //Prueba
-            //vm = (clsRecogidaDatosVM)this.DataContext;
 
         }
 
@@ -36,31 +34,5 @@ namespace Coronavirus_UI.Views
         {
             this.Frame.Navigate(typeof(Preguntas));
         }
-
-        //int porcetajeObtenido;
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    porcetajeObtenido = Convert.ToInt32(e.Parameter.ToString());
-        //    base.OnNavigatedTo(e);
-        //}
-
-        //public void establecerMensaje()
-        //{
-        //    if (porcetajeObtenido > 70)
-        //    {
-        //        vm.Mensaje = "Llame a alguno de los siguientes números 900 400 061 / 955 545 060";
-        //        vm.ColorMensaje = "Red";
-        //    }
-        //    else
-        //    {
-        //        vm.Mensaje = "Parece no estar contagiado";
-        //        vm.ColorMensaje = "Green";
-        //    }
-
-        //    //NotifyPropertyChanged("Mensaje");
-
-        //    //NotifyPropertyChanged("ColorMensaje");
-
-        //}
     }
 }

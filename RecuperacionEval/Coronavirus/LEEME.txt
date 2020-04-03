@@ -1,3 +1,11 @@
+Cosas que faltan:
+Creo que lo único que me falta es el paso de datos entre viewModels, y esto es de lo más
+importante del ejercicio.
+En este caso tendría que pasar el porcentaje obtenido en la primera vista
+y en la segunda en función del resultado obtener el diagnóstico de la persona e insertarlo.
+Cómo esto no me va, el mensaje que muestra es siempre el mismo e inserta el mismo 
+buleano de diagnóstico.
+
 Observaciones/dudas:
 
 -Tuve que añadir propiedades string para obtener cada dato de clsPersona de la vista, porque 
@@ -8,7 +16,7 @@ por lo que el botón no se habilitaba.
 Al final opté por dejarlo así. Si se puede hacer sólo con una propiedad clsPersona, 
 me gustaría saber cómo.
 
-
+En cuanto al planteamiento:
 - En clsPregunta pensé que podría tener una propiedad que fuese listadoRespuestas,
 ya que aunque en general las respuestas son las mismas, 
 cada pregunta tiene sus propias respuestas (como en la pregunta 2), y de hecho tienen un
@@ -16,8 +24,8 @@ atributo idPregunta que las identifica como correspondencia de esa pregunta.
 De todas formas es algo que no tenía del todo claro, y opté por dejarlo así.
 Pero me gustaría saber tu opinión respecto a eso, si tiene sentido e incluso sería lo suyo,
 o todo lo contrario.
-
 Una de las cosas que me echó para atrás es que tendría que hacer que la entidad realizase 
-una llamada a la base de Datos.
+una llamada a la base de Datos para obtener el listado, por tanto a la capa Entidades 
+tendría que agregarle una referencia a la capa DAL y esto no debería hacerse.
 O quizás no, por eso, me hice un lío y al final deseché esa idea. Pero por otro lado 
 veo lógico que una clsPregunta tenga su listado propio de respuestas.

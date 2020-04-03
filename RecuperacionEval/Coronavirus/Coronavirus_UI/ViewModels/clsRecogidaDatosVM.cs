@@ -124,8 +124,9 @@ namespace Coronavirus_UI.ViewModels
         #region Constructor
         public clsRecogidaDatosVM()
         {
+            //Esto debería mostrar un mensaje en función del diagnóstico según el porcentaje obtenido en la página anterior
             establecerMensaje();
-
+            
             this.nombre = "";
             this.apellidos = "";
             this.dni = "";
@@ -134,7 +135,6 @@ namespace Coronavirus_UI.ViewModels
 
             this.nuevaPersona = new clsPersona();
             this.commandEnviarDatos = new DelegateCommand(enviarDatosExecute, enviarDatosCanExecute);
-            //this.commandEnviarDatos = new DelegateCommand(enviarDatosExecute);
         }
         #endregion
 
@@ -171,8 +171,6 @@ namespace Coronavirus_UI.ViewModels
             try
             {
                 clsInsertarPersonaBL objInsertar = new clsInsertarPersonaBL();
-                //nuevaPersona = new clsPersona("123M", "Pepito", "González", "123456789", "Calle de la torcuata", true);
-                //clsPersona nuevaPerson = new clsPersona(nuevaPersona.DniPersona, nuevaPersona.NombrePersona, nuevaPersona.ApellidosPersona, nuevaPersona.Telefono, nuevaPersona.Direccion, true);
                 nuevaPersona.NombrePersona = nombre;
                 nuevaPersona.ApellidosPersona = apellidos;
                 nuevaPersona.DniPersona = dni;
@@ -190,7 +188,7 @@ namespace Coronavirus_UI.ViewModels
         }
 
         /// <summary>
-        /// Método que comprueba que el botón puede ser pulsado, y esto ocurrirá cuando todos los campos estén completados
+        /// Método que comprueba que el botón puede ser pulsado, y esto ocurrirá cuando todos los campos estén completos y validados
         /// </summary>
         /// <returns>bool que indica que todos los campos han sido rellenados y validados</returns>
         public bool enviarDatosCanExecute()
@@ -243,8 +241,8 @@ namespace Coronavirus_UI.ViewModels
         }
         /// <summary>
         /// Método que valida el nombre:
-        /// Que no supere 15 carateres (máximo en la BD)
-        /// Que el campo no esté vacío, para poder pulsar botón de enviar datos
+        /// - Que no supere 15 carateres (máximo en la BD)
+        /// - Que el campo no esté vacío, para poder pulsar botón de enviar datos
         /// </summary>
         /// <returns>bool correcto, indica si el nombre es correcto</returns>
         public bool validarNombre()
@@ -259,8 +257,8 @@ namespace Coronavirus_UI.ViewModels
         }
         /// <summary>
         /// Método que valida lo apellidos :
-        /// Que no supere 30 carateres (máximo en la BD)
-        /// Que el campo no esté vacío, para poder pulsar botón de enviar datos
+        /// - Que no supere 30 carateres (máximo en la BD)
+        /// - Que el campo no esté vacío, para poder pulsar botón de enviar datos
         /// </summary>
         /// <returns>bool correcto, indica si los apellidos son correctos</returns>
         public bool validarApellidos()
@@ -284,7 +282,7 @@ namespace Coronavirus_UI.ViewModels
         public bool validarDni()
         {
             bool correcto = false;
-            if (dni.Length == 9 && !dni.Equals("") && Regex.IsMatch(dni, "[0-9]{8,8}[A-Za-z]"))
+            if (dni.Length == 9 && !dni.Equals("") && Regex.IsMatch(dni, "[0-9]{8}[A-Za-z]"))
             {
                 correcto = true;
             }
@@ -295,8 +293,9 @@ namespace Coronavirus_UI.ViewModels
 
         /// <summary>
         /// Método que valida el teléfono :
-        /// Que no supere 15 carateres (máximo en la BD)
-        /// Que el campo no esté vacío, para poder pulsar botón de enviar datos
+        /// - Que no supere 15 carateres (máximo en la BD)
+        /// - Que el campo no esté vacío, para poder pulsar botón de enviar datos
+        /// - Que se escriban sólo números 
         /// </summary>
         /// <returns>bool correcto, indica si el teléfono es correcto</returns>
         public bool validarTelefono()
@@ -312,8 +311,8 @@ namespace Coronavirus_UI.ViewModels
 
         /// <summary>
         /// Método que valida la dirección :
-        /// Que no supere 60 carateres (máximo en la BD)
-        /// Que el campo no esté vacío, para poder pulsar botón de enviar datos
+        /// - Que no supere 60 carateres (máximo en la BD)
+        /// - Que el campo no esté vacío, para poder pulsar botón de enviar datos
         /// </summary>
         /// <returns>bool correcto, indica si la dirección es correcta</returns>
         public bool validarDireccion()

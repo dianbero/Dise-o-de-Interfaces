@@ -36,8 +36,10 @@
         </ListView>
         <Button Name="btnSiguente"
                 Content="{Binding TextoBoton}"
-                FontSize="45"
+                FontSize="45"                
+                CornerRadius="10"
                 Margin="150,500,0,0"
+                Background="DeepSkyBlue"
                 Command="{Binding CommandPulsarSiguente}"/>
     </RelativePanel>
 </Page>

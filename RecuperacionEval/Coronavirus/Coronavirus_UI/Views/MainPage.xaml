@@ -12,14 +12,15 @@
         <StackPanel RelativePanel.AlignHorizontalCenterWithPanel="True"
                 Margin="0,300,0,0">
             <TextBlock Text="Test Coronavirus"
-                   FontSize="45"
+                   FontSize="50"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Margin="0,0,0,50"
                    FontWeight="Bold"
                    />
             <Button Content="Ir a test"
-                FontSize="30"
+                FontSize="40"
+                CornerRadius="10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Background="DarkSlateBlue"
