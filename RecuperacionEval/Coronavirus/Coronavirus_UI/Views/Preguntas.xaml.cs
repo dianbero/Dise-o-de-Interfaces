@@ -27,11 +27,7 @@ namespace Coronavirus_UI.Views
             this.InitializeComponent();
         }
 
-        private void BtnSiguente_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(RecogidaDatos));
-        }
-
+        //Sólo para mayor comodidad de pruebas
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(RecogidaDatos));

@@ -2,22 +2,31 @@ Cosas que faltan:
 Creo que lo único que me falta es el paso de datos entre viewModels, y esto es de lo más
 importante del ejercicio.
 En este caso tendría que pasar el porcentaje obtenido en la primera vista
-y en la segunda en función del resultado obtener el diagnóstico de la persona e insertarlo.
-Cómo esto no me va, el mensaje que muestra es siempre el mismo e inserta el mismo 
+y en la segunda en función del resultado, obtener el diagnóstico de la persona e insertarlo.
+Como esto no me va, el mensaje que muestra es siempre el mismo e inserta el mismo 
 buleano de diagnóstico.
+
+Pensé en hacer un apaño a lo compadre para que al menos funcionara insertando una persona 
+stándard en el primer primer viewModel con el diagnóstico obtenido, y en el segundo 
+actualizar esa persona con los datos del formulario, pero como tú ibas a tener ya una base
+de datos hecha... En fín, al final lo dejé así. 
+Vamos, que no he conseguido pasar datos entre viewmodels.
+
+En algunos sitios vi que hablaban de frameworks a parte que no terminaba de entender, y la 
+opción que sí creía entender no me funcionaba. Así que nada.
 
 Observaciones/dudas:
 
 -Tuve que añadir propiedades string para obtener cada dato de clsPersona de la vista, porque 
 así sí me entraba en el set y podía comprobar en cada momento si los campos se rellenaban
 y así habilitar el botón. Haciéndolo sólo con una propiedad clsPersona y bindeando sus
-propiedades públicas me pillaba los datos, pero no me funcionaba la validación de los campos,
-por lo que el botón no se habilitaba.
-Al final opté por dejarlo así. Si se puede hacer sólo con una propiedad clsPersona, 
-me gustaría saber cómo.
+propiedades públicas me pillaba los datos y los podía insertar, pero no me funcionaba 
+la validación de los campos, por lo que el botón no se habilitaba.
+Al final opté por dejarlo así. Si se puede hacer sólo con una propiedad clsPersona, que 
+imagino que sí, me gustaría saber cómo.
 
 En cuanto al planteamiento:
-- En clsPregunta pensé que podría tener una propiedad que fuese listadoRespuestas,
+- La entidad clsPregunta pensé que podría tener una propiedad que fuese listadoRespuestas,
 ya que aunque en general las respuestas son las mismas, 
 cada pregunta tiene sus propias respuestas (como en la pregunta 2), y de hecho tienen un
 atributo idPregunta que las identifica como correspondencia de esa pregunta. 

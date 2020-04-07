@@ -27,9 +27,12 @@ namespace Coronavirus_UI.Views
         public RecogidaDatos()
         {
             this.InitializeComponent();
+            //Empieza animación
+            cambioOpacidad.Begin();
 
         }
 
+        //Sólo para mayor comodidad de pruebas
         private void BtnPruebasMovimientoQuitarEnFinal_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Preguntas));

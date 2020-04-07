@@ -9,26 +9,28 @@
     xmlns:vm="using:Coronavirus_UI.ViewModels"
     Background="CornflowerBlue">
 
-    <!--<VisualStateManager.VisualStateGroups>
-        <VisualStateGroup>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <AdaptiveTrigger MinWindowHeight="500"/>
-                </VisualState.StateTriggers>
-            </VisualState>
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>-->
-
     <Page.DataContext>
         <vm:clsRecogidaDatosVM/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <Storyboard x:Name="cambioOpacidad">
+            <DoubleAnimation Storyboard.TargetName="mensaje"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0.0" To="1.0"
+                             Duration="0:0:2"
+                             RepeatBehavior="Forever"
+                             AutoReverse="True"/>
+            
+        </Storyboard>
+    </Page.Resources>
     
     
     <RelativePanel>
-        <AppBarButton Name="btnPruebasMovimientoQuitarEnFinal"
+        <!--<AppBarButton Name="btnPruebasMovimientoQuitarEnFinal"
                       Icon="Back"
                       Label="Sólo para pruebas"
-                      Click="BtnPruebasMovimientoQuitarEnFinal_Click"/>
+                      Click="BtnPruebasMovimientoQuitarEnFinal_Click"/>-->
 
         <TextBlock Name="mensaje"
                    Text="{Binding Mensaje}"
@@ -79,6 +81,7 @@
                  FontSize="30"
                  Width="550"
                  Margin="125,10,0,0"
+                 PlaceholderText="00000000M/00000000m"
                  RelativePanel.Below="apellidos"
                  RelativePanel.RightOf="lblDni"/>
 
@@ -91,6 +94,7 @@
                  Text="{Binding Telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
                  Width="550"
+                 PlaceholderText="Introduzca sólo números"
                  Margin="57,10,0,0"
                  RelativePanel.Below="dni"
                  RelativePanel.RightOf="lblTelefono"/>
@@ -114,7 +118,7 @@
                 CornerRadius="10"
                 Margin="100,30,0,0"
                 RelativePanel.Below="direccion"
-                Command="{Binding CommandEnviarDatos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                Command="{Binding CommandEnviarDatos}"/>
     </RelativePanel>   
         
 </Page>

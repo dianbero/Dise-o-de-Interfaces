@@ -179,7 +179,8 @@ namespace Coronavirus_UI.ViewModels
             {
                 Frame frame = (Frame)Window.Current.Content;
                 //frame.Navigate(typeof(RecogidaDatos));
-                frame.Navigate(typeof(RecogidaDatos), porcentajeRespuestasPositivas); //Paso parámetro para que lo reciba el otro viewModel, esto no ha funcionado
+                string porcentaje = Convert.ToString(porcentajeRespuestasPositivas);
+                frame.Navigate(typeof(RecogidaDatos), porcentajeRespuestasPositivas.ToString()); //Paso parámetro para que lo reciba el otro viewModel, esto no ha funcionado
             }
         }
 

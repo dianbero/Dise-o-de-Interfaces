@@ -14,9 +14,9 @@
     </Page.DataContext>
 
     <RelativePanel>
-        <AppBarButton Icon="Next"
+        <!--<AppBarButton Icon="Next"
                       Click="AppBarButton_Click"
-                      Label="Sólo para pruebas"/>
+                      Label="Sólo para pruebas"/>-->
         <TextBlock Name="enunciadoPregunta"
                    Text="{Binding TextoPregunta}"
                    FontSize="50"

@@ -20,6 +20,7 @@ namespace Coronavirus_UI.ViewModels
         private string mensaje;
         private string colorMensaje;
         private DelegateCommand commandEnviarDatos;
+        private int porcentajeObtenido;
 
         //Alternativa a problema de bindear únicamente propiedades de clsPersona, esto funciona
         private string nombre;
@@ -202,13 +203,13 @@ namespace Coronavirus_UI.ViewModels
         /// <param name="mensaje">string que contiene el mensaje a mostrar, dependiendo de si hubo éxito o no al intentar enviar los datos</param>
         private async void mensajeEnvioDatos(string mensaje)
         {
-            ContentDialog noWifiDialog = new ContentDialog()
+            ContentDialog mensajeEnviarDatos = new ContentDialog()
             {
                 Title = mensaje,
                 CloseButtonText = "Ok"
             };
 
-            await noWifiDialog.ShowAsync();
+            await mensajeEnviarDatos.ShowAsync();
         }
 
         /// <summary>
@@ -326,16 +327,17 @@ namespace Coronavirus_UI.ViewModels
             return correcto;
         }
 
-        //Esto no funciona:
-        int porcentajeObtenido;
+        //Esto no funciona, lo he probado también codebehind y nada
         /// <summary>
         /// Método que recibe el porcentaje de la vista anterior para comprobar el diagnóstico
         /// </summary>
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            porcentajeObtenido = Convert.ToInt32(e.Parameter.ToString());
+
             base.OnNavigatedTo(e);
+
+            porcentajeObtenido = Convert.ToInt32(e.Parameter.ToString());
         }
 
         /// <summary>
