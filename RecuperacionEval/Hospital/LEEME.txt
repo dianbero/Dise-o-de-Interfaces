@@ -1,0 +1,13 @@
+No sé si la lío con esto pero por aprender cómo hacerlo (y ya de paso por comodidad) 
+he querido añadirle que se pueda introducir el código directamente pulsando la tecla intro.
+Problema: que la única forma con la que lo he conseguido implica code-behind en el que
+llamo al método execute, que es el que comprueba el código y si es válido viaja a la otra
+vista, lo que implica que tenga que hacerlo público.
+Esto significa además que se puede pulsar siempre aunque no haya nada escrito, al contrario
+de lo que ocurre con el botón que gracias al command, si no se escribe no se puede pulsar
+porque no está habilitado.
+De todas formas como tiene sus comprobaciones, al no escribir nada saldrá un mensaje de error.
+Pero no sé si la forma en que lo he hecho es correcta o no.
+Es lo mejor que he conseguido.
+
+Por lo demás... sinceramente no sé si me falta algo, creo que está todo.

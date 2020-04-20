@@ -240,6 +240,7 @@ namespace Coronavirus_UI.ViewModels
 
             return datosValidados;
         }
+
         /// <summary>
         /// Método que valida el nombre:
         /// - Que no supere 15 carateres (máximo en la BD)

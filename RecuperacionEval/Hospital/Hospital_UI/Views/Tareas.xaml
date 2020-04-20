@@ -1,0 +1,97 @@
+﻿<Page
+    x:Class="Hospital_UI.Views.Tareas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:Hospital_UI.ViewModels"
+    xmlns:local="using:Hospital_UI.ViewModels.ToolsVM"
+    Background="PowderBlue">
+
+    <!--xmlns:local="using:Hospital_UI.Views"-->
+    
+    <Page.DataContext>
+        <vm:clsTareasVM/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <local:clsConverterFecha x:Key="ConverterFecha"/>
+    </Page.Resources>
+
+    <RelativePanel>
+
+        <AppBarButton Name="btnLogout"
+                      Label="Volver"
+                      Icon="Back"
+                      Foreground="Black"
+                      Click="BtnLogout_Click"/>
+
+        <StackPanel Orientation="Vertical" 
+                    Margin="150,60,0,0">            
+
+            <TextBlock Name="fecha" 
+                       Text="{Binding ControlDiarioMedico.Fecha, Converter={StaticResource ConverterFecha}}"
+                       FontSize="30"
+                       Foreground="DarkBlue"
+                       Margin="0,0,0,50"/>
+            
+            <TextBlock Text="MÉDICO:"
+                       FontSize="30"
+                       Foreground="BlueViolet"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Name="nombre" 
+                       Text="{Binding Medico.NombreMedio}"
+                       FontSize="30"
+                       Foreground="DarkBlue"/>
+            
+            <TextBlock Name="apellidos" 
+                       Text="{Binding Medico.ApellidosMedico}"
+                       FontSize="30"
+                       Foreground="DarkBlue"/>
+            
+            <TextBlock Text="TAREAS:"
+                       FontSize="30"
+                       Foreground="BlueViolet"
+                       Margin="0,50,0,20"/>
+
+            <TextBlock Text="Primera Sesión"
+                       FontSize="20"
+                       Foreground="LightSlateGray"/>
+
+            <TextBlock Name="tarea1" 
+                       Text="{Binding ControlDiarioMedico.PrimeraSesion}"
+                       FontSize="30"
+                       Foreground="DarkBlue"/>
+            
+            <TextBlock Text="Segunda Sesión"
+                       FontSize="20"
+                       Foreground="LightSlateGray"/>
+            
+            <TextBlock Name="tarea2" 
+                       Text="{Binding ControlDiarioMedico.SegundaSesion}"
+                       FontSize="30"
+                       Foreground="DarkBlue"/>
+            
+            <TextBlock Text="Tercera Sesión"
+                       FontSize="20"
+                       Foreground="LightSlateGray"/>
+            
+            <TextBlock Name="tarea3" 
+                       Text="{Binding ControlDiarioMedico.TerceraSesion}"
+                       FontSize="30"
+                       Foreground="DarkBlue"/>
+
+            <TextBlock Text="Cuarta Sesión"
+                       FontSize="20"
+                       Foreground="LightSlateGray"/>
+
+            <TextBlock Name="tarea4" 
+                       Text="{Binding ControlDiarioMedico.CuartaSesion}"
+                       FontSize="30"
+                       Foreground="DarkBlue"/>
+        </StackPanel>
+        
+    </RelativePanel>
+</Page>
