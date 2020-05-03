@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Coronavirus_UI.ViewModels
 {
-    public class clsRecogidaDatosVM : Page, INotifyPropertyChanged /*clsVMBase*/ //Esto está así por unas pruebas que estuve haciendo para intentar el intercambio de datos entre viewModels y no resultó
+    public class clsRecogidaDatosVM : clsVMBase
     {
         #region Atributos Privados
         private clsPersona nuevaPersona;
@@ -21,6 +21,13 @@ namespace Coronavirus_UI.ViewModels
         private string colorMensaje;
         private DelegateCommand commandEnviarDatos;
         private int porcentajeObtenido;
+
+        //Mensajes error campos
+        private string mensajeNombre;
+        private string mensajeApellidos;
+        private string mensajeDni;
+        private string mensajeTelefono;
+        private string mensajeDireccion;
 
         //Alternativa a problema de bindear únicamente propiedades de clsPersona, esto funciona
         private string nombre;
@@ -32,22 +39,18 @@ namespace Coronavirus_UI.ViewModels
         #endregion
 
         #region Propiedades Públicas
-        public event PropertyChangedEventHandler PropertyChanged;
-        //Como al final no uso la propiedad pública de clsPersona, lo tengo comentado
-        //public clsPersona NuevaPersona {
-        //    get
-        //    {
-        //        return nuevaPersona;
-        //    }
-        //    set
-        //    {
-        //        nuevaPersona = value;
-        //    }
-        //}
+        public clsPersona NuevaPersona
+        {
+            get
+            {
+                return nuevaPersona;
+            }
+        }
         public string Mensaje
         {
             get
             {
+                establecerMensaje();
                 return mensaje;
             }
         }
@@ -70,97 +73,109 @@ namespace Coronavirus_UI.ViewModels
             }
         }
 
-        //Propiedades prueba
-        public string Nombre
-        {
-            set
-            {
-                nombre = value;
+        //Propiedades de mensajes de error
+        public string MensajeNombre { get => mensajeNombre; set => mensajeNombre = value; }
+        public string MensajeApellidos { get => mensajeApellidos; set => mensajeApellidos = value; }
+        public string MensajeDni { get => mensajeDni; set => mensajeDni = value; }
+        public string MensajeTelefono { get => mensajeTelefono; set => mensajeTelefono = value; }
+        public string MensajeDireccion { get => mensajeDireccion; set => mensajeDireccion = value; }
 
-                commandEnviarDatos.RaiseCanExecuteChanged();
-            }
-        }
+        ////Propiedades prueba
+        //public string Nombre
+        //{
+        //    set
+        //    {
+        //        nombre = value;
 
-        public string Apellidos
-        {
-            set
-            {
-                apellidos = value;
+        //        commandEnviarDatos.RaiseCanExecuteChanged();
+        //    }
+        //}
 
-                commandEnviarDatos.RaiseCanExecuteChanged();
-            }
-        }
+        //public string Apellidos
+        //{
+        //    set
+        //    {
+        //        apellidos = value;
 
-        public string Dni
-        {
-            set
-            {
-                dni = value;
+        //        commandEnviarDatos.RaiseCanExecuteChanged();
+        //    }
+        //}
 
-                commandEnviarDatos.RaiseCanExecuteChanged();
-            }
-        }
+        //public string Dni
+        //{
+        //    set
+        //    {
+        //        dni = value;
 
-        public string Telefono
-        {
-            set
-            {
-                telefono = value;
+        //        commandEnviarDatos.RaiseCanExecuteChanged();
+        //    }
+        //}
 
-                commandEnviarDatos.RaiseCanExecuteChanged();
-            }
-        }
-        public string Direccion
-        {
-            set
-            {
-                direccion = value;
+        //public string Telefono
+        //{
+        //    set
+        //    {
+        //        telefono = value;
 
-                commandEnviarDatos.RaiseCanExecuteChanged();
-            }
-        }
+        //        commandEnviarDatos.RaiseCanExecuteChanged();
+        //    }
+        //}
+        //public string Direccion
+        //{
+        //    set
+        //    {
+        //        direccion = value;
+
+        //        commandEnviarDatos.RaiseCanExecuteChanged();
+        //    }
+        //}
+
+        //public int PorcentajeObtenido { get => porcentajeObtenido; set => porcentajeObtenido = value; }
 
         #endregion
 
         #region Constructor
         public clsRecogidaDatosVM()
         {
-            //Esto debería mostrar un mensaje en función del diagnóstico según el porcentaje obtenido en la página anterior
-            establecerMensaje();
+            //establecerMensaje();
             
-            this.nombre = "";
-            this.apellidos = "";
-            this.dni = "";
-            this.telefono = "";
-            this.direccion = "";
+            //this.nombre = "";
+            //this.apellidos = "";
+            //this.dni = "";
+            //this.telefono = "";
+            //this.direccion = "";
+
 
             this.nuevaPersona = new clsPersona();
-            this.commandEnviarDatos = new DelegateCommand(enviarDatosExecute, enviarDatosCanExecute);
+            //this.commandEnviarDatos = new DelegateCommand(enviarDatosExecute, enviarDatosCanExecute);
+            this.commandEnviarDatos = new DelegateCommand(enviarDatosExecute); //Porque el botón siempre está habilitado
         }
         #endregion
 
         #region Métodos
         /// <summary>
         /// Método que establece el mensaje según el diagnóstico obtenido de la persona
-        /// Si porcentaje>70% entonces
+        /// Si diagnóstico es positivo (true)
         ///     Mensaje = "Llame a alguno de los siguientes números 900 400 061 / 955 545 060" (En rojo)
         /// Si No
         ///     Mensaje = "Parece no estar contagiado" (En verde)
         /// </summary>
         public void establecerMensaje()
         {
-            if (porcentajeObtenido > 70)
+            //if (PorcentajeObtenido > 70)
+            if (nuevaPersona.Diagnostico) 
             {
                 this.mensaje = "Llame a alguno de los siguientes números 900 400 061 / 955 545 060";
-                this.colorMensaje = "Red";
+                this.colorMensaje = "DarkRed";
             }
             else
             {
                 this.mensaje = "Parece no estar contagiado";
                 this.colorMensaje = "Green";
             }
-
         }
+
+
 
 
         /// <summary>
@@ -169,33 +184,37 @@ namespace Coronavirus_UI.ViewModels
         /// </summary>
         public void enviarDatosExecute()
         {
-            try
+            if (validarFormulario())
             {
-                clsInsertarPersonaBL objInsertar = new clsInsertarPersonaBL();
-                nuevaPersona.NombrePersona = nombre;
-                nuevaPersona.ApellidosPersona = apellidos;
-                nuevaPersona.DniPersona = dni;
-                nuevaPersona.Telefono = telefono;
-                nuevaPersona.Direccion = direccion;
+                try
+                {
+                    clsInsertarPersonaBL objInsertar = new clsInsertarPersonaBL();
+                    //nuevaPersona.NombrePersona = nombre;
+                    //nuevaPersona.ApellidosPersona = apellidos;
+                    //nuevaPersona.DniPersona = dni;
+                    //nuevaPersona.Telefono = telefono;
+                    //nuevaPersona.Direccion = direccion;
 
-                objInsertar.insertarPersona(nuevaPersona); //La inserción funciona bien
+                    objInsertar.insertarPersona(nuevaPersona); //La inserción funciona bien
 
-                mensajeEnvioDatos("Datos enviados correctamente");
+                    mensajeEnvioDatos("Datos enviados correctamente");
 
-            }catch(Exception e)
-            {
-                mensajeEnvioDatos("Error al intentar enviar los datos");
-            }
+                }
+                catch (Exception)
+                {
+                    mensajeEnvioDatos("Error al intentar enviar los datos");
+                }
+            }           
         }
 
-        /// <summary>
-        /// Método que comprueba que el botón puede ser pulsado, y esto ocurrirá cuando todos los campos estén completos y validados
-        /// </summary>
-        /// <returns>bool que indica que todos los campos han sido rellenados y validados</returns>
-        public bool enviarDatosCanExecute()
-        {
-            return validarFormulario();
-        }
+        ///// <summary>
+        ///// Método que comprueba que el botón puede ser pulsado, y esto ocurrirá cuando todos los campos estén completos y validados
+        ///// </summary>
+        ///// <returns>bool que indica que todos los campos han sido rellenados y validados</returns>
+        //public bool enviarDatosCanExecute()
+        //{
+        //    return validarFormulario();
+        //}
 
         /// <summary>
         /// Método que muestra un mensaje indicando si los datos se enviaron correctamente o se produjo un error
@@ -219,21 +238,16 @@ namespace Coronavirus_UI.ViewModels
         public bool validarFormulario()
         {
             bool datosValidados = false;
-            //if (nuevaPersona != null) {
-            //    if (!nuevaPersona.NombrePersona.Equals("")
-            //    && !nuevaPersona.ApellidosPersona.Equals("")
-            //    && !nuevaPersona.DniPersona.Equals("")
-            //    && !nuevaPersona.Telefono.Equals("")
-            //    && !nuevaPersona.Direccion.Equals(""))
-            //    {
-            //        datosValidados = true;
 
-            //    //commandEnviarDatos.RaiseCanExecuteChanged();
-            //}
-            //}
+            //No sé si esta es la forma más correcta de hacer esto
+            bool nombreCorrecto = validarNombre();
+            bool apellidosCorrecto = validarApellidos();
+            bool dniCorrecto = validarDni();
+            bool telefonoCorrecto = validarTelefono();
+            bool direccionCorrecto = validarDireccion();
 
-           
-            if (validarNombre() && validarApellidos() && validarDni() && validarTelefono() && validarDireccion())
+            //if (validarNombre() && validarApellidos() && validarDni() && validarTelefono() && validarDireccion()) //Inconveniente de esto: así llamo doblemente a los métodos
+            if (nombreCorrecto && apellidosCorrecto && dniCorrecto && telefonoCorrecto && direccionCorrecto) 
             {
                 datosValidados = true;
             }
@@ -250,10 +264,27 @@ namespace Coronavirus_UI.ViewModels
         public bool validarNombre()
         {
             bool correcto = false;
-            if (nombre.Length < 15 && !nombre.Equals(""))
+
+            mensajeNombre = ""; //Inicialmente no muestra mensaje error (se borraría, en caso de que lo hubiera previamente), después comprueba si lo hay
+
+            //if (nombre.Length < 15 && !nombre.Equals(""))
+            if (nuevaPersona.NombrePersona.Length < 15 && !nuevaPersona.NombrePersona.Equals(""))
             {
                 correcto = true;
             }
+            else
+            {
+                if(nuevaPersona.NombrePersona.Equals(""))
+                {
+                    mensajeNombre = "Campo obligatorio";
+                }
+                else
+                {
+                    mensajeNombre = mensajeSuperaCaracteres(15);
+                }
+            }
+
+            NotifyPropertyChanged("MensajeNombre");
 
             return correcto;
         }
@@ -266,10 +297,27 @@ namespace Coronavirus_UI.ViewModels
         public bool validarApellidos()
         {
             bool correcto = false;
-            if (apellidos.Length < 30 && !apellidos.Equals(""))
+
+            mensajeApellidos = "";
+
+            //if (apellidos.Length < 30 && !apellidos.Equals(""))
+            if (nuevaPersona.ApellidosPersona.Length < 30 && !nuevaPersona.ApellidosPersona.Equals(""))
             {
                 correcto = true;
             }
+            else
+            {
+                if (nuevaPersona.ApellidosPersona.Equals(""))
+                {
+                    mensajeApellidos = "Campo obligatorio";
+                }
+                else
+                {
+                    mensajeApellidos = mensajeSuperaCaracteres(30);
+                }
+            }
+
+            NotifyPropertyChanged("MensajeApellidos");
 
             return correcto;
         }
@@ -284,10 +332,27 @@ namespace Coronavirus_UI.ViewModels
         public bool validarDni()
         {
             bool correcto = false;
-            if (dni.Length == 9 && !dni.Equals("") && Regex.IsMatch(dni, "[0-9]{8}[A-Za-z]"))
+            mensajeDni = "";
+            //if (dni.Length == 9 && !dni.Equals("") && Regex.IsMatch(dni, "^[0-9]{8}[A-Za-z]$"))
+
+            //Marcar como condición también el límite de caracteres es redundante si ya compruebo con la expresión regular
+            if (!nuevaPersona.DniPersona.Equals("") && Regex.IsMatch(nuevaPersona.DniPersona, "^[0-9]{8}[A-Za-z]$"))
             {
                 correcto = true;
             }
+            else
+            {
+                if(nuevaPersona.DniPersona.Equals(""))
+                {
+                    mensajeDni = "Campo obligatorio";
+                }
+                else
+                {
+                    mensajeDni = "Debe cumplir formato 00000000f/00000000F";
+                }
+            }
+
+            NotifyPropertyChanged("MensajeDni");
 
             return correcto;
         }
@@ -303,10 +368,27 @@ namespace Coronavirus_UI.ViewModels
         public bool validarTelefono()
         {
             bool correcto = false;
-            if (telefono.Length < 15 && !telefono.Equals("") && Regex.IsMatch(telefono, "[0-9]"))
+
+            mensajeTelefono = "";
+
+            //if (telefono.Length < 15 && !telefono.Equals("") && Regex.IsMatch(telefono, "^[0-9]*$"))
+            if (/*nuevaPersona.Telefono.Length < 15 &&*/ !nuevaPersona.Telefono.Equals("") && Regex.IsMatch(nuevaPersona.Telefono, "^[0-9]{9}$"))
             {
                 correcto = true;
             }
+            else
+            {
+               if(nuevaPersona.Telefono.Equals(""))
+                {
+                    mensajeTelefono = "Campo obligatorio";
+                }
+                else
+                {
+                    mensajeTelefono = "Sólo 9 números";
+                }
+            }
+
+            NotifyPropertyChanged("MensajeTelefono");
 
             return correcto;
         }
@@ -320,36 +402,39 @@ namespace Coronavirus_UI.ViewModels
         public bool validarDireccion()
         {
             bool correcto = false;
-            if (direccion.Length < 60 && !direccion.Equals(""))
+            mensajeDireccion = "";
+            //if (direccion.Length < 60 && !direccion.Equals(""))
+            if (nuevaPersona.Direccion.Length < 60 && !nuevaPersona.Direccion.Equals(""))
             {
                 correcto = true;
             }
+            else
+            {
+                if (nuevaPersona.Direccion.Equals(""))
+                {
+                    mensajeDireccion = "Campo obligatorio";
+                }
+                else
+                {
+                    mensajeDireccion = mensajeSuperaCaracteres(60);
+                }
+            }
+
+            NotifyPropertyChanged("MensajeDireccion");
 
             return correcto;
         }
 
-        //Esto no funciona, lo he probado también codebehind y nada
         /// <summary>
-        /// Método que recibe el porcentaje de la vista anterior para comprobar el diagnóstico
+        /// Método que devuelve un mensaje indicando que no debe superar el límite de caracteres especificado
         /// </summary>
-        /// <param name="e"></param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        /// <param name="numeroLimiteCarateres">int con número de caracteres máximo</param>
+        /// <returns>string con el mensaje</returns>
+        private string mensajeSuperaCaracteres(int numeroLimiteCarateres)
         {
-
-            base.OnNavigatedTo(e);
-
-            porcentajeObtenido = Convert.ToInt32(e.Parameter.ToString());
+            return $"No debe superar {numeroLimiteCarateres} caracteres";
         }
 
-        /// <summary>
-        /// Método que permite notificar los cambios a la vista
-        /// No implemento clsVMBase, porque no me permite implementar varias clases Base
-        /// </summary>
-        /// <param name="propertyName"></param>
-        protected virtual void NotifyPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         #endregion
     }
 }

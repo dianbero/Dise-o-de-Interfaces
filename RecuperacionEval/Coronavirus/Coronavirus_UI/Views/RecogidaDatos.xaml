@@ -27,10 +27,10 @@
     
     
     <RelativePanel>
-        <!--<AppBarButton Name="btnPruebasMovimientoQuitarEnFinal"
+        <AppBarButton Name="btnPruebasMovimientoQuitarEnFinal"
                       Icon="Back"
                       Label="Sólo para pruebas"
-                      Click="BtnPruebasMovimientoQuitarEnFinal_Click"/>-->
+                      Click="BtnPruebasMovimientoQuitarEnFinal_Click"/>
 
         <TextBlock Name="mensaje"
                    Text="{Binding Mensaje}"
@@ -50,8 +50,18 @@
                    FontSize="30"
                    Margin="100,50,0,0"
                    RelativePanel.Below="instrucciones"/>
+
+        <TextBlock Name="msgNombre"
+                   Margin="10,30,0,0"
+                   Text="{Binding MensajeNombre}"
+                   Foreground="DarkRed"
+                   FontSize="20"
+                   RelativePanel.AlignVerticalCenterWith="nombre"
+                   RelativePanel.RightOf="nombre"/>
+
+        <!--Text="{Binding Nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <TextBox Name="nombre"
-                 Text="{Binding Nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding NuevaPersona.NombrePersona, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
                  Margin="60,35,0,0"
                  Width="550"
@@ -63,8 +73,18 @@
                    Text="Apellidos"
                    Margin="100,20,0,0"
                    RelativePanel.Below="lblNombre"/>
+
+        <TextBlock Name="msgApellidos"
+                   Margin="10,0,0,0"
+                   Text="{Binding MensajeApellidos}"
+                   Foreground="DarkRed"
+                   FontSize="20"
+                   RelativePanel.AlignVerticalCenterWith="apellidos"
+                   RelativePanel.RightOf="apellidos"/>
+
+        <!--Text="{Binding Apellidos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <TextBox Name="apellidos"
-                 Text="{Binding Apellidos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding NuevaPersona.ApellidosPersona, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
                  Width="550"
                  Margin="47,10,0,0"
@@ -76,8 +96,18 @@
                    Text="Dni"
                    Margin="100,20,0,0"
                    RelativePanel.Below="lblApellidos"/>
+
+        <TextBlock Name="msgDni"
+                   Margin="10,0,0,0"
+                   Text="{Binding MensajeDni}"
+                   Foreground="DarkRed"
+                   FontSize="20"
+                   RelativePanel.AlignVerticalCenterWith="dni"
+                   RelativePanel.RightOf="dni"/>
+
+        <!--Text="{Binding Dni, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <TextBox Name="dni"
-                 Text="{Binding Dni, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding NuevaPersona.DniPersona, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
                  Width="550"
                  Margin="125,10,0,0"
@@ -90,8 +120,18 @@
                    Text="Teléfono"
                    Margin="100,20,0,0"
                    RelativePanel.Below="lblDni"/>
+
+        <TextBlock Name="msgTelefono"
+                   Margin="10,0,0,0"
+                   Text="{Binding MensajeTelefono}"
+                   Foreground="DarkRed"
+                   FontSize="20"
+                   RelativePanel.AlignVerticalCenterWith="telefono"
+                   RelativePanel.RightOf="telefono"/>
+
+        <!--Text="{Binding Telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <TextBox Name="telefono"
-                 Text="{Binding Telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding NuevaPersona.Telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
                  Width="550"
                  PlaceholderText="Introduzca sólo números"
@@ -104,8 +144,18 @@
                    Text="Dirección"
                    Margin="100,20,0,0"
                    RelativePanel.Below="lblTelefono"/>
+
+        <TextBlock Name="msgDireccion"
+                   Margin="10,0,0,0"
+                   Text="{Binding MensajeDireccion}"
+                   Foreground="DarkRed"
+                   FontSize="20"
+                   RelativePanel.AlignVerticalCenterWith="direccion"
+                   RelativePanel.RightOf="direccion"/>
+
+        <!--Text="{Binding Direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <TextBox Name="direccion"
-                 Text="{Binding Direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding NuevaPersona.Direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
                  Width="550"
                  Margin="45,10,0,0"
@@ -118,7 +168,7 @@
                 CornerRadius="10"
                 Margin="100,30,0,0"
                 RelativePanel.Below="direccion"
-                Command="{Binding CommandEnviarDatos}"/>
+                Command="{Binding CommandEnviarDatos, Mode=TwoWay}"/>
     </RelativePanel>   
         
 </Page>

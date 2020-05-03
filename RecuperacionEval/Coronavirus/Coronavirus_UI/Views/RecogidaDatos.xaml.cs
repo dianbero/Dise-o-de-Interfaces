@@ -18,18 +18,54 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Coronavirus_UI.Views
 {
+
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
     public sealed partial class RecogidaDatos : Page
     {
-        clsRecogidaDatosVM vm;
+        clsRecogidaDatosVM objVM;
         public RecogidaDatos()
         {
             this.InitializeComponent();
             //Empieza animación
             cambioOpacidad.Begin();
 
+        }
+
+        /// <summary>
+        /// Método que recibe los datos enviados desde la vista anterior
+        /// </summary>
+        /// <param name="e">NavigationEventArgs con los datos de navegación de la página anterior</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            objVM = (clsRecogidaDatosVM)this.DataContext;
+
+            bool diagnosticoObtenido = false;
+            
+            if(e.Parameter is bool)
+            {
+                diagnosticoObtenido = (bool)e.Parameter;
+                objVM.NuevaPersona.Diagnostico = diagnosticoObtenido;
+            }
+            //else
+            //{
+            //    objVM.NuevaPersona.Diagnostico = false;
+            //}
+
+            //int recogidaDatos;
+            //if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            //{
+            //    //Obtengo el código enviado como parámetro
+            //    recogidaDatos = Convert.ToInt32(e.Parameter.ToString());
+            //    objVM.PorcentajeObtenido = recogidaDatos;
+            //    //objVM.CodigoMedico = codigoMedico;
+            //}
+            //else
+            //{
+            //    objVM.PorcentajeObtenido = 0;
+            //}
+            base.OnNavigatedTo(e);
         }
 
         //Sólo para mayor comodidad de pruebas

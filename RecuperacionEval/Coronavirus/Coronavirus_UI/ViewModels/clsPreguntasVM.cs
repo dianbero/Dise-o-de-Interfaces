@@ -18,7 +18,7 @@ namespace Coronavirus_UI.ViewModels
         #region Atributos Privados
         private ObservableCollection<clsRespuesta> listadoRespuestas;
         private clsRespuesta respuestaSeleccionada;
-        private string textoPregunta;
+        //private string textoPregunta;
         private string textoBoton;
         private DelegateCommand commandPulsarSiguente;
 
@@ -26,6 +26,7 @@ namespace Coronavirus_UI.ViewModels
         private int porcentajeRespuestasPositivas = 0;
         private int numRespuestasPositivas = 0;
         private int contadorPreguntas = 0;
+        private clsPregunta preguntaActual;
         
         #endregion
 
@@ -42,25 +43,18 @@ namespace Coronavirus_UI.ViewModels
         {
             set
             {
-                //if (value != null)
-                //{
-                    respuestaSeleccionada = value;
-                    //Método que comprueba respuesta
-                    //comprobarRespuesta();
-                    
-                //}
-                //Comprobamos que el botón se puede habilitar
+                respuestaSeleccionada = value;
                 commandPulsarSiguente.RaiseCanExecuteChanged();
             }
         }
 
-        public string TextoPregunta
-        {
-            get
-            {
-                return textoPregunta;
-            }
-        }
+        //public string TextoPregunta
+        //{
+        //    get
+        //    {
+        //        return textoPregunta;
+        //    }
+        //}
 
         public string TextoBoton
         {
@@ -81,6 +75,14 @@ namespace Coronavirus_UI.ViewModels
                 commandPulsarSiguente = value;
             }
         }
+
+        public clsPregunta PreguntaActual
+        {
+            get
+            {
+                return preguntaActual;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -88,7 +90,8 @@ namespace Coronavirus_UI.ViewModels
         {
             //Obtengo todas las preguntas
             //listadoPreguntas = new clsListadoPreguntasBL().getListadoPreguntasBL();
-            asignarPregunta(contadorPreguntas);
+            obtenerListadoPreguntas();
+            //asignarPregunta();
             this.textoBoton = "Siguiente";
             //Método que muestra preguntas, en este caso llamaría al iniciar, y se mostraría en primer lugar la primera pregunta de la lista
             this.commandPulsarSiguente = new DelegateCommand(pulsarSiguienteExecute, pulsarSiguienteCanExecute);
@@ -102,38 +105,49 @@ namespace Coronavirus_UI.ViewModels
         /// Cambia las propiedades públicas correspondientes en la vista.
         /// </summary>
         /// <param name="contadorPregunta">int que indica el orden de las preguntas, es decir el índice de cada pregunta en la lista</param>
-        public void asignarPregunta(int contadorPregunta)
+        public void asignarPregunta()
         {
-            //Obtengo el listado de preguntas
+            
+            //this.textoPregunta = listadoPreguntas[contadorPreguntas].Pregunta;
+            //NotifyPropertyChanged("TextoPregunta");
+            preguntaActual = listadoPreguntas[contadorPreguntas];
+            NotifyPropertyChanged("PreguntaActual");
+
+            //Obtengo la lista de respuestas para la pregunta correspondiente
+            try
+            {
+                //this.listadoRespuestas = new clsListadoRespuestasPorIdPreguntaBL().listadoRespuestasPorIdPregunta(listadoPreguntas[contadorPreguntas].IdPregunta);
+                this.listadoRespuestas = new clsListadoRespuestasPorIdPreguntaBL().listadoRespuestasPorIdPregunta(preguntaActual.IdPregunta);
+            }
+            catch (Exception)
+            {
+                mensajeError();
+            }
+
+            NotifyPropertyChanged("ListadoRespuestas");
+
+            //Si estamos en la última pregunta el texto del botón cambia a "Pulsar Siguiente"
+            if(contadorPreguntas == listadoPreguntas.Count - 1)
+            {
+                this.textoBoton = "Ver Resultados";
+                NotifyPropertyChanged("TextoBoton");
+            }        
+        }
+
+        /// <summary>
+        /// Método que obtiene el listado de preguntas de la BD
+        /// </summary>
+        public void obtenerListadoPreguntas()
+        {
             try
             {
                 listadoPreguntas = new clsListadoPreguntasBL().getListadoPreguntasBL();
-            }catch(Exception e)
-            {
-                throw e;
+                asignarPregunta();
             }
-            if (contadorPregunta < listadoPreguntas.Count) //Esta comprobación creo que no es necesaria, porque ya la hago en el botón de Siguiente
+            catch (Exception)
             {
-                this.textoPregunta = listadoPreguntas[contadorPregunta].Pregunta;
-                NotifyPropertyChanged("TextoPregunta");
-                //Obtengo la lista de respuestas para la pregunta correspondiente
-                try
-                {
-                    this.listadoRespuestas = new clsListadoRespuestasPorIdPreguntaBL().listadoRespuestasPorIdPregunta(listadoPreguntas[contadorPregunta].IdPregunta);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-                NotifyPropertyChanged("ListadoRespuestas");
-
-                //Si estamos en la última pregunta el texto del botón cambia a "Pulsar Siguiente"
-                if(contadorPregunta == listadoPreguntas.Count - 1)
-                {
-                    this.textoBoton = "Ver Resultados";
-                    NotifyPropertyChanged("TextoBoton");
-                }
-            }            
+                mensajeError();
+            }
         }
 
         /// <summary>
@@ -166,21 +180,31 @@ namespace Coronavirus_UI.ViewModels
         /// </summary>
         public void pulsarSiguienteExecute()
         {
+            bool tieneCoronavirus = false; 
+
             contadorPreguntas++;
 
             //Si la pregunta no es la última, entonces muestra la siguiente pregunta
             if (contadorPreguntas < listadoPreguntas.Count)
             {
                 comprobarRespuesta();
-                asignarPregunta(contadorPreguntas);
+                asignarPregunta();
             }
             //Si es la última, entonces cambia la vista
             else
             {
+                //Comprueba el diagnóstico en función del porcentaje
+                if (porcentajeRespuestasPositivas > 70)
+                {
+                    tieneCoronavirus = true;
+                }
+
                 Frame frame = (Frame)Window.Current.Content;
-                //frame.Navigate(typeof(RecogidaDatos));
-                string porcentaje = Convert.ToString(porcentajeRespuestasPositivas);
-                frame.Navigate(typeof(RecogidaDatos), porcentajeRespuestasPositivas.ToString()); //Paso parámetro para que lo reciba el otro viewModel, esto no ha funcionado
+
+                //string porcentaje = Convert.ToString(porcentajeRespuestasPositivas);
+
+                frame.Navigate(typeof(RecogidaDatos), tieneCoronavirus);
+                //frame.Navigate(typeof(RecogidaDatos), porcentaje); //Paso parámetro para que lo reciba el otro viewModel
             }
         }
 
@@ -199,6 +223,20 @@ namespace Coronavirus_UI.ViewModels
             }
 
             return hayRespuestaSeleccionada;
+        }
+
+        /// <summary>
+        /// Método que muestra mensaje de error
+        /// </summary>
+        private async void mensajeError()
+        {
+            ContentDialog mensajeEnviarDatos = new ContentDialog()
+            {
+                Title = "Error de conexión",
+                CloseButtonText = "Ok"
+            };
+
+            await mensajeEnviarDatos.ShowAsync();
         }
 
         #endregion

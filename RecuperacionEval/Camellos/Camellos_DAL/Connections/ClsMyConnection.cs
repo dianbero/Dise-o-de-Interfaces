@@ -20,9 +20,9 @@ using System.Data.SqlClient;
 //
 
 
-namespace Coronavirus_DAL.Connections
+namespace Camellos_DAL.Connections
 {
-    public class clsMyConnection
+    public class ClsMyConnection
     {
         //Atributos
         public String server { get; set; }
@@ -32,18 +32,18 @@ namespace Coronavirus_DAL.Connections
 
         //Constructores
 
-        public clsMyConnection()
+        public ClsMyConnection()
         {
             //this.server = "(local)";
-            this.server = "192.168.56.1";
-            //this.server = "107-03";
-            this.dataBase = "Coronavirus";
-            this.user = "prueba";
-            this.pass = "123";
-
+            this.server = "nzhdeh.database.windows.net";
+            this.dataBase = "Personas";
+            this.user = "nzhdeh";
+            this.pass = "Dnderdnder.21";
         }
+
+
         //Con parámetros por si quisiera cambiar las conexiones
-        public clsMyConnection(String server, String database, String user, String pass)
+        public ClsMyConnection(String server, String database, String user, String pass)
         {
             this.server = server;
             this.dataBase = database;
@@ -64,19 +64,22 @@ namespace Coronavirus_DAL.Connections
             SqlConnection connection = new SqlConnection();
 
             try
-            {               
+            {
+
                 //connection.ConnectionString = string.Format("server={0};database={1};uid={2};pwd={3};", server, dataBase, user, pass);
                 connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};";
                 connection.Open();
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
-                throw;
+                throw e;
             }
 
             return connection;
 
         }
+
+
 
 
         /// <summary>
@@ -91,21 +94,19 @@ namespace Coronavirus_DAL.Connections
             {
                 connection.Close();
             }
-            catch (SqlException)
+            catch (SqlException se)
             {
-                throw;
+                throw se;
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException ie)
             {
-                throw;
+                throw ie;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
-
-
     }
 
 }
