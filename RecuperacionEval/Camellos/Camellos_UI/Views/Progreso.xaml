@@ -1,0 +1,106 @@
+﻿<Page
+    x:Class="Camellos_UI.Views.Progreso"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    xmlns:local="using:Camellos_UI.Views"
+    mc:Ignorable="d"
+    Background="Indigo"
+    xmlns:vm="using:Camellos_UI.ViewModels"
+    xmlns:conv="using:Camellos_UI.ViewModels.VMTools">
+
+    <Page.DataContext>
+        <vm:clsProgresoVM/>
+    </Page.DataContext>
+
+    <UserControl.Resources>
+        <conv:clsConverters x:Key="ConverterFecha"/>
+    </UserControl.Resources>
+
+    <RelativePanel>
+        <AppBarButton Name="btnVolver"
+                      Label="Volver"
+                      Icon="Back" 
+                      Command="{Binding BtnVolverAMenu}">
+            <AppBarButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </AppBarButton.RenderTransform>
+        </AppBarButton>
+
+        <TextBlock Text="Progreso"
+                   FontSize="45"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   Margin="0,40,0,0"/>
+        
+        <TextBlock Name="txtPrueba"
+                   Text="Prueba"
+                   FontSize="40" 
+                   Width="300"            
+                   Margin="200,200,0,0"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   />
+        <TextBlock Name="txtTiempoJugador"
+                   Text="Tiempo Jugador"
+                   FontSize="40"
+                   Width="300"            
+                   Margin="0,200,0,0"
+                   HorizontalAlignment="Stretch"
+                   RelativePanel.RightOf="txtPrueba"
+                   RelativePanel.LeftOf="txtTiempoMAxPrueba"
+                   />
+        <TextBlock Name="txtTiempoMAxPrueba"
+                   Text="Tiempo Prueba"
+                   FontSize="40"
+                   Width="300"                   
+                   Margin="100,200,100,0"  
+                   RelativePanel.AlignRightWithPanel="True"
+                   />
+
+        <GridView Name="listaElementos" 
+                  Foreground="White"
+                  RelativePanel.AlignHorizontalCenterWithPanel="True"
+                  Margin="0,300,0,0"
+                  ItemsSource="{Binding ListaElementosProgreso}"
+                  RelativePanel.AlignLeftWith="txtPrueba"
+                  RelativePanel.AlignRightWith="txtTiempoMAxPrueba">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition Width="600"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--<StackPanel Orientation="Horizontal">-->
+                        <TextBlock Name="idPrueba"
+                               Text="{Binding IdPrueba}"
+                               FontSize="35"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                                       Margin="200,0,0,0"
+                               />
+                        <TextBlock Name="tiempojugador"
+                               Text="{Binding TiempoJugador, Converter={StaticResource ConverterFecha}}"
+                               FontSize="35"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                                       Margin="260,0,0,0"
+                               />
+                        <TextBlock Name="tiempoMaxPrueba"
+                               Text="{Binding TiempoMaxPrueba, Converter={StaticResource ConverterFecha}}"
+                               FontSize="35"
+                               Grid.Column="2"
+                               Grid.Row="1"
+                                       Margin="190,0,0,0"
+                               />
+                        <!--</StackPanel>-->
+                    </Grid>
+
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+    </RelativePanel>
+</Page>

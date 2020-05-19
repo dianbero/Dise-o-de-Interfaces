@@ -80,6 +80,8 @@ insert into CJ_PruebasPalabras values (15,4)
 select * from CJ_PruebasPalabras
 select * from CJ_Palabras
 select * from CJ_Pruebas
+SELECT * FROM CJ_Jugadores WHERE  nick = 'Jugador1'
+SELECT COUNT(*) FROM CJ_Jugadores WHERE  nick = 'Jugador1'
 
 select len('Traumatólogo')/3
 select len('Tres tristes tigres tragaban trigo en un trigal')/3
@@ -99,4 +101,15 @@ select cast(dateadd(s, 60, '00:00:00') AS TIME(0))
 
 
 
+
 --select * from CJ_Jugadores
+
+SELECT TOP 1 idPalabra FROM CJ_PruebasPalabras where idPrueba=4 ORDER BY idPalabra DESC 
+
+
+select * from CJ_Pruebas
+select * from CJ_Pruebas where idPrueba = (SELECT TOP 1 idPrueba FROM CJ_PruebasJugadores where idJugador = 5 ORDER BY idPrueba DESC)
+
+SELECT idPrueba FROM CJ_Pruebas WHERE idPrueba = (SELECT TOP 1 idPrueba FROM CJ_PruebasJugadores WHERE idJugador = 5 ORDER BY idPrueba DESC)
+
+select * from CJ_PruebasJugadores

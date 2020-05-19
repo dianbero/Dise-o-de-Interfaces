@@ -1,0 +1,145 @@
+﻿<Page
+    x:Class="Camellos_UI.Views.Juego"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Camellos_UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Indigo"
+    xmlns:vm="using:Camellos_UI.ViewModels">
+    <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
+
+    <Page.DataContext>
+        <vm:clsJuegoVM/>
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <Storyboard x:Name="animacionCamello">
+            <DoubleAnimation Storyboard.TargetName="gifCamello"
+                             Storyboard.TargetProperty="(Canvas.Left)"
+                             From="{Binding DistanciaFrom}"
+                             To="{Binding DistanciaTo}"
+                             Duration="{Binding DuracionAnimacion}"/>
+        </Storyboard>
+    </Page.Resources>
+
+    <RelativePanel>
+        <AppBarButton Name="btnabandonarPartida"
+                      Label="Abandonar Partida"
+                      Icon="Back" 
+                      Width="150"
+                      Command="{Binding BtnAbandonarPartida}">
+            <AppBarButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </AppBarButton.RenderTransform>
+        </AppBarButton>
+        
+        <TextBlock Name="palabraActual"
+                   Text="{Binding PalabraActual.Palabra}"
+                   FontSize="50"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   Margin="0,40,0,0"/>
+
+        <Rectangle Name="rectanguloTiempo"
+                 Height="50"
+                 Width="150"
+                 RadiusX="5"
+                 RadiusY="5"
+                 Margin="0,54,0,0"
+                 RelativePanel.RightOf="palabraActual"
+                 RelativePanel.AlignRightWithPanel="True"
+                 Fill="Violet"
+                 />
+
+        <!--<Ellipse Name="circuloTiempo"
+                 Height="100"
+                 Width="100"
+                 Margin="0,30,0,0"
+                 RelativePanel.RightOf="palabraActual"
+                 RelativePanel.AlignRightWithPanel="True"
+                 Fill="Violet"
+                 />-->
+
+        <TextBlock Name="txtMeta"
+                   Text="Meta"
+                   FontSize="35"
+                   RelativePanel.Below="btnabandonarPartida"
+                   RelativePanel.Above="meta" 
+                   RelativePanel.AlignLeftWith="meta"
+                   Margin="80,90,0,0"
+                   />
+
+        <Rectangle Name="meta"
+                   Height="300"
+                   Width="30"
+                   Fill="DarkRed"
+                   VerticalAlignment="Stretch"
+                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                   Margin="100,0,0,0"/>
+
+        <TextBlock Name="tiempoPrueba"
+                   Text="{Binding TiempoMostrado}"
+                   FontSize="40" 
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   TextAlignment="Center"
+                   Width="150"
+                   Margin="0,50,0,0"
+                   RelativePanel.RightOf="palabraActual" 
+                   RelativePanel.AlignRightWithPanel="True"/>
+        <Canvas 
+                Height="100"
+                Width="1350"
+                RelativePanel.AlignVerticalCenterWith="meta"
+                RelativePanel.RightOf="meta"
+                HorizontalAlignment="Stretch">
+
+            <Image Name="gifCamello"
+               Width="100"
+               Source="https://www.gifsanimados.org/data/media/208/camello-imagen-animada-0012.gif"
+               RelativePanel.AlignVerticalCenterWith="meta" 
+               Canvas.Left="{Binding PosicionImagen}"
+               HorizontalAlignment="Stretch"
+               />
+
+        </Canvas>
+
+        <TextBlock Name="mensajePalabraMal"
+                   Text="{Binding TextoPalabraMal}"
+                   FontSize="40"
+                   Foreground="{Binding ColorMensajeAcierto}"
+                   Margin="0,0,0,20"
+                   RelativePanel.Above="palabraIntroducida"
+                   RelativePanel.AlignHorizontalCenterWith="palabraIntroducida"/>
+
+        <!--Tiene UpdateSourceTrigger para que justo cuando detecte que escribe, empiece a contar el tiempo-->
+        <TextBox Name="palabraIntroducida"
+                 Text="{Binding PalabraIntroducida, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 RelativePanel.AlignBottomWithPanel="True"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True"   
+                 PlaceholderText="Escribe la palabra"
+                 HorizontalTextAlignment="Center"
+                 FontSize="25"
+                 Margin="0,0,0,200"
+                 Height="50"
+                 Width="450"
+                 KeyDown="PalabraIntroducida_KeyDown"/>
+        
+        <Button Name="btnCorrer"
+                Content="Corre!"
+                FontSize="40"
+                Margin="0,0,0,100"
+                RelativePanel.AlignBottomWithPanel="True"
+                RelativePanel.AlignHorizontalCenterWith="palabraIntroducida"
+                CornerRadius="10"
+                Command="{Binding IntroducirPalabra}"
+                />
+        <!--Click="{x:Bind BtnCorrer_Click}"-->
+        
+
+
+    </RelativePanel>
+
+
+</Page>

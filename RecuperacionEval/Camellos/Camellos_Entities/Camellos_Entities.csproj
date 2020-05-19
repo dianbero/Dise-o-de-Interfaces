@@ -121,6 +121,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="clsJugador.cs" />
+    <Compile Include="clsPalabra.cs" />
+    <Compile Include="clsPrueba.cs" />
+    <Compile Include="clsPruebasJugadores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Camellos_Entities.rd.xml" />
   </ItemGroup>

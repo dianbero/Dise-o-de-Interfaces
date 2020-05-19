@@ -19,6 +19,10 @@ namespace Hospital_UI.ViewModels
         #region Atributos Privados
         private string codigoMedico;
         private DelegateCommand botonEnviar;
+
+        //Para tecla intro
+        private object sender;
+        private KeyRoutedEventArgs eventArg;
         #endregion
 
         #region Porpiedades Públicas
@@ -32,6 +36,9 @@ namespace Hospital_UI.ViewModels
 
         }
         public DelegateCommand BotonEnviar { get => botonEnviar; set => botonEnviar = value; }
+        //------------Prueba para tecla intro------------//
+        public object Sender { get => sender; set => sender = value; }
+        public KeyRoutedEventArgs EventArg { get => eventArg; set => eventArg = value; }
         #endregion
 
         #region Constructor
@@ -56,15 +63,10 @@ namespace Hospital_UI.ViewModels
         /// </summary>
         public void enviarExecute()
         {
-            //Si código es correcto
-            if (validarCodigoEsCorrecto())
-            {                
-                //bool medicoExiste;
-                try
+                //Si código es correcto
+                if (validarCodigoEsCorrecto())
                 {
-                    //medicoExiste = validarMedicoExiste();
-
-                    //Compruebo que existe médico asociado a ese código
+                    //Compruebo que existe édico asociado a ese código
                     if (validarMedicoExiste())
                     {
                         Frame frame = (Frame)Window.Current.Content;
@@ -76,23 +78,17 @@ namespace Hospital_UI.ViewModels
                         mostrarMensajeError("No existe médico con el código introducido");
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    mostrarMensajeError("No se ha podido conectar con la BBDD");
+                    mostrarMensajeError("Código no correcto");
                 }
-                
-            }
-            else
-            {
-                mostrarMensajeError("Código no correcto");
-            }
         }
 
         /// <summary>
         /// Método que comprueba que el campo del código no está vacío y por tanto se puede pulsar el botón de Enviar
         /// </summary>
         /// <returns>bool hayAlgoEscrito, que indica si se habilita el botón o no</returns>
-        private bool enviarCanExecute()
+        public bool enviarCanExecute()
         {
             bool hayAlgoEscrito = false;
 
@@ -107,9 +103,11 @@ namespace Hospital_UI.ViewModels
         /// Método indica si el código cumple el formato 000AAA000
         /// </summary>
         /// <returns>bool codigoCorrecto, indicando si cumple o no</returns>
+
+        public bool codigoCorrecto = false;
         private bool validarCodigoEsCorrecto()
         {
-            bool codigoCorrecto = false;
+            //bool codigoCorrecto = false;
 
             if(Regex.IsMatch(codigoMedico, "[0-9]{3}[A-Z]{3}[0-9]{4}"))
             {
@@ -127,27 +125,19 @@ namespace Hospital_UI.ViewModels
         {
             bool medicoExiste = false;
 
-            int filasAfectadas = new clsHandlerHospitalBL().checkExisteMedico(codigoMedico);
-
-            if (filasAfectadas == 1)
+            try
             {
-                medicoExiste = true;
-            }
+                int filasAfectadas = new clsHandlerHospitalBL().checkExisteMedico(codigoMedico);
 
-            //try
-            //{
-            //    int filasAfectadas = new clsHandlerHospitalBL().checkExisteMedico(codigoMedico);
+                if (filasAfectadas == 1)
+                {
+                    medicoExiste = true;
+                }
 
-            //    if (filasAfectadas == 1)
-            //    {
-            //        medicoExiste = true;
-            //    }
-
-            //}catch(Exception e)
-            //{
-            //    //throw e;
-            //    mostrarMensajeError("Nose ha podido conectar con la BBDD");
-            //}           
+            }catch(Exception e)
+            {
+                throw e;
+            }           
 
             return medicoExiste;
         }
@@ -168,6 +158,13 @@ namespace Hospital_UI.ViewModels
             ContentDialogResult result = await mensajeErroneo.ShowAsync();
         }
 
+
+        //private void BtnEnviar_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        //{
+        //    if (e.Key == VirtualKey.Enter)
+        //    {
+        //    }
+        //}
         #endregion
     }
 }

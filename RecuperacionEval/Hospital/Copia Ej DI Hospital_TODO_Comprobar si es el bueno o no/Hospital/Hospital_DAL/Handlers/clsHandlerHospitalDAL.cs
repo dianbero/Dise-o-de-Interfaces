@@ -68,7 +68,7 @@ namespace Hospital_DAL.Handlers
         }
 
         /// <summary>
-        /// Método que comprueba que el médico existe devolviendo un entero con la cantidad de filas afectadas por la sentencia
+        /// Método que comprueba que el médico devolviendo un entero con la cantidad de filas afectadas por la sentencia
         /// Que deberá ser una sola
         /// </summary>
         /// <param name="codigoMedico">string con el código del médico deseado</param>

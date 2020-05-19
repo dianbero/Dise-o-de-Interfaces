@@ -1,0 +1,72 @@
+Entidades:
+
+
+
+clsMedico:
+
+string codigoMedico
+
+string nombreMedico
+
+string apellidosMedico
+
+
+
+clsControlDiario:
+
+string codigoMedico
+
+DateTime fecha
+
+string primeraSesion
+
+string segundaSesion
+
+string terceraSesion
+
+string cuartaSesion
+
+
+
+
+
+capa DAL:
+
+
+
+string getMedico(codigoMedico) (con este se comprueba que el médico existe y se obtiene el objeto médico con su nombre e id para la segunda vista)
+
+clsControlDiario getControlDiarioPorIdMedicoYFechaActual(idMedico, fechaActual)
+
+
+
+capa UI:
+
+ViewModels:
+
+
+
+LoginVM:
+
+
+
+-string codigoAValidar  (código que introduce el médico y se valida, con ésto se obtiene el objeto clsMedico que se envía al segundo viewModel para obtener el objeto clsControlDiario para ese médico por su id, con sus correspondientes tareas)
+
+-DelegateCommand botonEntrar (se habilitará cuando el usuario escriba algo)
+
+
+
+TareasVM:
+
+
+
+-clsControlDiario controlMedicoLogueado (sus propiedades se bindearían a los elementos de la vista)
+
+-string nombreMedico (aprovechando el método getNombreMedicoPorIdMedico, se bindea al elemento que muestra el nombre del médico en la vista)
+
+-DateTime fechaActual (se obtendrá con un Date.Now o algo así, con esto junto con el código de médico se realizará la consulta en la BD)
+
+
+
+PD:Todos los elementos de los viewModel que he puesto estarían bindeados con elementos de las vistas
+

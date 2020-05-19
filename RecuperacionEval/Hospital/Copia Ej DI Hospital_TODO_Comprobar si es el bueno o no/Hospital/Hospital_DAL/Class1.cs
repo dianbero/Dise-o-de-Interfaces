@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Camellos_UI.ViewModels.VMTools
+namespace Hospital_DAL
 {
-    class Class1
+    public class Class1
     {
     }
 }

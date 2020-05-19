@@ -36,7 +36,7 @@ namespace Hospital_UI.ViewModels
         #region Constructores 
         public clsTareasVM()
         {
-            //this.controlDiarioMedico = new clsControlDiario();
+
         }
         #endregion
 
@@ -49,48 +49,33 @@ namespace Hospital_UI.ViewModels
         {
             try
             {
-                /*Esto se ha corregido de forma que se compruebe si es nulo el controlDiarioMedico obtenido, y se de el mensaje correspondiente 
-                 en caso de serlo. Y así no salte una excepción debido a que sea nulo. Porque esta posibilidad la puedo controlar yo. 
-                 No es por un fallo de conexión con la Base de Datos, por tanto debo controlarlo yo, por ello no debo ponerlo como mensaje
-                 cuando salte la excepción.*/
                 medico = new clsHandlerHospitalBL().getMedico(codigoMedico);
                 controlDiarioMedico = new clsHandlerHospitalBL().getControlDiarioPorIdMedico(codigoMedico);
 
-                /*Para comprobar si es null, se hace con el operador, no con el método Equals, porque el método compara objetos, 
-                 * sin embargo null no es un objeto, porque si lo hago así salta una excepción*/
-                if (controlDiarioMedico == null)  
+                if(controlDiarioMedico.PrimeraSesion.Equals("No tiene tareas")&& 
+                    controlDiarioMedico.SegundaSesion.Equals("No tiene tareas") && 
+                    controlDiarioMedico.TerceraSesion.Equals("No tiene tareas") && 
+                    controlDiarioMedico.CuartaSesion.Equals("No tiene tareas"))
                 {
-                    mensajeNoTareas("No hay registros con la fecha actual");
+                    mensajeNoTareas();
                 }
-                else
-                {
-                    //Si no tiene ninguna tarea, muestra mensaje indicándolo
-                    if (controlDiarioMedico.PrimeraSesion.Equals("No tiene tareas") &&
-                        controlDiarioMedico.SegundaSesion.Equals("No tiene tareas") &&
-                        controlDiarioMedico.TerceraSesion.Equals("No tiene tareas") &&
-                        controlDiarioMedico.CuartaSesion.Equals("No tiene tareas"))
-                    {
-                        mensajeNoTareas("No tiene tareas");
-                    }
-                }   
+
             }
-            //Salta excepción cuando no hay registros para el día actual en la BD
             catch (Exception ex)
             {
-                //throw ex;
-                //mensajeNoTareas("No hay registros con la fecha actual");
-                mensajeNoTareas("Error al conectar con la Base de Datos");
+                //Este error saltaría porque no se han insertado registros con fecha actual
+                throw ex;
             }
         }
 
         /// <summary>
         /// Método que muestra mensaje indicando que no tiene ninguna tarea para ese día
         /// </summary>
-        private async void mensajeNoTareas(string mensaje)
+        private async void mensajeNoTareas()
         {
             ContentDialog mensajeErroneo = new ContentDialog
             {
-                Title = mensaje,
+                Title = "No tiene tareas",
                 //Content = mensaje,
                 CloseButtonText = "Ok"
             };

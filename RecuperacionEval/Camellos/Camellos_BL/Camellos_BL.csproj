@@ -121,6 +121,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Handlers\clsHandlerJugadoresBL.cs" />
+    <Compile Include="Handlers\clsHandlerPalabrasBL.cs" />
+    <Compile Include="Handlers\clsHandlerProgresosBL.cs" />
+    <Compile Include="Handlers\clsHandlerPruebasBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Camellos_BL.rd.xml" />
   </ItemGroup>
@@ -129,8 +133,16 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Handlers\" />
+    <ProjectReference Include="..\Camellos_DAL\Camellos_DAL.csproj">
+      <Project>{41600775-fd84-4b67-9f6d-84e14ba8c12e}</Project>
+      <Name>Camellos_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Camellos_Entities\Camellos_Entities.csproj">
+      <Project>{ea8199af-79b1-48d3-8754-7113242dd853}</Project>
+      <Name>Camellos_Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

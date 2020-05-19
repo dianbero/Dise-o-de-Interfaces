@@ -20,7 +20,7 @@ using System.Data.SqlClient;
 //
 
 
-namespace Camellos_DAL.Connections
+namespace Hospital_DAL.Connections
 {
     public class clsMyConnection
     {
@@ -35,13 +35,13 @@ namespace Camellos_DAL.Connections
         public clsMyConnection()
         {
             //this.server = "(local)";
-            this.server = "nzhdeh.database.windows.net";
-            this.dataBase = "Personas";
-            this.user = "nzhdeh";
-            this.pass = "Dnderdnder.21";
+            this.server = "192.168.56.1";
+            //this.server = "107-03";
+            this.dataBase = "Hospital";
+            this.user = "prueba";
+            this.pass = "123";
+
         }
-
-
         //Con parámetros por si quisiera cambiar las conexiones
         public clsMyConnection(String server, String database, String user, String pass)
         {
@@ -64,15 +64,14 @@ namespace Camellos_DAL.Connections
             SqlConnection connection = new SqlConnection();
 
             try
-            {
-
+            {               
                 //connection.ConnectionString = string.Format("server={0};database={1};uid={2};pwd={3};", server, dataBase, user, pass);
                 connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};";
                 connection.Open();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                throw e;
+                throw;
             }
 
             return connection;
@@ -94,19 +93,21 @@ namespace Camellos_DAL.Connections
             {
                 connection.Close();
             }
-            catch (SqlException se)
+            catch (SqlException)
             {
-                throw se;
+                throw;
             }
-            catch (InvalidOperationException ie)
+            catch (InvalidOperationException)
             {
-                throw ie;
+                throw;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
             }
         }
+
+
     }
 
 }

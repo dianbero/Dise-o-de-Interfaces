@@ -1,0 +1,37 @@
+Observaciones:
+
+Hay varias cosas que sé que se podrían modificar o mejorar o con algunas he tenido
+problemas, no te lo he consultado antes porque quería centrarme en terminar las 
+funcionalidades principales del ejercicio, que me ha dado algún que otro quebradero de 
+cabeza y me ha tenido entretenida hasta el final de la semana.
+
+Respecto al evento de la tecla intro, he intentado hacerlo con xBind, pero no me salía.
+He probado varias formas, y a al final lo que mejor me funcionaba es lo mismo que hice en 
+el ejercicio de Hospital.
+
+Al final hice una clase extra para tener todos los datos del progreso y proder ponerlos en el grid.
+Si no, hubiera tenido distindos listado y en caso de poder hacer scroll, no se desplazarían
+a la vez.
+
+Como dato de la prueba para saber de qué prueba se trata, tanto en el juego como 
+en la lista de progresos muestro directamente el id de la prueba, 
+imagino que sería mejor mostrarlas en el orden que tienen en la lista, 
+pero no me ha dado tiempo ha modificarlo.
+
+Visualmente la última animación del camello no se llega a ver porque muestra el mensaje
+de fin de prueba antes de que le de tiempo a hacerla.
+
+La colocación de los elementos xmal es un poco caótica, como mejor se ve es a 
+pantalla completa.
+Además que se ajustase a los tamaños de pantalla hubiera cambiado cosas del código, 
+porque en ese caso la distancia total sí sería variable, y tendría que ver cómo
+pillar ese dato cada vez que cambia el tamaño de la pantalla. En caí más tarde y creo 
+que es una historia algo completa en principio y no me daba el tiempo para investigarlo.
+
+Puse en las entidades los datos de tiempo con DateTime, pero más tarde ví que en realidad
+tanto por los datos en la BBDD, como para el uso de DispatcherTimer y comprobar si
+un tiempo es mayor a otro, lo prodría haber hecho directamente todo con TimeSpan, 
+pero de nuevo, al final procuré centrarme en que el ejercicio tuviera las funcionalidades principales.
+
+A pesar de todo, creo que la funcionalidades básicas del ejercicio están todas más o menos,
+reconozco que está más compadre de lo que me gustaría, pero he hecho lo que podido.

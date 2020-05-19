@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Camellos_UI.Views.Menu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Camellos_UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Indigo"
+    xmlns:vm="using:Camellos_UI.ViewModels">
+
+    <Page.DataContext>
+        <vm:clsMenuVM/>
+    </Page.DataContext>
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <TextBlock Text="Menu"
+                   FontSize="50"
+                   FontWeight="Bold"
+                   Margin="0,60,0,0"
+                   HorizontalAlignment="Center"/>
+
+        <Button Name="btnJugar"
+                Content="Jugar"
+                FontSize="40"
+                Margin="0,150,0,0"
+                CornerRadius="10"
+                HorizontalAlignment="Center"
+                Width="300"
+                FontWeight="Bold"
+                Foreground="Violet"
+                Background="BlueViolet" 
+                Command="{Binding BtnJugar}"/>
+
+        <Button Name="btnProgreso"
+                Content="Ver Progreso"
+                FontSize="40"
+                Margin="0,80,0,0"
+                CornerRadius="10"
+                HorizontalAlignment="Center"
+                Width="300"
+                FontWeight="Bold"
+                Foreground="Violet"
+                Background="BlueViolet" 
+                Command="{Binding BtnVerProgreso}"/>
+        
+        <Button Name="btnSalir"
+                Content="Salir"
+                FontSize="40"
+                Margin="0,80,0,0"
+                CornerRadius="10"
+                HorizontalAlignment="Center"
+                Width="300"
+                FontWeight="Bold"
+                Foreground="Violet"
+                Background="BlueViolet"
+                Command="{Binding BtnSalir}"/>
+    </StackPanel>
+</Page>

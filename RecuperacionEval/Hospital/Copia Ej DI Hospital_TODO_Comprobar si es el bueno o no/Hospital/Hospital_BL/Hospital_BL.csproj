@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41600775-FD84-4B67-9F6D-84E14BA8C12E}</ProjectGuid>
+    <ProjectGuid>{C6F7C0B9-E6A2-43A4-ACF1-C629361B54BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Camellos_DAL</RootNamespace>
-    <AssemblyName>Camellos_DAL</AssemblyName>
+    <RootNamespace>Hospital_BL</RootNamespace>
+    <AssemblyName>Hospital_BL</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -121,13 +121,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Connections\clsMyConnection.cs" />
-    <Compile Include="Handlers\clsHandlerJugadoresDAL.cs" />
-    <Compile Include="Handlers\clsHandlerPalabrasDAL.cs" />
-    <Compile Include="Handlers\clsHandlerProgresosDAL.cs" />
-    <Compile Include="Handlers\clsHandlerPruebasDAL.cs" />
+    <Compile Include="Handlers\clsHandlerHospitalBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Camellos_DAL.rd.xml" />
+    <EmbeddedResource Include="Properties\Hospital_BL.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -135,11 +131,16 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Camellos_Entities\Camellos_Entities.csproj">
-      <Project>{ea8199af-79b1-48d3-8754-7113242dd853}</Project>
-      <Name>Camellos_Entities</Name>
+    <ProjectReference Include="..\Hospital_DAL\Hospital_DAL.csproj">
+      <Project>{2f60f06a-4d73-4d9b-957d-6fa0793e1496}</Project>
+      <Name>Hospital_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hospital_Entities\Hospital_Entities.csproj">
+      <Project>{10d132d1-e060-4e59-8606-8ae2640d7ddc}</Project>
+      <Name>Hospital_Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

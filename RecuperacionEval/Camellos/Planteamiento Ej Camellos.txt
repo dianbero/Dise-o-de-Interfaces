@@ -1,0 +1,109 @@
+Entidades:
+
+clsJugador:
+int idJugador
+string nick
+string password
+
+
+clsPrueba:
+int idPrueba
+int numeroPalabras (dificultad Prueba)
+DateTime timepoMax
+
+clsPalabra:
+int idPalabra
+string palabra
+int dificultad
+
+clsPruebasJugadores:
+int idJugador
+int idPrueba
+DateTime tiempoJugador
+
+
+
+Capa DAL:
+
+- int insertarJugador(nick, password): inserta un nuevo jugador registrado
+- int checkExisteJugador(nick, Password):comprueba si existe un jugador con ese nick y contraseña
+- int getIdJugador(nick, password): obtiene el idJugador, en caso de que exista y se pasaría entre las vistas
+- int clsPrueba getPrueba(idPrueba): obtiene la prueba para la pantalla de juego
+- int insertarProgreso(clsPruebaJugadores progreso): inserta un registro en Progreso cada vez que se supere una prueba
+- ObservableCollection<clsPalabra> getPalabrasPorIdPrueba(idPrueba): Obtiene la lista de palabras que pertenecen a una prueba en concreto
+- int getIdUltimaPruebaJugador(idJugador): Obtiene el idPrueba de la última prueba registrada para un jugador en concreto, y con ese idPrueba, se obtendrían los datos necesarios de la prueba reanudada
+- ObservableCollection<clsPruebasJugadores> getProgresoJugador(idJugador): Con la lista de progreso del tiempo empleado en cada prueba superada
+
+Capa UI:
+
+
+ViewModels:
+
+LoginVM:
+-string nick
+-string password
+-DelegateCommand btnLogin
+-int idJugador (que se pasa a las siguientes vistas)
+-string mensajeError
+
+
+OpcionesVM (MenuVM): 
+-int idJugadorRegitrado (del jugador registrado, recibido de la pantalla de Login)
+-DelegateCommand btnJugar
+-DelegateCommand btnVerProgreso
+-Delegatecommand btnSalir
+
+
+JuegoVM:
+
+//Con bindeo:
+
+-string tiempaMostrado //Tiempo que se muestra en pantalla
+
+-clsPrueba pruebaActual (para bindear tiempoMax, y tener idPrueba que no se bindea, se usa en el VM)
+
+-string palabraActual (Palabra que se muestra y que el jugador debe escribir)
+
+-string palabraIntroducida (Palabra que escribe el jugador, bindeada a un textbox)
+
+-DelegateCommand btnAbandonarPartida
+
+//Distancias bindeadas para animación de movimiento camello 
+-int distanciaFrom //El punto de partida de desplazamiento de la palabra actual acertada será la suma de los anteriores desplazamientos de las palabras acertadas
+
+-int distanciaTo //Será la suma del total de desplazamientos anteriores más el equivalente al de la palabra actual acertada
+
+//Sin bindeo:
+
+-ObservableCollection<clsPalabra> listadoPalabrasPorPrueba //Lista de palabras de una prueba en concreto
+
+-ObservableCollection<clsPrueba> listadoCompletoPruebas //Con todas las pruebas para ir iterando sobre él y así ir obteniendo las correspondientes pruebas.
+
+- DispatcherTimer tiempoJuego //Es el tiempo que dura una prueba, que se muestra en la pantalla
+
+-int desplazamientoTotal (representa la distancia total que se desplaza el camello hacia la meta, tal y yo como lo tengo pensado, esta distancia no cambiará,
+lo que cambiará será la distancia a la que se desplaza el camello para cada palabra según la dificultad de esa palabra, como pone en el enunciado.
+Como yo me lo imagino, es que en la pantalla se verá igual para todas la pruebas, simplemente, al aumentar la dificultad de la prueba, y con ello la cantidad de palabras, 
+se visualizará como si el camello se desplazase más lentamente, porque ("En la vida real") tendría más distancia que recorrer, pero en la vista tiene la misma distancia, porque creo que no puedo aumentar la distancia total porque
+la pantalla en sí tiene un límite, se terminaría saliendo de la pantalla. Por lo que haciendo la vista, yo establecería la distancia total, que sería fija, siempre, para todas las pruebas,
+en función de la distribución de los elementos de la pantalla y que se vea bien...no?)
+
+-string mensajePartida (dependiendo se si ha superado la prueba o no, no se bindea porque se mostraría con un contentDialog)
+
+-int idJugadorRegistrado (para insertar progreso)
+
+-bool puedeMoverse //Para indicar cuando reanudar el movimiento, no del todo segura
+//Creo que más bien, se me ocurre que indicaría el comienzo de la animación (con animacion.Begin()) en el ViewModel 
+cada vez que cambien esas propiedades de distancia en la animación, 
+y la animación en sí en el xaml, ya tendrá un tiempo de duración preestablecida (por tanto, fija para todas)
+//En principio, haría el camello con un gif, y estaría ya en el xaml, por lo que no
+necesito una propiedad para Uri del gif Camello
+
+
+
+
+ProgresoVM:
+-int idJugadorRegistrado (del jugador registrado, recibido de la pantalla de Login)
+-DelegateCommand btnVolverAMenu
+-ObservableCollection<clsPruebasJugadores> listaPruebasJugador (de donde saco el id Prueba y el tiempoJugador)
+-ObservableCollection<DateTime>listaTiemposMaxPruebas (lista con sólo los tiemposMax de las pruebas)

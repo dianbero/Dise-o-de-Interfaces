@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41600775-FD84-4B67-9F6D-84E14BA8C12E}</ProjectGuid>
+    <ProjectGuid>{10D132D1-E060-4E59-8606-8AE2640D7DDC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Camellos_DAL</RootNamespace>
-    <AssemblyName>Camellos_DAL</AssemblyName>
+    <RootNamespace>Hospital_Entities</RootNamespace>
+    <AssemblyName>Hospital_Entities</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -121,24 +121,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Connections\clsMyConnection.cs" />
-    <Compile Include="Handlers\clsHandlerJugadoresDAL.cs" />
-    <Compile Include="Handlers\clsHandlerPalabrasDAL.cs" />
-    <Compile Include="Handlers\clsHandlerProgresosDAL.cs" />
-    <Compile Include="Handlers\clsHandlerPruebasDAL.cs" />
+    <Compile Include="clsControlDiario.cs" />
+    <Compile Include="clsMedico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Camellos_DAL.rd.xml" />
+    <EmbeddedResource Include="Properties\Hospital_Entities.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Camellos_Entities\Camellos_Entities.csproj">
-      <Project>{ea8199af-79b1-48d3-8754-7113242dd853}</Project>
-      <Name>Camellos_Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
