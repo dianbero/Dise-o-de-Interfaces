@@ -1,0 +1,105 @@
+﻿<Page
+    x:Class="CrearPruebaCamellos_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CrearPruebaCamellos_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Indigo"
+    xmlns:vm="using:CrearPruebaCamellos_UI.ViewModels">
+
+    <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
+
+    <Page.DataContext>
+        <vm:clsMainPageVM/>
+    </Page.DataContext>
+
+    <RelativePanel>
+
+        <TextBlock
+            Name="titulo"
+            Text="Insertar Pruebas y sus Palabras"
+            FontSize="40"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            FontWeight="Bold"
+            Foreground="White"
+            Margin="0,40,0,0"/>
+
+        <TextBox Name="palabraIntroducida"
+                 Text="{Binding PalabraIntroducida.Palabra, Mode=TwoWay}"
+                 RelativePanel.Below="titulo"
+                 PlaceholderText="Introduzca palabra"
+                 FontSize="20"
+                 Margin="0,60,280,23"
+                 Height="40"
+                 Width="280"
+                 RelativePanel.AlignHorizontalCenterWith="titulo"
+                 />
+
+        <Slider Name="sliderDificultad"
+                Header="Dificultad"
+                Value="{Binding PalabraIntroducida.Dificultad}"
+                Width="250"
+                FontSize="20"
+                Background="White"
+                Minimum="1"
+                Maximum="20"
+                RelativePanel.Below="titulo"
+                RelativePanel.RightOf="palabraIntroducida"
+                RelativePanel.AlignHorizontalCenterWith="titulo"
+                Margin="50,35,-350,0"
+                />
+
+        <Button Name="btnAgregarPalabra"
+                Content="Añadir Palabra"
+                FontSize="20"
+                RelativePanel.Below="palabraIntroducida"
+                CornerRadius="5"
+                RelativePanel.AlignLeftWith="palabraIntroducida"
+                Foreground="White"/>
+
+        <Button Name="btnCrearPrueba"
+                Content="Crear Prueba"
+                Background="Purple"
+                FontSize="30"
+                CornerRadius="5"
+                RelativePanel.Below="listaPalabras"
+                RelativePanel.AlignLeftWith="btnAgregarPalabra"
+                Margin="0,20,0,0"/>
+
+        <TextBlock Name="txtTiempoPrueba"
+                   Text="Tiempo Prueba:"
+                   FontSize="25"
+                   Foreground="Violet"
+                   RelativePanel.Below="btnAgregarPalabra"
+                   RelativePanel.AlignLeftWith="btnAgregarPalabra"
+                   Margin="0,15,0,0"/>
+
+        <TextBlock Name="tiempoPrueba"
+                   Text="00:00"
+                   FontSize="30"
+                   RelativePanel.Below="btnAgregarPalabra"
+                   RelativePanel.RightOf="txtTiempoPrueba"
+                   Margin="30,10,0,0"/>
+
+        <ListView Name="listaPalabras"
+                  Background="Black"
+                  Header="Listado Palabras:"
+                  Foreground="Violet"
+                  FontSize="25"
+                  Height="350"
+                  Width="400"
+                  RelativePanel.Below="txtTiempoPrueba"
+                  RelativePanel.AlignLeftWith="btnAgregarPalabra"
+                  Margin="0,20,0,0"
+                  />
+
+
+
+
+
+
+
+    </RelativePanel>
+</Page>

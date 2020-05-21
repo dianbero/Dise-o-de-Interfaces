@@ -1,0 +1,55 @@
+mayuscula-2s
+ordenador-2s
+xilofono-2s
+palabra - 2s
+ventana - 3s
+esternocleidomastoideo - 4s
+casa - 2s
+otorrinolaringologo - 5s
+traumatologo 4s
+constelacion - 3s
+catedral -3s
+tranquimazol -4s
+amoxicilina - 3s
+memorizacion - 4s
+interestelar -3s
+
+
+
+desaparicion -4s/12
+peninsula -3s/9
+aristotelico 3s/12
+guarida -2s/7
+paleolitico -3s/11
+mesozoico -3s/9
+catedratico -4s/11
+paralelamente-3s/12
+protagonista -3s/12
+infraestructura -5s/15
+funcionamiento -3s/14
+lavadora - 2s/8
+despliegue-2s/10
+ordenamiento -3s/12
+vehiculo -2s/8
+ornitorrinco-3s/12
+supervivencia-3s/13
+paralelamente -3s/13
+transformaciones -4s/16
+superioridad-3s/12
+clavicula-3s/9
+manifestacion -3s/13
+neumatico-2s/9
+salvajismo-3s/10
+espiritualidad-3s/14
+culturalmente-4s/13
+respectivamente-3s/15
+artesanal-3s9
+bibliografia-3s12
+magistratura-3s/12
+ontologicamente-3s15
+comportamiento-3s/14
+automovil-2s/9
+espejismo-2s/9
+concatenacion-3s/13
+dimension-2s/9
+

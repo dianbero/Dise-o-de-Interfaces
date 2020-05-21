@@ -1,0 +1,38 @@
+Tablas:
+
+Prueba:
+idPrueba int identity (PK)
+tiempoMax Time/dateTime
+Número palabras int (equivaldría a la dificultad, a mayor palabras, mayor dificultad)
+
+Palabra:
+palabra varchar (PK)
+idPrueba int (PK)
+dificultadPalabra int/dateTime (si se entiende por dificultad el tiempo que se tarda en escribirla)
+
+Jugador:
+idJugador (PK)
+contraseña varchar unique 
+nick varchar
+
+Prueba-Jugador(Progreso):
+idPrueba int (PK)
+idJugador int (PK)
+tiempoJugador Time/DateTime
+
+Palabra:
+idPalabra int identity (PK)
+palabra varchar
+dificultad int/DateTime (si se entiende por dificultad el tiempo que se tarda en escribirla)
+
+prueba-Palabra:
+idPrueba int (PK)
+idPalabra int (PK)
+
+
+
+
+
+
+
+
