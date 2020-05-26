@@ -11,24 +11,24 @@ namespace CrearPruebaCamellos_Entities
         #region Atributos Privados
         private int idPrueba;
         private int numeroPalabras;
-        private DateTime tiempoMax;
+        private TimeSpan tiempoMax;
 
         #endregion
 
         #region Propiedades Públicas
         public int IdPrueba { get => idPrueba; set => idPrueba = value; }
         public int NumeroPalabras { get => numeroPalabras; set => numeroPalabras = value; }
-        public DateTime TiempoMax { get => tiempoMax; set => tiempoMax = value; }
+        public TimeSpan TiempoMax { get => tiempoMax; set => tiempoMax = value; }
         #endregion
 
         #region Contructor
         public clsPrueba()
         {
-            this.idPrueba = 1;
-            this.numeroPalabras = 5;
-            this.tiempoMax = new DateTime();
+            this.idPrueba = 0;
+            this.numeroPalabras = 0;
+            this.tiempoMax = new TimeSpan();
         }
-        public clsPrueba(int idPrueba, int numeroPalabras, DateTime tiempoMax)
+        public clsPrueba(int idPrueba, int numeroPalabras, TimeSpan tiempoMax)
         {
             this.idPrueba = idPrueba;
             this.numeroPalabras = numeroPalabras;

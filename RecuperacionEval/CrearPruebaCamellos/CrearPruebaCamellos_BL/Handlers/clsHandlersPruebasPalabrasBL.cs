@@ -14,9 +14,10 @@ namespace CrearPruebaCamellos_BL.Handlers
         /// </summary>
         /// <param name="idPrueba"></param>
         /// <param name="idPalabra"></param>
-        public void insertarPruebasPalabras(int idPrueba, int idPalabra)
+        /// <returns>int filasAfectas, indicando número de registros afectados</returns>
+        public int insertarPruebasPalabras(int idPrueba, int idPalabra)
         {
-            new clsHandlerPruebasPalabrasDAL().insertarPruebasPalabras(idPrueba, idPalabra);
+            return new clsHandlerPruebasPalabrasDAL().insertarPruebasPalabras(idPrueba, idPalabra);
         }
     }
 }

@@ -85,9 +85,11 @@ namespace CrearPruebaCamellos_DAL.Handlers
                 {
                     if (reader.Read())
                     {
+                        objPalabra = new clsPalabra();
+
                         objPalabra.IdPalabra = (int)reader["idPalabra"];
                         objPalabra.Palabra = (string)reader["palabra"];
-                        objPalabra.Dificultad = (byte)reader["idPalabra"];                                                
+                        objPalabra.Dificultad = (byte)reader["dificultad"];                                                
                     }
                 }
             }
@@ -130,7 +132,7 @@ namespace CrearPruebaCamellos_DAL.Handlers
                 command.Connection = connection;
 
                 command.Parameters.Add("@palabra", System.Data.SqlDbType.VarChar).Value = nuevaPalabra.Palabra;
-                command.Parameters.Add("@dificultad", System.Data.SqlDbType.VarChar).Value = nuevaPalabra.Dificultad;
+                command.Parameters.Add("@dificultad", System.Data.SqlDbType.TinyInt).Value = nuevaPalabra.Dificultad;
 
 
                 /*Me llama la atención meter dos sentencias SQL a la vez en el CommandText, pero en la documentación de microsoft lo hacen así, con la sentencia de inserción primero y después
@@ -138,8 +140,7 @@ namespace CrearPruebaCamellos_DAL.Handlers
                 command.CommandText = "INSERT INTO CJ_Palabras(palabra, dificultad) VALUES (@palabra, @dificultad) " +
                     "SELECT * FROM CJ_Palabras WHERE palabra = @palabra"; //Pilla sólo la primera columna y de la primera fila de las afectadas por la sentencia, en mi caso el idPalabra
 
-                //Ejecuta la instrucción SQL
-                //filasAfectadas = command.ExecuteNonQuery();      
+                //Ejecuta la instrucción SQL   
                 idPalabra = (Int32)command.ExecuteScalar();
 
 

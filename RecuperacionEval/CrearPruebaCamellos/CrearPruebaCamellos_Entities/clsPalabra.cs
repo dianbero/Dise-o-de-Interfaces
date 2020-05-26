@@ -23,9 +23,9 @@ namespace CrearPruebaCamellos_Entities
         #region Contructor
         public clsPalabra()
         {
-            this.idPalabra = 1;
-            this.palabra = "Camellos";
-            this.dificultad = 3;
+            this.idPalabra = 0;
+            this.palabra = "";
+            this.dificultad = 0;
         }
         public clsPalabra(int idPalabra, string palabra, int dificultad)
         {

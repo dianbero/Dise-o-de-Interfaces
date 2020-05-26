@@ -42,7 +42,7 @@ namespace CrearPruebaCamellos_DAL.Handlers
 
                 /*Me llama la atención meter dos sentencias SQL a la vez en el CommandText, pero en la documentación de microsoft lo hacen así, con la sentencia de inserción primero y después
                  el select, y obtiene el idJugador únicamente que era mi intención, porque es lo único que quiero pasarle a la siguiente vista*/
-                command.CommandText = "INSERT INTO CJ_Pruebas(numeroPalabras, tiempoMaximo) VALUES (@numerPalabras, @tiempoMaximo) " +
+                command.CommandText = "INSERT INTO CJ_Pruebas(numeroPalabras, tiempoMaximo) VALUES (@numeroPalabras, @tiempoMaximo) " +
                     "SELECT TOP 1 * FROM CJ_Pruebas ORDER BY idPrueba DESC"; //Pilla sólo la primera columna y de la primera fila de la última prueba insertada, en mi caso el idPrueba
 
                 //Ejecuta la instrucción SQL

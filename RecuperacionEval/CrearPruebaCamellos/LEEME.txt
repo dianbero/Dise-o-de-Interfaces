@@ -1,0 +1,35 @@
+Observaciones:
+-Ya en el planteamiento lo puse pero lo explico de nuevo.
+En la entidad clsPrueba, en el ejercicio de Camellos puse el tiempoPrueba como DateTime.
+Después me di cuenta que por el dato en la BBDD, y la implementación del juego, 
+en general era más cómodo usar TimeSpan.
+En este ejercicio he hecho esa modificación, de forma que tiempoPrueba es un dato de tipo
+TimeSpan.
+Lo comento por si te choca que lo tenga distinto en los ejercicios que utilizan la misma
+entidad, lo suyo sería cambiarlo en el ejercicio de Camellos y que sea también TimeSpan, 
+pero ya te lo entregué así (y creo que te lo expliqué también).
+
+-En el enunciado pusiste que el rango del slider tenía que ser de 0 a 20, pero si permitiese
+que la dificultad fuese 0, no añadiría tiempo con ninguna palabra y no se podría hacer
+una prueba. Lo he dejado con ese rango pero en el código compruebo que sea mayor a cero.
+Aunque esto se podría ahorrar, haciendo que directamente el slider fuese de 1 a 20.
+
+
+-Respecto a la corrección que me hiciste en el de Camellos sobre que en las Handler no se menten
+los listados... Entonces, en este que tengo el método getPalabraExistente, que sólo
+me obtiene un registro y no listado, seguiría necesitando meterlo en listados, o estaría
+bien dejarlo en la manejadora o Handler?
+Antes de ver tu corrección de Camellos lo tenía ya en handlers, y como no tenía eso muy claro 
+porque no me obtiene un listado, lo he dejado así.
+
+-La entidad clsPruebaPalabra al final no la uso porque en el método insertarPruebasPalabras
+le paso directamente los idPrueba e idPalabra, por lo que sería prescindible. Pero la he dejado.
+
+Una pregunta:
+En algunos métodos de la capa DAL como checkExistePalabra o insertarPalabra (creo que todos
+en los que uso executeScalar), hago un doble casteo, primero lo obtiene en Int32 y luego
+lo castea a int. Lo hago porque lo he visto en la documentación de Microsoft, pero creo 
+que es reduntante y además el propio Visual Studio lo dice.
+Simplemente quería saber tu opinión por si es conveniente seguir haciéndolo así o
+tenerlo directamente en int, pero, imagino que lo puedo hacer directamente con int.
+
