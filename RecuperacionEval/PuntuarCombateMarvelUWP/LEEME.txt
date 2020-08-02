@@ -1,0 +1,13 @@
+Observaciones:
+
+- El menú hamburguera necesita de Toolkit y al parecer ya no está disponible, hay que usar 
+NavigationView.
+
+-He intentado usar converters para no tener que hacer una clase extra con la imagen, 
+pero no me funcionaba, así que la clase extra la tengo por eso, 
+la he liado muchísimo con las imágenes.
+
+
+- Creo que está mínimamente decente, y con el trabajo que me ha costado lidiar con imágenes 
+haré mención del gran lema compadre: "Pero funciona".
+Y funciona todo lo importante, creo.

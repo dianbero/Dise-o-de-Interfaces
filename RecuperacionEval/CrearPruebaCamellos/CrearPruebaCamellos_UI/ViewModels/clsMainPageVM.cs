@@ -148,7 +148,7 @@ namespace CrearPruebaCamellos_UI.ViewModels
                 }
                 else
                 {
-                    mensajeError = "El campo debe rellenarse y no superar lo 80 caracteres";
+                    mensajeError = "El campo debe rellenarse y no superar los 80 caracteres";
                     mostrarMensajeError();
                 }
             }

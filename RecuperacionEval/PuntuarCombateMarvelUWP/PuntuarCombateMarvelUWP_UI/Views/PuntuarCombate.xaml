@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="PuntuarCombateMarvelUWP_UI.Views.PuntuarCombate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PuntuarCombateMarvelUWP_UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Black"
+    xmlns:vm="using:PuntuarCombateMarvelUWP_UI.ViewModels"
+    xmlns:converter="using:PuntuarCombateMarvelUWP_UI.ViewModels.ToolsVM">
+    <!--{ThemeResource ApplicationPageBackgroundThemeBrush}-->
+
+    <Page.DataContext>
+        <vm:clsPuntuarCombateVM/>
+    </Page.DataContext>
+
+    <!--<UserControl.Resources>
+        <converter:clsConverterImagen x:Key="ConverterImagen"/>
+    </UserControl.Resources>-->
+
+    <RelativePanel>
+
+        <TextBlock Name="titulo" 
+                   Text="Puntuar Luchadores"
+                   FontSize="40"
+                   Foreground="CornflowerBlue"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   RelativePanel.AlignTopWithPanel="True"
+                   Margin="0,0,0,0"/>
+
+        <StackPanel Name="stackVS"
+                    Orientation="Horizontal"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    Margin="0,130,0,0"
+                    >
+
+            <ListView Name="listaLuchadores1"
+                  Width="250"
+                  Height="400"
+                  Foreground="White"
+                  ItemsSource="{Binding ListadoLuchadoresConFoto}"
+                  SelectedItem="{Binding Luchador1Seleccionado, Mode=TwoWay}">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <Image Source="{Binding Imagen}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Image Name="vs"
+               Source="ms-appx:///Assets/vs1.png"
+               Width="200"/>
+
+            <ListView Name="listaLuchadores2"
+                  Width="250"
+                  Height="400"
+                      ItemsSource="{Binding ListadoLuchadoresConFoto}"
+                      SelectedItem="{Binding Luchador2Seleccionado, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Imagen}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <RatingControl Name="rating1"
+                       RelativePanel.Below="stackVS"
+                       RelativePanel.AlignLeftWith="stackVS"
+                       Margin="70,50,0,0"
+                       Value="{Binding PuntuacionLuchador1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       />
+
+        <RatingControl Name="rating2"
+                       RelativePanel.AlignTopWith="rating1"
+                       RelativePanel.RightOf="rating1"
+                       Margin="340,50,0,0"
+                       Value="{Binding PuntuacionLuchador2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       />
+
+        <Button Name="btnPuntuar"
+                Content="Puntuar"
+                Background="DarkBlue"                
+                Foreground="CornflowerBlue"
+                FontSize="30"
+                RelativePanel.Below="rating1"
+                RelativePanel.AlignLeftWith="rating1"
+                Margin="290,20,0,0"
+                Command="{Binding BtnEnviarPuntuacion}"
+                CornerRadius="5"
+                />
+    </RelativePanel>
+    
+    
+</Page>

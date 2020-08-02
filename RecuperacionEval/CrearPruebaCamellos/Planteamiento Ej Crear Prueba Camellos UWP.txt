@@ -1,0 +1,72 @@
+Entidades:
+
+clsPrueba:
+
+int idPrueba
+int numeroPalabras
+TimeSpan tiempoPartida
+
+
+clsPalabra:
+
+int idPalabra
+string palabra
+int dificultad
+bool yaExiste (cuando compruebe si la palabra existe o no, se le da el valor)
+
+
+clsPruebasPalabras:
+int idPrueba
+int idPalabra
+
+
+
+
+Capa DAL:
+
+
+- int checkPalabraExiste(string palabra): comprueba que la palabra introducida existe en la BBDD, devuelve el número de registros encontrados
+
+- clsPalabra getPalabra(string palabra): para obtener el idPalabra y la dificultad de la palabra ya existente en la BBDD.  
+
+- int insertarPrueba(clsPrueba nuevaPrueba): devuelve el id de la prueba creada en la BBDD
+
+- int insertarPalabra(clsPalabra nuevaPalabra): devuelve el id de la palabra creada en la BBDD
+
+- void insertarPruebasPalabras(int idPrueba, int idPalabra): inserta los idPrueba e idPalabra obtenidos al insertarlos
+
+
+
+Capa UI:
+
+Models:
+
+clsPalabraConAtributoYaExiste : clsPalabra
+
+//Atributos heredados
+int idPalabra
+string palabra
+int dificultad
+
+//Atributos propios
+bool yaExiste
+
+
+MainPageVM:
+
+Con Bindeo:
+
+- clsPalabra palabraIntroducida: bindeada al textBox para introducir palabra y al slider para indicar la dificultad 
+- DelegateCommand añadirpalabra: añade palabra al listado de palabras y suma al tiempo prueba el correspondiente con la dificultad de la palabra introducida
+- DelegateCommand borrarPalabra: borra palabra al listado de palabras y resta al tiempo prueba el correspondiente con la dificultad de la palabra eliminada
+- ObservableCollection<clsPalabraConAtributoYaExiste> listadoPalabras: listado con la palabras que se han ido introduciendo (incluido el buleano yaExiste)
+- string tiempoPruebaMostrado: el tiempo total correspondiente al total de las dificultades de las palabras incluidas en la lista de palabras
+- DelegateCommand crearPrueba
+
+Sin bindeo:
+
+- string mensajeError (Normalmente no lo necesito, pero lo pongo porque en otras ocasiones se me ha echado en falta, pero no creo que lo necesite)
+- TimeSpan tiempoPrueba: el tiempo total correspondiente al total de las dificultades de las palabras incluidas en la lista de palabras
+
+
+

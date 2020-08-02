@@ -1,0 +1,63 @@
+Planteamiento Combate Marvel UWP:
+
+Entidades:
+
+
+clsCombate:
+int idCombate
+Datetime fechaCombate
+
+clsLuchador:
+int idLuchador
+string nombreLuchador
+byte[] fotoLuchador
+
+clsLuchadoreCombate:
+int idCombate
+int idLuchador
+int puntuacionLuchador
+
+Capa DAL:
+
+-int insertarCombate(clsCombate nuevoCombate): inserta un combate y devuelve el id del combate insertado
+
+-int insertarLuchadoresCombates(clsLuchadoresCombates nuevoLuchadoresCombate): inserta la primera puntuacion de un jugador en un combate
+
+-int checkExisteCombate(int idLuchador1, int idLuchador2, DateTime fechaCombate): comprueba si existe el combate con los datos pasados por parámetro
+
+-ObservableCollection<clsLuchador> getListadoPersonajesOrdenados(): listado de personajes ordenados por su rating total en los comabtes, en el enunciado no pone que deba mostrarse la puntuación, por lo que  entiendo que sólo se necesita un listado de objetos clsLuchador
+
+-ObservableCollection<clsLuchador> getListadoPersonajes():listado de personajes sin ordenar, tal y como se extraen de la BBDD. O podría reutilizar el método anterior, pero entonces el listado para elegir los luchadores en la página de puntuar iría variando, no sería fija.
+
+-int actualizarPuntuacionLuchadorCombate(clsLuchadorCombate nuevaPuntuacion):actualiza la puntuación del jugador de un combate sumándole la nueva puntuación
+
+-clsCombate/int getCombate(int idLuchador1, int idLuchador2, DateTime fechaCombate): podría devolver el objeto entero o sólo el idCombate, porque creo que con el id ya bastaría
+
+
+Capa UI:
+
+MainPageVM:  (página con menu hamburguesa y frames de las otras páginas a navegar)
+
+-DelegateCommand btnPuntuarCombate: lleva a la página de puntuar combate
+-DelegateCommand btnVerClasificacion: lleva a la página de clasificación
+
+
+PuntuarCombateVM:
+
+-DelegateCommand btnEnviarPuntuacion
+-clsLuchadores luchador1Seleccionado
+-clsLuchadores luchador2Seleccionado
+-ObservableCollection<clsLuchador> listadoLuchadores
+//Bindeados al control rating:
+-int puntuacionLuchador1
+-int puntuacionLuchador2
+-string mensajeError
+
+
+ClasificaciónVM:
+
+-ObservableCollection<clsLuchador> listadoLuchadores
+-string mensajeError
+
+
+

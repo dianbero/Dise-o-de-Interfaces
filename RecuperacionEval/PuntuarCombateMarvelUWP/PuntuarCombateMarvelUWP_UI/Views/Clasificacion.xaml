@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="PuntuarCombateMarvelUWP_UI.Views.Clasificacion"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PuntuarCombateMarvelUWP_UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Black"
+    xmlns:vm="using:PuntuarCombateMarvelUWP_UI.ViewModels"
+    xmlns:converter="using:PuntuarCombateMarvelUWP_UI.ViewModels.ToolsVM">
+
+    <Page.DataContext>
+        <vm:clsClasificacionVM/>
+    </Page.DataContext>
+
+    <!--<UserControl.Resources>
+        <converter:clsConverterImagen x:Key="ConverterImagen"/>
+    </UserControl.Resources>-->
+       
+
+    <RelativePanel>
+        <TextBlock Name="txtClasificacion"
+                   Text="Clasificación"
+                   FontSize="40"
+                   Foreground="CornflowerBlue"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   Margin="0,0,0,70"/>
+
+        <!--<Image Name="txtClasificacion"
+               Source="ms-appx:///Assets/winner.png"
+               RelativePanel.Above="clasificacion"
+               RelativePanel.AlignHorizontalCenterWith="clasificacion"
+               Width="250"
+               Margin="0,80,0,0"/>-->
+
+        <ListView Name="clasificacion"
+              Width="700"
+              Height="500"
+              Margin="0,10,0,0"
+                  RelativePanel.Below="txtClasificacion"
+                  RelativePanel.AlignHorizontalCenterWithPanel="True"
+              ItemsSource="{Binding ListadoLuchadoresConFoto}"
+              >
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="BitmapImage">
+                    <Image x:Name="foto"
+                           Source="{Binding Imagen}"
+                           />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </RelativePanel>
+       
+    
+</Page>

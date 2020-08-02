@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="_16_Insertar_imagen_en_BBDD_UI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_16_Insertar_imagen_en_BBDD_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_16_Insertar_imagen_en_BBDD_UI.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <vm:clsMainPageVM></vm:clsMainPageVM>
+    </Page.DataContext>
+    <RelativePanel Name="rtpPrincipal">
+        <TextBlock RelativePanel.AlignTopWithPanel="True"
+                   Text="CONVERSIÓN DE IMAGEN A ARRAY DE BYTES"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   FontSize="34"
+                   FontWeight="Bold"
+                   FontFamily="Verdana"
+                   Name="txbTitulo"></TextBlock>
+
+        <Grid RelativePanel.Below="txbTitulo" Margin="20" Name="grdFormaulario">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Margin="7" Grid.Row="0" HorizontalAlignment="Right">Server de la BBDD (URL, IP o nombre de equipo):</TextBlock>
+            <TextBox Name="txtServerBBDD" Margin="5" Grid.Row="0" Grid.Column="1" Text="{Binding Path=oConexion.server, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="1" HorizontalAlignment="Right">Nombre de la BBDD:</TextBlock>
+            <TextBox Name="txtNombreBBDD" Margin="5" Grid.Row="1" Grid.Column="1" Text="{Binding Path=oConexion.dataBase, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="2" HorizontalAlignment="Right">Usuario de la BBDD:</TextBlock>
+            <TextBox Name="txtUsuarioBBDD" Margin="5" Grid.Row="2" Grid.Column="1" Text="{Binding Path=oConexion.user, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="3" HorizontalAlignment="Right">Password de la BBDD:</TextBlock>
+            <TextBox Name="txtPasswordBBDD" Margin="5" Grid.Row="3" Grid.Column="1" Text="{Binding Path=oConexion.pass, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="4" HorizontalAlignment="Right">Nombre de la tabla en la BBDD:</TextBlock>
+            <TextBox Name="txtTabla" Margin="5" Grid.Row="4" Grid.Column="1" Text="{Binding Path=oImagen.nombreTabla, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="5" HorizontalAlignment="Right">Nombre de la PK de la tabla:</TextBlock>
+            <TextBox Name="txtPk" Margin="5" Grid.Row="5" Grid.Column="1" Text="{Binding Path=oImagen.nombrePK, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="6" HorizontalAlignment="Right">Valor de la PK:</TextBlock>
+            <TextBox Name="txtValorPK" Margin="5" Grid.Row="6" Grid.Column="1" Text="{Binding Path=oImagen.valorPK, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="7" HorizontalAlignment="Right">Nombre del campo imagen en la tabla:</TextBlock>
+            <TextBox Name="txtNombreCampoImagen" Margin="5" Grid.Row="7" Grid.Column="1" Text="{Binding Path=oImagen.nombreCampoImagen, Mode=TwoWay}"></TextBox>
+
+            <TextBlock Margin="7" Grid.Row="8" HorizontalAlignment="Right">Imagen a guardar:</TextBlock>
+            <TextBox Name="txtFile" Margin="5" Grid.Row="8" Grid.Column="1" IsReadOnly="True" Text="{Binding Path=oImagen.fichero.Name, Mode=TwoWay}"></TextBox>
+            <Button Name="btnSeleccionar" Content="Seleccione Imagen" Command="{Binding Path=seleccionarImagenCommand}" Grid.Row="8" Grid.Column="2"></Button>
+
+            <Button Name="btnGuardar" Grid.Column="1" Grid.Row="9" Content="Guardar Imagen en BBDD" Command="{Binding Path=guardarCommand}" Margin="10"></Button>
+        </Grid>
+        <Border RelativePanel.RightOf="grdFormaulario" RelativePanel.Below="txbTitulo"  BorderBrush="Black" BorderThickness="2">
+            <Image Source="{Binding Path=oImagen.imagenBitMap}" ></Image>
+        </Border>
+        
+    </RelativePanel>
+
+</Page>
